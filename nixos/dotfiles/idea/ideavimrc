@@ -1,0 +1,11 @@
+set surround
+set clipboard=autoselect
+"
+let mapleader = " "
+
+map <leader>s :action SaveDocument<CR>
+map <leader>f :action Find<CR>
+map <leader>o :action OverrideMethods<CR>
+map <leader>r :action RenameElement<CR>
+map <leader>t :action ReformatCode<CR>
+vmap <leader>y "+y

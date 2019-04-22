@@ -1,0 +1,5 @@
+[options]
+font = Source Code Pro 10
+geometry = 1000x400
+icon_name = terminal
+scrollback_lines = 10000

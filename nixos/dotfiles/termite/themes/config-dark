@@ -1,0 +1,98 @@
+[options]
+#allow_bold = true
+#audible_bell = false
+#clickable_url = true
+#dynamic_title = true
+#font = Monospace 12 
+font = Source Code Pro 12 
+#font = DejaVu Sans Mono 10
+#fullscreen = true
+geometry = 1000x400
+#640x480
+icon_name = terminal
+#mouse_autohide = false
+#scroll_on_output = false
+#scroll_on_keystroke = true
+scrollback_lines = 10000
+#search_wrap = true
+#urgent_on_bell = true
+
+# $BROWSER is used by default if set, with xdg-open as a fallback
+#browser = xdg-open
+
+# "system", "on" or "off"
+#cursor_blink = system
+
+# "block", "underline" or "ibeam"
+#cursor_shape = block
+
+# Hide links that are no longer valid in url select overlay mode
+#filter_unmatched_urls = true
+
+# Emit escape sequences for extra modified keys
+#modify_other_keys = false
+
+# set size hints for the window
+#size_hints = false
+
+[colors]
+# Base16 Materia
+# Author: Defman21
+
+foreground      = #CDD3DE
+foreground_bold = #D5DBE5
+cursor          = #D5DBE5
+background      = #263238
+
+# 16 color space
+
+# Black, Gray, Silver, White
+color0  = #263238
+color8  = #707880
+color7  = #CDD3DE
+color15 = #FFFFFF
+
+# Red
+color1  = #EC5F67
+color9  = #EC5F67
+
+# Green
+color2  = #8BD649
+color10 = #8BD649
+
+# Yellow
+color3  = #FFCC00
+color11 = #FFCC00
+
+# Blue
+color4  = #89DDFF
+color12 = #89DDFF
+
+# Purple
+color5  = #82AAFF
+color13 = #82AAFF
+
+# Teal
+color6  = #80CBC4
+color14 = #80CBC4
+
+# Extra colors
+color16 = #EA9560
+color17 = #EC5F67
+color18 = #2C393F
+color19 = #37474F
+color20 = #C9CCD3
+color21 = #D5DBE5
+ 
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini cms=#%s

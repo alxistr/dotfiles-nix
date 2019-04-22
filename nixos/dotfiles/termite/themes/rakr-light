@@ -1,0 +1,45 @@
+[options]
+font = Source Code Pro 10
+geometry = 1000x400
+icon_name = terminal
+scrollback_lines = 10000
+
+[colors]
+
+# special
+foreground      = #19232f
+foreground_bold = #19232f
+cursor          = #19232f
+background      = #f0f5f6
+
+# black
+color0  = #151515
+color8  = #7c7c7c
+
+# red
+color1  = #b02621
+color9  = #de352e
+
+# green
+color2  = #25a24e
+color10 = #2cc55e
+
+# yellow
+color3  = #fa850d
+color11 = #fcba0e
+
+# blue
+color4  = #226baa
+color12 = #2b84d2
+
+# magenta
+color5  = #65148b
+color13 = #ba2a79
+
+# cyan
+color6  = #1abb9c
+color14 = #1a9172
+
+# white
+color7  = #e7eced
+color15 = #f0f5f6

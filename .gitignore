@@ -1,0 +1,6 @@
+.ds
+.session.vim
+
+nixos/secrets.nix
+nixos/host
+nixos/.vpn
