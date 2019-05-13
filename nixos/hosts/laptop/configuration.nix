@@ -16,4 +16,6 @@
   own.docker.enable = true;
   own.virtualisation.enable = true;
 
+  qemu-user.aarch64 = true;
+
 }
