@@ -6,6 +6,7 @@
   ];
 
   home.packages = with pkgs; [
+    pmutils
     procps
     htop
     atop

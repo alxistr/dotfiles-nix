@@ -2,7 +2,7 @@
 {
   imports = [
     ./git
-    ./bash
+    ./shell
     ./vim
     ./tmux
     ./network
