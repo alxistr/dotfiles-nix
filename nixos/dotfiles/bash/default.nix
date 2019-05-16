@@ -9,6 +9,7 @@
     procps
     htop
     atop
+    iotop
     ncdu
     tree
     less
