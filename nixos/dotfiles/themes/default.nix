@@ -30,21 +30,7 @@ with lib; with types;
 
       iconTheme = {
         name = "Flat-Remix-Blue-Dark";
-        package = with pkgs; stdenv.mkDerivation rec {
-          name = "Flat-Remix";
-          pname = "Flat-Remix";
-          src = fetchTarball "https://github.com/daniruiz/flat-remix/archive/20190427.tar.gz";
-          nativeBuildInputs = [ gtk3 ];
-          installPhase = ''
-            mkdir -p $out/share/icons
-            mv Flat-Remix* $out/share/icons/
-          '';
-          postFixup = ''
-            for theme in $out/share/icons/*; do
-              gtk-update-icon-cache $theme
-            done
-          '';
-        };
+        package = pkgs.flat-remix; 
       };
 
     };

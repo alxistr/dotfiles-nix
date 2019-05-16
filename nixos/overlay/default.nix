@@ -1,8 +1,10 @@
 self: super:
 let inherit (super) callPackage; in
 {
+  flat-remix = callPackage ./packages/flat-remix { };
   i3lockpp = callPackage ./packages/i3lockpp { };
   xnview = callPackage ./packages/xnview { };
+
   powerline-rs = callPackage (import ./packages/powerline-rs).override {
     pkgs = super;
   };
