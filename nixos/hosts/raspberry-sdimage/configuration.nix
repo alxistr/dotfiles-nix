@@ -7,6 +7,7 @@
   own.ssh = {
     enable = true;
   };
+  own.docker.enable = true; 
   own.disable-docs = true;
 
 }
