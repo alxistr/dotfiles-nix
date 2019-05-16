@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }: 
 {
-  imports = 
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
+  imports = [ 
+    <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-base.nix>
+    <nixpkgs/nixos/modules/installer/scan/not-detected.nix> 
+  ];
 
   boot.initrd.availableKernelModules = [ 
     "xhci_pci" 
