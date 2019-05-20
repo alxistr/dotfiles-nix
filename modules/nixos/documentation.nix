@@ -9,8 +9,9 @@ with lib; with types;
       dev.enable = mkForce false;
       info.enable = mkForce false;
       man.enable = mkForce false;
-      nixos.enable = mkForce false;
+      nixos.enable = mkOverride 10 false;
     };
+    services.nixosManual.showManual = mkOverride 10 false; 
   };
 
 }
