@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let enabled = config.nixos-config.own.gui.enable; in
-let plugins = import ./plugins.nix {inherit pkgs;}; in
+let plugins = import ./plugins.nix {inherit pkgs lib;}; in
 with lib; with types;
 {
   config = mkIf enabled {

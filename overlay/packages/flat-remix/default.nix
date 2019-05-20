@@ -2,7 +2,10 @@
 stdenv.mkDerivation rec {
   name = "Flat-Remix";
   pname = "Flat-Remix";
-  src = fetchTarball "https://github.com/daniruiz/flat-remix/archive/20190427.tar.gz";
+  src = builtins.fetchGit {
+    url = "https://github.com/daniruiz/flat-remix/";
+    rev = "fd49025def58f591ce227b2c7eb05b69845bbeec";  # 20190503
+  };
   nativeBuildInputs = with pkgs; [ gtk3 ];
   installPhase = ''
     mkdir -p $out/share/icons

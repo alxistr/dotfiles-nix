@@ -1,44 +1,50 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+with lib;
 let inherit (pkgs.vimUtils) buildVimPluginFrom2Nix; in
-let inherit (builtins) fetchTarball; in
-let plugin = {name, url, version ? ""}: buildVimPluginFrom2Nix {
+let inherit (builtins) fetchGit; in 
+let valueOrEmpty = value: if builtins.isNull value then "" else value; in 
+let plugin = {name, url, rev ? null, ref ? null}: buildVimPluginFrom2Nix {
   pname = name;
-  inherit version;
-  src = fetchTarball url;
+  src = fetchGit (filterAttrs (n: v: v != null) {
+    inherit url rev ref;
+  });
+  version = "${valueOrEmpty rev}${valueOrEmpty ref}";
 }; in
 {
   fzf = plugin {
     name = "fzf";
-    version = "0.18.0";
-    url = "https://github.com/junegunn/fzf/archive/0.18.0.tar.gz";
+    url = "https://github.com/junegunn/fzf/";
+    rev = "ff951341c993ed84ad65344e496e122ee3dddf67";  # 0.18.0
   };
 
   jellybeans = plugin {
     name = "jellybeans";
-    version = "1.6";
-    url = "https://github.com/nanotech/jellybeans.vim/archive/v1.6.tar.gz";
+    url = "https://github.com/nanotech/jellybeans.vim/";
+    rev = "fd089ca8a242263f61ae7bddce55a007d535bc65";  # v1.6
   };
 
   vimagit = plugin {
     name = "vimagit";
-    version = "1.7.3";
-    url = "https://github.com/jreybert/vimagit/archive/1.7.3.tar.gz";
+    url = "https://github.com/jreybert/vimagit/";
+    rev = "91b947cceb7f1c7d005f6b1941478802c4b096db";  # 1.7.3
   };
 
   vim-sexp = plugin {
     name = "vim-sexp";
-    url = "https://github.com/guns/vim-sexp/tarball/12292941903d9ac8151513189d2007e1ccfc95f0";
+    url = "https://github.com/guns/vim-sexp/";
+    rev = "12292941903d9ac8151513189d2007e1ccfc95f0";
   };
 
   vim-clojure-static = plugin {
     name = "vim-clojure-static";
-    version = "011";
-    url = "https://github.com/guns/vim-clojure-static/archive/vim-release-011.tar.gz";
+    url = "https://github.com/guns/vim-clojure-static/"; 
+    rev = "33e7e1e57277bfdc33897ab2c36e8958fc214977";  # vim-release-011
   };
 
   vim-fish = plugin {
     name = "vim-fish";
-    url = "https://github.com/dag/vim-fish/tarball/50b95cbbcd09c046121367d49039710e9dc9c15f";
+    url = "https://github.com/dag/vim-fish/";
+    rev = "50b95cbbcd09c046121367d49039710e9dc9c15f";
   };
 
 }

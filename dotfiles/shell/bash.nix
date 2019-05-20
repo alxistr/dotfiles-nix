@@ -1,5 +1,8 @@
 { pkgs, ... }:
-let liquidprompt = builtins.fetchTarball "https://github.com/nojhan/liquidprompt/archive/v_1.11.tar.gz"; in
+let liquidprompt = builtins.fetchGit {
+  url = "https://github.com/nojhan/liquidprompt/"; 
+  rev = "v_1.11"; 
+}; in
 let shellAliases = import ./aliases.nix; in
 {
   home.packages = with pkgs; [
