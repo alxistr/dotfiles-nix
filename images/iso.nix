@@ -1,5 +1,13 @@
 { config, pkgs, ... }:
 {
+  imports = [ 
+    <nixpkgs/nixos/modules/installer/cd-dvd/iso-image.nix>
+    <nixpkgs/nixos/modules/profiles/all-hardware.nix>
+    <nixpkgs/nixos/modules/installer/scan/not-detected.nix> 
+    ../modules/generic
+    ../modules/nixos
+  ]; 
+
   networking.hostName = "iso";
 
   boot.loader.grub.memtest86.enable = true;

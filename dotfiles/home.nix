@@ -5,7 +5,6 @@
     ../modules/home
     ./awesome
     ./browsers
-    ./devel
     ./git
     ./network
     ./preset

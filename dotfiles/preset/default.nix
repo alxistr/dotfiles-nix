@@ -28,7 +28,8 @@ with lib; with types;
       jetbrains.pycharm-professional
       # jetbrains.idea-ultimate
 
-      appimage-run
+      appimage-run 
+      nixops
 
     ];
 
