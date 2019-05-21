@@ -20,6 +20,8 @@
 
   boot.loader.generic-extlinux-compatible.configurationLimit = 1;
 
+  services.mingetty.autologinUser = lib.mkForce null;
+
   own = {
     ssh = {
       enable = true; 
