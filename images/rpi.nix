@@ -5,7 +5,7 @@
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix> 
     ../modules/generic
     ../modules/nixos
-  ];
+  ] ++ lib.optional (builtins.pathExists ../secrets-rpi.nix) ../secrets-rpi.nix;
 
   nixpkgs.crossSystem = lib.mkIf (builtins.currentSystem != "aarch64-linux") {
     config = "aarch64-unknown-linux-gnu"; 
