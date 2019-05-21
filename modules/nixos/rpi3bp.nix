@@ -8,6 +8,7 @@ with lib; with types;
 
   config = mkIf cfg.enable {
     boot.kernelPackages = pkgs.linuxPackages_latest;
+
     hardware.enableRedistributableFirmware = true; 
     hardware.firmware = [
       (pkgs.stdenv.mkDerivation {
@@ -23,6 +24,12 @@ with lib; with types;
        '';
        })
     ];
+
+    users.users = with pkgs; {
+      root.shell = mkForce bash;
+      user.shell = mkForce bash; 
+    };
+
   };
 
 }
