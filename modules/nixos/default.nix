@@ -16,6 +16,6 @@ let nixos-configs = builtins.fetchGit {
     ./users.nix
     ./generic.nix
     ./vpn.nix
-    ./wireless.nix
+    ./network.nix
   ];
 }

@@ -32,6 +32,11 @@ with lib; with types;
       type = attrs;
     };
 
+    hosts = mkOption {
+      default = { };
+      type = attrs; 
+    };
+
   };
 
 }
