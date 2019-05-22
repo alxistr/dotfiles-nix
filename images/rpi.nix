@@ -7,6 +7,10 @@
     ../modules/nixos
   ] ++ lib.optional (builtins.pathExists ../secrets-rpi.nix) ../secrets-rpi.nix;
 
+  disabledModules = [
+    <nixpkgs/nixos/modules/profiles/installation-device.nix>
+  ];
+
   nixpkgs.crossSystem = lib.mkIf (builtins.currentSystem != "aarch64-linux") {
     config = "aarch64-unknown-linux-gnu"; 
     system = "aarch64-linux"; 
