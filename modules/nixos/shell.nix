@@ -6,7 +6,7 @@ with lib; with types;
       "bash"
       "fish"
     ]; 
-    default = "fish";
+    default = "bash";
   };
 
   config = mkIf (config.own.shell == "fish") {
