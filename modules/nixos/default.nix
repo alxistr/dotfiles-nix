@@ -11,6 +11,7 @@ let nixos-configs = builtins.fetchGit {
     ./gui.nix
     ./ssh.nix
     ./steam.nix
+    ./shell.nix
     ./virt.nix
     ./rpi3bp.nix
     ./users.nix

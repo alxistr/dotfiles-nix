@@ -16,11 +16,9 @@ with lib; with types;
 
     users.users = with pkgs; {
       root = {
-        shell = fish;
         initialPassword = "root";
       };
       user = {
-        shell = fish;
         isNormalUser = true;
         uid = 1000;
         initialPassword = "user";
