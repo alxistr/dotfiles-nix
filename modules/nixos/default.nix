@@ -18,6 +18,6 @@ let nixos-configs = builtins.fetchGit {
     ./generic.nix
     ./vpn.nix
     ./network.nix
-    ./adhosts.nix
+    ./dnsmasq.nix
   ];
 }

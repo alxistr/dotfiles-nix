@@ -19,7 +19,10 @@ with lib;
     gui.enable = true;
     docker.enable = true;
     virtualisation.enable = true;
-    adhosts.enable = true;
+    dnsmasq = {
+      enable = true;
+      adhosts = true;
+    };
     steam.enable = true;
   };
 
