@@ -19,11 +19,17 @@ with lib;
     gui.enable = true;
     docker.enable = true;
     virtualisation.enable = true;
+    steam.enable = true;
+
     dnsmasq = {
       enable = true;
       adhosts = true;
+      extraConfig = '' 
+        server=/zorg.sh/8.8.8.8 
+        server=/ghcg.com/8.8.8.8 
+      '';
     };
-    steam.enable = true;
+
   };
 
   qemu-user.aarch64 = true;
