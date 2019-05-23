@@ -31,7 +31,7 @@ with lib; with types;
       '' + cfg.dnsmasq.extraConfig;
     };
 
-    docker-containers = {
+    docker-containers = mkIf docker {
       docker-dns-gen = {
         image = "jderusse/dns-gen:latest";
         ports = [ "54:53/udp" ];
