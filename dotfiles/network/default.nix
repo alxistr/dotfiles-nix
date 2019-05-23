@@ -10,6 +10,8 @@
     neomutt
     sshfs
     w3m
+    bind
+    lsof
   ];
 
   home.file.".curlrc".source = ./curlrc;

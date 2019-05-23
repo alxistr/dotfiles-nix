@@ -3,6 +3,7 @@ let inherit (super) callPackage; in
 {
   flat-remix = callPackage ./packages/flat-remix { };
   i3lockpp = callPackage ./packages/i3lockpp { };
+  adhosts = callPackage ./packages/adhosts { };
 
   powerline-rs = callPackage (import ./packages/powerline-rs).override {
     pkgs = super;

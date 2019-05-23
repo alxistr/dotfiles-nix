@@ -19,6 +19,7 @@ with lib;
     gui.enable = true;
     docker.enable = true;
     virtualisation.enable = true;
+    adhosts.enable = true;
     steam.enable = true;
   };
 
