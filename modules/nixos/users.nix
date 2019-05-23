@@ -1,12 +1,12 @@
 { config, pkgs, lib, ... }:
 let home-manager = fetchGit {
   url = "https://github.com/rycee/home-manager.git";
-  rev = "ba0375bf06e0e0c3b2377edf913b7fddfd5a0b40"; 
-}; in 
-with lib; with types; 
-{ 
+  rev = "ba0375bf06e0e0c3b2377edf913b7fddfd5a0b40";
+}; in
+with lib; with types;
+{
   imports = [
-    "${home-manager}/nixos" 
+    "${home-manager}/nixos"
   ];
 
   config = {
@@ -28,22 +28,15 @@ with lib; with types;
           "docker"
           "libvirtd"
         ];
-        openssh.authorizedKeys.keys = config.own.secrets.authorized-keys;
+        openssh.authorizedKeys.keys = config.own.ssh.authorized-keys;
       };
-    } // (if config.own.secrets.git.server then {
-      git = {
-        isNormalUser = true;
-        createHome = true;
-        shell = "${pkgs.git}/bin/git-shell";
-        openssh.authorizedKeys.keys = config.own.secrets.authorized-keys;
-      };
-    } else { });
+    };
 
     security.sudo.wheelNeedsPassword = false;
 
     home-manager.users."root" = import ../../dotfiles/home.nix;
     home-manager.users."user" = import ../../dotfiles/home.nix;
 
-  }; 
+  };
 
-} 
+}

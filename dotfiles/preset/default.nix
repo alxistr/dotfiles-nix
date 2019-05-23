@@ -1,9 +1,8 @@
 { config, pkgs, lib, ... }:
-let own = config.nixos-config.own;
-    enabled = own.gui.enable; in
+let cfg = config.nixos-config.own.gui; in
 with lib; with types;
 {
-  config = mkIf enabled {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [
       pasystray
       pavucontrol
@@ -28,7 +27,7 @@ with lib; with types;
       jetbrains.pycharm-professional
       # jetbrains.idea-ultimate
 
-      appimage-run 
+      appimage-run
       nixops
       Fabric
 

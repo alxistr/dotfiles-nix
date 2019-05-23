@@ -1,13 +1,30 @@
 { config, pkgs, lib, ... }:
-let secrets = config.own.secrets; 
-    wirelessConfigured =  secrets.wireless != { }; in
-with lib; with types; 
-{ 
-  config = { 
-    networking.hosts = secrets.hosts; 
-    networking.wireless = mkIf wirelessConfigured {
+let cfg = config.own; in
+with lib; with types;
+{
+  options.own = {
+    wifi = mkOption {
+      default = { };
+      type = nullOr attrs;
+    };
+    vpn = mkOption {
+      default = { };
+      type = attrs;
+    };
+  };
+
+  config = {
+    time.timeZone = "Europe/Moscow";
+    networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
+
+    networking.wireless = mkIf (cfg.wifi != { }) {
       enable = true;
-      networks = secrets.wireless; 
-    }; 
-  }; 
-} 
+      networks = cfg.wifi;
+      interfaces = [ "wlan0" ];
+    };
+
+    services.openvpn.servers = cfg.vpn;
+
+  };
+
+}

@@ -3,7 +3,8 @@
 
 *.iso
 *.img
+result
 
-secrets.nix
+local*.nix
 host
 .vpn

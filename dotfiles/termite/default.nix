@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
-let enabled = config.nixos-config.own.gui.enable; in
+let cfg = config.nixos-config.own.gui; in
 with lib; with types;
 {
-  config = mkIf enabled {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [
       termite
     ];

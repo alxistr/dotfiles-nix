@@ -3,13 +3,13 @@ let cfg = config.own.rpi3bp; in
 with lib; with types;
 {
   options.own.rpi3bp = {
-    enable = mkEnableOption "sd-image";
+    enable = mkEnableOption "rpi3bp";
   };
 
   config = mkIf cfg.enable {
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
-    hardware.enableRedistributableFirmware = true; 
+    hardware.enableRedistributableFirmware = true;
     hardware.firmware = [
       (pkgs.stdenv.mkDerivation {
        name = "broadcom-rpi3bplus-extra";
@@ -24,11 +24,6 @@ with lib; with types;
        '';
        })
     ];
-
-    users.users = with pkgs; {
-      root.shell = mkForce bash;
-      user.shell = mkForce bash; 
-    };
 
   };
 

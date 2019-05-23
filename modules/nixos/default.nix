@@ -5,20 +5,18 @@ let nixos-configs = builtins.fetchGit {
 {
   imports = [
     "${nixos-configs}/qemu.nix"
-    ./secrets.nix
-    ./docker.nix
+    ./dnsmasq.nix
     ./docker-containers.nix
+    ./docker.nix
     ./documentation.nix
+    ./git.nix
     ./gui.nix
+    ./network.nix
+    ./rpi3bp.nix
+    ./shell.nix
     ./ssh.nix
     ./steam.nix
-    ./shell.nix
-    ./virt.nix
-    ./rpi3bp.nix
     ./users.nix
-    ./generic.nix
-    ./vpn.nix
-    ./network.nix
-    ./dnsmasq.nix
+    ./virt.nix
   ];
 }

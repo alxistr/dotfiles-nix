@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-let cfg = config.own; in
-let docker = config.own.docker.enable; in
+let cfg = config.own.dnsmasq; in
+let docker = config.own.docker; in
 with lib; with types;
 {
   options.own.dnsmasq = {
@@ -12,7 +12,7 @@ with lib; with types;
     };
   };
 
-  config = mkIf cfg.dnsmasq.enable {
+  config = mkIf cfg.enable {
     networking.dhcpcd = {
       enable = true;
     };
@@ -23,15 +23,15 @@ with lib; with types;
         # https://wiki.libvirt.org/page/Libvirtd_and_dnsmasq
         listen-address=127.0.0.1
         bind-interfaces
-      '' + optionalString cfg.docker.enable ''
+      '' + optionalString docker.enable ''
         server=/docker/127.0.0.1#54
-      '' + optionalString cfg.dnsmasq.adhosts ''
+      '' + optionalString cfg.adhosts ''
         # https://github.com/StevenBlack/hosts
         ${builtins.readFile pkgs.adhosts}
-      '' + cfg.dnsmasq.extraConfig;
+      '' + cfg.extraConfig;
     };
 
-    docker-containers = mkIf docker {
+    docker-containers = mkIf docker.enable {
       docker-dns-gen = {
         image = "jderusse/dns-gen:latest";
         ports = [ "54:53/udp" ];

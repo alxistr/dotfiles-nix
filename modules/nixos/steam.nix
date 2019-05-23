@@ -3,13 +3,10 @@ let cfg = config.own.steam; in
 with lib; with types;
 {
   options.own.steam = {
-    enable = mkOption {
-      default = false;
-      type = bool;
-    };
+    enable = mkEnableOption "steam";
   };
 
-  config = lib.mkIf cfg.enable { 
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       steam
     ];

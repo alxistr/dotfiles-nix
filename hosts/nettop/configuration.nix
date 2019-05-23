@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }:
 let createMount = (uuid: {
   what = "/dev/disk/by-uuid/${uuid}";
-  where = "/mnt/${uuid}"; 
-  wantedBy = [ "multi-user.target" ]; 
+  where = "/mnt/${uuid}";
+  wantedBy = [ "multi-user.target" ];
 }); in
 with lib;
 {
   networking.hostName = "nettop";
 
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true; 
+  boot.loader.efi.canTouchEfiVariables = true;
 
   own = {
     ssh = {
@@ -20,22 +20,16 @@ with lib;
     docker.enable = true;
     virtualisation.enable = true;
     steam.enable = true;
-
     dnsmasq = {
       enable = true;
       adhosts = true;
-      extraConfig = '' 
-        server=/zorg.sh/8.8.8.8 
-        server=/ghcg.com/8.8.8.8 
-      '';
     };
-
   };
 
   qemu-user.aarch64 = true;
 
   systemd.mounts = map (createMount) [
-    "69ba8f66-9c82-49d2-912d-472080ad76dd" 
+    "69ba8f66-9c82-49d2-912d-472080ad76dd"
     "22551a16-fdaa-438b-bb31-264d848bccae"
   ];
 
@@ -47,7 +41,7 @@ with lib;
       --output DP-3 --off \
       --output DP-2 --off \
       --output DP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal
-    xrandr --dpi 96 
+    xrandr --dpi 96
   '';
 
 }

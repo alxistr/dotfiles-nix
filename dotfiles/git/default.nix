@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-let cfg = config.nixos-config.own.secrets.git; in
+let cfg = config.nixos-config.own.git; in
 let enable = (cfg.server or cfg.name or cfg.email) != null; in
 with lib; with types;
 {
