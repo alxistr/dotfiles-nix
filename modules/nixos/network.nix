@@ -14,7 +14,8 @@ with lib; with types;
   };
 
   config = {
-    time.timeZone = "Europe/Moscow";
+    time.timeZone = mkDefault "Europe/Moscow";
+
     networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
     networking.wireless = mkIf (cfg.wifi != { }) {

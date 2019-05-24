@@ -8,6 +8,11 @@ with lib; with types;
       fzf
     ];
 
+    home.sessionVariables = {
+      EDITOR = "vim";
+      VISUAL = "vim";
+    };
+
     programs = {
       neovim = {
         enable = true;
