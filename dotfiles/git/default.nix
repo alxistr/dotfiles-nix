@@ -8,7 +8,10 @@ with lib; with types;
       enable = enable;
       userName = cfg.name;
       userEmail = cfg.email;
-      signing.key = cfg.key;
+      signing = mkIf (! isNull cfg.key) {
+        key = cfg.key;
+        signByDefault = true;
+      };
       extraConfig = {
         core = {
           autocrlf = "input";
