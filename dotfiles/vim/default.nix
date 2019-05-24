@@ -1,7 +1,9 @@
 { config, pkgs, lib, ... }:
+let enable = config.nixos-config.own.neovim; in
 let plugins = import ./plugins.nix {inherit pkgs lib;}; in
 with lib; with types;
 {
+
   config = {
     home.packages = with pkgs; [
       ag
@@ -13,57 +15,59 @@ with lib; with types;
       VISUAL = "vim";
     };
 
-    programs = {
-      neovim = {
-        enable = true;
-        vimAlias = true;
+    programs.vim = mkIf (!enable) {
+      enable = true;
+    };
 
-        configure = {
-          customRC = builtins.readFile ./rc.vim;
+    programs.neovim = mkIf enable {
+      enable = true;
+      vimAlias = true;
 
-          packages.myVimPackage = with pkgs.vimPlugins; {
-            # loaded on launch
-            start = [
-              vim-colorschemes
-              vim-airline
-              vim-airline-themes
-              base16-vim
-              plugins.jellybeans
+      configure = {
+        customRC = builtins.readFile ./rc.vim;
 
-              fzf-vim
-              plugins.fzf
+        packages.myVimPackage = with pkgs.vimPlugins; {
+          # loaded on launch
+          start = [
+            vim-colorschemes
+            vim-airline
+            vim-airline-themes
+            base16-vim
+            plugins.jellybeans
 
-              ranger-vim
-              deol-nvim
+            fzf-vim
+            plugins.fzf
 
-              plugins.vimagit
-              vim-fugitive
-              vim-gitgutter
+            ranger-vim
+            deol-nvim
 
-              vim-surround
+            plugins.vimagit
+            vim-fugitive
+            vim-gitgutter
 
-              deoplete-nvim
-              deoplete-jedi
-              jedi-vim
+            vim-surround
 
-              plugins.vim-sexp
-              vim-parinfer  # https://github.com/eraserhd/parinfer-rust
-              vim-fireplace
-              plugins.vim-clojure-static
+            deoplete-nvim
+            deoplete-jedi
+            jedi-vim
 
-              vim-nix
-              plugins.vim-fish
+            plugins.vim-sexp
+            vim-parinfer  # https://github.com/eraserhd/parinfer-rust
+            vim-fireplace
+            plugins.vim-clojure-static
 
-            ];
+            vim-nix
+            plugins.vim-fish
 
-            # manually loadable by calling `:packadd $plugin-name`
-            opt = [ ];
+          ];
 
-          };
+          # manually loadable by calling `:packadd $plugin-name`
+          opt = [ ];
 
         };
 
       };
+
 
     };
 
