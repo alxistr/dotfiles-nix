@@ -36,6 +36,7 @@ with lib; with types;
       git.server = true;
       docker.enable = true;
       disable-docs = true;
+      neovim = false;
     };
 
     swapDevices = [
