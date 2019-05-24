@@ -25,6 +25,26 @@ with lib; with types;
        })
     ];
 
+    boot.loader.generic-extlinux-compatible.configurationLimit = 1;
+
+    services.mingetty.autologinUser = lib.mkForce null;
+
+    networking.hostName = "raspberry";
+
+    own = {
+      ssh.enable = true;
+      git.server = true;
+      docker.enable = true;
+      disable-docs = true;
+    };
+
+    swapDevices = [
+      {
+        device = "/var/swapfile";
+        size = 1024;
+      }
+    ];
+
   };
 
 }

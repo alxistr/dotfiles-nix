@@ -16,8 +16,6 @@
     system = "aarch64-linux";
   };
 
-  networking.hostName = "raspberry";
-
   sdImage = {
     bootSize = 512;
   };
@@ -26,13 +24,13 @@
 
   services.mingetty.autologinUser = lib.mkForce null;
 
-  own = {
-    ssh = {
-      enable = true;
-    };
-    docker.enable = true;
-    disable-docs = true;
-    rpi3bp.enable = true;
-  };
+  own.rpi3bp.enable = true;
+
+  swapDevices = [
+    {
+      device = "/var/swapfile";
+      size = 1024;
+    }
+  ];
 
 }
