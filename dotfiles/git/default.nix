@@ -12,16 +12,19 @@ with lib; with types;
         key = cfg.key;
         signByDefault = true;
       };
+
       extraConfig = {
         core = {
           autocrlf = "input";
           editor = "vim";
         };
       };
+
       ignores = [
         ".idea/"
         ".python-version"
       ];
+
     };
 
   };
