@@ -132,12 +132,12 @@ LP_COLORMAP=(
 LP_ENABLE_SHORTEN_PATH=
 
 if [ -z "$IN_NIX_SHELL" ]; then
-  prefix=""
+  suffix=""
 else
-  prefix=" $BOLD_BLUE$IN_NIX_SHELL$NO_COL"
+  suffix="$BOLD_BLUE$IN_NIX_SHELL$NO_COL"
 fi
 
 LP_PS1_PREFIX="┌─ "
-LP_PS1_POSTFIX="$prefix\n└──╼ "
+LP_PS1_POSTFIX="$suffix\n└──╼ "
 
 # vim: set et sts=4 sw=4 tw=120 ft=sh:
