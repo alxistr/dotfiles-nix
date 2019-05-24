@@ -15,6 +15,10 @@ with lib; with types;
       default = null;
       type = nullOr string;
     };
+    key = mkOption {
+      default = null;
+      type = nullOr string;
+    };
   };
 
   config = mkIf cfg.server {

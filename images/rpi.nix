@@ -20,17 +20,6 @@
     bootSize = 512;
   };
 
-  boot.loader.generic-extlinux-compatible.configurationLimit = 1;
-
-  services.mingetty.autologinUser = lib.mkForce null;
-
   own.rpi3bp.enable = true;
-
-  swapDevices = [
-    {
-      device = "/var/swapfile";
-      size = 1024;
-    }
-  ];
 
 }
