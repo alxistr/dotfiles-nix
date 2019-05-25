@@ -15,6 +15,9 @@ let inherit (super) callPackage; in
 
   awesome-freedesktop = callPackage ./packages/lua-packages/awesome-freedesktop.nix { };
 
+  bandcamp-downloader = callPackage ./packages/bandcamp-downloader { pythonPackages = self.python37Packages; };
+  scdl = callPackage ./packages/scdl { pythonPackages = self.python37Packages; };
+
   # xnview = callPackage ./packages/xnview { };
 
 }

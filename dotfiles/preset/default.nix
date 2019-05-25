@@ -27,6 +27,10 @@ with lib; with types;
       jetbrains.pycharm-professional
       # jetbrains.idea-ultimate
 
+      youtube-dl
+      bandcamp-downloader
+      scdl
+
       appimage-run
       nixops
       Fabric
