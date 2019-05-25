@@ -33,7 +33,7 @@ with lib; with types;
 
       appimage-run
       nixops
-      Fabric
+      fabric1
 
     ];
 

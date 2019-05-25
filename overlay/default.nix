@@ -17,6 +17,7 @@ let inherit (super) callPackage; in
 
   bandcamp-downloader = callPackage ./packages/bandcamp-downloader { pythonPackages = self.python37Packages; };
   scdl = callPackage ./packages/scdl { pythonPackages = self.python37Packages; };
+  fabric1 = callPackage ./packages/fabric1 { pythonPackages = self.python27Packages; };
 
   # xnview = callPackage ./packages/xnview { };
 
