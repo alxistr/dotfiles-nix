@@ -22,6 +22,7 @@
     gnupg
     pass
     usbutils
+    pciutils
     lm_sensors
     pv
   ];

@@ -7,7 +7,7 @@ with lib; with types;
     nvidia = mkEnableOption "";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     sound.enable = true;
     hardware.pulseaudio.enable = true;
 
@@ -35,6 +35,20 @@ with lib; with types;
     ];
 
     services.dbus.packages = with pkgs; [ gnome3.dconf ];
+
+    hardware.nvidia = mkIf cfg.nvidia {
+      modesetting.enable = true;
+      optimus_prime = {
+        enable = true;
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
+
+    environment.etc."sensors.d/iwlwifi".text = ''
+      chip "iwlwifi-virtual-*"
+        ignore temp1
+    '';
 
     services.xserver = {
       enable = true;
