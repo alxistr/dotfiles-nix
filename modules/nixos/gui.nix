@@ -3,15 +3,13 @@ let cfg = config.own.gui; in
 with lib; with types;
 {
   options.own.gui = {
-    enable = mkOption {
-      default = false;
-      type = bool;
-    };
+    enable = mkEnableOption "";
+    nvidia = mkEnableOption "";
   };
 
   config = lib.mkIf cfg.enable {
     sound.enable = true;
-    hardware.pulseaudio.enable = true; 
+    hardware.pulseaudio.enable = true;
 
     i18n = {
       consoleFont = "cyr-sun16";
@@ -40,6 +38,7 @@ with lib; with types;
 
     services.xserver = {
       enable = true;
+      videoDrivers = mkIf cfg.nvidia [ "nvidia" ];
       libinput.enable = true;
       layout = "us,ru";
       xkbOptions = "grp:alt_shift_toggle,grp_led:scroll";
@@ -49,6 +48,7 @@ with lib; with types;
         background = "#000000";
       };
     };
+
 
   };
 

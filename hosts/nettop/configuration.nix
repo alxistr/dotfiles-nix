@@ -16,7 +16,10 @@ with lib;
       enable = true;
       agent = true;
     };
-    gui.enable = true;
+    gui = {
+      enable = true;
+      nvidia = true;
+    };
     docker.enable = true;
     virtualisation.enable = true;
     steam.enable = true;
