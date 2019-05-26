@@ -23,7 +23,7 @@
     pass
     usbutils
     pciutils
-    lm_sensors
+    lm-sensors
     pv
   ];
 

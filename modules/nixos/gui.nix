@@ -45,11 +45,6 @@ with lib; with types;
       };
     };
 
-    environment.etc."sensors.d/iwlwifi".text = ''
-      chip "iwlwifi-virtual-*"
-        ignore temp1
-    '';
-
     services.xserver = {
       enable = true;
       videoDrivers = mkIf cfg.nvidia [ "nvidia" ];

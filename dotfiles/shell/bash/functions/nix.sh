@@ -1,3 +1,7 @@
+function which-n-where {
+    realpath $(which $1)
+}
+
 function nx-show-dependencies() {
   nix-store --query --references $(which $1)
 }

@@ -5,6 +5,8 @@ let inherit (super) callPackage; in
   i3lockpp = callPackage ./packages/i3lockpp { };
   adhosts = callPackage ./packages/adhosts { };
 
+  lm-sensors = callPackage ./packages/lm-sensors { };
+
   powerline-rs = callPackage (import ./packages/powerline-rs).override {
     pkgs = super;
   };

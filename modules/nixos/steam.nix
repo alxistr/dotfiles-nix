@@ -9,6 +9,7 @@ with lib; with types;
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       steam
+      steam-run-native
     ];
 
     hardware.opengl.driSupport32Bit = true;
