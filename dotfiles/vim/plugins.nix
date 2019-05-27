@@ -1,8 +1,8 @@
 { pkgs, lib, ... }:
 with lib;
 let inherit (pkgs.vimUtils) buildVimPluginFrom2Nix; in
-let inherit (builtins) fetchGit; in 
-let valueOrEmpty = value: if builtins.isNull value then "" else value; in 
+let inherit (builtins) fetchGit; in
+let valueOrEmpty = value: if builtins.isNull value then "" else value; in
 let plugin = {name, url, rev ? null, ref ? null}: buildVimPluginFrom2Nix {
   pname = name;
   src = fetchGit (filterAttrs (n: v: v != null) {
@@ -37,7 +37,7 @@ let plugin = {name, url, rev ? null, ref ? null}: buildVimPluginFrom2Nix {
 
   vim-clojure-static = plugin {
     name = "vim-clojure-static";
-    url = "https://github.com/guns/vim-clojure-static/"; 
+    url = "https://github.com/guns/vim-clojure-static/";
     rev = "33e7e1e57277bfdc33897ab2c36e8958fc214977";  # vim-release-011
   };
 
@@ -45,6 +45,13 @@ let plugin = {name, url, rev ? null, ref ? null}: buildVimPluginFrom2Nix {
     name = "vim-fish";
     url = "https://github.com/dag/vim-fish/";
     rev = "50b95cbbcd09c046121367d49039710e9dc9c15f";
+  };
+
+  vim-hy = plugin {
+    name = "vim-hy";
+    url = "https://github.com/hylang/vim-hy";
+    rev = "944561b462d5fac75eda191faaf06a4484a16d7b";
+
   };
 
 }

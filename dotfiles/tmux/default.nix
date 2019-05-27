@@ -1,7 +1,10 @@
-{ pkgs, ... }: 
-{ 
-  home.packages = [ pkgs.tmux ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    tmux
+    tmuxp
+  ];
 
-  home.file.".tmux.conf".source = ./tmux.conf; 
+  home.file.".tmux.conf".source = ./tmux.conf;
 
 }

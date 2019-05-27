@@ -55,6 +55,7 @@ with lib; with types;
             vim-parinfer  # https://github.com/eraserhd/parinfer-rust
             vim-fireplace
             plugins.vim-clojure-static
+            plugins.vim-hy
 
             vim-nix
             plugins.vim-fish
