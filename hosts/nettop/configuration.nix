@@ -27,6 +27,10 @@ with lib;
       enable = true;
       adhosts = true;
     };
+    tor = {
+      enable = true;
+      # country = "US";
+    };
   };
 
   qemu-user.aarch64 = true;

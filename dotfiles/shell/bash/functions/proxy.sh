@@ -66,14 +66,14 @@ function anything-with-proxy () {
   curl -s --$1 $2 http://httpbin.org/anything | jq '.'
 }
 
-function run-tor-proxy () {
-  docker run --name=tor --rm -it -p 8118:8118 -p 9050:9050 -e TZ=UTC -d dperson/torproxy
-}
+# function run-tor-proxy () {
+#   docker run --name=tor --rm -it -p 8118:8118 -p 9050:9050 -e TZ=UTC -d dperson/torproxy
+# }
 
-function tor-new-nym () {
-  V="echo -e 'AUTHENTICATE \"'\"\$(cat /etc/tor/run/control.authcookie)\"'\"\nSIGNAL NEWNYM\nQUIT' | nc 127.0.0.1 9051"
-  docker exec -it tor /bin/bash -c "$V"
-}
+# function tor-new-nym () {
+#   V="echo -e 'AUTHENTICATE \"'\"\$(cat /etc/tor/run/control.authcookie)\"'\"\nSIGNAL NEWNYM\nQUIT' | nc 127.0.0.1 9051"
+#   docker exec -it tor /bin/bash -c "$V"
+# }
 
 function find-proxies () {
   docker-run alxgrmv/proxybroker find --lvl High --types SOCKS5 --strict -f json | sed '1,2d; s/,\r$/\r/; $d'
@@ -88,11 +88,11 @@ function run-zap () {
   xdg-open "http://127.0.0.1:6770/?anonym=true&app=ZAP"
 }
 
-function clean-routes () {
-  tun=${1:-tun1}
-  ip ro | grep $tun | cut -d' ' -f1 | grep -v "10\." | while read line; do
-    sudo ip ro del $line
-  done
-  ip ro | grep $tun
-}
+# function clean-routes () {
+#   tun=${1:-tun1}
+#   ip ro | grep $tun | cut -d' ' -f1 | grep -v "10\." | while read line; do
+#     sudo ip ro del $line
+#   done
+#   ip ro | grep $tun
+# }
 

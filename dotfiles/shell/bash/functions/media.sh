@@ -34,11 +34,11 @@ function split-image-in-two () {
   convert $1 -gravity West -crop 50%x100%+0+0 ${name}-left.$ext
 }
 
-function run-with-steam () {
-  local P=$(pwd)
-  $(realpath ~)/.steam/bin32/steam-runtime/run.sh "${P}/${1}"
-  cd $P
-}
+# function run-with-steam () {
+#   local P=$(pwd)
+#   $(realpath ~)/.steam/bin32/steam-runtime/run.sh "${P}/${1}"
+#   cd $P
+# }
 
 function micon () {
   pactl load-module module-loopback latency_msec=1
