@@ -6,7 +6,6 @@ with lib; with types;
     home.packages = with pkgs; [
       google-chrome
       vivaldi
-      vivaldi-ffmpeg-codecs
     ];
 
     programs = {
