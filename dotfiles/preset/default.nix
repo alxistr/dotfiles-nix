@@ -16,6 +16,7 @@ with lib; with types;
 
       qpdfview
       djview
+      masterpdfeditor
 
       feh
       gthumb
