@@ -35,6 +35,8 @@ with lib; with types;
       nixops
       fabric1
 
+      zoom-us
+
     ];
 
     home.file.".ideavimrc".source = ./ideavimrc;
