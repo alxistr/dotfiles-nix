@@ -31,6 +31,7 @@ with lib;
       enable = true;
       # country = "US";
     };
+    mail.enable = true;
   };
 
   qemu-user.aarch64 = true;

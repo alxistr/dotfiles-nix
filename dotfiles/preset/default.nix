@@ -38,6 +38,8 @@ with lib; with types;
 
       zoom-us
 
+      tor-browser-bundle-bin
+
     ];
 
     home.file.".ideavimrc".source = ./ideavimrc;

@@ -1,9 +1,11 @@
 { config, pkgs, lib, ... }:
+
 let home-manager = fetchGit {
   url = "https://github.com/rycee/home-manager.git";
   rev = "ba0375bf06e0e0c3b2377edf913b7fddfd5a0b40";
 }; in
 with lib; with types;
+
 {
   imports = [
     "${home-manager}/nixos"

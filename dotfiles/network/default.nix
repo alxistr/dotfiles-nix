@@ -7,11 +7,11 @@
     traceroute
     tcpdump
     nettools
-    neomutt
     sshfs
     w3m
     bind
     lsof
+    proxychains
   ];
 
   home.file.".curlrc".source = ./curlrc;
