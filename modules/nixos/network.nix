@@ -21,7 +21,6 @@ with lib; with types;
     networking.wireless = mkIf (cfg.wifi != { }) {
       enable = true;
       networks = cfg.wifi;
-      interfaces = [ "wlan0" ];
     };
 
     services.openvpn.servers = cfg.vpn;

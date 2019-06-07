@@ -17,8 +17,13 @@
       enable = true;
       adhosts = true;
     };
+    tor = {
+      enable = true;
+    };
   };
 
   qemu-user.aarch64 = true;
+
+  networking.wireless.interfaces = [ "wlp2s0" ]; 
 
 }
