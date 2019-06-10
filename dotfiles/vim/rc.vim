@@ -33,7 +33,7 @@ au CursorHold * checktime
 
 
 "
-" 
+"
 "
 "
 "
@@ -66,6 +66,11 @@ let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 
 let g:sexp_enable_insert_mode_mappings = 0
+
+let g:vim_parinfer_filetypes = ['clojure', 'racket', 'lisp', 'scheme', 'hy']
+let g:vim_parinfer_globs = ['*.clj', '*.cljs', '*.cljc', '*.edn', '*.hl', '*.lisp', '*.rkt', '*.ss', '*.hy']
+
+let g:hy_enable_conceal = 1
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#show_docstring = 0
@@ -239,4 +244,5 @@ else
     highlight SpecialKey ctermbg=none cterm=none ctermfg=DarkGray
     highlight NonText ctermbg=none cterm=none ctermfg=DarkGray
     highlight ColorColumn ctermbg=235 guibg=#FFC600
-endif 
+    highlight Conceal cterm=NONE ctermbg=NONE ctermfg=LightGray
+endif

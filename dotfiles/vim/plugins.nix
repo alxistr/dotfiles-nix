@@ -3,13 +3,13 @@ with lib;
 let inherit (pkgs.vimUtils) buildVimPluginFrom2Nix; in
 let inherit (builtins) fetchGit; in
 let valueOrEmpty = value: if builtins.isNull value then "" else value; in
-let plugin = {name, url, rev ? null, ref ? null}: buildVimPluginFrom2Nix {
+let plugin = attrs@{name, url, rev ? null, ref ? null, ...}: buildVimPluginFrom2Nix (attrs // {
   pname = name;
   src = fetchGit (filterAttrs (n: v: v != null) {
     inherit url rev ref;
   });
   version = "${valueOrEmpty rev}${valueOrEmpty ref}";
-}; in
+}); in
 {
   fzf = plugin {
     name = "fzf";
@@ -51,7 +51,10 @@ let plugin = {name, url, rev ? null, ref ? null}: buildVimPluginFrom2Nix {
     name = "vim-hy";
     url = "https://github.com/hylang/vim-hy";
     rev = "944561b462d5fac75eda191faaf06a4484a16d7b";
-
+    postInstall = ''
+      ls -l $target
+      rm -r $target/indent
+    '';
   };
 
 }
