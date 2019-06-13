@@ -1,4 +1,5 @@
 { pkgs, lib, ... }:
+
 with lib;
 let inherit (pkgs.vimUtils) buildVimPluginFrom2Nix; in
 let inherit (builtins) fetchGit; in
@@ -10,6 +11,7 @@ let plugin = attrs@{name, url, rev ? null, ref ? null, ...}: buildVimPluginFrom2
   });
   version = "${valueOrEmpty rev}${valueOrEmpty ref}";
 }); in
+
 {
   fzf = plugin {
     name = "fzf";
@@ -39,6 +41,12 @@ let plugin = attrs@{name, url, rev ? null, ref ? null, ...}: buildVimPluginFrom2
     name = "vim-clojure-static";
     url = "https://github.com/guns/vim-clojure-static/";
     rev = "33e7e1e57277bfdc33897ab2c36e8958fc214977";  # vim-release-011
+  };
+
+  vim-iced = plugin {
+    name = "vim-iced";
+    url = "https://github.com/liquidz/vim-iced";
+    rev = "e9957b2e9889ce09edfe51bb6d547a7ef97b9ec6";
   };
 
   vim-fish = plugin {

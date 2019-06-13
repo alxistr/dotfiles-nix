@@ -1,9 +1,10 @@
 { config, pkgs, lib, ... }:
+
 let enable = config.nixos-config.own.neovim; in
 let plugins = import ./plugins.nix {inherit pkgs lib;}; in
 with lib; with types;
-{
 
+{
   config = {
     home.packages = with pkgs; [
       ag
@@ -35,6 +36,8 @@ with lib; with types;
             base16-vim
             plugins.jellybeans
 
+            nerdcommenter
+
             fzf-vim
             plugins.fzf
 
@@ -50,15 +53,17 @@ with lib; with types;
             deoplete-nvim
             deoplete-jedi
             jedi-vim
+            plugins.vim-hy
 
             plugins.vim-sexp
             vim-parinfer  # https://github.com/eraserhd/parinfer-rust
             vim-fireplace
             plugins.vim-clojure-static
-            plugins.vim-hy
+            # plugins.vim-iced
 
             vim-nix
-            plugins.vim-fish
+
+            # plugins.vim-fish
 
           ];
 
@@ -68,7 +73,6 @@ with lib; with types;
         };
 
       };
-
 
     };
 

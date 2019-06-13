@@ -56,14 +56,9 @@ let g:NERDAltDelims_java = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 
-" let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
-" let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
-" let g:CtrlSpaceSaveWorkspaceOnExit = 1
-" let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp)[\/]'
-
-let g:ale_set_highlights = 0
-let g:ale_sign_error = 'E'
-let g:ale_sign_warning = 'W'
+" let g:ale_set_highlights = 0
+" let g:ale_sign_error = 'E'
+" let g:ale_sign_warning = 'W'
 
 let g:sexp_enable_insert_mode_mappings = 0
 
@@ -75,14 +70,14 @@ let g:hy_enable_conceal = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#show_docstring = 0
 
-let g:jedi#auto_initialization = 0
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
+let g:jedi#auto_initialization = 1
 let g:jedi#completions_enabled = 0
 
 let g:magit_default_show_all_files = 0
 let g:magit_default_fold_level = 0
-
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
