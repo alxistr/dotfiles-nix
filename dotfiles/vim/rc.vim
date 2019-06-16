@@ -190,10 +190,10 @@ augroup pyadds
   au!
   autocmd FileType python iabbrev <buffer> ppr from pprint import pprint<CR>pprint()<Left>
   autocmd FileType python iabbrev <buffer> ppdb import pdb; pdb.set_trace()
-  autocmd FileType python nnoremap <buffer> <Leader>sg :call jedi#goto()<CR>
-  autocmd FileType python nnoremap <buffer> <Leader>su :call jedi#usages()<CR>
-  autocmd FileType python nnoremap <buffer> <Leader>sr :call jedi#rename()<CR>
-  autocmd FileType python vnoremap <buffer> <Leader>sr :call jedi#rename_visual()<CR>
+  " autocmd FileType python nnoremap <buffer> <Leader>sg :call jedi#goto()<CR>
+  " autocmd FileType python nnoremap <buffer> <Leader>su :call jedi#usages()<CR>
+  " autocmd FileType python nnoremap <buffer> <Leader>sr :call jedi#rename()<CR>
+  " autocmd FileType python vnoremap <buffer> <Leader>sr :call jedi#rename_visual()<CR>
 augroup END
 
 augroup jsadds
@@ -217,6 +217,8 @@ nnoremap <Leader>as :Deol<CR>
 nnoremap <Leader>ag :Magit<CR>
 
 
+
+
 "
 "
 "
@@ -224,8 +226,8 @@ nnoremap <Leader>ag :Magit<CR>
 "
 "
 
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
 
 if $TERM=~'linux'
     syntax enable

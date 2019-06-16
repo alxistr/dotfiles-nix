@@ -24,6 +24,9 @@ with lib; with types;
       enable = true;
       vimAlias = true;
 
+      withNodeJs = false;
+      withRuby = false;
+
       configure = {
         customRC = builtins.readFile ./rc.vim;
 
@@ -51,9 +54,14 @@ with lib; with types;
             vim-surround
 
             deoplete-nvim
-            deoplete-jedi
-            jedi-vim
+            # deoplete-jedi
+            # jedi-vim
             plugins.vim-hy
+
+            # plugins.coc-nvim
+
+            # plugins.repl-nvim
+            plugins.iron-nvim
 
             plugins.vim-sexp
             vim-parinfer  # https://github.com/eraserhd/parinfer-rust

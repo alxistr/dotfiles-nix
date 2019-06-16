@@ -5,6 +5,13 @@ let inherit (super) callPackage; in
   i3lockpp = callPackage ./packages/i3lockpp { };
   adhosts = callPackage ./packages/adhosts { };
 
+  arion = callPackage "${super.fetchFromGitHub {
+    owner = "hercules-ci";
+    repo = "arion";
+    rev = "221bccd7f149a25fefce8943179ef62cb73d4313";
+    sha256 = "0i02bwbyy0m382avvvkj49rhq1i2vqjgxcnvzrj345pbwqvh3xq3";
+  }}/arion.nix" { };
+
   vivaldi = super.vivaldi.override { proprietaryCodecs = true; };
 
   lm-sensors = callPackage ./packages/lm-sensors { };
@@ -16,6 +23,8 @@ let inherit (super) callPackage; in
   #   inherit (super.darwin.apple_sdk.frameworks) Security;
   #   openssl = super.openssl_1_1;
   # };
+
+  parinfer-rust = callPackage ./packages/parinfer-rust { };
 
   awesome-freedesktop = callPackage ./packages/lua-packages/awesome-freedesktop.nix { };
 

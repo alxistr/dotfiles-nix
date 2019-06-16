@@ -1,0 +1,46 @@
+diff --git a/doc/repl.txt b/doc/repl.txt
+index b7c98ec..4e25bd6 100644
+--- a/doc/repl.txt
++++ b/doc/repl.txt
+@@ -61,7 +61,7 @@ system's command.
+ 
+ 
+ ==============================================================================
+-RUNNING A REPL                                               *repl.nvim-setup*
++RUNNING A REPL                                              *repl.nvim-running*
+ ------------------------------------------------------------------------------
+ 
+ :Repl [{type} [{arg} ...]]                                             *:Repl*
+@@ -193,7 +193,7 @@ want to use.
+ 
+ 
+ ==============================================================================
+-MANAGING REPL INSTANCES                                      *repl.nvim-setup*
++MANAGING REPL INSTANCES                                  *repl.nvim-managing*
+ ------------------------------------------------------------------------------
+ 
+ The plugin keeps track of running REPL instances, allowing you to have more
+@@ -297,22 +297,10 @@ SCHEME                                                      *repl.nvim-scheme*
+ 
+ See |repl.nvim-r7rs|.
+ 
+-------------------------------------------------------------------------------
+-BOURNE SHELL                                                    *repl.nvim-sh*
+->
+-    g:repl.sh = {
+-        'bin': 'sh',
+-        'args': [],
+-        'syntax': '',
+-        'title': 'Bourne Shell',
+-    }
+-<
+-The Bourne shell is basically like executing the |:terminal| command.
+-
+ 
+ 
+ ==============================================================================
+-DEFINING NEW REPL TYPES                                      *repl.nvim-setup*
++DEFINING NEW REPL TYPES                                   *repl.nvim-defining*
+ ------------------------------------------------------------------------------
+ 
+ Plugin authors can define new types of REPL to integrate with REPL.nvim as

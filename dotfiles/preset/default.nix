@@ -40,6 +40,9 @@ with lib; with types;
 
       tor-browser-bundle-bin
 
+      leiningen
+      exercism
+
     ];
 
     home.file.".ideavimrc".source = ./ideavimrc;

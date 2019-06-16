@@ -14,6 +14,7 @@
     ncdu
     tree
     less
+    unzip
     atool
     rlwrap
     jq
