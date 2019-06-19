@@ -21,5 +21,6 @@ let nixos-configs = builtins.fetchGit {
     ./tor.nix
     ./users.nix
     ./virt.nix
+    ./zeronet.nix
   ];
 }
