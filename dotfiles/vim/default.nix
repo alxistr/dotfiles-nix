@@ -56,7 +56,9 @@ with lib; with types;
             deoplete-nvim
             # deoplete-jedi
             # jedi-vim
+
             plugins.vim-hy
+            plugins.fennel-vim
 
             # plugins.coc-nvim
 
@@ -65,6 +67,7 @@ with lib; with types;
 
             plugins.vim-sexp
             vim-parinfer  # https://github.com/eraserhd/parinfer-rust
+
             vim-fireplace
             plugins.vim-clojure-static
             # plugins.vim-iced

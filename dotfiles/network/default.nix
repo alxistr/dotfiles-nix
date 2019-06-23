@@ -4,6 +4,7 @@
     mosh
     curl
     wget
+    whois
     traceroute
     tcpdump
     nettools

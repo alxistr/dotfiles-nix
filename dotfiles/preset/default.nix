@@ -42,6 +42,7 @@ with lib; with types;
 
       leiningen
       exercism
+      fennel
 
     ];
 

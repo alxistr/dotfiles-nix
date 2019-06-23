@@ -4,11 +4,10 @@ with lib;
 let inherit (pkgs.vimUtils) buildVimPluginFrom2Nix; in
 let inherit (pkgs) fetchFromGitHub fetchFromGitLab; in
 
-let plugin = attrs@{name, src, ...}: # owner, repo, sha256, rev ? null,
-  buildVimPluginFrom2Nix (attrs // {
-    pname = name;
-    inherit src;
-  }); in
+let plugin = attrs@{name, src, ...}: buildVimPluginFrom2Nix (attrs // {
+  pname = name;
+  inherit src;
+}); in
 
 {
   fzf = plugin {
@@ -18,6 +17,16 @@ let plugin = attrs@{name, src, ...}: # owner, repo, sha256, rev ? null,
       repo = "fzf";
       rev = "ff951341c993ed84ad65344e496e122ee3dddf67";  # 0.18.0
       sha256 = "0pwpr4fpw56yzzkcabzzgbgwraaxmp7xzzmap7w1xsrkbj7dl2xl";
+    };
+  };
+
+  fennel-vim = plugin {
+    name = "fennel-vim";
+    src = fetchFromGitHub {
+      owner = "bakpakin";
+      repo = "fennel.vim";
+      rev = "17f4b3b6ac58a396bd809e69d9a5a23de53218ab";
+      sha256 = "01xrch94cdcg7wy0mch090h8slypwvxrd128znz7ng5s0kcd2y0m";
     };
   };
 
