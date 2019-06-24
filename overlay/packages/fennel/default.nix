@@ -54,13 +54,7 @@ stdenv.mkDerivation {
   installPhase = let
     binPath = stdenv.lib.makeBinPath [ inotify-tools ];
   in ''
-    # mkdir -p $prefix/libexec
-    # cp clojure-tools-${version}.jar $prefix/libexec
-    # cp {,example-}deps.edn $prefix
-    # substituteInPlace clojure --replace PREFIX $prefix
-
     install -Dt $out/bin fennel fennel-watch.sh
-
     wrapProgram $out/bin/fennel \
       --set LUA_PATH '${luaPath};' \
       --set LUA_CPATH '${luaCPath};'

@@ -43,6 +43,7 @@ with lib; with types;
       leiningen
       exercism
       fennel
+      love_11
 
     ];
 

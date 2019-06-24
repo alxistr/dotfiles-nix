@@ -62,8 +62,8 @@ let g:NERDTrimTrailingWhitespace = 1
 
 let g:sexp_enable_insert_mode_mappings = 0
 
-let g:vim_parinfer_filetypes = ['clojure', 'racket', 'lisp', 'scheme', 'hy']
-let g:vim_parinfer_globs = ['*.clj', '*.cljs', '*.cljc', '*.edn', '*.hl', '*.lisp', '*.rkt', '*.ss', '*.hy']
+let g:vim_parinfer_filetypes = ['clojure', 'racket', 'lisp', 'scheme', 'hy', 'fennel']
+let g:vim_parinfer_globs = ['*.clj', '*.cljs', '*.cljc', '*.edn', '*.hl', '*.lisp', '*.rkt', '*.ss', '*.hy', '*.scm', '*.fnl']
 
 let g:hy_enable_conceal = 1
 
@@ -73,11 +73,15 @@ let g:deoplete#sources#jedi#show_docstring = 0
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
-let g:jedi#auto_initialization = 1
-let g:jedi#completions_enabled = 0
+" let g:jedi#auto_initialization = 1
+" let g:jedi#completions_enabled = 0
 
 let g:magit_default_show_all_files = 0
 let g:magit_default_fold_level = 0
+
+let g:iron_repl_open_cmd = "rightbelow 10 split""
+let g:iron_map_defaults = 0
+let g:iron_map_extended = 0
 
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -185,6 +189,64 @@ nnoremap <Leader>sf :Files<CR>
 " nnoremap <Leader>sg :GFiles?<CR>
 nnoremap <Leader>sm :Marks<CR>
 nnoremap <Leader>sc :Commits<CR>
+
+
+nnoremap <Leader>mm :messages<CR>
+nnoremap <Leader>mr :registers<CR>
+nnoremap <Leader>mc :command<CR>
+nnoremap <Leader>mf :function<CR>
+
+
+nmap <Leader>r. <Plug>(iron-repeat-cmd)<CR>
+nmap <Leader>rr <Plug>(iron-send-line)<CR>
+nmap <Leader>rm <Plug>(iron-send-motion)<CR>
+vmap <Leader>rr <Plug>(iron-visual-send)<CR>
+nmap <Leader>rq <Plug>(iron-exit)<CR>
+nmap <Leader>rl <Plug>(iron-clear)<CR>
+
+function s:configure_iron()
+  lua << EOF
+    local iron = require('iron')
+
+    iron.core.add_repl_definitions {
+      fennel = {
+        repl = {
+          command = {"fennel", "--repl"}
+        }
+      },
+
+      hy = {
+        docker = {
+          command = {"./.entry.bash", "shell", "hy"}
+        }
+      },
+
+      python = {
+        ipython = {
+          command = {"./.entry.bash", "shell", "ipython"}
+        }
+      }
+
+    }
+
+    iron.core.set_config {
+      -- repl_open_cmd = "rightbelow 10 split",
+      repl_open_cmd = "rightbelow vsplit",
+      preferred = {
+        hy = "docker",
+        fennel = "repl",
+        python = "ipython"
+      }
+   }
+EOF
+endfunction
+
+if v:vim_did_enter
+  call s:configure_iron()
+else
+  au VimEnter * call s:configure_iron()
+endif
+
 
 augroup pyadds
   au!
