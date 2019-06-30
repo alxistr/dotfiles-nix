@@ -1,10 +1,13 @@
 { config, lib, pkgs, ... }:
+
 let createMount = (uuid: {
   what = "/dev/disk/by-uuid/${uuid}";
   where = "/mnt/${uuid}";
   wantedBy = [ "multi-user.target" ];
 }); in
+
 with lib;
+
 {
   networking.hostName = "nettop";
 
@@ -37,7 +40,6 @@ with lib;
   qemu-user.aarch64 = true;
 
   systemd.mounts = map (createMount) [
-    "69ba8f66-9c82-49d2-912d-472080ad76dd"
     "22551a16-fdaa-438b-bb31-264d848bccae"
   ];
 
