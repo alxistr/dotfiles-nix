@@ -46,7 +46,7 @@ let plugin = attrs@{name, src, ...}: buildVimPluginFrom2Nix (attrs // {
       owner = "jreybert";
       repo = "vimagit";
       rev = "91b947cceb7f1c7d005f6b1941478802c4b096db";  # 1.7.3
-      sha256 = "0xj9ii9sqn4lxb0azfggczflf99kh72vql7mmd86am79zwdlyy9x";
+      sha256 = "0i13d6q6s05qn6wr0jy4jsrcxwi3vwriahx5sl79wpwn43mjpdfg";
     };
   };
 
