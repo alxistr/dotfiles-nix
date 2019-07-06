@@ -37,7 +37,7 @@ local battery = require("widgets/battery-widget")
 -- end
 
 local function set_wallpaper(s)
-    local path = os.getenv("HOME") .. "/.config/awesome/wallpapers/pattern3.png"
+    local path = os.getenv("HOME") .. "/.config/awesome/wallpapers/pattern0.png"
     gears.wallpaper.tiled(path, s, "#000000")
 end
 
