@@ -20,6 +20,16 @@ let plugin = attrs@{name, src, ...}: buildVimPluginFrom2Nix (attrs // {
     };
   };
 
+  deoplete-nvim = plugin rec {
+    name = "deoplete-nvim";
+    src = fetchFromGitHub {
+      owner = "Shougo";
+      repo = "deoplete.nvim";
+      rev = "d7dcca8f9a71beebe7cb7c82e4fddc05b765052f";
+      sha256 = "0878kp3ggkbhpl06r1dh9631ml0sl4p5dzf0wnf6nlirj5l5cls2";
+    };
+  };
+
   fennel-vim = plugin {
     name = "fennel-vim";
     src = fetchFromGitHub {

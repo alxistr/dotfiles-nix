@@ -68,10 +68,9 @@ let g:vim_parinfer_globs = ['*.clj', '*.cljs', '*.cljc', '*.edn', '*.hl', '*.lis
 let g:hy_enable_conceal = 1
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#jedi#show_docstring = 0
-
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+" let g:deoplete#sources#jedi#show_docstring = 0
 
 " let g:jedi#auto_initialization = 1
 " let g:jedi#completions_enabled = 0

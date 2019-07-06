@@ -53,7 +53,7 @@ with lib; with types;
 
             vim-surround
 
-            deoplete-nvim
+            plugins.deoplete-nvim
             # deoplete-jedi
             # jedi-vim
 
