@@ -15,6 +15,7 @@
     tree
     less
     unzip
+    p7zip
     atool
     rlwrap
     jq

@@ -68,7 +68,7 @@ with lib; with types;
             plugins.vim-sexp
             vim-parinfer  # https://github.com/eraserhd/parinfer-rust
 
-            vim-fireplace
+            plugins.vim-fireplace
             plugins.vim-clojure-static
             # plugins.vim-iced
 

@@ -20,6 +20,16 @@ let plugin = attrs@{name, src, ...}: buildVimPluginFrom2Nix (attrs // {
     };
   };
 
+  vim-fireplace = plugin {
+    name = "vim-fireplace";
+    src = fetchFromGitHub {
+      owner = "tpope";
+      repo = "vim-fireplace";
+      rev = "1f97b27e166c8b8f3e04808830fa8a4f8ae7620f";  # 1.2
+      sha256 = "0br3zkkdq13h5l7wly5n1rzhkyl5wn8ghm6nabyn298lgh1193i2";
+    };
+  };
+
   deoplete-nvim = plugin rec {
     name = "deoplete-nvim";
     src = fetchFromGitHub {
