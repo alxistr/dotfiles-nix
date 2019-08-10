@@ -1,3 +1,7 @@
+function traceroute-mapper () {
+  xdg-open "https://stefansundin.github.io/traceroute-mapper/?trace=$(traceroute -q1 $* | sed ':a;N;$!ba;s/\n/%0A/g')"
+}
+
 function run-ssh-tunnel () {
   local server=$1
   local port=${2:-9191}
