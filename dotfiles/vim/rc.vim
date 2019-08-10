@@ -214,6 +214,12 @@ function s:configure_iron()
         }
       },
 
+      guile = {
+        repl = {
+          command = {"guile"}
+        }
+      },
+
       hy = {
         docker = {
           command = {"./.entry.bash", "shell", "hy"}
@@ -234,6 +240,7 @@ function s:configure_iron()
       preferred = {
         hy = "docker",
         fennel = "repl",
+        guile = "repl",
         python = "ipython"
       }
    }

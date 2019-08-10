@@ -13,3 +13,9 @@ function nx-show-rdependencies() {
 function nx-cleanup () {
   nix-collect-garbage -d && nix-store --optimise
 }
+
+function nx-update () {
+  nix-channel --update && \
+  nixos-rebuild switch && \
+  nx-cleanup
+}

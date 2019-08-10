@@ -35,8 +35,19 @@ let plugin = attrs@{name, src, ...}: buildVimPluginFrom2Nix (attrs // {
     src = fetchFromGitHub {
       owner = "Shougo";
       repo = "deoplete.nvim";
-      rev = "d7dcca8f9a71beebe7cb7c82e4fddc05b765052f";
-      sha256 = "0878kp3ggkbhpl06r1dh9631ml0sl4p5dzf0wnf6nlirj5l5cls2";
+      rev = "53ad762d357f74c02c04403325f8f9122ba3bade";
+      sha256 = "0j2fx981r5bzcw408x1jy82inkly1kc3ciwdyqlhi94lg8sl20jv";
+    };
+  };
+
+  deoplete-jedi = plugin rec {
+    name = "deoplete-jedi-";
+    src = fetchFromGitHub {
+      owner = "deoplete-plugins";
+      repo = "deoplete-jedi";
+      rev = "46121d9ca7688c148764d7ee488bb3572d1434c4";
+      sha256 = "1hiw42dm12xyhmvg180mrbjv3bbbvrgl4p2abll0lv5l2zmsbf12";
+      fetchSubmodules = true;
     };
   };
 
@@ -47,6 +58,16 @@ let plugin = attrs@{name, src, ...}: buildVimPluginFrom2Nix (attrs // {
       repo = "fennel.vim";
       rev = "17f4b3b6ac58a396bd809e69d9a5a23de53218ab";
       sha256 = "01xrch94cdcg7wy0mch090h8slypwvxrd128znz7ng5s0kcd2y0m";
+    };
+  };
+
+  guile-vim = plugin {
+    name = "guile.vim";
+    src = fetchFromGitHub {
+      owner = "HiPhish";
+      repo = "guile.vim";
+      rev = "1cf9a42985b66b72c4cc27b256a71a27fca1831c";
+      sha256 = "1333wcj55bpxh522mjawhzdzqylz7h5zav03inhvyq2z2hp9h30c";
     };
   };
 

@@ -26,7 +26,7 @@ with lib; with types;
 
       sublime3
       jetbrains.pycharm-professional
-      # jetbrains.idea-ultimate
+      jetbrains.idea-ultimate
 
       youtube-dl
       bandcamp-downloader
