@@ -9,12 +9,16 @@ with lib; with types;
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = (with pkgs; [
       docker
       docker-compose
       arion
-    ];
+      kind
+      kubectl
+    ]);
+
     virtualisation.docker.enable = true;
+
   };
 
 }

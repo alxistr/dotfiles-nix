@@ -13,6 +13,7 @@
     bind
     lsof
     proxychains
+    bridge-utils
   ];
 
   home.file.".curlrc".source = ./curlrc;
