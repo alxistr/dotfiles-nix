@@ -10,7 +10,8 @@ let shellAliases = import ./aliases.nix; in
 let create-docker-template = pkgs.writeScriptBin "create-docker-template"
   ''
     [[ ! -f "./.docker.bash" ]] && \
-      cp -f ${./bash/docker-template.bash} ./.docker.bash || \
+      cp -f ${./bash/docker-template.bash} ./.docker.bash && \
+      chmod +w ./.docker.bash || \
       echo ".docker.bash already exists!"
 
     cat >./.entry.bash <<EOF
