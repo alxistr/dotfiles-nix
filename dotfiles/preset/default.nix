@@ -38,7 +38,7 @@ with lib; with types;
 
       zoom-us
 
-      tor-browser-bundle-bin
+      # tor-browser-bundle-bin
 
       pipenv
       leiningen
