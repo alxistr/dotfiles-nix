@@ -9,3 +9,8 @@ map <leader>o :action OverrideMethods<CR>
 map <leader>r :action RenameElement<CR>
 map <leader>t :action ReformatCode<CR>
 vmap <leader>y "+y
+
+map <leader>lt :action :cursive.repl.actions/run-top-sexp<CR>
+map <leader>ll :action :cursive.repl.actions/load-file<CR>
+map <leader>lm :action :cursive.repl.actions/macroexpansion<CR>
+map <leader>lc :actionlist :cursive<CR>

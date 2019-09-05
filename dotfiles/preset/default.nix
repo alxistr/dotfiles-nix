@@ -40,6 +40,7 @@ with lib; with types;
 
       tor-browser-bundle-bin
 
+      pipenv
       leiningen
       exercism
       fennel

@@ -5,6 +5,8 @@ let inherit (super) callPackage; in
   i3lockpp = callPackage ./packages/i3lockpp { };
   adhosts = callPackage ./packages/adhosts { };
 
+  kind = callPackage ./packages/kind { };
+
   arion = callPackage "${super.fetchFromGitHub {
     owner = "hercules-ci";
     repo = "arion";
