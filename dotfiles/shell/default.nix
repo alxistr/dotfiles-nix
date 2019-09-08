@@ -15,6 +15,7 @@
     tree
     less
     unzip
+    unrar
     p7zip
     atool
     rlwrap
