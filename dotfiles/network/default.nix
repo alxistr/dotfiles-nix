@@ -14,6 +14,8 @@
     lsof
     proxychains
     bridge-utils
+    ncat
+    nmap
   ];
 
   home.file.".curlrc".source = ./curlrc;

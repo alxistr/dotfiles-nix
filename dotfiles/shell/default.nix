@@ -26,6 +26,7 @@
     pass
     usbutils
     pciutils
+    psmisc
     lm-sensors
     pv
   ];

@@ -10,7 +10,11 @@ map <leader>r :action RenameElement<CR>
 map <leader>t :action ReformatCode<CR>
 vmap <leader>y "+y
 
-map <leader>lt :action :cursive.repl.actions/run-top-sexp<CR>
-map <leader>ll :action :cursive.repl.actions/load-file<CR>
+map <leader>ll :action :cursive.repl.actions/run-top-sexp<CR>
+map <leader>lf :action :cursive.repl.actions/load-file<CR>
 map <leader>lm :action :cursive.repl.actions/macroexpansion<CR>
 map <leader>lc :actionlist :cursive<CR>
+
+map <leader>nn :action :cursive.testing.actions/run-ns-tests<CR>
+map <leader>mm :action :cursive.testing.actions/run-single-test<CR>
+map <leader>ml :action :cursive.testing.actions/rerun-last-test<CR>

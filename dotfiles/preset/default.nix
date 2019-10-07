@@ -35,13 +35,15 @@ with lib; with types;
       appimage-run
       nixops
       fabric1
+      apacheHttpd
 
       zoom-us
 
       # tor-browser-bundle-bin
 
-      pipenv
+      # pipenv
       leiningen
+      joker
       exercism
       fennel
       love_11
