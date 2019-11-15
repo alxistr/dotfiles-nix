@@ -53,6 +53,7 @@ with lib; with types;
     ];
 
     home.file.".ideavimrc".source = ./ideavimrc;
+    home.file.".config/mpv/input.conf".source = ./input.conf;
 
   };
 
