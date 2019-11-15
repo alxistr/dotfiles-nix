@@ -27,6 +27,6 @@
     };
   };
 
-  qemu-user.aarch64 = true;
+  # qemu-user.aarch64 = true;
 
 }

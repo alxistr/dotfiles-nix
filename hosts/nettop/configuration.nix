@@ -38,7 +38,7 @@ with lib;
     mail.enable = true;
   };
 
-  qemu-user.aarch64 = true;
+  # qemu-user.aarch64 = true;
 
   systemd.mounts = map (createMount) [
     "22551a16-fdaa-438b-bb31-264d848bccae"

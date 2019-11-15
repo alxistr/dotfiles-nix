@@ -29,7 +29,7 @@ with lib; with types;
       jetbrains.idea-ultimate
 
       youtube-dl
-      bandcamp-downloader
+      # bandcamp-downloader
       scdl
 
       appimage-run
@@ -48,7 +48,7 @@ with lib; with types;
       exercism
       fennel
       love_11
-      nodejs-11_x
+      # nodejs-11_x
 
     ];
 
