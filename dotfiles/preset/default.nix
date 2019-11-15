@@ -43,10 +43,12 @@ with lib; with types;
 
       # pipenv
       leiningen
+      visualvm
       joker
       exercism
       fennel
       love_11
+      nodejs-11_x
 
     ];
 
