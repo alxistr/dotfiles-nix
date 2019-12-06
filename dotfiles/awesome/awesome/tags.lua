@@ -23,4 +23,6 @@ return {
     cross = m('✜'),
     diamond_suit = m('◆'),
     filled_dot = m('⚫'),
+    black_small_square = m('▪'),
+    black_meduim_small_square = m('◾'),
 }

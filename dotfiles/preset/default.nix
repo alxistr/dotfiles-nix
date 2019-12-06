@@ -29,7 +29,7 @@ with lib; with types;
       jetbrains.idea-ultimate
 
       youtube-dl
-      # bandcamp-downloader
+      bandcamp-downloader
       scdl
 
       appimage-run
@@ -42,6 +42,7 @@ with lib; with types;
       # tor-browser-bundle-bin
 
       # pipenv
+      # busybox
       leiningen
       visualvm
       joker

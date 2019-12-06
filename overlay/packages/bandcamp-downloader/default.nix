@@ -1,12 +1,27 @@
 { pythonPackages }:
 
 with pythonPackages;
+
 let withoutCheck = pkg: (pkg.overridePythonAttrs (oldAttrs: {
   doCheck = false;
   checkPhase = ''
     nosetests
   '';
 })); in
+
+let demjson = buildPythonPackage rec {
+  pname = "demjson";
+  version = "2.2.4";
+  src = fetchPypi {
+    inherit pname version;
+    sha256 = "0ygbddpnvp5lby6mr5kz60la3hkvwwzv3wwb3z0w9ngxl0w21pii";
+  };
+  propagatedBuildInputs = [
+    six
+  ];
+  doCheck = false;
+}; in
+
 let unicode-slugify = buildPythonPackage rec {
   pname = "unicode-slugify";
   version = "0.1.3";

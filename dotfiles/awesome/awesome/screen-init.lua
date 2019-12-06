@@ -43,7 +43,7 @@ end
 
 local function create_top_bar(screen)
     awful.tag(
-        tags.filled_dot,
+        tags.black_meduim_small_square,
         screen,
         awful.layout.layouts[1]
     )

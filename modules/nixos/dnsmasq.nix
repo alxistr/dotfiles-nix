@@ -36,6 +36,7 @@ with lib; with types;
         image = "jderusse/dns-gen:latest";
         ports = [ "54:53/udp" ];
         volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
+        log-driver = "journald";
       };
     };
 
