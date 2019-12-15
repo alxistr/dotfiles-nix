@@ -24,6 +24,8 @@ with lib; with types;
 
       transmission-gtk
 
+      android-file-transfer
+
       sublime3
       jetbrains.pycharm-professional
       jetbrains.idea-ultimate

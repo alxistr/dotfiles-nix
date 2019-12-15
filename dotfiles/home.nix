@@ -5,6 +5,7 @@
     ../modules/home
     ./awesome
     ./browsers
+    ./emacs
     ./git
     ./network
     ./preset

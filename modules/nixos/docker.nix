@@ -13,7 +13,7 @@ with lib; with types;
       docker
       docker-compose
       arion
-      kind
+      # kind
       kubectl
     ]);
 

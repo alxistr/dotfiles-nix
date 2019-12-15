@@ -20,6 +20,7 @@
     tor = {
       enable = true;
     };
+    emacs = true;
   };
 
   # qemu-user.aarch64 = true;

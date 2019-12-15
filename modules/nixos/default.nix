@@ -9,6 +9,7 @@ let nixos-configs = builtins.fetchGit {
     # ./docker-containers.nix
     ./docker.nix
     ./documentation.nix
+    ./emacs.nix
     ./git.nix
     ./gui.nix
     ./mail.nix
