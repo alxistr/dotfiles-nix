@@ -52,6 +52,7 @@ with lib; with types;
       layout = "us,ru";
       xkbOptions = "grp:alt_shift_toggle,grp_led:scroll";
       xkbVariant = "qwerty";
+      gdk-pixbuf.modulePackages = with pkgs; [ librsvg ];
       displayManager.lightdm = {
         enable = true;
         background = "#000000";

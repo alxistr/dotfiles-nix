@@ -4,7 +4,7 @@ stdenv.mkDerivation rec {
   pname = "Flat-Remix";
   src = builtins.fetchGit {
     url = "https://github.com/daniruiz/flat-remix/";
-    rev = "fd49025def58f591ce227b2c7eb05b69845bbeec";  # 20190503
+    rev = "942efe08edb97fec1ce19076d658689c667d5f60";  # 20191216
   };
   nativeBuildInputs = with pkgs; [ gtk3 ];
   installPhase = ''

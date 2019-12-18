@@ -40,7 +40,7 @@ in
   home.packages = with pkgs; [
     bashInteractive
     bash-completion
-    powerline-rs
+    # powerline-rs
     create-docker-template
   ];
 

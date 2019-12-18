@@ -27,62 +27,52 @@ with lib; with types;
       withNodeJs = false;
       withRuby = false;
 
-      configure = {
-        customRC = builtins.readFile ./rc.vim;
+      extraConfig = builtins.readFile ./rc.vim;
 
-        packages.myVimPackage = with pkgs.vimPlugins; {
-          # loaded on launch
-          start = [
-            vim-colorschemes
-            vim-airline
-            vim-airline-themes
-            base16-vim
-            plugins.jellybeans
+      plugins = with pkgs.vimPlugins; [
+        vim-colorschemes
+        vim-airline
+        vim-airline-themes
+        base16-vim
+        plugins.jellybeans
 
-            nerdcommenter
+        nerdcommenter
 
-            fzf-vim
-            plugins.fzf
+        fzf-vim
+        plugins.fzf
 
-            ranger-vim
-            deol-nvim
+        ranger-vim
+        deol-nvim
 
-            plugins.vimagit
-            vim-fugitive
-            vim-gitgutter
+        plugins.vimagit
+        vim-fugitive
+        vim-gitgutter
 
-            vim-surround
+        vim-surround
 
-            plugins.deoplete-nvim
-            plugins.deoplete-jedi
-            # jedi-vim
+        deoplete-nvim
+        # plugins.deoplete-nvim
+        # plugins.deoplete-jedi
+        # jedi-vim
 
-            # plugins.coc-nvim
+        # plugins.coc-nvim
 
-            # plugins.repl-nvim
-            plugins.iron-nvim
+        # plugins.repl-nvim
+        plugins.iron-nvim
 
-            plugins.vim-sexp
-            vim-parinfer  # https://github.com/eraserhd/parinfer-rust
+        plugins.vim-sexp
+        vim-parinfer  # https://github.com/eraserhd/parinfer-rust
 
-            plugins.vim-hy
-            plugins.fennel-vim
-            plugins.guile-vim
+        plugins.vim-hy
+        plugins.fennel-vim
+        plugins.guile-vim
 
-            plugins.vim-fireplace
-            plugins.vim-clojure-static
-            # plugins.vim-iced
+        plugins.vim-fireplace
+        plugins.vim-clojure-static
+        # plugins.vim-iced
 
-            vim-nix
-
-          ];
-
-          # manually loadable by calling `:packadd $plugin-name`
-          opt = [ ];
-
-        };
-
-      };
+        vim-nix
+      ];
 
     };
 

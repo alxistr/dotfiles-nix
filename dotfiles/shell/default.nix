@@ -2,7 +2,7 @@
 {
   imports = [
     ./bash.nix
-    ./fish.nix
+    # ./fish.nix
   ];
 
   home.packages = with pkgs; [
