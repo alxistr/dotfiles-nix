@@ -7,9 +7,11 @@ with lib; with types;
       xfce4-14.thunar
       xfce4-14.thunar-volman
       scrot
+      imagemagick
       i3lockpp
       xcompmgr
       acpi
+      arandr
     ];
 
     xsession = {

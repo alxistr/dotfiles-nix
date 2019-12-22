@@ -13,6 +13,7 @@ with lib; with types;
 
       cmus
       mpv
+      ffmpeg
 
       qpdfview
       djview
@@ -25,6 +26,8 @@ with lib; with types;
       transmission-gtk
 
       android-file-transfer
+
+      scanmem
 
       sublime3
       jetbrains.pycharm-professional
