@@ -3,6 +3,9 @@
   home.packages = with pkgs; [
     ranger
     w3m
+    unixtools.xxd
+    odt2txt
+    poppler_utils
   ];
 
   home.file.".config/ranger/commands.py".text = builtins.readFile ./ranger/commands.py;

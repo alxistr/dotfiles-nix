@@ -127,4 +127,6 @@ case "$mimetype" in
         try mediainfo "$path" && { dump | trim | sed 's/  \+:/: /;';  exit 5; } || exit 1;;
 esac
 
+try xxd -l 4096 "$path" && { dump | trim; exit 5; }
+
 exit 1

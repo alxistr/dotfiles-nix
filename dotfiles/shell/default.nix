@@ -29,6 +29,7 @@
     psmisc
     lm-sensors
     pv
+    unixtools.xxd
   ];
 
   home.file.".inputrc".source = ./inputrc;

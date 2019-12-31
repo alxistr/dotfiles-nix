@@ -27,6 +27,7 @@ with lib; with types;
 
       android-file-transfer
 
+      wxhexeditor
       scanmem
 
       sublime3
