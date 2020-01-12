@@ -16,9 +16,9 @@
     system = "aarch64-linux";
   };
 
-  sdImage = {
-    bootSize = 512;
-  };
+  # sdImage = {
+  #   bootSize = 512;
+  # };
 
   own.rpi3bp.enable = true;
 

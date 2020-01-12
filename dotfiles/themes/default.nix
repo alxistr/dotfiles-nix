@@ -30,10 +30,15 @@ with lib; with types;
 
       iconTheme = {
         name = "Flat-Remix-Blue-Dark";
-        package = pkgs.flat-remix; 
+        package = pkgs.flat-remix;
       };
 
     };
+
+    qt = {
+      enable = true;
+      platformTheme = "gtk";
+    }; 
 
   };
 

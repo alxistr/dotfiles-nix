@@ -18,10 +18,13 @@ with lib; with types;
       qpdfview
       djview
       masterpdfeditor
+      #(fbreader.override { uiType = "gtk"; })
+      fbreader
 
       feh
       gthumb
       krita
+      # aseprite-unfree
 
       transmission-gtk
 
@@ -51,9 +54,10 @@ with lib; with types;
       # busybox
       leiningen
       visualvm
-      joker
+      # joker
       exercism
       fennel
+      ferret
       love_11
       # nodejs-11_x
 
