@@ -50,16 +50,13 @@ with lib; with types;
 
       # tor-browser-bundle-bin
 
-      # pipenv
-      # busybox
       leiningen
       visualvm
-      # joker
       exercism
       fennel
+      babashka
       ferret
       love_11
-      # nodejs-11_x
 
     ];
 

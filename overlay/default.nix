@@ -7,6 +7,7 @@ let inherit (super) callPackage; in
 
   kind = callPackage ./packages/kind { };
   ferret = callPackage ./packages/ferret { };
+  babashka = callPackage ./packages/bb { };
 
   arion = callPackage "${super.fetchFromGitHub {
     owner = "hercules-ci";
