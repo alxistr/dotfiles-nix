@@ -1,4 +1,10 @@
-source ~/.config/bash/liquidprompt/liquidprompt
+function lqp () {
+  source ~/.config/bash/liquidprompt/liquidprompt
+}
+
+if [[ -z $IN_NIX_SHELL ]]; then
+  lqp
+fi
 
 # eval "$(direnv hook bash)"
 
