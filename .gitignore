@@ -8,3 +8,5 @@ result
 local*.nix
 host
 .vpn
+
+*-keyfile

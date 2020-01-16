@@ -38,6 +38,8 @@ let inherit (super) callPackage; in
   scdl = callPackage ./packages/scdl { pythonPackages = self.python37Packages; };
   fabric1 = callPackage ./packages/fabric1 { pythonPackages = self.python27Packages; };
 
+  my-emacs = callPackage ./packages/emacs/emacs.nix { };
+
   # xnview = callPackage ./packages/xnview { };
 
 }

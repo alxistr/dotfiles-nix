@@ -1,23 +1,19 @@
 { config, pkgs, lib, ... }:
 
-let enable = config.nixos-config.own.emacs; in
+let opts = config.nixos-config.own.emacs; in
 with lib; with types;
 
-let doom-emacs = builtins.fetchGit {
-  url = "https://github.com/hlissner/doom-emacs";
-  # rev = "0000000000000000000000000000000000000000";  
-}; in
-
-
 {
-  config = mkIf enable { 
-    programs.emacs = {
-      enable = true;
-      extraPackages = epkgs: [ epkgs.emacs-libvterm ];
-    };
+  config = mkIf opts.enable {
+    home.packages = with pkgs; [
+      my-emacs
+    ];
 
-    # home.file.".doom.d".source = ./.doom.d;
-    # home.file.".emacs.d".source = doom-emacs;
+    programs.bash = {
+      shellAliases = {
+        emacs = "emacs -nw";
+      };
+    };
 
   };
 

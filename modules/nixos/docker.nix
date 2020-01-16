@@ -12,7 +12,7 @@ with lib; with types;
     environment.systemPackages = (with pkgs; [
       docker
       docker-compose
-      arion
+      # arion
       # kind
       kubectl
     ]);
