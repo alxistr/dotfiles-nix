@@ -21,6 +21,7 @@ with lib; with types;
       #(fbreader.override { uiType = "gtk"; })
       fbreader
 
+      xnview
       feh
       gthumb
       krita

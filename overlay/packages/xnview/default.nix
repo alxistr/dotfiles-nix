@@ -1,39 +1,47 @@
 { pkgs, stdenv, lib }:
+
+with pkgs;
+
 stdenv.mkDerivation rec {
   name = "xnview";
-  src = builtins.fetchTarball "https://download.xnview.com/XnViewMP-linux-x64.tgz";
+  src = builtins.fetchTarball {
+    url = "https://download.xnview.com/XnViewMP-linux-x64.tgz";
+    sha256 = "1xlf8fxs2dbgncawmjgf7a48jc8wmk4hi4s0iwmarxccy6arxz1d";
+  };
+
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
+
+  buildInputs = [
+    stdenv.cc.cc.lib
+    xorg.libX11
+    libpulseaudio
+    zlib
+    libglvnd
+    alsaLib
+    gst_all_1.gst-plugins-base
+    fontconfig.lib
+    freetype
+    libdrm
+    xlibs.libXi
+    xlibs.libXv
+    gnome2.pango
+    gtk2-x11
+    gtk3-x11
+    sqlite
+    openal
+    (callPackage ./bzip2.nix { }).out
+  ];
+
   sourceRoot = ".";
   buildPhase = ":";
+
   installPhase = ''
     mkdir -p $out/bin
     cp -a $src/. $out/
-    ln -s $out/XnView $out/bin/XnView
-    ln -s $out/xnview.sh $out/bin/xnview.sh
+    # ln -s $out/XnView $out/bin/XnView
+    ln -s $out/xnview.sh $out/bin/xnview
   '';
-  # preFixup = ''
-  #   # export LD_LIBRARY_PATH="$dirname/lib:$dirname/Plugins:$LD_LIBRARY_PATH"
-  #   # export QT_PLUGIN_PATH="$dirname/lib:$QT_PLUGIN_PATH"
-  #   patchelf \
-  #     --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-  #     --set-rpath "$src/lib:$src/Plugins" \
-  #     $out/XnView
-  # '';
-  preFixup = let
-    libPath = lib.makeLibraryPath (with pkgs; [
-      xorg.libX11
-      libpulseaudio
-      # libpressureaudio
-      # qt5.qtbase
-      # qt5.qtmultimedia
-      # qt5.qtsvg
-      # qt5.qtwebkit
-      # qt5.qtx11extras
-      # libsForQt5.libqtav
-    ]);
-  in ''
-    patchelf \
-      --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath "${libPath}:$out/lib:$out/Plugins" \
-      $out/XnView
-  '';
+
 }

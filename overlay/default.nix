@@ -40,6 +40,8 @@ let inherit (super) callPackage; in
 
   my-emacs = callPackage ./packages/emacs/emacs.nix { };
 
-  # xnview = callPackage ./packages/xnview { };
+  xnview = callPackage ./packages/xnview { };
+
+  # bzip2 = callPackage ./packages/xnview/bzip2.nix { };
 
 }
