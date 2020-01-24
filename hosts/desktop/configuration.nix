@@ -19,7 +19,7 @@
     steam.enable = true;
     dnsmasq = {
       enable = true;
-      adhosts = true;
+      adhosts.enable = true;
     };
     tor = {
       enable = true;

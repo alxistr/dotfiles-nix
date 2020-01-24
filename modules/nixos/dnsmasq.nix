@@ -4,23 +4,28 @@ let cfg = config.own.dnsmasq; in
 let docker = config.own.docker; in
 with lib; with types;
 
-let 
+let
   adhosts-whitelist = pkgs.writeTextFile {
     name = "adhosts-whitelist";
-    text = ''
-      binance.com
-    ''; 
+    text = cfg.adhosts.whitelist;
   };
-  adhosts-url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
 in
 
 {
   options.own.dnsmasq = {
     enable = mkEnableOption "dnsmasq";
-    adhosts = mkEnableOption "adhosts";
     extraConfig = mkOption {
       type = string;
       default = "";
+    };
+    adhosts = {
+      enable = mkEnableOption "adhosts";
+      whitelist = mkOption {
+        default = ''
+          binance.com
+        '';
+        type = lines;
+      };
     };
   };
 
@@ -36,10 +41,10 @@ in
           # https://wiki.libvirt.org/page/Libvirtd_and_dnsmasq
           listen-address=127.0.0.1
           bind-interfaces
+        '' + optionalString cfg.adhosts.enable ''
+          conf-dir=/etc/dnsmasq.d
         '' + optionalString docker.enable ''
           server=/docker/127.0.0.1#54
-        '' + optionalString cfg.adhosts ''
-          conf-dir=/etc/dnsmasq.d
         '' + cfg.extraConfig;
       };
 
@@ -53,20 +58,20 @@ in
       };
     }
 
-    (mkIf cfg.adhosts { 
+    (mkIf cfg.adhosts.enable {
       system.activationScripts = {
         mkdnsmasqd = ''
-          mkdir -p /etc/dnsmasq.d/ 
+          mkdir -p /etc/dnsmasq.d/
         '';
       };
 
-      systemd = { 
-        services = { 
+      systemd = {
+        services = {
           adhosts-updater = {
             path = with pkgs; [ bash curl gawk ];
             script = ''
               echo "Update adhosts."
-              curl -s -o - "${adhosts-url}" |
+              curl -s -o - "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" |
               grep -Fv -f ${adhosts-whitelist} | \
               awk '/^0.0.0.0 / { printf "address=/%s/0.0.0.0\n", $2 }' > \
               adhosts.conf
@@ -80,10 +85,10 @@ in
           dnsmasq-reloader = {
             script = ''
               echo "/etc/dnsmasq.d changed. Reload dnsmasq."
-              systemctl restart dnsmasq 
+              systemctl restart dnsmasq
             '';
             serviceConfig = {
-              Type = "oneshot"; 
+              Type = "oneshot";
             };
             wantedBy = [ "adhosts-updater.timer" ];
           };
@@ -107,9 +112,9 @@ in
         };
 
       };
-    
+
     })
-  
+
   ]);
 
 }
