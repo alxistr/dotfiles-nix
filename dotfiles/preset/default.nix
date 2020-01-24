@@ -46,6 +46,7 @@ with lib; with types;
       nixops
       fabric1
       apacheHttpd
+      scaleway-cli
 
       zoom-us
 
