@@ -71,10 +71,12 @@ in
             path = with pkgs; [ bash curl gawk ];
             script = ''
               echo "Update adhosts."
+              filename=$(mktemp)
               curl -s -o - "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" |
               grep -Fv -f ${adhosts-whitelist} | \
               awk '/^0.0.0.0 / { printf "address=/%s/0.0.0.0\n", $2 }' > \
-              adhosts.conf
+              $filename
+              mv -f $filename adhosts.conf
             '';
             serviceConfig = {
               WorkingDirectory = "/etc/dnsmasq.d/";
