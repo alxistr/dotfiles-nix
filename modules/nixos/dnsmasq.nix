@@ -58,7 +58,7 @@ in
       };
     }
 
-    (mkIf cfg.adhosts.enable {
+    {
       system.activationScripts = {
         mkdnsmasqd = ''
           mkdir -p /etc/dnsmasq.d/
@@ -66,43 +66,46 @@ in
       };
 
       systemd = {
-        services = {
-          adhosts-updater = {
-            path = with pkgs; [ bash curl gawk ];
-            script = ''
-              echo "Update adhosts."
-              filename=$(mktemp)
-              curl -s -o - "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" |
-              grep -Fv -f ${adhosts-whitelist} | \
-              awk '/^0.0.0.0 / { printf "address=/%s/0.0.0.0\n", $2 }' > \
-              $filename
-              mv -f $filename adhosts.conf
-            '';
-            serviceConfig = {
-              WorkingDirectory = "/etc/dnsmasq.d/";
-            };
-            wantedBy = [ "adhosts-updater.timer" ];
-          };
-
-          dnsmasq-reloader = {
-            script = ''
-              echo "/etc/dnsmasq.d changed. Reload dnsmasq."
-              systemctl restart dnsmasq
-            '';
-            serviceConfig = {
-              Type = "oneshot";
-            };
-            wantedBy = [ "adhosts-updater.timer" ];
-          };
-
-        };
-
         paths.dnsmasqd-watcher = {
           pathConfig = {
             PathModified = "/etc/dnsmasq.d";
             Unit = "dnsmasq-reloader.service";
           };
           wantedBy = [ "adhosts-updater.service" ];
+        };
+
+        services.dnsmasq-reloader = {
+          script = ''
+            echo "/etc/dnsmasq.d changed. Reload dnsmasq."
+            systemctl restart dnsmasq
+          '';
+          serviceConfig = {
+            Type = "oneshot";
+          };
+          wantedBy = [ "adhosts-updater.timer" ];
+        };
+
+      };
+
+    }
+
+    (mkIf cfg.adhosts.enable {
+      systemd = {
+        services.adhosts-updater = {
+          path = with pkgs; [ bash curl gawk ];
+          script = ''
+            echo "Update adhosts."
+            filename=$(mktemp)
+            curl -s -o - "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" |
+            grep -Fv -f ${adhosts-whitelist} | \
+            awk '/^0.0.0.0 / { printf "address=/%s/0.0.0.0\n", $2 }' > \
+            $filename
+            mv -f $filename adhosts.conf
+          '';
+          serviceConfig = {
+            WorkingDirectory = "/etc/dnsmasq.d/";
+          };
+          wantedBy = [ "adhosts-updater.timer" ];
         };
 
         timers.adhosts-updater = {
