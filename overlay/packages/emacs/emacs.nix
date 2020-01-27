@@ -3,6 +3,8 @@
 let emacsWithPackages = (pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages; in
 
 let emacs = (emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
+  use-package
+  parinfer
   vterm
   nix-mode
   magit
