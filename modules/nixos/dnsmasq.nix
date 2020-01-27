@@ -15,7 +15,7 @@ in
   options.own.dnsmasq = {
     enable = mkEnableOption "dnsmasq";
     extraConfig = mkOption {
-      type = string;
+      type = str;
       default = "";
     };
     adhosts = {

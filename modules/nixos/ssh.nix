@@ -13,7 +13,7 @@ with lib; with types;
     };
     authorized-keys = mkOption {
       default = [ ];
-      type = listOf string;
+      type = listOf str;
     };
   };
 

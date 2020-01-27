@@ -8,7 +8,7 @@ with lib; with types;
   options.own.tor = {
     enable = mkEnableOption "tor";
     country = mkOption {
-      type = nullOr string;
+      type = nullOr str;
       default = null;
     };
   };

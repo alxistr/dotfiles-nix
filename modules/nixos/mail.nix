@@ -7,11 +7,11 @@ with lib; with types;
   options.own.mail = {
     enable = mkEnableOption "mail setup";
     gmail = mkOption {
-      type = listOf string;
+      type = listOf str;
       default = [];
     };
     airmail = mkOption {
-      type = listOf string;
+      type = listOf str;
       default = [];
     };
   };

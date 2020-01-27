@@ -9,15 +9,15 @@ with lib; with types;
     };
     name = mkOption {
       default = null;
-      type = nullOr string;
+      type = nullOr str;
     };
     email = mkOption {
       default = null;
-      type = nullOr string;
+      type = nullOr str;
     };
     key = mkOption {
       default = null;
-      type = nullOr string;
+      type = nullOr str;
     };
   };
 
