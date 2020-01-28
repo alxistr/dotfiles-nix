@@ -44,6 +44,7 @@
     (evil-define-key 'normal 'global (kbd "<leader>df") 'describe-function)
     (evil-define-key 'normal 'global (kbd "<leader>dk") 'describe-key)
     (evil-define-key 'normal 'global (kbd "<leader>dm") 'describe-mode)
+    (evil-define-key 'normal 'global (kbd "<leader>da") 'apropos-documentation)
     (evil-define-key 'normal 'global (kbd "<leader>lp") 'parinfer-toggle-mode)
     (evil-define-key 'normal 'global (kbd "<leader>as") 'vterm)))
 

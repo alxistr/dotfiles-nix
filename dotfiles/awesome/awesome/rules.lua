@@ -81,7 +81,7 @@ rules.install = function ()
         { rule_any = { class = { "jetbrains-pycharm" } },
           properties = { opacity = .95 } },
         { rule_any = { class = { "Emacs" } },
-          properties = { opacity = .95 } },
+          properties = { opacity = .9 } },
         -- { rule = { class = "Liferea" },
         --   properties = { screen = 2, tag = "ψ" } },
 
