@@ -26,7 +26,6 @@ with lib; with types;
           "cfhdojbkjhnklbpkdaibdccddilifddb"  # adblock plus
           "cmedhionkhpnakcndndgjdbohmhepckk"  # adblock youtube
           "aapbdbdomjkkjkaonfhkkikfgjllcleb"  # google translate
-          "gjjpophepkbhejnglcmkdnncmaanojkf"  # plus for trello
         ];
       };
 

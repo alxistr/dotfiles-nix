@@ -24,6 +24,7 @@ with lib; with types;
         parinfer
         clojure-mode cider
         nix-mode
+        hy-mode
       ]) ++ (with epkgs.melpaStablePackages; [
         # fzf
       ]) ++ (with epkgs.elpaPackages; [

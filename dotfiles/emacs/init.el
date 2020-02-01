@@ -1,6 +1,6 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-;(tooltip-mode -1)
+(tooltip-mode -1)
 (menu-bar-mode -1)
 
 (set-default-font "Source Code Pro-11")
@@ -87,6 +87,9 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
+(use-package hy-mode
+  :mode "\\.hy\\'")
+
 (use-package parinfer
   :ensure t
   :init
@@ -104,10 +107,11 @@
   (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
   (add-hook 'common-lisp-mode-hook #'parinfer-mode)
   (add-hook 'scheme-mode-hook #'parinfer-mode)
+  (add-hook 'hy-mode-hook #'parinfer-mode)
   (add-hook 'lisp-mode-hook #'parinfer-mode)
   (add-hook 'lisp-interaction-mode-hook #'parinfer-mode))
 
-(defun toggle-menu-bar () 
+(defun toggle-menu-bar ()
   (interactive)
-  (let ((mode (if menu-bar-mode -1 1))) 
+  (let ((mode (if menu-bar-mode -1 1)))
     (menu-bar-mode mode)))
