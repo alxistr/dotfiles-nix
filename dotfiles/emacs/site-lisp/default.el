@@ -3,8 +3,6 @@
 (tooltip-mode -1)
 (menu-bar-mode -1)
 
-(set-default-font "Source Code Pro-11")
-
 (require 'package)
 (setq package-archives nil)
 (setq package-enable-at-startup nil)
@@ -12,7 +10,14 @@
 
 (require 'use-package)
 
+(set-default-font "Source Code Pro-11")
 (load-theme 'gruvbox-dark-medium t)
+(setq whitespace-display-mappings
+      '((space-mark ?\  [?·] [?.]) ; space - middle dot
+        (space-mark ?\xA0  [?¤] [?_]) ; hard space - currency sign
+        (newline-mark ?\t [?→ ?\t]) ; tab
+        (newline-mark ?\n [?↲ ?\n]))) ;
+(global-whitespace-mode 1)
 
 (use-package smex
   :ensure t

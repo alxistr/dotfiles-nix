@@ -14,6 +14,10 @@ with lib; with types;
     programs.emacs = {
       enable = true;
       extraPackages = (epkgs: ((with epkgs.melpaPackages; [
+        (pkgs.runCommand "default.el" {} ''
+          mkdir -p $out/share/emacs/
+          cp -r ${./site-lisp} $out/share/emacs/site-lisp
+        '')
         use-package
         gruvbox-theme
         vterm
@@ -32,8 +36,6 @@ with lib; with types;
         undo-tree
       ])));
     };
-
-    home.file.".emacs.d/init.el".source = ./init.el;
 
   };
 
