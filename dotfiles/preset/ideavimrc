@@ -10,6 +10,9 @@ map <leader>r :action RenameElement<CR>
 map <leader>t :action ReformatCode<CR>
 vmap <leader>y "+y
 
+map <leader>gs :action Git.Stash<CR>
+map <leader>gu :action Git.Unstash<CR>
+
 map <leader>ll :action :cursive.repl.actions/run-top-sexp<CR>
 map <leader>lf :action :cursive.repl.actions/load-file<CR>
 map <leader>lm :action :cursive.repl.actions/macroexpansion<CR>
