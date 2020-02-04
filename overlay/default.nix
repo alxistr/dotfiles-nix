@@ -9,6 +9,8 @@ let inherit (super) callPackage; in
   ferret = callPackage ./packages/ferret { };
   babashka = callPackage ./packages/bb { };
 
+  my-emacs = callPackage ./packages/emacs { };
+
   arion = callPackage "${super.fetchFromGitHub {
     owner = "hercules-ci";
     repo = "arion";

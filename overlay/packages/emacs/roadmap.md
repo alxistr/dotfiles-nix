@@ -6,5 +6,6 @@
 - ranger
 - parinfer
 
-- whitespaces
-- evil bindings: global leader
++ whitespaces
+- evil: global leader
+- evil: local leader
