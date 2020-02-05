@@ -18,7 +18,6 @@
   (let ((tmp-filename (make-temp-file "select"))
         (tmp-buffer (make-temp-name "select")))
     (switch-to-buffer tmp-buffer)
-    ;(message "%s" (buffer-local-variables))
     (vterm-mode)
     (vterm-send-string (rs--make-choose-command tmp-filename))
     (setq-local dont-auto-kill t)

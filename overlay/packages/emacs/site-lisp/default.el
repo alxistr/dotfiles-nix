@@ -13,6 +13,15 @@
 
 (require 'use-package)
 
+(define-global-minor-mode global-settings-mode whitespace-mode
+  (lambda ()
+    (when (not (memq major-mode (list 'Buffer-menu-mode
+                                      'vterm-mode)))
+      (setq truncate-lines t
+            truncate-partial-width-windows nil)
+      (whitespace-mode))))
+(global-settings-mode 1)
+
 (add-hook 'after-init-hook
           (lambda ()
             (set-default-font "Source Code Pro-10")
@@ -23,7 +32,6 @@
                     (newline-mark ?\t [?→ ?\t]) ; tab
                     (newline-mark ?\n [?↲ ?\n]))) ;
             (set-background-color "#111")
-            ;(set-face-background 'vertical-border "#111")
             (set-face-background 'mode-line "#333")
             (set-face-background 'fringe "#111")
             (set-face-foreground 'whitespace-line nil)
@@ -32,15 +40,10 @@
             (set-face-background 'whitespace-tab "#111")
             (set-face-background 'whitespace-space-after-tab "#111")
             (set-face-background 'whitespace-space "#111")
-            (set-face-background 'whitespace-indentation "#111")))
-;(global-whitespace-mode 1)
-
-(define-global-minor-mode my-global-whitespace-mode whitespace-mode
-  (lambda ()
-    (when (not (memq major-mode (list 'Buffer-menu-mode
-                                      'vterm-mode)))
-      (whitespace-mode))))
-(my-global-whitespace-mode 1)
+            (set-face-background 'whitespace-indentation "#111")
+            ;(setq truncate-lines t
+            ;      truncate-partial-width-windows nil)
+            (show-paren-mode 1)))
 
 (use-package smex
   :ensure t
@@ -72,12 +75,11 @@
         dashboard-banner-logo-title nil
         dashboard-set-footer nil
         dashboard-startup-banner 'logo
-        dashboard-items '((recents  . 30)
+        dashboard-items '((recents  . 30)))
                           ;(bookmarks . 5)
                           ;(projects . 5)
                           ;(agenda . 5)
                           ;(registers . 5)
-                          ))
   :config
   (dashboard-setup-startup-hook))
 
@@ -103,6 +105,7 @@
                    (kbd "<leader>as") 'vterm
                    (kbd "<leader>ag") 'magit-status
                    (kbd "<leader>ar") 'ranger-select-files
+                   (kbd "<leader>tl") 'toggle-truncate-lines
                    (kbd "<leader>tm") 'toggle-menu-bar)
   (dolist (mode (list emacs-lisp-mode-map
                       lisp-interaction-mode-map))
