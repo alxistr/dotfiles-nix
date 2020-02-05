@@ -15,6 +15,8 @@
 
 (define-global-minor-mode global-settings-mode whitespace-mode
   (lambda ()
+    (when (memq major-mode (list 'vterm-mode))
+      (evil-insert-state))
     (when (not (memq major-mode (list 'Buffer-menu-mode
                                       'vterm-mode)))
       (setq truncate-lines t
@@ -41,8 +43,6 @@
             (set-face-background 'whitespace-space-after-tab "#111")
             (set-face-background 'whitespace-space "#111")
             (set-face-background 'whitespace-indentation "#111")
-            ;(setq truncate-lines t
-            ;      truncate-partial-width-windows nil)
             (show-paren-mode 1)))
 
 (use-package smex
@@ -87,7 +87,8 @@
   :ensure t
   :init
   (setq evil-want-C-w-in-emacs-state t
-        evil-want-C-u-scroll t)
+        evil-want-C-u-scroll t
+        evil-want-C-d-scroll t)
   :config
   (evil-mode 1)
   (evil-set-leader '(normal motion) (kbd "<SPC>"))
@@ -107,6 +108,16 @@
                    (kbd "<leader>ar") 'ranger-select-files
                    (kbd "<leader>tl") 'toggle-truncate-lines
                    (kbd "<leader>tm") 'toggle-menu-bar)
+  ;(dotimes (x 9)
+  ;  (evil-define-key '(normal motion visual) 'global
+  ;    (kbd (format "<leader>%d" (+ 1 x)))
+  ;    `(lambda ()
+  ;      (interactive)
+  ;      (select-window-by-index ,x))
+  (define-key evil-window-map [backspace] 'evil-window-left)
+  (define-key evil-window-map (kbd "C-l") 'evil-window-right)
+  (define-key evil-window-map (kbd "C-j") 'evil-window-bottom)
+  (define-key evil-window-map (kbd "C-k") 'evil-window-top)
   (dolist (mode (list emacs-lisp-mode-map
                       lisp-interaction-mode-map))
     (evil-define-key '(normal motion) mode
@@ -138,8 +149,9 @@
                    (kbd "C-t") #'vterm--self-insert
                    (kbd "C-g") #'vterm--self-insert
                    (kbd "C-c") #'vterm--self-insert
-                   (kbd "C-SPC") #'vterm--self-insert
-                   (kbd "C-d") #'vterm--self-insert)
+                   (kbd "C-SPC") #'vterm--self-insert)
+  ;(evil-define-key '(normal motion) 'global
+  ;                 (kbd "C-d") #'vterm--self-insert)
   (evil-define-key 'normal vterm-mode-map
                    (kbd "i") #'evil-insert-resume
                    (kbd "o") #'evil-insert-resume)
@@ -151,8 +163,26 @@
             t))
 
 (use-package company
+  :init
+  (setq company-require-match nil
+        company-idle-delay 0.1)
   :config
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  (global-set-key [(control ?\,)] 'company-complete-common)
+  (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+  (define-key company-active-map (kbd "C-j") 'company-select-next-or-abort)
+  (define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)
+  (define-key company-active-map (kbd "M-j") 'company-select-next)
+  (define-key company-active-map (kbd "M-k") 'company-select-previous)
+  (when evil-want-C-u-scroll
+    (define-key company-active-map (kbd "C-u") 'company-previous-page))
+  (when evil-want-C-d-scroll
+    (define-key company-active-map (kbd "C-d") 'company-next-page))
+  (define-key company-search-map (kbd "C-j") 'company-select-next-or-abort)
+  (define-key company-search-map (kbd "C-k") 'company-select-previous-or-abort)
+  (define-key company-search-map (kbd "M-j") 'company-select-next)
+  (define-key company-search-map (kbd "M-k") 'company-select-previous))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
@@ -186,3 +216,9 @@
   (interactive)
   (let ((mode (if menu-bar-mode -1 1)))
     (menu-bar-mode mode)))
+
+;(defun select-window-by-index (n)
+;  (let ((window (nth n (window-list))))
+;    (if (not window)
+;      (message "no window %d" n)
+;      (select-window window))))

@@ -9,6 +9,7 @@
   vterm
   evil
   magit
+  windata
   which-key smex
   dashboard
   parinfer
