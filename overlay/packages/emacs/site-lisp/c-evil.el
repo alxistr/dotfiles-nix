@@ -21,7 +21,8 @@
                    (kbd "<leader>ag") 'magit-status
                    (kbd "<leader>as") 'vterm
                    (kbd "<leader>ar") 'ranger-select-files
-                   (kbd "<leader>sf") 'fzf-search-git-files
+                   (kbd "<leader>sg") 'fzf-search-git-files
+                   (kbd "<leader>sf") 'fzf-search-files
                    (kbd "<leader>ttd") 'switch-dark-theme
                    (kbd "<leader>ttl") 'switch-light-theme
                    (kbd "<leader>tl") 'toggle-truncate-lines

@@ -82,20 +82,20 @@
   :config
   (which-key-mode))
 
-;(use-package smex
-;  :ensure t
-;  :init
-;  (smex-initialize)
-;  :config
-;  (progn
-;    ; C-s/C-r switches to the next/previous match.
-;    ; Enter executes the selected command.
-;    ; C-h f, while Smex is active, runs describe-function on the currently selected command.
-;    ; M-. jumps to the definition of the selected command.
-;    ; C-h w shows the key bindings for the selected command. (Via where-is.)
-;    (global-set-key (kbd "M-x") 'smex)
-;    (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;    (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)))
+(use-package smex
+  :ensure t
+  :init
+  (smex-initialize)
+  :config
+  (progn
+    ; C-s/C-r switches to the next/previous match.
+    ; Enter executes the selected command.
+    ; C-h f, while Smex is active, runs describe-function on the currently selected command.
+    ; M-. jumps to the definition of the selected command.
+    ; C-h w shows the key bindings for the selected command. (Via where-is.)
+    (global-set-key (kbd "M-x") 'smex)
+    (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+    (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)))
 
 ;(use-package dashboard
 ;  :ensure t

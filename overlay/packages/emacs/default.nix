@@ -5,8 +5,8 @@
     cp -r ${./site-lisp} $out/share/emacs/site-lisp
   '')
   use-package
-  gruvbox-theme powerline
-  evil which-key # smex
+  gruvbox-theme # powerline
+  evil which-key smex
   # fzf
   vterm
   magit
