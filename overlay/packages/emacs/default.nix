@@ -5,13 +5,12 @@
     cp -r ${./site-lisp} $out/share/emacs/site-lisp
   '')
   use-package
-  gruvbox-theme
+  gruvbox-theme powerline
+  evil which-key # smex
+  # fzf
   vterm
-  evil
   magit
-  windata
-  which-key smex
-  dashboard
+  # windata
   parinfer
   clojure-mode cider
   nix-mode

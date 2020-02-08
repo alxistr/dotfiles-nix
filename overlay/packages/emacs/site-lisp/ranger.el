@@ -8,15 +8,15 @@
                      "exit\n")
                ""))
 
-(defun rs--read-lines (filename)
-  (with-temp-buffer
-    (insert-file-contents filename)
-    (split-string (buffer-string) "\n" t)))
+;(defun rs--read-lines (filename)
+;  (with-temp-buffer
+;    (insert-file-contents filename)
+;    (split-string (buffer-string) "\n" t)))
 
 (defun ranger-select-files ()
   (interactive)
-  (let ((tmp-filename (make-temp-file "select"))
-        (tmp-buffer (make-temp-name "select")))
+  (let ((tmp-filename (make-temp-file "select-"))
+        (tmp-buffer (make-temp-name "select-")))
     (switch-to-buffer tmp-buffer)
     (vterm-mode)
     (vterm-send-string (rs--make-choose-command tmp-filename))
@@ -29,9 +29,9 @@
             (when (and buffer (local-variable-p 'rs--filename buffer))
               (let ((tmp-filename (buffer-local-value 'rs--filename buffer)))
                 (kill-buffer buffer)
-                (dolist (filename (rs--read-lines tmp-filename))
+                (dolist (filename (utils--read-lines tmp-filename))
                   (find-file filename))
                 (delete-file tmp-filename))))
           t)
 
-(provide 'ranger-select)
+(provide 'ranger)
