@@ -5,5 +5,5 @@
     ./modules/nixos
     ./host/configuration.nix
     ./host/hardware-configuration.nix
-  ] ++ lib.optional (builtins.pathExists ./local.nix) ./local.nix; 
+  ] ++ lib.optional (builtins.pathExists ./local.nix) ./local.nix;
 }
