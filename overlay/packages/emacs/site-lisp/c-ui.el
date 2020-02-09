@@ -14,6 +14,7 @@
 (add-hook 'window-setup-hook
           (lambda ()
             (set-default-font "Source Code Pro-10")
+            (setq column-number-mode t)
             (switch-light-theme)
             ;(switch-dark-theme)
             (let ((window (split-window-horizontally)))
@@ -67,7 +68,14 @@
     (when (and (not is-initial-fundamental) (not is-ignored-major))
       (setq truncate-lines t
             truncate-partial-width-windows nil)
+      (linum-mode)
       (whitespace-mode))))
+
+(defun recentf-ido-find-file ()
+  (interactive)
+  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+    (when file
+      (find-file file))))
 
 (defun toggle-menu-bar ()
   (interactive)
@@ -117,10 +125,15 @@
 ;  :config
 ;  (powerline-center-evil-theme))
 
-
 ;; todo modeline
 
-;(ido-mode t) ;;;;; TODO
+(use-package ido-vertical-mode
+  :init
+  (setq ido-vertical-define-keys 'C-n-and-C-p-only
+        ido-vertical-show-count t)
+  :config
+  (ido-mode t)
+  (ido-vertical-mode t))
 
 (enhancements-minor-mode 1)
 

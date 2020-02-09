@@ -10,14 +10,3 @@
 
 (require 'ranger)
 (require 'fzf)
-
-;(use-package fzf
-;  :commands fzf/start
-;  :init
-;  (setq-default term-term-name "vt100"))
-
-;(defun select-window-by-index (n)
-;  (let ((window (nth n (window-list))))
-;    (if (not window)
-;      (message "no window %d" n)
-;      (select-window window))))

@@ -10,10 +10,7 @@
 
 (defun fzf-search-git-files ()
   (interactive)
-  (let ((process-environment (append ;"FZF_DEFAULT_COMMAND=git ls-files"
-                                     '("FZF_DEFAULT_COMMAND=git ls-files")
-                                     ;'("FZF_DEFAULT_COMMAND=ag --nobreak --nonumbers --noheading .")
-                                    ;'()
+  (let ((process-environment (append '("FZF_DEFAULT_COMMAND=git ls-files")
                                      process-environment))
         (default-directory (utils--get-project))
         (tmp-filename (make-temp-file "fzf-"))

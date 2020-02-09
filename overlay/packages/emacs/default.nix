@@ -6,7 +6,7 @@
   '')
   use-package
   gruvbox-theme # powerline
-  evil which-key smex
+  evil which-key smex ido-vertical-mode
   # fzf
   vterm
   magit

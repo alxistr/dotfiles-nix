@@ -8,8 +8,8 @@
   (evil-mode 1)
   (evil-set-leader '(normal motion) (kbd "<SPC>"))
   (evil-define-key '(normal motion) 'global
-                   (kbd "<leader><SPC>") 'buffer-menu
-                   (kbd "<leader>bb") 'buffer-menu
+                   (kbd "<leader><SPC>") 'ido-switch-buffer
+                   (kbd "<leader>bb") 'ido-switch-buffer
                    (kbd "<leader>bd") 'kill-buffer ; c-x k
                    (kbd "<leader>fs") 'save-buffer
                    (kbd "<leader>sf") 'find-file
@@ -23,6 +23,7 @@
                    (kbd "<leader>ar") 'ranger-select-files
                    (kbd "<leader>sg") 'fzf-search-git-files
                    (kbd "<leader>sf") 'fzf-search-files
+                   (kbd "<leader>sr") 'recentf-ido-find-file
                    (kbd "<leader>ttd") 'switch-dark-theme
                    (kbd "<leader>ttl") 'switch-light-theme
                    (kbd "<leader>tl") 'toggle-truncate-lines

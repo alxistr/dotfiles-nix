@@ -8,11 +8,6 @@
                      "exit\n")
                ""))
 
-;(defun rs--read-lines (filename)
-;  (with-temp-buffer
-;    (insert-file-contents filename)
-;    (split-string (buffer-string) "\n" t)))
-
 (defun ranger-select-files ()
   (interactive)
   (let ((tmp-filename (make-temp-file "select-"))

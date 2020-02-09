@@ -43,22 +43,27 @@ with lib; with types;
       scdl
 
       appimage-run
-      nixops
-      fabric1
       apacheHttpd
-      scaleway-cli
 
       zoom-us
 
       # tor-browser-bundle-bin
 
+      nixops
+      fabric1
+      scaleway-cli
+      dysnomia
+      disnix
+
       leiningen
       visualvm
-      exercism
+
       fennel
-      babashka
       ferret
+      babashka
+
       love_11
+      # exercism
 
     ];
 
