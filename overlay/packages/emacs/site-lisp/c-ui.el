@@ -13,14 +13,14 @@
 
 (add-hook 'window-setup-hook
           (lambda ()
-            (set-default-font "Source Code Pro-10")
+            (set-default-font "Source Code Pro-9")
             (setq column-number-mode t)
             (switch-light-theme)
             ;(switch-dark-theme)
             (let ((window (split-window-horizontally)))
               (set-window-buffer window (messages-buffer)))))
 
-(defun switch-dark-theme () 
+(defun switch-dark-theme ()
   (interactive)
   (load-theme 'gruvbox-dark-soft t)
   ;(set-face-background 'mode-line "#333")
@@ -36,11 +36,12 @@
   (set-face-background 'whitespace-indentation nil)
   nil)
 
-(defun switch-light-theme () 
+(defun switch-light-theme ()
   (interactive)
-  (load-theme 'gruvbox-light-medium t)
+  (load-theme 'gruvbox-light-soft t)
   (set-face-background 'mode-line "#ebdbb2")
   (set-face-background 'mode-line-inactive "#f2e5bc")
+  (set-face-foreground 'font-lock-comment-face "#999")
   ;(set-face-background 'fringe nil)
   (set-face-foreground 'whitespace-line nil)
   (set-face-background 'whitespace-line nil)
@@ -63,6 +64,7 @@
                                                  'completion-list-mode
                                                  'Buffer-menu-mode
                                                  'vterm-mode
+                                                 'nix-repl-mode
                                                  ; 'messages-buffer-mode
                                                  'minibuffer-inactive-mode))))
     (when (and (not is-initial-fundamental) (not is-ignored-major))

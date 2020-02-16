@@ -10,6 +10,7 @@
   (evil-define-key '(normal motion) 'global
                    (kbd "<leader><SPC>") 'ido-switch-buffer
                    (kbd "<leader>bb") 'ido-switch-buffer
+                   (kbd "<leader>bm") 'buffer-menu
                    (kbd "<leader>bd") 'kill-buffer ; c-x k
                    (kbd "<leader>fs") 'save-buffer
                    (kbd "<leader>sf") 'find-file

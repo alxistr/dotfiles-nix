@@ -9,6 +9,7 @@
 result
 
 local*.nix
+secrets*.nix
 host
 .vpn
 

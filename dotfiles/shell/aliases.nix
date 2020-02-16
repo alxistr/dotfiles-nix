@@ -7,4 +7,5 @@
   ssh-wokeys = "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null";
   cal3 = "cal -3 -m";
   xlock = "i3lock -c 000000 -f";
+  jfa = "journalctl --follow --all -b";
 }

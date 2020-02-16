@@ -3,8 +3,10 @@ set clipboard=autoselect
 "
 let mapleader = " "
 
-map <leader>s :action SaveDocument<CR>
-map <leader>f :action Find<CR>
+map <leader>fs :action SaveDocument<CR>
+map <leader>s/ :action Find<CR>
+map <leader>sf :action SearchEverywhere<CR>
+map <leader><leader> :action SearchEverywhere<CR>
 map <leader>o :action OverrideMethods<CR>
 map <leader>r :action RenameElement<CR>
 map <leader>t :action ReformatCode<CR>

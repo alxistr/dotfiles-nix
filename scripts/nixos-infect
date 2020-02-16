@@ -1,6 +1,7 @@
 #!/usr/bin/env bash 
 # https://github.com/elitak/nixos-infect
-# ssh <HOST> 'bash -s' < nixos-infect
+# OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+# ssh ${OPTS} <HOST> 'bash -s' < nixos-infect
 
 set -x -e -o pipefail
 
@@ -98,6 +99,10 @@ cat > /etc/nixos/configuration.nix << EOF
   ];
 
   boot.cleanTmpDir = true;
+  boot.kernelParams = [
+    # "console=ttyS0,115200"
+    "panic=30" "boot.panic_on_fail"
+  ];
 
   networking = {
     hostName = "$(hostname)";
@@ -105,16 +110,12 @@ cat > /etc/nixos/configuration.nix << EOF
   };
 
   services = {
-    disnix.enable = true;
     openssh = {
       enable = true;
+      ports = [ 22 ];
       passwordAuthentication = false;
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    vim tmux ranger ncdu
-  ];
 
   users.users.root.openssh.authorizedKeys.keys = [$(for key in "${keys[@]}"; do echo -n "
     \"$key\""; done)

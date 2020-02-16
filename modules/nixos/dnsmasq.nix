@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let cfg = config.own.dnsmasq; in
-let docker = config.own.docker; in
+let docker = config.own.docker or { enable = false; }; in
 with lib; with types;
 
 let
@@ -14,6 +14,14 @@ in
 {
   options.own.dnsmasq = {
     enable = mkEnableOption "dnsmasq";
+    listen = mkOption {
+      type = listOf str;
+      default = [ ];
+    };
+    bind-interfaces = mkOption {
+      type = bool;
+      default = true;
+    };
     extraConfig = mkOption {
       type = str;
       default = "";
@@ -31,17 +39,25 @@ in
 
   config = mkIf cfg.enable (mkMerge [
     {
+      own.dnsmasq.listen = [ "127.0.0.1" ];
+
+      networking.firewall = mkIf (cfg.bind-interfaces != true) {
+        allowedUDPPorts = [ 53 ];
+        allowedTCPPorts = [ 53 ];
+      };
+
       networking.dhcpcd = {
         enable = true;
       };
 
       services.dnsmasq = {
         enable = true;
-        extraConfig = ''
+        extraConfig = optionalString (cfg.listen != []) ''
           # https://wiki.libvirt.org/page/Libvirtd_and_dnsmasq
-          listen-address=127.0.0.1
+          listen-address=${concatStringsSep "," cfg.listen}
+        '' + optionalString cfg.bind-interfaces ''
           bind-interfaces
-        '' + optionalString cfg.adhosts.enable ''
+        ''  + optionalString cfg.adhosts.enable ''
           conf-dir=/etc/dnsmasq.d
         '' + optionalString docker.enable ''
           server=/docker/127.0.0.1#54
