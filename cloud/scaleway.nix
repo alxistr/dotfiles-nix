@@ -14,27 +14,17 @@ let
     own = {
       scaleway = true;
 
+      f2b-whitelist = secrets.f2b-whitelist;
+
       allowTTY = false;
 
-      wireguard = with secrets.wireguard; {
+      wireguard = {
         enable = true;
-        cidr = "192.168.144.0/24";
-        server = "192.168.144.1/32";
-        private-key = server.private;
-        clients = [
-          (wg-peer "192.168.144.2" nettop.public)
-          (wg-peer "192.168.144.3" laptop.public)
-          (wg-peer "192.168.144.4" desktop.public)
-          (wg-peer "192.168.144.5" rpi.public)
-          (wg-peer "192.168.144.6" android.public)
-        ];
-      };
+      } // secrets.wireguard-server;
 
-      ipsec-vpn = with secrets.ipsec; {
+      ipsec-vpn = {
         enable = true;
-        cidr = "192.168.145.0/24";
-        inherit psk users;
-      };
+      } // secrets.ipsec-server;
 
       dnsmasq = {
         enable = true;

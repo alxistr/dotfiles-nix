@@ -17,9 +17,15 @@ let own = config.own; in
       default = false;
       type = bool;
     };
+    own.f2b-whitelist = mkOption {
+      default = [
+        "127.0.0.1"
+      ];
+      type = listOf str;
+    };
   };
 
-  config = mkIf config.own.scaleway {
+  config = mkIf own.scaleway {
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
@@ -56,14 +62,16 @@ let own = config.own; in
 
       fail2ban = {
         enable = true;
-        jails.DEFAULT = mkForce ''
+        jails.DEFAULT = mkForce (''
           ignoreip = 127.0.0.1/8
           bantime = 2592000
           findtime = 600
           maxretry = 3
           backend = systemd
           enabled = true
-        '';
+        '' + optionalString (own.f2b-whitelist != []) ''
+          ignoreip = ${concatStringsSep " " own.f2b-whitelist}
+        '');
       };
 
     };
