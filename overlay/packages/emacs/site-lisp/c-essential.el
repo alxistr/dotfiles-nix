@@ -8,7 +8,7 @@
 
 (setq initial-scratch-message 
       (concat (format ";; %s@%s // %s\n" (getenv "USER") (system-name) system-configuration)
-              "\n\n\n"))
+              "\n"))
 (setq inhibit-startup-screen t)
 (setq initial-buffer-choice t)
 

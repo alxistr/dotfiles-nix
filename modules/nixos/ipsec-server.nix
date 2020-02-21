@@ -33,9 +33,12 @@ in
   config = mkIf ipsec-vpn.enable {
     networking.firewall = {
       allowedUDPPorts = [ 500 4500 ];
-      extraCommands = ''
-        iptables -t nat -A POSTROUTING -s ${ipsec-vpn.cidr} -o ens2 -j MASQUERADE
-      '';
+    };
+
+    networking.nat = {
+      enable = true;
+      externalInterface = "ens2";  # todo: iface
+      internalIPs = [ ipsec-vpn.cidr ];
     };
 
     services.strongswan = {

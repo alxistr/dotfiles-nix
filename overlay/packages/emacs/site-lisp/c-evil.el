@@ -39,12 +39,6 @@
   (define-key evil-window-map (kbd "C-l") 'evil-window-right)
   (define-key evil-window-map (kbd "C-j") 'evil-window-bottom)
   (define-key evil-window-map (kbd "C-k") 'evil-window-top)
-  (dolist (mode (list emacs-lisp-mode-map
-                      lisp-interaction-mode-map))
-    (evil-define-key '(normal motion) mode
-                     (kbd ",e") 'eval-buffer
-                     (kbd ",l") 'eval-last-sexp))
-  (evil-define-key '(normal motion) 'parinfer-mode
-                   (kbd ",p") 'parinfer-toggle-mode))
+  nil)
 
 (provide 'c-evil)

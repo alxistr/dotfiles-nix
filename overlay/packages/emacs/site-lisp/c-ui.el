@@ -15,10 +15,11 @@
           (lambda ()
             (set-default-font "Source Code Pro-9")
             (setq column-number-mode t)
-            (switch-light-theme)
-            ;(switch-dark-theme)
-            (let ((window (split-window-horizontally)))
-              (set-window-buffer window (messages-buffer)))))
+            ;(switch-light-theme)
+            (switch-dark-theme)
+            ;(let ((window (split-window-horizontally)))
+            ;  (set-window-buffer window (messages-buffer)))
+            nil))
 
 (defun switch-dark-theme ()
   (interactive)
@@ -26,14 +27,31 @@
   ;(set-face-background 'mode-line "#333")
   ;(set-face-background 'mode-line-inactive "#111")
   ;(set-face-background 'fringe "#050505")
+  (set-face-foreground 'font-lock-comment-face "#eee")
   (set-face-foreground 'whitespace-line nil)
   (set-face-background 'whitespace-line nil)
   (set-face-background 'whitespace-newline nil)
   (set-face-background 'whitespace-tab nil)
   (set-face-background 'whitespace-space-after-tab nil)
+  ;(set-face-foreground 'whitespace-trailing nil)
+  ;(set-face-background 'whitespace-trailing nil)
   ;(set-face-foreground 'whitespace-space nil)
   ;(set-face-background 'whitespace-space nil)
   (set-face-background 'whitespace-indentation nil)
+  (set-face-foreground 'whitespace-indentation "#777")
+  (set-face-foreground 'whitespace-space "#888")
+  ;(set-face-foreground 'whitespace-trailing "#888")
+  (set-face-foreground 'whitespace-tab "#777")
+  (set-face-foreground 'whitespace-newline "#777")
+  (set-face-foreground 'linum "#777")
+  (set-face-attribute 'linum nil :weight 'normal)
+  (set-face-attribute 'linum nil :height 0.9)
+  (set-face-attribute 'whitespace-space nil :weight 'extra-light)
+  (set-face-attribute 'whitespace-indentation nil :weight 'extra-light)
+  (set-face-attribute 'whitespace-trailing nil :weight 'extra-light)
+  (set-face-attribute 'whitespace-newline nil :weight 'normal)
+  (set-face-attribute 'font-lock-comment-face nil :weight 'light)
+  (set-face-attribute 'whitespace-tab nil :weight 'normal)
   nil)
 
 (defun switch-light-theme ()
@@ -41,16 +59,27 @@
   (load-theme 'gruvbox-light-soft t)
   (set-face-background 'mode-line "#ebdbb2")
   (set-face-background 'mode-line-inactive "#f2e5bc")
-  (set-face-foreground 'font-lock-comment-face "#999")
+  (set-face-foreground 'font-lock-comment-face "#111")
   ;(set-face-background 'fringe nil)
   (set-face-foreground 'whitespace-line nil)
   (set-face-background 'whitespace-line nil)
   (set-face-background 'whitespace-newline nil)
   (set-face-background 'whitespace-tab nil)
   (set-face-background 'whitespace-space-after-tab nil)
-  ;(set-face-foreground 'whitespace-space nil)
-  ;(set-face-background 'whitespace-space nil)
   (set-face-background 'whitespace-indentation nil)
+  (set-face-foreground 'whitespace-indentation "#555")
+  (set-face-foreground 'whitespace-tab "#555")
+  (set-face-foreground 'whitespace-space "#555")
+  (set-face-foreground 'whitespace-newline "#ccc")
+  (set-face-foreground 'linum "#999")
+  (set-face-attribute 'linum nil :weight 'normal)
+  (set-face-attribute 'linum nil :height 0.9)
+  (set-face-attribute 'whitespace-space nil :weight 'ultra-light)
+  (set-face-attribute 'whitespace-trailing nil :weight 'extra-light)
+  (set-face-attribute 'whitespace-indentation nil :weight 'ultra-light)
+  (set-face-attribute 'whitespace-newline nil :weight 'ultra-light)
+  (set-face-attribute 'font-lock-comment-face nil :weight 'semi-light)
+  (set-face-attribute 'whitespace-tab nil :weight 'ultra-light)
   nil)
 
 (defun setup-buffer-enhancements ()
@@ -65,6 +94,8 @@
                                                  'Buffer-menu-mode
                                                  'vterm-mode
                                                  'nix-repl-mode
+                                                 'cider-stacktrace-mode
+                                                 'cider-repl-mode
                                                  ; 'messages-buffer-mode
                                                  'minibuffer-inactive-mode))))
     (when (and (not is-initial-fundamental) (not is-ignored-major))
@@ -131,7 +162,8 @@
 
 (use-package ido-vertical-mode
   :init
-  (setq ido-vertical-define-keys 'C-n-and-C-p-only
+  (setq ido-enable-flex-matching t
+        ido-vertical-define-keys 'C-n-and-C-p-only
         ido-vertical-show-count t)
   :config
   (ido-mode t)

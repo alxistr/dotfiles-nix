@@ -1,9 +1,6 @@
-{ stdenv, pkgs }:
+{ callPackage, stdenv, pkgs, parinfer-rust }:
+
 (pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages (epkgs: ((with epkgs.melpaPackages; [
-  (pkgs.runCommand "default.el" {} ''
-    mkdir -p $out/share/emacs/
-    cp -r ${./site-lisp} $out/share/emacs/site-lisp
-  '')
   use-package
   gruvbox-theme # powerline
   evil which-key smex ido-vertical-mode
@@ -11,7 +8,7 @@
   vterm
   magit
   # windata
-  parinfer
+  # paredit # parinfer aggressive-indent
   clojure-mode cider
   nix-mode
   hy-mode
@@ -20,4 +17,10 @@
 ]) ++ (with epkgs.elpaPackages; [
   company
   undo-tree
-])))
+]) ++ [
+  (callPackage ./parinfer-rust-mode { })
+  (pkgs.runCommand "emacs-config" {} ''
+    mkdir -p $out/share/emacs/
+    cp -r ${./site-lisp} $out/share/emacs/site-lisp
+  '')
+]))

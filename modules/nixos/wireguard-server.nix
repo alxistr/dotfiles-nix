@@ -42,9 +42,12 @@ let wg-config = config.own.wireguard; in
       "net.ipv4.conf.all.proxy_arp" = 1;
     };
 
-    networking.nat.enable = true;
-    networking.nat.externalInterface = "ens2";
-    networking.nat.internalInterfaces = [ "wg0" ];
+    networking.nat = {
+      enable = true;
+      externalInterface = "ens2";  # todo: iface
+      internalInterfaces = [ "wg0" ];
+      internalIPs = [ wg-config.cidr ];
+    };
 
     networking.firewall = {
       allowedUDPPorts = [ wg-config.port ];
@@ -58,12 +61,6 @@ let wg-config = config.own.wireguard; in
           listenPort = wg-config.port;
           privateKeyFile = "/run/keys/wg-privatekey";
           peers = wg-config.clients;
-          postSetup = ''
-            iptables -t nat -A POSTROUTING -s ${wg-config.cidr} -o ens2 -j MASQUERADE
-          '';
-          postShutdown = ''
-            iptables -t nat -D POSTROUTING -s ${wg-config.cidr} -o ens2 -j MASQUERADE
-          '';
         };
       };
     };
