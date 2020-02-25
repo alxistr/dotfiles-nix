@@ -48,7 +48,12 @@ let own = config.own; in
     };
 
     networking = {
-      firewall.allowPing = false;
+      firewall = {
+        allowPing = false;
+        extraCommands = ''
+            ( iptables-save | grep TCPMSS >/dev/null ) || ( iptables -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu )
+        '';
+        };
     };
 
     services = {
