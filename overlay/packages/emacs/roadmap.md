@@ -1,12 +1,13 @@
-+ modal
+- cider eval evil
 - elisp
 - default bindings
-+ libvterm
-- modal libvterm
+? modal libvterm
 ? fzf / lists
 ? ranger
-? parinfer
-
-+ whitespaces
 ? evil: global leader
 ? evil: local leader
+
++ parinfer
++ whitespaces
++ modal
++ libvterm

@@ -30,7 +30,7 @@ let inherit (super) callPackage; in
   #   openssl = super.openssl_1_1;
   # };
 
-  parinfer-rust = callPackage ./packages/parinfer-rust { };
+  # parinfer-rust = callPackage ./packages/parinfer-rust { };
 
   awesome-freedesktop = callPackage ./packages/lua-packages/awesome-freedesktop.nix { };
 

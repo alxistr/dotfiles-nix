@@ -61,6 +61,7 @@ with lib; with types;
       fennel
       ferret
       babashka
+      chez
 
       love_11
       # exercism

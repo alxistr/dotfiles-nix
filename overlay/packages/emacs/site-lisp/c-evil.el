@@ -6,8 +6,9 @@
         evil-want-C-d-scroll t)
   :config
   (evil-mode 1)
-  (evil-set-leader '(normal motion) (kbd "<SPC>"))
+  (evil-set-leader '(normal motion visual) (kbd "<SPC>"))
   (evil-define-key '(normal motion) 'global
+                   (kbd "<leader>i") 'start-search-for-symbol
                    (kbd "<leader><SPC>") 'ido-switch-buffer
                    (kbd "<leader>bb") 'ido-switch-buffer
                    (kbd "<leader>bm") 'buffer-menu
@@ -29,6 +30,8 @@
                    (kbd "<leader>ttl") 'switch-light-theme
                    (kbd "<leader>tl") 'toggle-truncate-lines
                    (kbd "<leader>tm") 'toggle-menu-bar)
+  (evil-define-key '(visual) 'global
+    (kbd "<leader>i") 'start-search-for-region)
   ;(dotimes (x 9)
   ;  (evil-define-key '(normal motion visual) 'global
   ;    (kbd (format "<leader>%d" (+ 1 x)))
@@ -40,5 +43,26 @@
   (define-key evil-window-map (kbd "C-j") 'evil-window-bottom)
   (define-key evil-window-map (kbd "C-k") 'evil-window-top)
   nil)
+
+(defun start-search-for (string forward)
+  (let* ((search-symbol (if evil-regexp-search 'regexp-search-ring 'search-ring))
+         (old-value (or (and (boundp search-symbol) (symbol-value search-symbol))
+                        '()))
+         (new-value (cons string old-value)))
+    (message "sl %s" new-value)
+    (set search-symbol new-value))
+  (evil-search string forward))
+
+(defun start-search-for-symbol ()
+  (interactive)
+  (let ((string (thing-at-point 'symbol))
+        (forward t))
+    (start-search-for string forward)))
+
+(defun start-search-for-region ()
+  (interactive)
+  (let ((string (buffer-substring (region-beginning) (region-end)))
+        (forward t))
+    (start-search-for string forward)))
 
 (provide 'c-evil)

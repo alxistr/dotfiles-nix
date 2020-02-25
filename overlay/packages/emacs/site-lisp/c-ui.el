@@ -24,8 +24,10 @@
 (defun switch-dark-theme ()
   (interactive)
   (load-theme 'gruvbox-dark-soft t)
-  ;(set-face-background 'mode-line "#333")
-  ;(set-face-background 'mode-line-inactive "#111")
+  (set-face-background 'mode-line "#444")
+  (set-face-foreground 'mode-line "#d5d4d1")
+  (set-face-background 'mode-line-inactive "#333")
+  (set-face-foreground 'mode-line-inactive "#a8a9a4")
   ;(set-face-background 'fringe "#050505")
   (set-face-foreground 'font-lock-comment-face "#eee")
   (set-face-foreground 'whitespace-line nil)
@@ -57,7 +59,8 @@
 (defun switch-light-theme ()
   (interactive)
   (load-theme 'gruvbox-light-soft t)
-  (set-face-background 'mode-line "#ebdbb2")
+  (set-face-background 'mode-line "#dbcba2")
+  (set-face-foreground 'mode-line "#605955")
   (set-face-background 'mode-line-inactive "#f2e5bc")
   (set-face-foreground 'font-lock-comment-face "#111")
   ;(set-face-background 'fringe nil)
@@ -138,26 +141,6 @@
     (global-set-key (kbd "M-X") 'smex-major-mode-commands)
     (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)))
 
-;(use-package dashboard
-;  :ensure t
-;  :init
-;  (setq dashboard-center-content t
-;        dashboard-banner-logo-title nil
-;        dashboard-set-footer nil
-;        dashboard-startup-banner 'logo
-;        dashboard-items '((recents  . 30)))
-;                          ;(bookmarks . 5)
-;                          ;(projects . 5)
-;                          ;(agenda . 5)
-;                          ;(registers . 5)
-;  :config
-;  (dashboard-setup-startup-hook))
-
-;(use-package powerline
-;  :ensure t
-;  :config
-;  (powerline-center-evil-theme))
-
 ;; todo modeline
 
 (use-package ido-vertical-mode
@@ -168,6 +151,10 @@
   :config
   (ido-mode t)
   (ido-vertical-mode t))
+
+(use-package ido-yes-or-no
+  :config
+  (ido-yes-or-no-mode t))
 
 (enhancements-minor-mode 1)
 

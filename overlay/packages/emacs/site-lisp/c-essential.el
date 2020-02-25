@@ -6,6 +6,8 @@
 (tooltip-mode -1)
 (menu-bar-mode -1)
 
+(setq-default indent-tabs-mode nil)
+
 (setq initial-scratch-message 
       (concat (format ";; %s@%s // %s\n" (getenv "USER") (system-name) system-configuration)
               "\n"))

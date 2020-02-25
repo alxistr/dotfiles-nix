@@ -2,13 +2,12 @@
 
 (pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages (epkgs: ((with epkgs.melpaPackages; [
   use-package
-  gruvbox-theme # powerline
-  evil which-key smex ido-vertical-mode
-  # fzf
+  gruvbox-theme 
+  evil which-key smex ido-vertical-mode ido-yes-or-no
   vterm
   magit
   # windata
-  # paredit # parinfer aggressive-indent
+  origami
   clojure-mode cider
   nix-mode
   hy-mode
