@@ -12,18 +12,22 @@
           (find-file filename))
         (delete-file tmp-filename)))))
 
-(defun ranger-select-files ()
-  (interactive)
-  (let ((default-directory (utils--get-project))
+(defun ranger--run-select (base-path current-filename)
+  (let ((base-path (or base-path (utils--get-project)))
         (tmp-filename (make-temp-file "ranger-"))
         (tmp-buffer (make-temp-name "ranger-"))
         (previous-vterm-shell vterm-shell))
     (switch-to-buffer tmp-buffer)
-    (setq vterm-shell (format "ranger --choosefiles=%s" tmp-filename))
+    (setq vterm-shell (format "ranger --choosefiles=%s --selectfile=%s"
+                              tmp-filename (or current-filename "")))
     (vterm-mode)
     (set-process-sentinel (get-buffer-process tmp-buffer) 'ranger--sentinel)
     (setq-local ranger--filename tmp-filename)
-    (setq-local ranger--path default-directory)
+    (setq-local ranger--path base-path)
     (setq vterm-shell previous-vterm-shell)))
+
+(defun ranger-select-files ()
+  (interactive)
+  (ranger--run-select nil (buffer-file-name)))
 
 (provide 'ranger)

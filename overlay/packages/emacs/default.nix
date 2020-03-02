@@ -3,7 +3,9 @@
 (pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages (epkgs: ((with epkgs.melpaPackages; [
   use-package
   gruvbox-theme 
-  evil which-key smex ido-vertical-mode ido-yes-or-no
+  evil evil-magit
+  which-key smex
+  ido-vertical-mode ido-yes-or-no
   vterm
   magit
   # windata

@@ -29,6 +29,7 @@
                    (kbd "<leader>ttd") 'switch-dark-theme
                    (kbd "<leader>ttl") 'switch-light-theme
                    (kbd "<leader>tl") 'toggle-truncate-lines
+                   (kbd "<leader>ts") 'speedup-large-file
                    (kbd "<leader>tm") 'toggle-menu-bar)
   (evil-define-key '(visual) 'global
     (kbd "<leader>i") 'start-search-for-region)
@@ -43,6 +44,8 @@
   (define-key evil-window-map (kbd "C-j") 'evil-window-bottom)
   (define-key evil-window-map (kbd "C-k") 'evil-window-top)
   nil)
+
+(use-package evil-magit)
 
 (defun start-search-for (string forward)
   (let* ((search-symbol (if evil-regexp-search 'regexp-search-ring 'search-ring))
@@ -64,5 +67,10 @@
   (let ((string (buffer-substring (region-beginning) (region-end)))
         (forward t))
     (start-search-for string forward)))
+
+(defun speedup-large-file ()
+  (interactive)
+  (linum-mode 0)
+  (whitespace-mode 0))
 
 (provide 'c-evil)
