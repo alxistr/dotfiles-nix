@@ -27,7 +27,7 @@
   (load-theme 'gruvbox-dark-soft t)
   (set-face-background 'mode-line "#444")
   (set-face-foreground 'mode-line "#d5d4d1")
-  (set-face-background 'mode-line-inactive "#333")
+  (set-face-background 'mode-line-inactive "#222")
   (set-face-foreground 'mode-line-inactive "#a8a9a4")
   ;(set-face-background 'fringe "#050505")
   (set-face-foreground 'font-lock-comment-face "#eee")
@@ -55,6 +55,12 @@
   (set-face-attribute 'whitespace-newline nil :weight 'normal)
   (set-face-attribute 'font-lock-comment-face nil :weight 'light)
   (set-face-attribute 'whitespace-tab nil :weight 'normal)
+  ;(set-face-background 'default "#32302f") ; default
+  (set-face-background 'default "#111")
+  (set-face-background 'whitespace-space nil)
+  (set-face-background 'fringe nil)
+  (set-face-background 'linum "#222")
+  (set-face-background 'show-paren-match nil)
   nil)
 
 (defun switch-light-theme ()
@@ -84,6 +90,7 @@
   (set-face-attribute 'whitespace-newline nil :weight 'ultra-light)
   (set-face-attribute 'font-lock-comment-face nil :weight 'semi-light)
   (set-face-attribute 'whitespace-tab nil :weight 'ultra-light)
+  (set-face-background 'show-paren-match nil)
   nil)
 
 (defun setup-buffer-enhancements ()
