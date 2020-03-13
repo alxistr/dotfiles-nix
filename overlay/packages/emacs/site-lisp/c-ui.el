@@ -15,6 +15,7 @@
           (lambda ()
             (set-default-font "Source Code Pro-9")
             (setq column-number-mode t)
+            (setq-default header-line-format "%f")
             ;(switch-light-theme)
             (switch-dark-theme)
             ;(let ((window (split-window-horizontally)))
