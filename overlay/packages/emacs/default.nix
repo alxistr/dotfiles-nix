@@ -2,15 +2,15 @@
 
 (pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages (epkgs: ((with epkgs.melpaPackages; [
   use-package
-  gruvbox-theme 
+  gruvbox-theme
   evil evil-magit
   which-key smex
   ido-vertical-mode ido-yes-or-no
   vterm
   magit
-  # windata
   origami
   clojure-mode cider
+  erlang
   nix-mode
   hy-mode
 ]) ++ (with epkgs.melpaStablePackages; [

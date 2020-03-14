@@ -7,6 +7,7 @@
 (require 'c-ide)
 (require 'c-lisps)
 (require 'c-nix)
+(require 'c-prolog)
 
 (require 'ranger)
 (require 'fzf)

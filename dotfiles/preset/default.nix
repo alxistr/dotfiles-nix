@@ -63,6 +63,9 @@ with lib; with types;
       babashka
       chez
 
+      erlang
+      gprolog
+
       love_11
       # exercism
 
