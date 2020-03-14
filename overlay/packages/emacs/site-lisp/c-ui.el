@@ -13,7 +13,11 @@
 
 (add-hook 'window-setup-hook
           (lambda ()
-            (set-default-font "Source Code Pro-9")
+            (let* ((hostname (system-name))
+                   (font (cond
+                          ((string-equal hostname "laptop") "Source Code Pro-11")
+                          (t "Source Code Pro-9"))))
+              (set-default-font font))
             (setq column-number-mode t)
             (setq-default header-line-format "%f")
             ;(switch-light-theme)

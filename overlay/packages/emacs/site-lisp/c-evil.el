@@ -73,4 +73,6 @@
   (linum-mode 0)
   (whitespace-mode 0))
 
+;(global-set-key (kbd "C-S-V") #'paste-from-clipboard)
+
 (provide 'c-evil)
