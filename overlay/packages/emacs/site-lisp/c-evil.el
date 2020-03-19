@@ -40,6 +40,7 @@
   ;      (interactive)
   ;      (select-window-by-index ,x))
   (define-key evil-window-map [backspace] 'evil-window-left)
+  (define-key evil-window-map (kbd "C-h") 'evil-window-left)
   (define-key evil-window-map (kbd "C-l") 'evil-window-right)
   (define-key evil-window-map (kbd "C-j") 'evil-window-bottom)
   (define-key evil-window-map (kbd "C-k") 'evil-window-top)

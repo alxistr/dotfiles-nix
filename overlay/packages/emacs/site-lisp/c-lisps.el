@@ -38,6 +38,7 @@
 (dolist (mode (list cider-repl-mode-map))
  (evil-define-key '(normal motion) mode
    (kbd ",/") 'cider-switch-to-last-clojure-buffer
+   (kbd ",i") 'cider-interrupt
    (kbd ",f") 'cider-find-var
    (kbd ",d") 'cider-doc
    (kbd ",q") 'cider-quit))
@@ -51,11 +52,13 @@
   (evil-define-key '(normal motion) mode
     (kbd ",,")  'cider-eval-sexp-at-point
     (kbd ",l")  'cider-eval-last-sexp
+    (kbd ",ei") 'cider-interrupt
     (kbd ",ee") 'cider-eval-defun-at-point
     (kbd ",eb") 'cider-eval-buffer
     (kbd ",ep") 'cider-pprint-eval-defun-at-point
     (kbd ",cI") 'cider-jack-in
     (kbd ",cc") 'cider-describe-connection
+    (kbd ",cf") 'cider-format-buffer
     (kbd ",f")  'cider-find-var
     (kbd ",d")  'cider-doc
     (kbd ",/")  'cider-switch-to-repl-buffer))

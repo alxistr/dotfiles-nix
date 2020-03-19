@@ -16,7 +16,7 @@
             (let* ((hostname (system-name))
                    (font (cond
                           ((string-equal hostname "laptop") "Source Code Pro-11")
-                          (t "Source Code Pro-9"))))
+                          (t "Source Code Pro-10"))))
               (set-default-font font))
             (setq column-number-mode t)
             (setq-default header-line-format "%f")
@@ -60,10 +60,10 @@
   (set-face-attribute 'font-lock-comment-face nil :weight 'light)
   (set-face-attribute 'whitespace-tab nil :weight 'normal)
   ;(set-face-background 'default "#32302f") ; default
-  (set-face-background 'default "#111")
+  (set-face-background 'default "#262524")
   (set-face-background 'whitespace-space nil)
   (set-face-background 'fringe nil)
-  (set-face-background 'linum "#222")
+  (set-face-background 'linum "#333")
   (set-face-background 'show-paren-match nil)
   nil)
 
