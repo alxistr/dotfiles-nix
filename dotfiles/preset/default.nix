@@ -69,6 +69,11 @@ with lib; with types;
       love_11
       # exercism
 
+      ## signal analysis
+      # mpg123
+      # baudline
+      audacity
+
     ];
 
     home.file.".ideavimrc".source = ./ideavimrc;

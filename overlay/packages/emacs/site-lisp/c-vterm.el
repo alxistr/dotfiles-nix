@@ -1,8 +1,11 @@
 (use-package vterm
   :config
   (setq vterm-keymap-exceptions nil)
+  (evil-define-key 'emacs vterm-mode-map
+                   (kbd "C-h") #'vterm--self-insert)
   (evil-define-key 'insert vterm-mode-map
                    (kbd "C-\C-n") #'evil-normal-state
+                   (kbd "C-h") #'vterm--self-insert
                    (kbd "C-e") #'vterm--self-insert
                    (kbd "C-f") #'vterm--self-insert
                    (kbd "C-a") #'vterm--self-insert
