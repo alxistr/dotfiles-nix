@@ -29,6 +29,7 @@
                    (kbd "<leader>ttd") 'switch-dark-theme
                    (kbd "<leader>ttl") 'switch-light-theme
                    (kbd "<leader>tl") 'toggle-truncate-lines
+                   (kbd "<leader>ti") (lambda () (interactive) (iimage-mode-buffer 1))
                    (kbd "<leader>ts") 'speedup-large-file
                    (kbd "<leader>tm") 'toggle-menu-bar)
   (evil-define-key '(visual) 'global
