@@ -2,9 +2,11 @@
   :config
   (setq vterm-keymap-exceptions nil)
   (evil-define-key 'emacs vterm-mode-map
+                   (kbd "C-[") #'vterm--self-insert
                    (kbd "C-h") #'vterm--self-insert)
   (evil-define-key 'insert vterm-mode-map
                    (kbd "C-\C-n") #'evil-normal-state
+                   (kbd "C-[") #'vterm--self-insert
                    (kbd "C-h") #'vterm--self-insert
                    (kbd "C-e") #'vterm--self-insert
                    (kbd "C-f") #'vterm--self-insert
@@ -27,6 +29,7 @@
   ;(evil-define-key '(normal motion) 'global
   ;                 (kbd "C-d") #'vterm--self-insert)
   (evil-define-key 'normal vterm-mode-map
+                   (kbd "C-[") #'vterm--self-insert
                    (kbd "i") #'evil-insert-resume
                    (kbd "o") #'evil-insert-resume)
   (add-hook 'vterm-exit-functions
