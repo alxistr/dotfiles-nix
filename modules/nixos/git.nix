@@ -19,6 +19,10 @@ with lib; with types;
       default = null;
       type = nullOr str;
     };
+    repos = mkOption {
+      default = [ ];
+      type = listOf str;
+    };
   };
 
   config = mkIf cfg.server {
@@ -28,6 +32,21 @@ with lib; with types;
       shell = "${pkgs.git}/bin/git-shell";
       openssh.authorizedKeys.keys = config.own.ssh.authorized-keys;
     };
+
+    system.activationScripts = listToAttrs (map (name: assert name != ""; {
+      name = "check-git-repo-${name}";
+      value = ''
+        (
+          mkdir -p /home/git/repos/
+          cd /home/git/repos/
+          if [[ ! -d ${name}.git ]]; then
+            ${pkgs.git}/bin/git init --bare ${name}.git
+            chown -R git ${name}.git
+          fi
+        )
+      '';
+    }) cfg.repos);
+
   };
 
 }
