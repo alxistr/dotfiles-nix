@@ -12,7 +12,6 @@ with lib; with types;
       firefox = {
         enable = true;
         enableAdobeFlash = false;
-        enableGoogleTalk = false;
         extensions = [ ];
       };
 
