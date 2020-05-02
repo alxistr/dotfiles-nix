@@ -11,9 +11,12 @@ with lib; with types;
     sound.enable = true;
     hardware.pulseaudio.enable = true;
 
+    console = {
+      font = "cyr-sun16";
+      keyMap = "ru";
+    };
+
     i18n = {
-      consoleFont = "cyr-sun16";
-      consoleKeyMap = "ru";
       defaultLocale = "en_US.UTF-8";
     };
 
@@ -53,10 +56,22 @@ with lib; with types;
       xkbOptions = "grp:alt_shift_toggle,grp_led:scroll";
       xkbVariant = "qwerty";
       gdk-pixbuf.modulePackages = with pkgs; [ librsvg ];
-      displayManager.lightdm = {
-        enable = true;
-        background = "#000000";
+
+      desktopManager = {
+        xterm.enable = true;
       };
+
+      displayManager = {
+        lightdm = {
+          enable = true;
+          background = "#000000";
+          greeters.mini = {
+            enable = true;
+            user = "user";
+          };
+        };
+      };
+
     };
 
   };
