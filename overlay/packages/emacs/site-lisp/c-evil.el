@@ -2,8 +2,11 @@
   :ensure t
   :init
   (setq evil-want-C-w-in-emacs-state t
+        ;evil-want-minibuffer t
         evil-want-C-u-scroll t
         evil-want-C-d-scroll t)
+  (setq evil-want-integration t
+        evil-want-keybinding nil)
   :config
   (evil-mode 1)
   (evil-set-leader '(normal motion visual) (kbd "<SPC>"))
@@ -46,6 +49,14 @@
   (define-key evil-window-map (kbd "C-j") 'evil-window-bottom)
   (define-key evil-window-map (kbd "C-k") 'evil-window-top)
   nil)
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :init
+  (setq evil-collection-mode-list '(help info man woman))
+  :config
+  (evil-collection-init))
 
 (use-package evil-magit)
 

@@ -7,7 +7,7 @@
   s # https://github.com/magnars/s.el
   ht # https://github.com/Wilfred/ht.el
   gruvbox-theme
-  evil evil-magit
+  evil evil-magit evil-collection
   which-key smex
   ido-vertical-mode ido-yes-or-no
   vterm

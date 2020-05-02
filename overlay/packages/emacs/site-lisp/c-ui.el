@@ -104,6 +104,7 @@
   (let ((is-initial-fundamental (and (equal major-mode 'fundamental-mode) 
                                      (not is-init-done)))
         (is-ignored-major (memq major-mode (list 'help-mode
+                                                 'Info-mode
                                                  'woman-mode
                                                  'completion-list-mode
                                                  'Buffer-menu-mode

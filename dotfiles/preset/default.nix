@@ -56,6 +56,7 @@ with lib; with types;
       disnix
 
       leiningen
+      clojure
       visualvm
 
       fennel
