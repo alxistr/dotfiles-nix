@@ -68,6 +68,12 @@ with lib; with types;
           greeters.mini = {
             enable = true;
             user = "user";
+            extraConfig = ''
+              [greeter]
+              show-password-label = true
+              [greeter-theme]
+              window-color = "#DBDBDB"
+            '';
           };
         };
       };
