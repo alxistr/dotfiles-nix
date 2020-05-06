@@ -30,6 +30,7 @@
     lm-sensors
     pv
     unixtools.xxd
+    bat
   ];
 
   home.file.".inputrc".source = ./inputrc;
