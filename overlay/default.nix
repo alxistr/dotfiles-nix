@@ -44,4 +44,16 @@ let inherit (super) callPackage; in
 
   # bzip2 = callPackage ./packages/xnview/bzip2.nix { };
 
+  xi-editor = callPackage ({ rustPlatform, fetchFromGitHub }:
+    rustPlatform.buildRustPackage rec {
+      name = "xi-editor";
+      src = "${fetchFromGitHub {
+        owner = "xi-editor";
+        repo = name;
+        rev = "add9e3e2f74c1324e85d1e2208f361b435b3fe2f";
+        sha256 = "1wy84a7q0gmchdklg50z3jzfbriwsd4awgqngmkq9szxxs35rhz4";
+      }}/rust";
+      cargoSha256 = "1bcmr6ndzj5j0jqbmi61x3dim1x5cj7rgy7r92fr8c4x9hp986wx";
+  }) { };
+
 }
