@@ -13,10 +13,12 @@
   vterm
   magit
   origami
-  clojure-mode cider
+  lsp-mode company-lsp
+  clojure-mode inf-clojure # cider
   erlang
   nix-mode
   hy-mode
+  rust-mode
 ]) ++ (with epkgs.melpaStablePackages; [
   # fzf
 ]) ++ (with epkgs.elpaPackages; [

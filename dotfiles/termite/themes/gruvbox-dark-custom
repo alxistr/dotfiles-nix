@@ -1,5 +1,6 @@
 [options]
-font = Source Code Pro for Powerline 12
+font = Roboto Mono for Powerline 12
+# font = Source Code Pro for Powerline 12
 # geometry = 1000x400
 geometry = 1050x950
 icon_name = terminal

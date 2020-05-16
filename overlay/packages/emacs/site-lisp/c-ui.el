@@ -15,13 +15,13 @@
           (lambda ()
             (let* ((hostname (system-name))
                    (font (cond
-                          ((string-equal hostname "laptop") "Source Code Pro-11")
-                          (t "Source Code Pro-9"))))
+                          ((string-equal hostname "laptop") "Roboto Mono for Powerline-11")
+                          (t "Roboto Mono for Powerline-10"))))
               (set-default-font font))
             (setq column-number-mode t)
             (setq-default header-line-format "%f")
-            ;(switch-light-theme)
-            (switch-dark-theme)
+            (switch-light-theme)
+            ;(switch-dark-theme)
             ;(let ((window (split-window-horizontally)))
             ;  (set-window-buffer window (messages-buffer)))
             nil))
@@ -73,7 +73,7 @@
   (set-face-background 'mode-line "#dbcba2")
   (set-face-foreground 'mode-line "#605955")
   (set-face-background 'mode-line-inactive "#f2e5bc")
-  (set-face-foreground 'font-lock-comment-face "#111")
+  (set-face-foreground 'font-lock-comment-face "#777")
   ;(set-face-background 'fringe nil)
   (set-face-foreground 'whitespace-line nil)
   (set-face-background 'whitespace-line nil)
@@ -92,7 +92,7 @@
   (set-face-attribute 'whitespace-trailing nil :weight 'extra-light)
   (set-face-attribute 'whitespace-indentation nil :weight 'ultra-light)
   (set-face-attribute 'whitespace-newline nil :weight 'ultra-light)
-  (set-face-attribute 'font-lock-comment-face nil :weight 'semi-light)
+  (set-face-attribute 'font-lock-comment-face nil :weight 'ultra-light)
   (set-face-attribute 'whitespace-tab nil :weight 'ultra-light)
   (set-face-background 'show-paren-match nil)
   nil)
@@ -100,7 +100,7 @@
 (defun setup-buffer-enhancements ()
   (when (memq major-mode (list 'vterm-mode))
     (evil-insert-state))
-  (message "enter to \"%s\" (%s)" (buffer-name) major-mode)
+  ;(message "enter to \"%s\" (%s)" (buffer-name) major-mode)
   (let ((is-initial-fundamental (and (equal major-mode 'fundamental-mode) 
                                      (not is-init-done)))
         (is-ignored-major (memq major-mode (list 'help-mode
@@ -110,8 +110,8 @@
                                                  'Buffer-menu-mode
                                                  'vterm-mode
                                                  'nix-repl-mode
-                                                 'cider-stacktrace-mode
-                                                 'cider-repl-mode
+                                                 ; 'cider-stacktrace-mode
+                                                 ; 'cider-repl-mode
                                                  ; 'messages-buffer-mode
                                                  'minibuffer-inactive-mode))))
     (when (and (not is-initial-fundamental) (not is-ignored-major))

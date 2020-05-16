@@ -13,6 +13,7 @@ with lib; with types;
 
     home.packages = with pkgs; [
       my-emacs
+      clojure-lsp
     ];
 
   };

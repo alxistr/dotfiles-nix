@@ -23,7 +23,7 @@ with lib; with types;
 
       xnview
       feh
-      gthumb
+      # gthumb
       krita
       # aseprite-unfree
 

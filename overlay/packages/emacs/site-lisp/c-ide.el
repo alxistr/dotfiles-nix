@@ -20,4 +20,32 @@
   (define-key company-search-map (kbd "M-j") 'company-select-next)
   (define-key company-search-map (kbd "M-k") 'company-select-previous))
 
+(use-package lsp-mode
+ :after evil
+ :hook ((clojure-mode . lsp)
+        (clojurec-mode . lsp)
+        (clojurescript-mode . lsp))
+ :config
+ (dolist (m '(clojure-mode
+              clojurec-mode
+              clojurescript-mode
+              clojurex-mode))
+   (add-to-list 'lsp-language-id-configuration `(,m . "clojure")))
+ (setq lsp-enable-indentation nil
+       lsp-enable-snippet nil
+       lsp-clojure-server-command '("bash" "-c" "clojure-lsp"))
+ (evil-define-key '(normal motion) 'lsp-mode
+   (kbd "<leader>lsr") 'lsp-workspace-restart
+   (kbd "<leader>lrr") 'lsp-rename
+   (kbd "<leader>lri") 'lsp-organize-imports
+   (kbd "<leader>lfr") 'lsp-find-references
+   (kbd "<leader>lfi") 'lsp-find-implementation
+   (kbd "<leader>lfd") 'lsp-find-definition
+   (kbd "<leader>lfa") 'xref-find-apropos))
+
+(use-package company-lsp
+  :after (:all lsp-mode company)
+  :config
+  (push 'company-lsp company-backends))
+
 (provide 'c-ide)
