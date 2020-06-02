@@ -16,11 +16,11 @@ let nixos-configs = builtins.fetchGit {
     ./modem.nix
     ./neovim.nix
     ./network.nix
+    ./oom.nix
     ./rpi3bp.nix
     ./shell.nix
     ./ssh.nix
     ./steam.nix
-    ./sysctl.nix
     ./tor.nix
     ./users.nix
     ./virt.nix
