@@ -7,34 +7,36 @@ let liquidprompt = builtins.fetchGit {
 
 let shellAliases = import ./aliases.nix; in
 
-let create-docker-template = pkgs.writeScriptBin "create-docker-template"
-  ''
-    [[ ! -f "./.docker.bash" ]] && \
-      cp -f ${./bash/docker-template.bash} ./.docker.bash && \
-      chmod +w ./.docker.bash || \
-      echo ".docker.bash already exists!"
+let create-docker-template = pkgs.writeScriptBin "create-docker-template" ''
+  [[ ! -f "./.docker.bash" ]] && \
+    cp -f ${./bash/docker-template.bash} ./.docker.bash && \
+    chmod +w ./.docker.bash || \
+    echo ".docker.bash already exists!"
 
-    cat >./.entry.bash <<EOF
-    #!/usr/bin/env bash
-    source ./.docker.bash
-    \$@
-    EOF
-    chmod +x ./.entry.bash
+  cat >./.entry.bash <<EOF
+  #!/usr/bin/env bash
+  source ./.docker.bash
+  \$@
+  EOF
+  chmod +x ./.entry.bash
 
-    [[ ! -f "./Dockerfile" ]] && cat >./Dockerfile <<EOF
-    FROM python:3.5
+  [[ ! -f "./Dockerfile" ]] && cat >./Dockerfile <<EOF
+  FROM python:3.5
 
-    RUN pip install \\
-      requests \\
-      ipython \\
-      hy
+  RUN pip install \\
+    requests \\
+    ipython \\
+    hy
 
-    EOF
+  EOF
 
-    echo "done"
+  echo "done"
 
-  '';
-in
+''; in
+
+let oom-pls = pkgs.writeScriptBin "oom-pls" ''
+  ${pkgs.perl}/bin/perl -wE 'my @xs; for (1..2**20) { push @xs, q{a} x 2**20 }; say scalar @xs;'
+''; in
 
 {
   home.packages = with pkgs; [
@@ -42,6 +44,7 @@ in
     bash-completion
     # powerline-rs
     create-docker-template
+    oom-pls
   ];
 
   programs.bash = {
