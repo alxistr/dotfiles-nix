@@ -189,6 +189,8 @@ nnoremap <Leader>sf :Files<CR>
 nnoremap <Leader>sm :Marks<CR>
 nnoremap <Leader>sc :Commits<CR>
 
+set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
+
 
 nnoremap <Leader>mm :messages<CR>
 nnoremap <Leader>mr :registers<CR>
