@@ -64,7 +64,6 @@ with lib; with types;
       displayManager = {
         lightdm = {
           enable = true;
-          background = "#000000";
           greeters.mini = {
             enable = true;
             user = "user";
@@ -73,6 +72,7 @@ with lib; with types;
               show-password-label = true
               [greeter-theme]
               window-color = "#DBDBDB"
+              background-color = "#000000"
             '';
           };
         };

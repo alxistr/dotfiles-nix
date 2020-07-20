@@ -39,13 +39,14 @@ with lib; with types;
       jetbrains.idea-ultimate
 
       youtube-dl
-      bandcamp-downloader
+      # bandcamp-downloader
       scdl
 
       appimage-run
       apacheHttpd
 
       zoom-us
+      discord
 
       # tor-browser-bundle-bin
 
@@ -55,6 +56,7 @@ with lib; with types;
       dysnomia
       disnix
 
+      openjdk11
       leiningen
       clojure
       visualvm
