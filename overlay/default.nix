@@ -12,6 +12,7 @@ let inherit (super) callPackage; in
   fzf = callPackage ./packages/fzf { };
 
   my-emacs = callPackage ./packages/emacs { };
+  my-neovim = callPackage ./packages/neovim { };
 
   arion = callPackage "${super.fetchFromGitHub {
     owner = "hercules-ci";
