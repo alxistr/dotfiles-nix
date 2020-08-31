@@ -27,6 +27,7 @@ imap <M-h> <Left>
 imap <M-l> <Right>
 
 let mapleader = " "
+let maplocalleader = "\\"
 
 nnoremap <Leader>fs :w<CR>
 
@@ -67,12 +68,24 @@ augroup helpfiles
   au BufRead,BufEnter */doc/* wincmd L
 augroup END
 
-autocmd FileType python,javascript,go,conf,vim,lua,erlang,clojure,nix autocmd BufWritePre * %s/\s\+$//e
+augroup trimfiles
+  au!
+  au FileType python,javascript,go,conf,vim,lua,erlang,clojure,nix au BufWritePre * %s/\s\+$//e
+augroup END
 
 let g:airline_theme='gruvbox'
 
-let g:vim_parinfer_filetypes = ['clojure', 'racket', 'lisp', 'scheme', 'hy', 'fennel']
-let g:vim_parinfer_globs = ['*.clj', '*.cljs', '*.cljc', '*.edn', '*.hl', '*.lisp', '*.rkt', '*.ss', '*.hy', '*.scm', '*.fnl']
+" let g:vim_parinfer_filetypes = ['clojure', 'racket', 'lisp', 'scheme', 'hy', 'fennel']
+" let g:vim_parinfer_globs = ['*.clj', '*.cljs', '*.cljc', '*.edn', '*.hl', '*.lisp', '*.rkt', '*.ss', '*.hy', '*.scm', '*.fnl']
+
+let g:parinfer_mode = 'smart'
+let g:parinfer_force_balance = 1
+let g:parinfer_logfile = "/tmp/p.log"
+
+augroup parinfer-autoenable
+  au!
+  au FileType clojure,racket,lisp,scheme,hy,fennel ParinferOn
+augroup END
 
 let g:magit_default_show_all_files = 0
 let g:magit_default_fold_level = 0

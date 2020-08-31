@@ -44,9 +44,9 @@ wrapNeovim neovim {
         mysetup
         vim-nix
         gruvbox
+        (callPackage ./parinfer-rust.nix { })
         vim-airline
         vim-airline-themes
-        vim-parinfer
         vim-surround
         vim-fugitive
         fzf-vim

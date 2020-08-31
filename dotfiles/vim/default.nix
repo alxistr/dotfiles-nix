@@ -5,10 +5,16 @@ with lib; with types;
 
 {
   config = mkIf enable {
+    home.sessionVariables = {
+      EDITOR = "vim";
+      VISUAL = "vim";
+    };
+
     home.packages = with pkgs; [
       ag
       fzf
       my-neovim
     ];
+
   };
 }
