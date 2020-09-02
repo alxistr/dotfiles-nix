@@ -29,7 +29,7 @@ with lib; with types;
 
       transmission-gtk
 
-      android-file-transfer
+      # android-file-transfer
       go-mtpfs
 
       wxhexeditor

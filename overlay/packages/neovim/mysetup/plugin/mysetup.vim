@@ -75,12 +75,8 @@ augroup END
 
 let g:airline_theme='gruvbox'
 
-" let g:vim_parinfer_filetypes = ['clojure', 'racket', 'lisp', 'scheme', 'hy', 'fennel']
-" let g:vim_parinfer_globs = ['*.clj', '*.cljs', '*.cljc', '*.edn', '*.hl', '*.lisp', '*.rkt', '*.ss', '*.hy', '*.scm', '*.fnl']
-
 let g:parinfer_mode = 'smart'
 let g:parinfer_force_balance = 1
-let g:parinfer_logfile = "/tmp/p.log"
 
 augroup parinfer-autoenable
   au!
