@@ -9,7 +9,7 @@ local bindings = require("bindings")
 local battery = require("widgets/battery-widget")
 
 local function set_wallpaper(s)
-    local path = os.getenv("HOME") .. "/.config/awesome/wallpapers/pattern0.png"
+    local path = os.getenv("HOME") .. "/.config/awesome/wallpapers/pattern16.png"
     gears.wallpaper.tiled(path, s, "#000000")
 end
 
