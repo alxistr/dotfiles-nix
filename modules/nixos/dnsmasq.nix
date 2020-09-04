@@ -64,18 +64,17 @@ in
         '' + cfg.extraConfig;
       };
 
-      docker-containers = mkIf docker.enable {
-        dns-gen = {
-          image = "jderusse/dns-gen:latest";
-          ports = [ "54:53/udp" ];
-          volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
-          log-driver = "journald";
-        };
-      };
-
-      systemd.services.docker-dnsgen.serviceConfig.TimeoutStopSec = lib.mkForce 1;
-
     }
+
+    (mkIf docker.enable {
+      docker-containers.dns-gen = {
+        image = "jderusse/dns-gen:latest";
+        ports = [ "54:53/udp" ];
+        volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
+        log-driver = "journald";
+      };
+      systemd.services.docker-dns-gen.serviceConfig.TimeoutStopSec = lib.mkForce 1;
+    })
 
     {
       system.activationScripts = {
