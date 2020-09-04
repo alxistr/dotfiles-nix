@@ -36,6 +36,8 @@ with lib; with types;
       };
     };
 
+    systemd.services.docker-tor.serviceConfig.TimeoutStopSec = lib.mkForce 1;
+
     environment.systemPackages = with pkgs; [
       (pkgs.writeScriptBin "tor-logs" ''
         docker logs --follow --tail=100 ${container-name}

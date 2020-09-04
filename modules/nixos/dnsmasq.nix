@@ -72,6 +72,9 @@ in
           log-driver = "journald";
         };
       };
+
+      systemd.services.docker-dnsgen.serviceConfig.TimeoutStopSec = lib.mkForce 1;
+
     }
 
     {
