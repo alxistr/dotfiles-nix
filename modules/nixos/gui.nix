@@ -64,6 +64,7 @@ with lib; with types;
       displayManager = {
         lightdm = {
           enable = true;
+          background = ./skull.jpg;
           greeters.mini = {
             enable = true;
             user = "user";
