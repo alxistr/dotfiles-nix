@@ -45,6 +45,8 @@ let inherit (super) callPackage; in
 
   xnview = callPackage ./packages/xnview { };
 
+  awmtt = callPackage ./packages/awmtt { };
+
   # bzip2 = callPackage ./packages/xnview/bzip2.nix { };
 
   xi-editor = callPackage ({ rustPlatform, fetchFromGitHub }:

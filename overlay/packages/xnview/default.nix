@@ -40,7 +40,6 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/bin
     cp -a $src/. $out/
-    # ln -s $out/XnView $out/bin/XnView
     ln -s $out/xnview.sh $out/bin/xnview
   '';
 

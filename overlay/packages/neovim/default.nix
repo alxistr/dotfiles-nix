@@ -27,6 +27,16 @@ let
     };
   };
 
+  vim-gruvbox8 = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-gruvbox8";
+    src = pkgs.fetchFromGitHub {
+      owner = "lifepillar";
+      repo = "vim-gruvbox8";
+      rev = "ba5d9bc5fea31a3b0c0e1c47aa6e4421fcdf0132";
+      sha256 = "0yc2fvy6j2x3wginkwrbgg75514h8y83lhw0chn2xh1h7af7zvw4";
+    };
+  };
+
   neovim = neovim-unwrapped;
 
 in
@@ -44,6 +54,7 @@ wrapNeovim neovim {
         mysetup
         vim-nix
         gruvbox
+        vim-gruvbox8
         (callPackage ./parinfer-rust.nix { })
         vim-airline
         vim-airline-themes

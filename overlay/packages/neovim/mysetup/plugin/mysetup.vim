@@ -73,7 +73,7 @@ augroup trimfiles
   au FileType python,javascript,go,conf,vim,lua,erlang,clojure,nix au BufWritePre * %s/\s\+$//e
 augroup END
 
-let g:airline_theme='gruvbox'
+let g:airline_theme='minimalist'
 
 let g:parinfer_mode = 'smart'
 let g:parinfer_force_balance = 1
@@ -101,11 +101,11 @@ let g:fzf_action = {
 
 if $TERM=~'linux'
     set t_Co=16
-    colorscheme gotham
+    colorscheme gruvbox8 " gotham
 else
     set t_Co=256
     set background=dark
-    colorscheme gruvbox
+    colorscheme gruvbox8
     highlight SpecialKey ctermbg=none cterm=none ctermfg=DarkGray
     highlight NonText ctermbg=none cterm=none ctermfg=DarkGray
     highlight ColorColumn ctermbg=235 guibg=#FFC600

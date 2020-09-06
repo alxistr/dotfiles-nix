@@ -12,6 +12,7 @@ with lib; with types;
       xcompmgr
       acpi
       arandr
+      awmtt
     ];
 
     xsession = {
