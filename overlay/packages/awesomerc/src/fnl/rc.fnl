@@ -1,4 +1,3 @@
-;(require :awful.autofocus)
 (let [awful (require :awful)
       beautiful (require :beautiful)
       naughty (require :naughty)
@@ -25,6 +24,8 @@
                           :title "Oops, an error happened!"
                           :text (tostring err)})
          (set in-error? false)))))
+
+  (require :awful.autofocus)
 
   (-> (require :theme)
       (beautiful.init))
@@ -61,7 +62,7 @@
   (let [{: set-wallpaper : create-top-bar} (require :screen)]
     (awful.screen.connect_for_each_screen
       (fn [screen]
-        (set-wallpaper screen "wallpapers/pattern1.png")
+        (set-wallpaper screen "wallpapers/pattern0.png")
         (create-top-bar screen))))
 
   (root.buttons bindings.mouse)
