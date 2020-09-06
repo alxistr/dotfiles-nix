@@ -11,6 +11,5 @@ luaPackages.buildLuaPackage {
   installPhase = ''
     mkdir -p "$out/lib/lua/${lua.luaversion}/"
     find $src -name "*.lua" -exec cp {} "$out/lib/lua/${lua.luaversion}/" \;
-    # ${pkgs.tree}/bin/tree $out
   '';
 }

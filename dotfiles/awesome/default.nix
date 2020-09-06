@@ -26,10 +26,13 @@ with lib; with types;
       enable = true;
       luaModules = with pkgs; [
         awesome-freedesktop
+        lua-moses
+        (luaPackages.inspect)
       ];
     };
 
     home.file.".config/awesome/".source = ./awesome;
+    # home.file.".config/awesome/".source = "${pkgs.awesomerc}/lua";
 
     programs.rofi = {
       enable = true;

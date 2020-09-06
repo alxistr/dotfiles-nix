@@ -34,7 +34,6 @@
    ; :border_normal "#3F3F3F"
    ; :border_focus "#838383"
    ; :border_marked "#CC9393"
-   ;
 
    ;;; Titlebars
    ; :titlebar_bg_focus "#3F3F3F"

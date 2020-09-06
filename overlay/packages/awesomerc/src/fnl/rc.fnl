@@ -2,7 +2,7 @@
       beautiful (require :beautiful)
       naughty (require :naughty)
       menubar (require :menubar)
-      inspect (require :inspect)
+      ;inspect (require :inspect)
       bindings (require :bindings)
       rules (require :rules)]
 
