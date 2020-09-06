@@ -28,24 +28,24 @@
 
    :taglist
    (buttons
-     [[ ] 1
+     [[] 1
       (fn [t] (t:view_only))]
-     [[ modkey ] 1
+     [[modkey] 1
       (fn [t]
         (when client.focus
           (client.focus:move_to_tag t)))]
-     [[ ] 3
+     [[] 3
       awful.tag.viewtoggle]
-     [[ modkey ] 3
+     [[modkey] 3
       (fn [t] (when client.focus (client.focus:toggle_tag t)))]
-     [[ ] 4
+     [[] 4
       (fn [t] (awful.tag.viewnext t.screen))]
-     [[ ] 5
+     [[] 5
       (fn [t] (awful.tag.viewprev t.screen))])
 
    :tasklist
    (buttons
-     [{ } 1
+     [[] 1
       (fn [c]
         (if (= c client.focus)
           (set c.minimized true)
@@ -57,19 +57,19 @@
             ; This will also un-minimize the client, if needed
             (set client.focus c)
             (c:raise))))]
-     [{ } 3
+     [[] 3
       (fn [] (client_menu_toggle_fn))]
-     [{ } 4
+     [[] 4
       (fn [] (awful.client.focus.byidx 1))]
-     [{ } 5
+     [[] 5
       (fn [] (awful.client.focus.byidx -1))])
 
    :mouse
    (buttons
-     [{ } 3 (fn [] (let [main-menu (require :main-menu)]
-                     (main-menu:toggle)))]
-     [{ } 4 awful.tag.viewnext]
-     [{ } 5 awful.tag.viewprev])
+     [[] 3 (fn [] (let [main-menu (require :main-menu)]
+                    (main-menu:toggle)))]
+     [[] 4 awful.tag.viewnext]
+     [[] 5 awful.tag.viewprev])
 
    :global
    (keys
@@ -201,46 +201,46 @@
       (fn [] (awful.util.spawn_with_shell "sleep 1 && scrot '%Y-%m-%d-%H%M%S-$wx$h.png' -u -e 'mv $f ~/images/screenshots'"))
       {:description "Make screenshot of focused window" :group "screenshots"}]
 
-    (-> (moses.range 9)
-        (moses.map (fn [index]
-                     (let [key (.. "#" (+ index 9))]
-                       [; View tag only.
-                        [[modkey] key
-                         (fn []
-                           (let [screen (awful.screen.focused)
-                                 tag (. screen.tags index)]
-                             (when tag
-                               (tag:view_only))))
-                         {:description (.. "view tag #" index) :group "tag"}]
+     (-> (moses.range 9)
+         (moses.map (fn [index]
+                      (let [key (.. "#" (+ index 9))]
+                        [; View tag only.
+                         [[modkey] key
+                          (fn []
+                            (let [screen (awful.screen.focused)
+                                  tag (. screen.tags index)]
+                              (when tag
+                                (tag:view_only))))
+                          {:description (.. "view tag #" index) :group "tag"}]
 
-                        ; Toggle tag display.
-                        [[modkey "Control"] key
-                         (fn []
-                           (let [screen (awful.screen.focused)
-                                 tag (. screen.tags index)]
-                             (when tag
-                               (awful.tag.viewtoggle tag))))
-                         {:description (.. "toggle tag #" index) :group "tag"}]
+                         ; Toggle tag display.
+                         [[modkey "Control"] key
+                          (fn []
+                            (let [screen (awful.screen.focused)
+                                  tag (. screen.tags index)]
+                              (when tag
+                                (awful.tag.viewtoggle tag))))
+                          {:description (.. "toggle tag #" index) :group "tag"}]
 
-                        ; Move client to tag.
-                        [[modkey "Shift"] key
-                         (fn []
-                           (when client.focus
-                             (let [tag (. client.focus.screen.tags index)]
-                               (when tag
-                                 (client.focus:move_to_tag tag)))))
-                         {:description (.. "move focused client to tag #" index) :group "tag"}]
+                         ; Move client to tag.
+                         [[modkey "Shift"] key
+                          (fn []
+                            (when client.focus
+                              (let [tag (. client.focus.screen.tags index)]
+                                (when tag
+                                  (client.focus:move_to_tag tag)))))
+                          {:description (.. "move focused client to tag #" index) :group "tag"}]
 
-                        ; Toggle tag on focused client.
-                        [[modkey "Control" "Shift"] key
-                         (fn []
-                           (when client.focus
-                             (let [tag (. client.focus.screen.tags index)]
-                               (when tag
-                                 (client.focus:toggle_tag tag)))))
-                         {:description (.. "toggle focused client on tag #" index) :group "tag"}]])))
-        (moses.flatten 1)
-        (table.unpack)))})
+                         ; Toggle tag on focused client.
+                         [[modkey "Control" "Shift"] key
+                          (fn []
+                            (when client.focus
+                              (let [tag (. client.focus.screen.tags index)]
+                                (when tag
+                                  (client.focus:toggle_tag tag)))))
+                          {:description (.. "toggle focused client on tag #" index) :group "tag"}]])))
+         (moses.flatten 1)
+         (table.unpack)))})
 
 ;--[[modkey] "w" (fn [] (mymainmenu:show))
 ;-- {:description "show main menu" :group "awesome"})
