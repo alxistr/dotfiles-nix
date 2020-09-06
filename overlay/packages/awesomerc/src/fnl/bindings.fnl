@@ -34,6 +34,16 @@
      (-> (require :keys.mouse)
          (table.unpack)))
 
+   :client-buttons
+   (buttons
+     (-> (require :keys.client-buttons)
+         (table.unpack)))
+
+   :client-keys
+   (keys
+     (-> (require :keys.client-keys)
+         (table.unpack)))
+
    :global
    (keys
      (-> (require :keys.global)
