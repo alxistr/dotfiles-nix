@@ -73,6 +73,8 @@ augroup trimfiles
   au FileType python,javascript,go,conf,vim,lua,erlang,clojure,nix au BufWritePre * %s/\s\+$//e
 augroup END
 
+let g:gruvbox_italics = 0
+
 let g:airline_theme='minimalist'
 
 let g:parinfer_mode = 'smart'
