@@ -67,4 +67,5 @@
 
   (root.buttons bindings.mouse)
   (root.keys bindings.global)
+
   (set awful.rules.rules rules))

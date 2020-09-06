@@ -1,6 +1,7 @@
 (let [awful (require :awful)
       gears (require :gears)
       wibox (require :wibox)
+      battery (require :widgets.battery-widget)
       nix (require :nix)
 
       tags (require :tags)
@@ -21,7 +22,9 @@
      (awful.tag tags.black-meduim-small-square
                 screen
                 (. awful.layout.layouts 1))
+
      (set screen.promptbox (awful.widget.prompt))
+
      (let [layoutbox (awful.widget.layoutbox screen)
            taglist (awful.widget.taglist screen
                                          awful.widget.taglist.filter.all
@@ -35,6 +38,7 @@
                              :height 20})
            clock (wibox.widget.textclock "%Y-%m-%d %a %H:%M " 1)]
        (layoutbox:buttons bindings.layoutbox)
+
        (bar:setup (with-layout
                     wibox.layout.align.horizontal
                     (with-layout wibox.layout.fixed.horizontal
@@ -44,6 +48,8 @@
                     (if (= screen.index 1)
                       (with-layout wibox.layout.fixed.horizontal
                                    (wibox.widget.systray)
+                                   (battery {:battery_prefix " "
+                                             :limits {}})
                                    (awful.widget.keyboardlayout)
                                    clock
                                    layoutbox)
