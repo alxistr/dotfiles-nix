@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
     '')
   ];
 
-  ARC = pkgs.awesomerc;
+  ARC = "${pkgs.awesomerc}/lua";
   D = 1;
   SCREEN_SIZE = "1400x900";
   AWESOME_OPTIONS = "";
