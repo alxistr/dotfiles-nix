@@ -4,7 +4,8 @@
       naughty (require :naughty)
       menubar (require :menubar)
       inspect (require :inspect)
-      bindings (require :bindings)]
+      bindings (require :bindings)
+      rules (require :rules)]
 
   ; Check if awesome encountered an error during startup and fell back to
   ; another config (This code will only ever execute for the fallback config))
@@ -64,4 +65,5 @@
         (create-top-bar screen))))
 
   (root.buttons bindings.mouse)
-  (root.keys bindings.global))
+  (root.keys bindings.global)
+  (set awful.rules.rules rules))

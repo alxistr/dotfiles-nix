@@ -5,7 +5,7 @@
       (if (= c client.focus)
         (set c.minimized true)
         (do
-          ; Without this, the following :isvisible() makes no sense
+          ; without this, the following :isvisible() makes no sense
           (set c.minimized false)
           (when (and (not (c:isvisible)) c.first_tag)
             (c.first_tag:view_only))
@@ -13,7 +13,14 @@
           (set client.focus c)
           (c:raise))))]
    [[] 3
-    (fn [] (client_menu_toggle_fn))]
+    (do
+      (var instance nil)
+      (fn []
+        (if (and instance instance.wibox.visible)
+         (do
+           (instance:hide)
+           (set instance false))
+         (set instance (awful.menu.clients {:theme {:width 250}})))))]
    [[] 4
     (fn [] (awful.client.focus.byidx 1))]
    [[] 5
