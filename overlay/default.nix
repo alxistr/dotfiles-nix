@@ -36,6 +36,10 @@ let inherit (super) callPackage; in
   # parinfer-rust = callPackage ./packages/parinfer-rust { };
 
   awesome-freedesktop = callPackage ./packages/lua-packages/awesome-freedesktop.nix { };
+  lua-moses = callPackage ./packages/lua-packages/moses.nix { };
+
+  awesomerc = callPackage ./packages/awesomerc { };
+  awesomerc-debug = callPackage ./packages/awesomerc/debug.nix { };
 
   fennel = callPackage ./packages/fennel { };
 

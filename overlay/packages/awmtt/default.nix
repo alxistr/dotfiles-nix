@@ -9,12 +9,13 @@ let
 
   luaPackages = with pkgs; [
     awesome-freedesktop
+    lua-moses
   ];
 
   binPath = lib.makeBinPath (with pkgs; [
     xorg.xorgserver
     (writeScriptBin "awesome"
-      "${awesome}/bin/awesome ${makeSearchPath luaPackages}")
+      "${awesome}/bin/awesome ${makeSearchPath luaPackages} $@")
   ]);
 
 in

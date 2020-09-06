@@ -6,6 +6,10 @@ let
 
   env-lua = lua.withPackages (ps: with ps; [
     inspect
+    (pkgs.lua-moses.override {
+      lua = ps.lua;
+      luaPackages = ps;
+    })
   ]);
 
 in
