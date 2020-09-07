@@ -17,8 +17,7 @@
 
   {:set-wallpaper
    (fn [screen path]
-     (-> (.. nix.static path)
-         (gears.wallpaper.tiled s "#000000")))
+     (gears.wallpaper.tiled path s "#000000"))
 
    :create-top-bar
    (fn [screen]

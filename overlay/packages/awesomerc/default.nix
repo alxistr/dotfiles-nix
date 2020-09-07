@@ -1,4 +1,7 @@
-{ pkgs, stdenv, lib, fennel }:
+{ pkgs, stdenv, lib, fennel,
+  wallpaper ? null }:
+
+let safe-wallpaper = if wallpaper != null then wallpaper else "${pkgs.wallpapers}/pattern0.png"; in
 
 stdenv.mkDerivation rec {
   name = "awesomerc";
@@ -27,7 +30,8 @@ stdenv.mkDerivation rec {
     cp -r $src/static $out
 
     substituteInPlace $out/lua/nix.lua \
-       --replace @awesomerc@ "$out"
+       --replace @awesomerc@ "$out" \
+       --replace @wallpaper@ "${safe-wallpaper}"
   '';
 
   installPhase = ":";

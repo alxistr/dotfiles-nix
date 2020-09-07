@@ -31,7 +31,9 @@ with lib; with types;
       ];
     };
 
-    home.file.".config/awesome/".source = "${pkgs.awesomerc}/lua";
+    home.file.".config/awesome/".source = "${pkgs.awesomerc.override {
+      wallpaper = "${pkgs.wallpapers}/pattern0.png";
+    }}/lua";
 
     programs.rofi = {
       enable = true;

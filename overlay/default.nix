@@ -65,8 +65,6 @@ let inherit (super) callPackage; in
       cargoSha256 = "1bcmr6ndzj5j0jqbmi61x3dim1x5cj7rgy7r92fr8c4x9hp986wx";
   }) { };
 
-  artwork = {
-    skull = ./packages/artwork/skull.jpg;
-  };
+  wallpapers = ./packages/wallpapers;
 
 }
