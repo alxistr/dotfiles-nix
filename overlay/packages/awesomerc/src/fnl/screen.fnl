@@ -31,16 +31,16 @@
      (let [layoutbox (awful.widget.layoutbox screen)
            taglist (awful.widget.taglist screen
                                          awful.widget.taglist.filter.all
-                                         (bindings.taglist-buttons))
+                                         (taglist-buttons))
            tasklist (awful.widget.tasklist screen
                                            awful.widget.tasklist.filter.currenttags
-                                           (bindings.tasklist-buttons))
+                                           (tasklist-buttons))
            bar (awful.wibar {:position "top"
                              :opacity .9
                              :screen screen
                              :height 20})
            clock (wibox.widget.textclock "%Y-%m-%d %a %H:%M " 1)]
-       (layoutbox:buttons (bindings.layoutbox-buttons))
+       (layoutbox:buttons (layoutbox-buttons))
 
        (bar:setup (with-layout
                     wibox.layout.align.horizontal
