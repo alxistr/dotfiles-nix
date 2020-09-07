@@ -1,5 +1,5 @@
 (let [awful (require :awful)
-      {: modkey : terminal} (require :keys.generic)]
+      {: modkey} (require :bindings.generic)]
   [[[] 1
     (fn [t] (t:view_only))]
    [[modkey] 1

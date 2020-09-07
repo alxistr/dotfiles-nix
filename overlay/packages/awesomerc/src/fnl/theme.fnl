@@ -1,8 +1,8 @@
 (let [nix (require :nix)
       path (fn [path] (.. nix.static path))
-      bg_normal "#000000cc"
+      bg_normal "#000000"
       fg_normal "#9e9e9e"
-      bg_focus "#242424aa"
+      bg_focus "#242424"
       fg_focus "#ebebff"]
 
   {;:dir nix.path

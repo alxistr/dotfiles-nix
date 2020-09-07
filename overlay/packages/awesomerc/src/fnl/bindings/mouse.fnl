@@ -1,5 +1,5 @@
 (let [awful (require :awful)
-      {: modkey : terminal} (require :keys.generic)]
+      {: modkey} (require :bindings.generic)]
   [[[] 3 (fn [] (let [main-menu (require :main-menu)]
                   (main-menu:toggle)))]
    [[] 4 awful.tag.viewnext]

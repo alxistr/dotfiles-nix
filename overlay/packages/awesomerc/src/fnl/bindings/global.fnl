@@ -1,6 +1,7 @@
 (let [awful (require :awful)
       hotkeys-popup (require :awful.hotkeys_popup)
-      {: modkey : terminal} (require :keys.generic)]
+      {: terminal} (require :terminal)
+      {: modkey} (require :bindings.generic)]
 
   [[[modkey] "s"
     hotkeys-popup.widget.show_help
@@ -52,8 +53,7 @@
 
    ; Standard program
    [[modkey] "Return"
-    (fn []
-      (awful.spawn terminal))
+    (fn [] (awful.spawn terminal))
     {:description "open a terminal" :group "launcher"}]
    [[modkey  "Control"] "r"
     awesome.restart

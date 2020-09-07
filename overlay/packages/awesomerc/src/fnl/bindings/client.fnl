@@ -1,5 +1,5 @@
 (let [awful (require :awful)
-      {: modkey} (require :keys.generic)]
+      {: modkey} (require :bindings.generic)]
   [[[] 1
     (fn [c]
       (set client.focus c)

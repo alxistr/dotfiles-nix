@@ -5,7 +5,10 @@
       nix (require :nix)
 
       tags (require :tags)
-      bindings (require :bindings)
+
+      {: taglist-buttons
+       : tasklist-buttons
+       : layoutbox-buttons} (require :bindings.all)
 
       with-layout (fn [layout ...]
                     (let [value [...]]
@@ -28,16 +31,16 @@
      (let [layoutbox (awful.widget.layoutbox screen)
            taglist (awful.widget.taglist screen
                                          awful.widget.taglist.filter.all
-                                         bindings.taglist)
+                                         (bindings.taglist-buttons))
            tasklist (awful.widget.tasklist screen
                                            awful.widget.tasklist.filter.currenttags
-                                           bindings.tasklist)
+                                           (bindings.tasklist-buttons))
            bar (awful.wibar {:position "top"
                              :opacity .9
                              :screen screen
                              :height 20})
            clock (wibox.widget.textclock "%Y-%m-%d %a %H:%M " 1)]
-       (layoutbox:buttons bindings.layoutbox)
+       (layoutbox:buttons (bindings.layoutbox-buttons))
 
        (bar:setup (with-layout
                     wibox.layout.align.horizontal

@@ -1,6 +1,6 @@
 (let [awful (require :awful)
       moses (require :moses)
-      {: modkey : terminal} (require :keys.generic)]
+      {: modkey} (require :bindings.generic)]
   (-> (moses.range 9)
       (moses.map (fn [index]
                    (let [key (.. "#" (+ index 9))]

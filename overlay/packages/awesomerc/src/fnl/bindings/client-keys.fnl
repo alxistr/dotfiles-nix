@@ -1,5 +1,5 @@
 (let [awful (require :awful)
-      {: modkey} (require :keys.generic)]
+      {: modkey} (require :bindings.generic)]
   [[[modkey] "f"
     (fn [c]
       (set c.fullscreen (not c.fullscreen))
