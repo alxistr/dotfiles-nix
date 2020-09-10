@@ -1,5 +1,8 @@
-(let [nix (require :nix)
+(let [shape (require :gears.shape)
+      nix (require :nix)
       path (fn [path] (.. nix.static path))
+      ; font "DejaVu Sans Mono Book 8"
+      font "Roboto Mono for Powerline 8"
       bg_normal "#000000"
       fg_normal "#9e9e9e"
       bg_focus "#242424"
@@ -9,8 +12,7 @@
    :wallpaper nil
 
    ;;; Styles
-   :font "DejaVu Sans Mono Book 8"
-   ;:font "Source Code Pro Medium 10"
+   : font
 
    ;;; Colors
    : bg_normal

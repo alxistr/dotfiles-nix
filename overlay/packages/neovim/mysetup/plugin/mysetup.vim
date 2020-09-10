@@ -55,13 +55,12 @@ nnoremap <Leader>gc :Gcommit<CR><C-w>L
 nnoremap <Leader>gi :Git rebase -i<CR>
 nnoremap <Leader>gbl :Gblame<CR>
 
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+nnoremap <Leader>ttd :set background=dark<CR>
+nnoremap <Leader>ttl :set background=light<CR>
+nnoremap <Leader>tl :set wrap!<CR>
+
+nnoremap <Leader>ls :mksession! .session.vim<CR>
+nnoremap <Leader>ll :source .session.vim<CR>
 
 augroup helpfiles
   au!
@@ -72,10 +71,6 @@ augroup trimfiles
   au!
   au FileType python,javascript,go,conf,vim,lua,erlang,clojure,nix au BufWritePre * %s/\s\+$//e
 augroup END
-
-let g:gruvbox_italics = 0
-
-let g:airline_theme='minimalist'
 
 let g:parinfer_mode = 'smart'
 let g:parinfer_force_balance = 1
@@ -94,6 +89,14 @@ function! s:build_quickfix_list(lines)
   cc
 endfunction
 
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 let g:fzf_action = {
   \ 'ctrl-q': function('s:build_quickfix_list'),
   \ 'ctrl-f': 'bdelete!',
@@ -101,13 +104,15 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
+" let g:airline_theme='monochrome'  " minimalist
+let g:airline_theme='custom'  " minimalist
+let g:gruvbox_italics = 0
+colorscheme gruvbox8
 if $TERM=~'linux'
     set t_Co=16
-    colorscheme gruvbox8 " gotham
 else
     set t_Co=256
     set background=dark
-    colorscheme gruvbox8
     highlight SpecialKey ctermbg=none cterm=none ctermfg=DarkGray
     highlight NonText ctermbg=none cterm=none ctermfg=DarkGray
     highlight ColorColumn ctermbg=235 guibg=#FFC600
