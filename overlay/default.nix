@@ -51,6 +51,16 @@ let inherit (super) callPackage; in
 
   awmtt = callPackage ./packages/awmtt { };
 
+  shell-tools = {
+    liquidprompt = builtins.fetchGit {
+      url = "https://github.com/nojhan/liquidprompt/";
+      rev = "488bb5975db9fa8be0b795019f0b6d99ec792f50";  # v_1.11
+    };
+    bash-functions = callPackage ./packages/shell-tools/bash-functions.nix { };
+    oom-pls = callPackage ./packages/shell-tools/oom-pls.nix { };
+    create-docker-template = callPackage ./packages/shell-tools/create-docker-template.nix { };
+  };
+
   # bzip2 = callPackage ./packages/xnview/bzip2.nix { };
 
   xi-editor = callPackage ({ rustPlatform, fetchFromGitHub }:
