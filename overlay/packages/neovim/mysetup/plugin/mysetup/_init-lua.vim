@@ -1,0 +1,1 @@
+luado require('mysetup')

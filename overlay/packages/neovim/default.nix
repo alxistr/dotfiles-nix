@@ -1,12 +1,16 @@
-{ callPackage, stdenv, fennel, pkgs }:
+{ callPackage, stdenv, fennel, vimPlugins, wrapNeovim,
+  nightly ? false }:
 
 let
-  # neovim = neovim-unwrapped;
-  neovim = (callPackage ./neovim-master.nix { });
+  wrap = if ! nightly then wrapNeovim else (callPackage ./wrapper.nix { });
+  neovim = (callPackage ./neovim.nix {
+    inherit nightly;
+  });
   plugins = (callPackage ./plugins.nix { });
+
 in
 
-(callPackage ./wrapper.nix { }) neovim {
+wrap neovim {
   viAlias = true;
   vimAlias = true;
 
@@ -14,10 +18,9 @@ in
   withRuby = false;
 
   configure = {
-    packages.myVimPackage = with pkgs.vimPlugins; with plugins; {
+    packages.myVimPackage = with vimPlugins; with plugins; {
       start = [
         mysetup
-        nvim-lspconfig
         vim-nix
         gruvbox
         vim-gruvbox8
@@ -26,11 +29,13 @@ in
         vim-airline-themes
         vim-surround
         vim-fugitive
+        vim-gitgutter
         fzf-vim
         ranger-vim
         deol-nvim
         vimagit
         fennel-vim
+        LanguageClient-neovim
         # vim-sexp
         # deol-nvim
         # vim-hy

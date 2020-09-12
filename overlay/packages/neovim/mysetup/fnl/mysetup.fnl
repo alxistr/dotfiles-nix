@@ -9,8 +9,3 @@
           (string.gsub "/lua/" "/fnl/")
           (string.gsub ".lua;" ".fnl;")
           (string.gsub ".lua$" ".fnl")))
-
-(let [nvim-lsp (require :nvim_lsp)]
-  (nvim-lsp.sumneko_lua.setup {})
-  (nvim-lsp.clojure_lsp.setup {})
-  (nvim-lsp.pyls.setup {}))
