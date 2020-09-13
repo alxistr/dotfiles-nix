@@ -5,6 +5,7 @@
 *#
 
 *.iso
+*.qcow2
 *.img
 result
 
