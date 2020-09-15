@@ -17,3 +17,6 @@ set nowrap
 set completeopt-=preview
 set autoread
 set viminfo='500
+
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c

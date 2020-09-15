@@ -1,11 +1,13 @@
-(local fennel (require :deps.fennel))
+(let [fennel (require :deps.fennel)]
+  (table.insert (or package.loaders
+                    package.searchers)
+                fennel.searcher)
+  (->> (-> package.path
+           (string.gsub "/lua/" "/fnl/")
+           (string.gsub ".lua;" ".fnl;")
+           (string.gsub ".lua$" ".fnl"))
+       (tset fennel :path)))
 
-(table.insert
-    (or package.loaders package.searchers)
-    fennel.searcher)
-
-(tset fennel :path
-      (-> package.path
-          (string.gsub "/lua/" "/fnl/")
-          (string.gsub ".lua;" ".fnl;")
-          (string.gsub ".lua$" ".fnl")))
+(let [variables (require :mysetup.globals)]
+  (each [key value (pairs variables)]
+    (tset vim.g key value)))

@@ -33,15 +33,25 @@
     };
   };
 
-  # nvim-lspconfig = pkgs.vimUtils.buildVimPlugin {
-  #   name = "nvim-lspconfig";
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "neovim";
-  #     repo = "nvim-lspconfig";
-  #     rev = "60133c47e0fd82556d7ca092546ebfa8d047466e";
-  #     sha256 = "15ysbbvxlgy1qx8rjv2i9pgjshldcs3m1ff0my2y5mnr3cpqb3s6";
-  #   };
-  #   buildPhase = ":";
-  # };
+  nvim-lspconfig = pkgs.vimUtils.buildVimPlugin {
+    name = "nvim-lspconfig";
+    src = pkgs.fetchFromGitHub {
+      owner = "neovim";
+      repo = "nvim-lspconfig";
+      rev = "60133c47e0fd82556d7ca092546ebfa8d047466e";
+      sha256 = "15ysbbvxlgy1qx8rjv2i9pgjshldcs3m1ff0my2y5mnr3cpqb3s6";
+    };
+    buildPhase = ":";
+  };
+
+  completion-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "completion-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-lua";
+      repo = "completion-nvim";
+      rev = "92f26db4233aff7c61b7f48c63e6f3d82183208b";
+      sha256 = "0k8dl72f3w9dvvb51abr23j2cjd80hp918m16133n5mdqihn7v80";
+    };
+  };
 
 }

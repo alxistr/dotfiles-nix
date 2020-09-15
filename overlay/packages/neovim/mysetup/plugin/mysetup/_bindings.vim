@@ -37,7 +37,13 @@ nnoremap <Leader>ll :source .session.vim<CR>
 
 
 noremap <silent> <C-l> :noh<CR><C-l>
+
 imap <M-j> <Down>
 imap <M-k> <Up>
 imap <M-h> <Left>
 imap <M-l> <Right>
+
+cnoremap <M-j> <Down>
+cnoremap <M-k> <Up>
+cnoremap <M-h> <Left>
+cnoremap <M-l> <Right>
