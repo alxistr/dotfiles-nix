@@ -5,7 +5,6 @@ set list
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set cursorline
 set mouse=a
 set incsearch
 set colorcolumn=80
@@ -17,6 +16,9 @@ set nowrap
 set completeopt-=preview
 set autoread
 set viminfo='500
+
+set nocursorline
+set nocursorcolumn
 
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
