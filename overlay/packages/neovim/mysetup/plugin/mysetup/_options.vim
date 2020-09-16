@@ -20,3 +20,7 @@ set viminfo='500
 
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
+
+set langmap=
+set langmap+=,ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ
+set langmap+=,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
