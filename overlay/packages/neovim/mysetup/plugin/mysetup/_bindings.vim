@@ -11,6 +11,15 @@ nnoremap <Leader>bk :bprevious<CR>:bdelete! #<CR>
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprevious<CR>
 
+nnoremap <Leader>tc :tabnew<CR>
+nnoremap <Leader>tn :tabnext<CR>
+nnoremap <Leader>tp :tabprevious<CR>
+
+nnoremap <Leader>cc :copen<CR>
+nnoremap <Leader>cq :cclose<CR>
+nnoremap <Leader>cj :cnext<CR>
+nnoremap <Leader>ck :cprev<CR>
+
 nnoremap <Leader>sa :Ag<CR>
 nnoremap <Leader>sw :Ag <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>sf :Files<CR>
@@ -38,6 +47,7 @@ nnoremap <Leader>ll :source .session.vim<CR>
 
 noremap <silent> <C-l> :noh<CR><C-l>
 
+
 imap <M-j> <Down>
 imap <M-k> <Up>
 imap <M-h> <Left>
@@ -47,3 +57,16 @@ cnoremap <M-j> <Down>
 cnoremap <M-k> <Up>
 cnoremap <M-h> <Left>
 cnoremap <M-l> <Right>
+
+
+" let i = 1
+" while i <= 9
+"     execute 'nnoremap <Leader>' . i . ' :' . i . 'wincmd w<CR>'
+"     let i = i + 1
+" endwhile
+
+
+" nnoremap <silent> <M-h> zC
+" nnoremap <silent> <M-s> zO
+" nnoremap <silent> <C-M-h> zM
+" nnoremap <silent> <C-M-s> zR

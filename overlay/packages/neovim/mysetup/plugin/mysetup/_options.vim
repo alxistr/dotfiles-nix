@@ -17,7 +17,7 @@ set completeopt-=preview
 set autoread
 set viminfo='500
 
-set nocursorline
+set cursorline
 set nocursorcolumn
 
 set completeopt=menuone,noinsert,noselect

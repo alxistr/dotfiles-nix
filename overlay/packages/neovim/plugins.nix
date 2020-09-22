@@ -3,14 +3,41 @@
   mysetup = pkgs.vimUtils.buildVimPlugin {
     name = "mysetup";
     src = ./mysetup;
+
+    buildPhase = ''
+      compile () {
+        filename=$1
+        output=$(pwd)/$filename
+        output=''${output/\.fnl/\.lua}
+        output=''${output/\/fnl\//\/lua\/}
+        echo "Compile $filename to $output"
+        mkdir -p $(dirname $output)
+        ${fennel}/bin/fennel --compile $filename > $output
+      }
+
+      echo "Compile fennel files..."
+
+      find . -type f -name "*.fnl" | \
+      while read filename; do
+        filename=$(realpath --relative-to="$(pwd)" "$filename")
+        compile "$filename";
+      done
+
+      echo "Cleanup fennel sources..."
+      rm -r $(pwd)/fnl
+
+      # ${pkgs.tree}/bin/tree $out
+
+    '';
+
     postInstall = ''
       mkdir -p $target/lua/deps/
       find ${fennel} \
          -type f -name "*.lua" \
          -exec cp {} $target/lua/deps/ \;
-      ${fennel}/bin/fennel --compile \
-         $src/fnl/mysetup.fnl > $target/lua/mysetup.lua
+      # ${pkgs.tree}/bin/tree $target
     '';
+
   };
 
   fennel-vim = pkgs.vimUtils.buildVimPlugin {

@@ -1,6 +1,6 @@
 [options]
-font = Source Code Pro 10
-geometry = 1000x400
+font = Roboto Mono for Powerline 12
+geometry = 1050x950
 icon_name = terminal
 scrollback_lines = 10000
 

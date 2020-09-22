@@ -1,4 +1,7 @@
-(let [fennel (require :deps.fennel)]
+(local fennel (require :deps.fennel))
+
+(do
+  ; install fnl loader
   (table.insert (or package.loaders
                     package.searchers)
                 fennel.searcher)
@@ -8,6 +11,8 @@
            (string.gsub ".lua$" ".fnl"))
        (tset fennel :path)))
 
-(let [variables (require :mysetup.globals)]
-  (each [key value (pairs variables)]
-    (tset vim.g key value)))
+(global s
+  {: fennel
+   :fnldo #(-> (vim.fn.expand "%")
+               (fennel.dofile))
+   :text (require :mysetup.text)})

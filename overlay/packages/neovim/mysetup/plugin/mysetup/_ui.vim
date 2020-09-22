@@ -10,6 +10,8 @@ endfunction
 function EnableLightTheme()
   set background=light
   colorscheme gruvbox8
+  hi CursorLine ctermbg=231 guibg=Grey90
+  hi CursorLineNr ctermfg=172 ctermbg=231 gui=bold guifg=Brown
 endfunction
 
 function ToggleTheme()
@@ -22,10 +24,9 @@ endfunction
 
 augroup colorfixes
   au!
-  au WinNew * set nocursorline nocursorcolumn
-  nnoremap <Leader>ttt :call ToggleTheme()<CR>
-  nnoremap <Leader>ttd :call EnableDarkTheme()<CR>
-  nnoremap <Leader>ttl :call EnableLightTheme()<CR>
+  nnoremap <silent> <Leader>ttt :call ToggleTheme()<CR>
+  nnoremap <silent> <Leader>ttd :call EnableDarkTheme()<CR>
+  nnoremap <silent> <Leader>ttl :call EnableLightTheme()<CR>
 augroup END
 
 au VimEnter * call EnableDarkTheme()
