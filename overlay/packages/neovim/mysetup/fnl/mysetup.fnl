@@ -13,6 +13,8 @@
 
 (global s
   {: fennel
-   :fnldo #(-> (vim.fn.expand "%")
-               (fennel.dofile))
+   :pp #(print (vim.inspect $))
+   :fnleval #(fennel.eval $)
+   :fnlfile #(-> (vim.fn.expand (or $ "%"))
+                 (fennel.dofile))
    :text (require :mysetup.text)})

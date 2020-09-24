@@ -26,6 +26,7 @@ with lib; with types;
       # gthumb
       krita
       # aseprite-unfree
+      xournal
 
       transmission-gtk
 

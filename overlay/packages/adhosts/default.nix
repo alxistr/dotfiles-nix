@@ -4,7 +4,7 @@ let whitelist = pkgs.writeTextFile {
   name = "adhosts-whitelist";
   text = ''
     binance.com
-  ''; 
+  '';
 }; in
 
 stdenv.mkDerivation rec {
@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
   buildPhase = ''
     grep -Fv -f ${whitelist} $src | \
     awk '/^0.0.0.0 / { printf "address=/%s/0.0.0.0\n", $2 }' > \
-    $out 
+    $out
   '';
   installPhase = ":";
 }
