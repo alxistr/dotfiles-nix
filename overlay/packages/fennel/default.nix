@@ -16,12 +16,13 @@ in
 
 stdenv.mkDerivation {
    name = "fennel";
+   version = "0.0.6";
 
    src = fetchFromGitHub {
      owner = "bakpakin";
      repo = "Fennel";
-     rev = "336b0ecbda38c26d8bc68820748376f2f0e3a99a";
-     sha256 = "12555nnqph3f3gfvfc314dgisr11xf4nhx7wdgwfvwvmmvia4aq0";
+     rev = "03263b8bea5ccf928978920f5082e42bc69c9ad8";
+     sha256 = "1sm52gph523nzjrl3nx2kw7nbx4gcridghxm1ld801wd1pskwszf";
    };
 
    buildInputs = [ env-lua ];

@@ -9,4 +9,4 @@ augroup vimfiles
 augroup END
 
 command! -nargs=1 Fnl :lua s.fnleval(<f-args>)
-command! -nargs=? -complete=file FnlFile :lua s.fnlfile(<f-args>)
+command! -nargs=? -complete=file FnlFile :Fnl (s.fnlfile <f-args>)
