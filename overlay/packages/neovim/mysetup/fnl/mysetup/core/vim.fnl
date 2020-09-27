@@ -1,4 +1,14 @@
-(local {: partition : tuples->table} (require :mysetup.core.fun))
+(->> (require :mysetup.core.fun)
+     (local {: partition : tuples->table}))
+
+(fn set-attrs [m ...]
+  (if (= 1 (length [...]))
+   (each [name value (pairs ...)]
+     (tset m name value))
+   (->> [...]
+        (partition 2)
+        (tuples->table)
+        (g!))))
 
 (fn fmt! [f ...]
   (string.format f ...))
@@ -15,26 +25,15 @@
         cmd (. opts :cmd)]
     (fmt! "au %s %s %s" event pattern cmd)))
 
-(fn g! [...]
-  (if (= 1 (length [...]))
-    (each [name value (pairs ...)]
-      (vim.api.nvim_set_var name value))
-    (->> [...]
-         (partition 2)
-         (tuples->table)
-         (g!))))
-
-(fn o! [...]
-  (if (= 1 (length [...]))
-    (each [name value (pairs ...)]
-      (vim.api.nvim_set_option name value))
-    (->> [...]
-         (partition 2)
-         (tuples->table)
-         (g!))))
+(fn g! [...] (set-attrs vim.g ...))
+(fn o! [...] (set-attrs vim.o ...))
+(fn bo! [...] (set-attrs vim.bo ...))
+(fn wo! [...] (set-attrs vim.wo ...))
 
 {: fmt!
  : au
  : vim!
  : g!
- : o!}
+ : o!
+ : bo!
+ : wo!}

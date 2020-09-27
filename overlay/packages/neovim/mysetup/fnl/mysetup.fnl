@@ -1,9 +1,53 @@
-(require :mysetup.core.fennel)
 (require-macros :mysetup.core.macro)
-
+(require :mysetup.core.fennel)
 (->> (require :mysetup.core.vim)
      (local {: au : fmt! : vim!
-             : g! : o!}))
+             : g! : o! : wo!}))
+
+; options
+
+(do
+  (-> {:autoread true
+       :tabstop 4
+       :shiftwidth 4
+       :mouse "a"
+       :expandtab true
+       :incsearch true
+       :tags "tags"
+       :completeopt (-> ["menuone" "noinsert" "noselect"]
+                        (table.concat ","))
+       :clipboard "unnamedplus"
+       :shortmess "filnxtToOFc"
+       :viminfo "'500"}
+      (o!))
+
+  (-> {:nu true
+       :list true
+       :cursorline true
+       :cursorcolumn false
+       :colorcolumn "80"
+       :wrap false
+       :foldmethod "indent"
+       :foldenable false}
+      (wo!))
+
+  (-> {:showbreak "↪\\"
+       :listchars (-> ["tab:→\\ "
+                       "eol:↲"
+                       "nbsp:·"
+                       "space:·"
+                       "trail:␠"
+                       "extends:⟩"
+                       "precedes:⟨"]
+                      (table.concat ","))}
+      (o!))
+
+  (-> {:langmap (-> ["ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                     "фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"]
+                    (table.concat ","))}
+      (o!))
+
+  nil)
 
 ; misc
 
