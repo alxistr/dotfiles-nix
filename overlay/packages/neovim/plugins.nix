@@ -18,7 +18,7 @@
       echo "Compile fennel files..."
       (
         cd fnl/
-        find . -type f -name "*.fnl" -not -name "*-macro.fnl" | \
+        find . -type f -name "*.fnl" -not -name "*macro.fnl" | \
         while read filename; do
           filename=$(realpath --relative-to="$(pwd)" "$filename")
           compile "$filename";
@@ -28,7 +28,7 @@
       echo "Cleanup fennel sources..."
       (
         cd fnl/
-        find . -type f -name "*.fnl" -not -name "*-macro.fnl" -delete
+        find . -type f -name "*.fnl" -not -name "*macro.fnl" -delete
       )
       # rm -r fnl
 

@@ -1,25 +1,72 @@
-(local fennel (require :deps.fennel))
+(require :mysetup.core.fennel)
+(require-macros :mysetup.core.macro)
 
-(require :mysetup.au)
+(->> (require :mysetup.core.vim)
+     (local {: au : fmt! : vim!
+             : g! : o!}))
+
+; misc
 
 (do
-  ; install fnl loader
-  (table.insert (or package.loaders
-                    package.searchers)
-                fennel.searcher)
-  (->> (-> package.path
-           (string.gsub "/lua/" "/fnl/")
-           (string.gsub ".lua;" ".fnl;")
-           (string.gsub ".lua$" ".fnl"))
-       (tset fennel :path)))
+  (augroup "misc"
+    (-> (au {:event "CursorHold"
+             :cmd "checktime"})
+        (vim!)))
 
-(global s
-  {: fennel
+  (augroup "helpfiles"
+    (each [_ event (pairs ["BufRead"
+                           "BufEnter"])]
+      (-> (au {: event
+               :pattern "*/doc/*"
+               :cmd "wincmd L"})
+          (vim!))))
 
-   :pp #(print (vim.inspect $))
+  (augroup "trimfiles"
+    (each [_ filetype (pairs ["python"
+                              "javascript"
+                              "fennel"
+                              "go"
+                              "conf"
+                              "vim"
+                              "lua"
+                              "erlang"
+                              "clojure"
+                              "nix"])]
+      (-> (au {:event "FileType"
+               :pattern filetype
+               :cmd (au {:event "BufWritePre"
+                         :cmd "%s/\\s\\+$//e"})})
+          (vim!)))))
 
-   :fnleval #(fennel.eval $)
-   :fnlfile #(-> (vim.fn.expand (or $ "%"))
-                 (fennel.dofile))
+; magit
 
-   :text (require :mysetup.text)})
+(do
+  (-> {:magit_default_show_all_files 0
+       :magit_default_fold_level 0}
+      (g!)))
+
+; parinfer
+
+(do
+  (-> {:parinfer_mode "smart"
+       :parinfer_force_balance 1}
+      (g!))
+
+  (augroup "parinfer"
+    (each [_ filetype (pairs ["clojure"
+                              "racket"
+                              "lisp"
+                              "scheme"
+                              "hy"
+                              "fennel"])]
+      (-> (au {:event "FileType"
+               :pattern filetype
+               :cmd "ParinferOn"})
+          (vim!)))))
+
+; magit
+
+(do
+  (-> {:magit_default_show_all_files 0
+       :magit_default_fold_level 0}
+      (g!)))

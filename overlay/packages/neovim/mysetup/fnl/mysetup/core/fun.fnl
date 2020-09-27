@@ -59,6 +59,12 @@
         (tappend memo [key value]))
       (reduce {} col)))
 
+(fn tuples->table [col]
+  (reduce (fn [memo [key value]]
+            (tappend memo value key))
+          {}
+          col))
+
 (fn map-indexed [col]
   (-> (fn [memo item]
         (tappend memo item))
@@ -108,13 +114,18 @@
         (s.pp)))
 
   (do
-    (s.pp (partition 3 (range 12))))
+    (->> [:a "ok" :b "wtf" :c "wow"]
+         (partition 2)
+         (tuples->table)
+         (s.pp))
+    (s.pp (partition 3 (range 12)))
 
-  nil)
+    nil))
 
 {: inc : dec
  : nil?
  : tappend : tdefault
  : range : irange
  : filter : map : reduce
- : tuples : map-indexed : partition}
+ : tuples->table : tuples
+ : map-indexed : partition}

@@ -8,5 +8,5 @@ augroup vimfiles
   au FileType vim nnoremap <buffer> <localleader>lf :source %<CR>
 augroup END
 
-command! -nargs=1 Fnl :lua s.fnleval(<f-args>)
-command! -nargs=? -complete=file FnlFile :Fnl (s.fnlfile <f-args>)
+command! -nargs=1 Fnl :lua fnleval(<f-args>)
+command! -nargs=? -complete=file FnlFile :Fnl (fnlfile <f-args>)
