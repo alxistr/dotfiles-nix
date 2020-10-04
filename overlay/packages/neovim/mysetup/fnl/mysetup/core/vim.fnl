@@ -8,7 +8,7 @@
    (->> [...]
         (partition 2)
         (tuples->table)
-        (g!))))
+        (set-attrs m))))
 
 (fn fmt! [f ...]
   (string.format f ...))

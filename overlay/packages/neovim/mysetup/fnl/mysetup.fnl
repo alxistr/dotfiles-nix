@@ -14,7 +14,9 @@
        :expandtab true
        :incsearch true
        :tags "tags"
-       :completeopt (-> ["menuone" "noinsert" "noselect"]
+       :completeopt (-> ["menuone"
+                         "noinsert"
+                         "noselect"]
                         (table.concat ","))
        :clipboard "unnamedplus"
        :shortmess "filnxtToOFc"
@@ -45,9 +47,7 @@
   (-> {:langmap (-> ["ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                      "фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"]
                     (table.concat ","))}
-      (o!))
-
-  nil)
+      (o!)))
 
 ; misc
 

@@ -29,7 +29,6 @@ let
         start = [
           mysetup
           vim-nix
-          gruvbox
           vim-gruvbox8
           (callPackage ./parinfer-rust.nix { })
           vim-airline

@@ -8,12 +8,12 @@ nnoremap <Leader><Leader> :Buffers<CR>
 nnoremap <Leader>bb :Buffers<CR>
 nnoremap <Leader>bd :bprevious<CR>:bdelete #<CR>
 nnoremap <Leader>bk :bprevious<CR>:bdelete! #<CR>
-nnoremap <Leader>bn :bnext<CR>
-nnoremap <Leader>bp :bprevious<CR>
+nnoremap <Leader>bj :bnext<CR>
+nnoremap <Leader>bk :bprevious<CR>
 
-nnoremap <Leader>tc :tabnew<CR>
-nnoremap <Leader>tn :tabnext<CR>
-nnoremap <Leader>tp :tabprevious<CR>
+nnoremap <Leader>tn :tabnew<CR>
+nnoremap <Leader>tj :tabnext<CR>
+nnoremap <Leader>tk :tabprevious<CR>
 
 nnoremap <Leader>cc :copen<CR>
 nnoremap <Leader>cq :cclose<CR>

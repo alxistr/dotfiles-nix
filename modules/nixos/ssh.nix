@@ -15,6 +15,10 @@ with lib; with types;
       default = [ ];
       type = listOf str;
     };
+    matchs = mkOption {
+      default = null;
+      type = attrs;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -29,6 +33,12 @@ with lib; with types;
     };
     programs.mosh.enable = true;
     programs.ssh.startAgent = cfg.agent;
+
+    home-manager.users."user".programs.ssh = (mkIf (cfg.matchs != null) {
+      enable = true;
+      matchBlocks = cfg.matchs;
+    });
+
   };
 
 }
