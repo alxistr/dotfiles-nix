@@ -16,7 +16,7 @@ with lib; with types;
       type = listOf str;
     };
     matchs = mkOption {
-      default = null;
+      default = { };
       type = attrs;
     };
   };
@@ -34,7 +34,7 @@ with lib; with types;
     programs.mosh.enable = true;
     programs.ssh.startAgent = cfg.agent;
 
-    home-manager.users."user".programs.ssh = (mkIf (cfg.matchs != null) {
+    home-manager.users."user".programs.ssh = (mkIf (cfg.matchs != { }) {
       enable = true;
       matchBlocks = cfg.matchs;
     });
