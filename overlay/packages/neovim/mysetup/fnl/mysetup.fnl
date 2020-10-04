@@ -1,8 +1,19 @@
 (require-macros :mysetup.core.macro)
 (require :mysetup.core.fennel)
 (->> (require :mysetup.core.vim)
-     (local {: au : fmt! : vim!
+     (local {: au : fmt! : vim! : map!
              : g! : o! : wo!}))
+
+(do
+  (augroup "testshit"
+    (comment (-> (au {:event "CursorMoved"
+                      :cmd (fn []
+                             (->> (vim.call "expand" "<cWORD>")
+                                  (fmt! "echo \"%s\"")
+                                  (vim.cmd)))})
+                (vim!))))
+
+  nil)
 
 ; options
 
@@ -114,3 +125,54 @@
   (-> {:magit_default_show_all_files 0
        :magit_default_fold_level 0}
       (g!)))
+
+; bindings
+
+(do
+  (-> {:mapleader " "
+       :maplocalleader "\\"}
+      (g!))
+
+  (-> {:fs ":w<CR>"
+
+       :<Leader> ":Buffers<CR>"
+       :bb ":Buffers<CR>"
+       :bd ":bprevious<CR>:bdelete #<CR>"
+       :bk ":bprevious<CR>:bdelete! #<CR>"
+       :bj ":bnext<CR>"
+       :bk ":bprevious<CR>"
+
+       :tc ":tabnew<CR>"
+       :tj ":tabnext<CR>"
+       :tk ":tabprevious<CR>"
+
+       :cc ":copen<CR>"
+       :cq ":cclose<CR>"
+       :cj ":cnext<CR>"
+       :ck ":cprev<CR>"
+
+       :sa ":Ag<CR>"
+       :sw ":Ag <C-R>=expand(\"<cword>\")<CR><CR>"
+       :sf ":Files<CR>"
+       :sr ":History<CR>"
+       :sm ":Marks<CR>"
+       :sc ":Commits<CR>"
+
+       :ar ":RangerEdit<CR>"
+       :as ":Deol<CR>"
+       :ag ":Magit<CR>"
+
+       :ga ":Git add %:p<CR><CR>"
+       :gs ":Gstatus<CR><C-w>L"
+       :gc ":Gcommit<CR><C-w>L"
+       :gi ":Git rebase -i<CR>"
+       :gbl ":Gblame<CR>"
+
+       ;:ttd ":set background=dark<CR>"
+       ;:ttl ":set background=light<CR>"
+       :tl ":set wrap!<CR>"
+
+       :ls ":mksession! .session.vim<CR>"
+       :ll ":source .session.vim<CR>"}
+
+      (map! :leader? true)))

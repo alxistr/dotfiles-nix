@@ -9,6 +9,12 @@
     (tset t key value)
     t))
 
+(fn tpop [t key default]
+  (let [value (or (. t key)
+                  default)]
+    (tset t key nil)
+    value))
+
 (fn tdefault [t key default]
   (let [v (. t key)]
     (when (nil? v)
@@ -78,54 +84,78 @@
           memo))
       (reduce {} (map-indexed col))))
 
+(fn extends [t p]
+  (reduce (fn [memo [k v]]
+            (tset memo k v)
+            memo)
+          t
+          (tuples p)))
+
+(fn defaults [t p]
+  (reduce (fn [memo [k v]]
+            (tdefault memo k v))
+          t
+          (tuples p)))
+
 (comment
   (do
-    (s.pp (reduce #(+ $1 $2) 0 [1 2 3 4]))
-    (s.pp (map #(* $1 $1) [1 2 3 4]))
-    (s.pp (filter #(= 0 (% $ 2)) [1 2 3 4])))
+    (pp (extends {:a :a} {:a 10 :b :b :c :c}))
+    (pp (defaults {:a :a} {:a 10 :b :b :c :c})))
 
   (do
-    (s.pp (range 10))
-    (s.pp (range 0 10 2))
-    (s.pp (range 10 15))
-    (s.pp (range 15 10))
-    (s.pp (range 15 10)))
+    (let [t {:a :a :b 2 :c 3}]
+     (pp (tpop t :a "abc"))
+     (pp (tpop t :no "xyz"))
+     (pp t)))
+
+  (do
+    (pp (reduce #(+ $1 $2) 0 [1 2 3 4]))
+    (pp (map #(* $1 $1) [1 2 3 4]))
+    (pp (filter #(= 0 (% $ 2)) [1 2 3 4])))
+
+  (do
+    (pp (range 10))
+    (pp (range 0 10 2))
+    (pp (range 10 15))
+    (pp (range 15 10))
+    (pp (range 15 10)))
 
   (do
     (-> ["ok" "wtf" "wow"]
         (tuples)
-        (s.pp))
+        (pp))
     (-> {:a "ok" :b "wtf" :c "wow"}
         (tuples)
-        (s.pp))
+        (pp))
     (-> ["ok" "wtf" "wow"]
         (map-indexed)
-        (s.pp))
+        (pp))
     (-> {:a "ok" :b "wtf" :c "wow"}
         (map-indexed)
-        (s.pp))
+        (pp))
     (-> ["ok" "wtf" "wow"]
         (tuples)
         (map-indexed)
-        (s.pp))
+        (pp))
     (-> {:a "ok" :b "wtf" :c "wow"}
         (tuples)
         (map-indexed)
-        (s.pp)))
+        (pp)))
 
   (do
     (->> [:a "ok" :b "wtf" :c "wow"]
          (partition 2)
          (tuples->table)
-         (s.pp))
-    (s.pp (partition 3 (range 12)))
+         (pp))
+    (pp (partition 3 (range 12)))
 
     nil))
 
 {: inc : dec
  : nil?
- : tappend : tdefault
+ : tappend : tdefault : tpop
  : range : irange
  : filter : map : reduce
  : tuples->table : tuples
- : map-indexed : partition}
+ : map-indexed : partition
+ : extends : defaults}
