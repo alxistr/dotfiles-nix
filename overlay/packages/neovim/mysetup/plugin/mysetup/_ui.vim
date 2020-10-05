@@ -10,8 +10,11 @@ endfunction
 function EnableLightTheme()
   set background=light
   colorscheme gruvbox8
-  hi CursorLine ctermbg=231 guibg=Grey90
-  hi CursorLineNr ctermfg=172 ctermbg=231 gui=bold guifg=Brown
+  hi CursorColumn ctermbg=229 guibg=Grey90
+  hi CursorLine ctermbg=229 guibg=Grey90
+  hi CursorLineNr ctermfg=172 ctermbg=229 gui=bold guifg=Brown
+  " hi CursorLine ctermbg=231 guibg=Grey90
+  " hi CursorLineNr ctermfg=172 ctermbg=231 gui=bold guifg=Brown
 endfunction
 
 function ToggleTheme()

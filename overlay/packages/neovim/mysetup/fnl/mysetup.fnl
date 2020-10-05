@@ -1,19 +1,9 @@
-(require-macros :mysetup.core.macro)
 (require :mysetup.core.fennel)
 (->> (require :mysetup.core.vim)
-     (local {: au : fmt! : vim! : map!
-             : g! : o! : wo!}))
-
-(do
-  (augroup "testshit"
-    (comment (-> (au {:event "CursorMoved"
-                      :cmd (fn []
-                             (->> (vim.call "expand" "<cWORD>")
-                                  (fmt! "echo \"%s\"")
-                                  (vim.cmd)))})
-                (vim!))))
-
-  nil)
+     (local {: augroup : au
+             : fmt! : vim!
+             : g! : o! : wo! : bo!
+             : nmap! : icmap!}))
 
 ; options
 
@@ -25,13 +15,22 @@
        :expandtab true
        :incsearch true
        :tags "tags"
-       :completeopt (-> ["menuone"
-                         "noinsert"
-                         "noselect"]
-                        (table.concat ","))
+       :completeopt ["menuone"
+                     "noinsert"
+                     "noselect"]
        :clipboard "unnamedplus"
        :shortmess "filnxtToOFc"
-       :viminfo "'500"}
+       :viminfo "'500"
+       :showbreak "↪\\"
+       :listchars ["tab:→\\ "
+                   "eol:↲"
+                   "nbsp:·"
+                   "space:·"
+                   "trail:␠"
+                   "extends:⟩"
+                   "precedes:⟨"]
+       :langmap ["ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                 "фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"]}
       (o!))
 
   (-> {:nu true
@@ -42,56 +41,34 @@
        :wrap false
        :foldmethod "indent"
        :foldenable false}
-      (wo!))
-
-  (-> {:showbreak "↪\\"
-       :listchars (-> ["tab:→\\ "
-                       "eol:↲"
-                       "nbsp:·"
-                       "space:·"
-                       "trail:␠"
-                       "extends:⟩"
-                       "precedes:⟨"]
-                      (table.concat ","))}
-      (o!))
-
-  (-> {:langmap (-> ["ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                     "фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"]
-                    (table.concat ","))}
-      (o!)))
+      (wo!)))
 
 ; misc
 
 (do
   (augroup "misc"
-    (-> (au {:event "CursorHold"
-             :cmd "checktime"})
-        (vim!)))
+           {:event "CursorHold"
+            :cmd "checktime"})
 
   (augroup "helpfiles"
-    (each [_ event (pairs ["BufRead"
-                           "BufEnter"])]
-      (-> (au {: event
-               :pattern "*/doc/*"
-               :cmd "wincmd L"})
-          (vim!))))
+           {:event ["BufRead" "BufEnter"]
+            :pattern "*/doc/*"
+            :cmd "wincmd L"})
 
   (augroup "trimfiles"
-    (each [_ filetype (pairs ["python"
-                              "javascript"
-                              "fennel"
-                              "go"
-                              "conf"
-                              "vim"
-                              "lua"
-                              "erlang"
-                              "clojure"
-                              "nix"])]
-      (-> (au {:event "FileType"
-               :pattern filetype
-               :cmd (au {:event "BufWritePre"
-                         :cmd "%s/\\s\\+$//e"})})
-          (vim!)))))
+           {:event "FileType"
+            :pattern ["python"
+                      "javascript"
+                      "fennel"
+                      "go"
+                      "conf"
+                      "vim"
+                      "lua"
+                      "erlang"
+                      "clojure"
+                      "nix"]
+            :cmd (au {:event "BufWritePre"
+                      :cmd "%s/\\s\\+$//e"})}))
 
 ; magit
 
@@ -108,16 +85,14 @@
       (g!))
 
   (augroup "parinfer"
-    (each [_ filetype (pairs ["clojure"
-                              "racket"
-                              "lisp"
-                              "scheme"
-                              "hy"
-                              "fennel"])]
-      (-> (au {:event "FileType"
-               :pattern filetype
-               :cmd "ParinferOn"})
-          (vim!)))))
+           {:event "FileType"
+            :pattern ["clojure"
+                      "racket"
+                      "lisp"
+                      "scheme"
+                      "hy"
+                      "fennel"]
+            :cmd "ParinferOn"}))
 
 ; magit
 
@@ -135,7 +110,7 @@
 
   (-> {:fs ":w<CR>"
 
-       :<Leader> ":Buffers<CR>"
+       :<leader> ":Buffers<CR>"
        :bb ":Buffers<CR>"
        :bd ":bprevious<CR>:bdelete #<CR>"
        :bk ":bprevious<CR>:bdelete! #<CR>"
@@ -168,11 +143,20 @@
        :gi ":Git rebase -i<CR>"
        :gbl ":Gblame<CR>"
 
-       ;:ttd ":set background=dark<CR>"
-       ;:ttl ":set background=light<CR>"
        :tl ":set wrap!<CR>"
 
        :ls ":mksession! .session.vim<CR>"
        :ll ":source .session.vim<CR>"}
 
-      (map! :leader? true)))
+      (nmap! :leader? true))
+
+  (-> {:<C-l> ":noh<CR><C-l>"}
+      (nmap! :silent? true))
+
+  (-> {:<M-j> "<Down>"
+       :<M-k> "<Up>"
+       :<M-h> "<Left>"
+       :<M-l> "<Right>"}
+      (icmap!))
+
+  nil)

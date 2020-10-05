@@ -1,5 +1,6 @@
 (if (= nil (. _G :lua_proxy))
-  (global lua_proxy {:counter 0}))
+  (global lua_proxy {:counter 0
+                     :funcs {}}))
 
 (fn get-id []
   (let [id lua_proxy.counter]
@@ -7,9 +8,9 @@
     id))
 
 (fn register-function [f]
-  (let [id (.. "lua_proxy_f__" (get-id))]
-    (tset _G id f)
-    id))
+  (let [id (get-id)]
+    (tset lua_proxy.funcs id f)
+    (.. "lua_proxy.funcs[" id "]")))
 
 {: get-id
  : register-function}

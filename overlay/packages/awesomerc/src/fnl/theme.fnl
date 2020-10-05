@@ -8,8 +8,7 @@
       bg_focus "#242424"
       fg_focus "#ebebff"]
 
-  {;:dir nix.path
-   :wallpaper nil
+  {:wallpaper nil
 
    ;;; Styles
    : font
@@ -17,13 +16,10 @@
    ;;; Colors
    : bg_normal
    : fg_normal
-
    : bg_focus
    : fg_focus
-
    :bg_urgent "#ffffff"
    :fg_urgent "#000000"
-
    :bg_systray bg_normal
 
    ;;; Borders
