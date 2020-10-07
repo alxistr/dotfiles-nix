@@ -179,8 +179,8 @@
                (vim! "colorscheme gruvbox8_hard"))
         toggle (fn []
                  (if (= vim.o.background "dark")
-                    (enable-light)
-                    (enable-dark)))]
+                    (light)
+                    (dark)))]
     (-> {:ttt toggle
          :ttd dark
          :ttl light}
@@ -207,4 +207,7 @@
         :pattern "vim"
         :cmd (fn []
                (-> {:lf ":source %<CR>"}
-                   (nmap! :local? true :buffer? true)))}))
+                   (nmap! :local? true :buffer? true)))})
+
+  (-> {:dl (fn [] (pp (. _G :lua_proxy)))}
+      (nmap! :leader? true)))
