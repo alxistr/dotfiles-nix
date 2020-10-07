@@ -22,4 +22,4 @@
     (vim! (au opts)))
   (vim! (fmt! "augroup END")))
 
-{: au : augroup}
+{: au : augroup :aug augroup}

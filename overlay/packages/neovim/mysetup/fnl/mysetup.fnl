@@ -1,6 +1,6 @@
 (require :mysetup.core.fennel)
 (->> (require :mysetup.core.vim)
-     (local {: augroup : au
+     (local {: au : aug
              : fmt! : vim!
              : g! : o! : wo! : bo!
              : nmap! : icmap!}))
@@ -46,29 +46,29 @@
 ; misc
 
 (do
-  (augroup "misc"
-           {:event "CursorHold"
-            :cmd "checktime"})
+  (aug "misc"
+       {:event "CursorHold"
+        :cmd "checktime"})
 
-  (augroup "helpfiles"
-           {:event ["BufRead" "BufEnter"]
-            :pattern "*/doc/*"
-            :cmd "wincmd L"})
+  (aug "helpfiles"
+       {:event ["BufRead" "BufEnter"]
+        :pattern "*/doc/*"
+        :cmd "wincmd L"})
 
-  (augroup "trimfiles"
-           {:event "FileType"
-            :pattern ["python"
-                      "javascript"
-                      "fennel"
-                      "go"
-                      "conf"
-                      "vim"
-                      "lua"
-                      "erlang"
-                      "clojure"
-                      "nix"]
-            :cmd (au {:event "BufWritePre"
-                      :cmd "%s/\\s\\+$//e"})}))
+  (aug "trimfiles"
+       {:event "FileType"
+        :pattern ["python"
+                  "javascript"
+                  "fennel"
+                  "go"
+                  "conf"
+                  "vim"
+                  "lua"
+                  "erlang"
+                  "clojure"
+                  "nix"]
+        :cmd (au {:event "BufWritePre"
+                  :cmd "%s/\\s\\+$//e"})}))
 
 ; magit
 
@@ -84,15 +84,15 @@
        :parinfer_force_balance 1}
       (g!))
 
-  (augroup "parinfer"
-           {:event "FileType"
-            :pattern ["clojure"
-                      "racket"
-                      "lisp"
-                      "scheme"
-                      "hy"
-                      "fennel"]
-            :cmd "ParinferOn"}))
+  (aug "parinfer"
+       {:event "FileType"
+        :pattern ["clojure"
+                  "racket"
+                  "lisp"
+                  "scheme"
+                  "hy"
+                  "fennel"]
+        :cmd "ParinferOn"}))
 
 ; magit
 
@@ -118,6 +118,7 @@
        :bk ":bprevious<CR>"
 
        :tc ":tabnew<CR>"
+       :tq ":tabclose<CR>"
        :tj ":tabnext<CR>"
        :tk ":tabprevious<CR>"
 
@@ -157,6 +158,53 @@
        :<M-k> "<Up>"
        :<M-h> "<Left>"
        :<M-l> "<Right>"}
-      (icmap!))
+      (icmap!)))
 
-  nil)
+; ui
+
+(do
+  (-> {:airline_theme "custom"
+       :gruvbox_italics 0
+       :gruvbox_bold 1}
+      (g!))
+
+  (let [light (fn []
+                (o! :background "light")
+                (vim! "colorscheme gruvbox8"
+                      "hi CursorColumn ctermbg=229 guibg=Grey90"
+                      "hi CursorLine ctermbg=229 guibg=Grey90"
+                      "hi CursorLineNr ctermfg=172 ctermbg=229 gui=bold guifg=Brown"))
+        dark (fn []
+               (o! :background "dark")
+               (vim! "colorscheme gruvbox8_hard"))
+        toggle (fn []
+                 (if (= vim.o.background "dark")
+                    (enable-light)
+                    (enable-dark)))]
+    (-> {:ttt toggle
+         :ttd dark
+         :ttl light}
+        (nmap! :leader? true :silent? true))
+
+    (-> (au {:event "VimEnter"
+             :cmd dark})
+        (vim!))))
+
+; repl
+
+(do
+  (aug "fennelfiles"
+       {:event "FileType"
+        :pattern "fennel"
+        :cmd (fn []
+               (-> {:lf (fn []
+                          (->> (vim.fn.expand "%")
+                               (fennel.dofile)))}
+                   (nmap! :local? true :buffer? true)))})
+
+  (aug "vimfiles"
+       {:event "FileType"
+        :pattern "vim"
+        :cmd (fn []
+               (-> {:lf ":source %<CR>"}
+                   (nmap! :local? true :buffer? true)))}))

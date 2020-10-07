@@ -11,9 +11,9 @@
            (string.gsub ".lua$" ".fnl"))
        (tset fennel :path)))
 
-(global fnleval #(fennel.eval $))
+;(global fnleval #(fennel.eval $))
 
-(global fnlfile #(-> (vim.fn.expand (or $ "%"))
-                     (fennel.dofile)))
+;(global fnlfile #(-> (vim.fn.expand (or $ "%"))
+;                     (fennel.dofile))))
 
 (global pp #(print (vim.inspect $)))
