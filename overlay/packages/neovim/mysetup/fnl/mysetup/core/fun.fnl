@@ -97,6 +97,11 @@
           t
           (tuples p)))
 
+(fn keys [col]
+  (-> (fn [memo value key]
+        (tappend memo key))
+      (reduce [] col)))
+
 (comment
   (do
     (pp (extends {:a :a} {:a 10 :b :b :c :c}))
@@ -158,4 +163,5 @@
  : filter : map : reduce
  : tuples->table : tuples
  : map-indexed : partition
- : extends : defaults}
+ : extends : defaults
+ : keys}

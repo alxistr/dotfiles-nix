@@ -199,8 +199,11 @@
         :cmd (fn []
                (-> {:lf (fn []
                           (->> (vim.fn.expand "%")
-                               (fennel.dofile)))}
-                   (nmap! :local? true :buffer? true)))})
+                               (fennel.dofile)
+                               (pp)))}
+                   (nmap! :local? true
+                          :buffer? true
+                          :silent? true)))})
 
   (aug "vimfiles"
        {:event "FileType"

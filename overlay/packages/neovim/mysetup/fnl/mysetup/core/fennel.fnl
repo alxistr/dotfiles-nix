@@ -1,7 +1,7 @@
 (global fennel (require :deps.fennel))
+(global fennelview (require :deps.fennelview))
 
 (do
-  ; install fnl loader
   (table.insert (or package.loaders
                     package.searchers)
                 fennel.searcher)
@@ -11,9 +11,4 @@
            (string.gsub ".lua$" ".fnl"))
        (tset fennel :path)))
 
-;(global fnleval #(fennel.eval $))
-
-;(global fnlfile #(-> (vim.fn.expand (or $ "%"))
-;                     (fennel.dofile))))
-
-(global pp #(print (vim.inspect $)))
+(global pp #(print (fennelview $1 $2)))
