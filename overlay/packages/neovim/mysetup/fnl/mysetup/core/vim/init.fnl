@@ -1,6 +1,6 @@
 (->> (require :mysetup.core.vim.runtime)
      (local {: join-if-table
-             : register-if-function
+             : proxy-if-function
              : vim!
              : fmt!}))
 (->> (require :mysetup.core.vim.au)
@@ -12,7 +12,7 @@
              : xmap! : omap! : imap! : lmap! : cmap!
              : tmap!}))
 
-{: join-if-table : register-if-function
+{: join-if-table : proxy-if-function
  : vim! : fmt!
  : au : augroup : aug
  : g! : o! : bo! : wo!

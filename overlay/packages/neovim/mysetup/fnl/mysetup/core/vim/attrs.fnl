@@ -1,6 +1,6 @@
 (->> (require :mysetup.core.fun)
      (local {: partition
-             : tuples->table}))
+             : seq->table}))
 (->> (require :mysetup.core.vim.runtime)
      (local {: join-if-table}))
 
@@ -9,9 +9,7 @@
    (each [name value (pairs ...)]
      (let [value (join-if-table value)]
        (tset m name value)))
-   (->> [...]
-        (partition 2)
-        (tuples->table)
+   (->> (seq->table [...])
         (set-attrs m))))
 
 (fn g! [...] (set-attrs vim.g ...))

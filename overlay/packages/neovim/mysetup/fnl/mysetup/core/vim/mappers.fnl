@@ -1,33 +1,26 @@
 (->> (require :mysetup.core.fun)
-     (local {: partition
-             : tuples
-             : tuples->table
-             : reduce
-             : map
+     (local {: seq->table
+             : map-kv
              : extends}))
 (->> (require :mysetup.core.vim.runtime)
-     (local {: register-if-function
+     (local {: proxy-if-function
              : vim!
              : fmt!}))
-(->> vim.api
-     (local {:nvim_set_keymap set-keymap
-             :nvim_buf_set_keymap set-buf-keymap}))
+(local {:nvim_set_keymap set-keymap
+        :nvim_buf_set_keymap set-buf-keymap}
+       vim.api)
 
 (fn extend-bindings [bindings leader? local?]
   (let [prefix (if
                  leader? "<leader>"
                  local? "<localleader>"
                  "")]
-    (->> bindings
-         (tuples)
-         (map (fn [[lhs rhs]]
-                [(.. prefix lhs) rhs]))
-         (tuples->table))))
+    (map-kv (fn [[lhs rhs]]
+              [(.. prefix lhs) rhs])
+            bindings)))
 
 (fn collect-opts [...]
-  (->> [...]
-       (partition 2)
-       (tuples->table)
+  (->> (seq->table [...])
        (extends {:noremap? true
                  :leader? false
                  :local? false
@@ -37,7 +30,7 @@
 
 (fn bind [mode lhs rhs buffer? keymap-opts]
   (let [rhs (->> {:prefix ":lua" :suffix "<CR>"}
-                 (register-if-function rhs))
+                 (proxy-if-function rhs))
         [buffer? buffer] (match buffer?
                            false [false nil]
                            true [true 0]
@@ -68,9 +61,5 @@
       :lmap! "l"
       :cmap! "c"
       :tmap! "t"}
-     (tuples)
-     (reduce (fn [memo [name mode]]
-               (->> (create-mapper mode)
-                    (tset memo name))
-               memo)
-             {}))
+     (map-kv (fn [[name mode]]
+               [name (create-mapper mode)])))

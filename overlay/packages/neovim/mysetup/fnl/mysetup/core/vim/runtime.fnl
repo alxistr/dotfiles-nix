@@ -1,5 +1,5 @@
 (->> (require :mysetup.core.lua-proxy)
-     (local {: register-function}))
+     (local {: create-proxy}))
 
 (fn fmt! [f ...]
   (string.format f ...))
@@ -9,13 +9,13 @@
     value
     (table.concat value (or sep ","))))
 
-(fn register-if-function [value opts]
+(fn proxy-if-function [value opts]
   (if (not= "function" (type value))
     value
     (let [{: suffix : prefix} (or opts {})]
       (fmt! "%s %s()%s"
             (or prefix "lua")
-            (register-function value)
+            (create-proxy value)
             (or suffix "")))))
 
 (fn vim! [...]
@@ -25,4 +25,4 @@
 {: fmt!
  : vim!
  : join-if-table
- : register-if-function}
+ : proxy-if-function}

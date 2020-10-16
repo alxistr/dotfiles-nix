@@ -172,8 +172,10 @@
                 (o! :background "light")
                 (vim! "colorscheme gruvbox8"
                       "hi CursorColumn ctermbg=229 guibg=Grey90"
-                      "hi CursorLine ctermbg=229 guibg=Grey90"
-                      "hi CursorLineNr ctermfg=172 ctermbg=229 gui=bold guifg=Brown"))
+                      "hi CursorLine ctermbg=none cterm=none"
+                      ;"hi CursorLine ctermbg=none cterm=underline"
+                      ;"hi CursorLine ctermbg=229 guibg=Grey90"
+                      "hi CursorLineNr cterm=bold ctermfg=black ctermbg=230 gui=bold guifg=Brown"))
         dark (fn []
                (o! :background "dark")
                (vim! "colorscheme gruvbox8_hard"))
@@ -193,17 +195,19 @@
 ; repl
 
 (do
-  (aug "fennelfiles"
-       {:event "FileType"
-        :pattern "fennel"
-        :cmd (fn []
-               (-> {:lf (fn []
-                          (->> (vim.fn.expand "%")
-                               (fennel.dofile)
-                               (pp)))}
-                   (nmap! :local? true
-                          :buffer? true
-                          :silent? true)))})
+  (let [fennel (require :deps.fennel)
+        pr #(->> (vim.fn.expand "%")
+                 (fennel.dofile)
+                 ($1))]
+    (aug "fennelfiles"
+         {:event "FileType"
+          :pattern "fennel"
+          :cmd (fn []
+                 (-> {:lf #(pr pp*)
+                      :lF #(pr pp)}
+                     (nmap! :local? true
+                            :buffer? true
+                            :silent? true)))}))
 
   (aug "vimfiles"
        {:event "FileType"
@@ -212,5 +216,7 @@
                (-> {:lf ":source %<CR>"}
                    (nmap! :local? true :buffer? true)))})
 
-  (-> {:dl (fn [] (pp (. _G :lua_proxy)))}
+  (-> {:dl (fn []
+             (let [p (require :mysetup.core.lua-proxy)]
+               (pp (. p :register))))}
       (nmap! :leader? true)))

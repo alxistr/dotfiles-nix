@@ -1,6 +1,6 @@
 (->> (require :mysetup.core.vim.runtime)
      (local {: join-if-table
-             : register-if-function
+             : proxy-if-function
              : vim!
              : fmt!}))
 
@@ -12,7 +12,7 @@
                        "*")
                     (join-if-table))
         cmd (-> (. opts :cmd)
-                (register-if-function))]
+                (proxy-if-function))]
     (fmt! "au %s %s %s" event pattern cmd)))
 
 (fn augroup [name ...]

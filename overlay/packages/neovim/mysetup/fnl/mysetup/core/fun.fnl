@@ -102,6 +102,16 @@
         (tappend memo key))
       (reduce [] col)))
 
+(fn map-kv [f col]
+  (->> col
+       (tuples)
+       (map f)
+       (tuples->table)))
+
+(fn seq->table [s]
+   (->> (partition 2 s)
+        (tuples->table)))
+
 (comment
   (do
     (pp (extends {:a :a} {:a 10 :b :b :c :c}))
@@ -163,5 +173,6 @@
  : filter : map : reduce
  : tuples->table : tuples
  : map-indexed : partition
+ : map-kv : seq->table
  : extends : defaults
  : keys}
