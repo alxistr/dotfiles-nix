@@ -3,10 +3,16 @@
              : map-kv}))
 (local {:nvim_buf_set_lines set-buf-lines
         :nvim_create_buf create-buf
+        :nvim_list_bufs list-bufs
+        :nvim_buf_is_valid is-valid-buf?
+        :nvim_buf_is_loaded is-loaded-buf?
         :nvim_buf_set_name set-buf-name
         :nvim_buf_get_name get-buf-name
         :nvim_buf_set_option set-buf-option
-        :nvim_list_bufs list-bufs
+        :nvim_buf_get_option get-buf-option
+        :nvim_buf_set_var set-buf-var
+        :nvim_buf_get_var get-buf-var
+        :nvim_get_current_buf get-current-buf
         :nvim_set_current_buf set-current-buf}
        vim.api)
 
@@ -31,12 +37,20 @@
        (map-kv (fn [[_ id]]
                  [(f id) id]))))
 
-(fn get-buffers []
+(fn get-buffers-names []
   (collect-buffers get-buf-name))
 
-(let [buf (create-buffer "*temp*" :buftype "nofile")]
-  (set-current-buf buf)
-  (->> ["line1"
-        "line2"
-        "line3"]
-       (append-to-buffer buf)))
+{: set-buffer-text
+ : append-to-buffer
+ : create-buffer
+ : collect-buffers
+ : get-buffers-names
+
+ : is-valid-buf?
+ : is-loaded-buf?
+
+ : set-current-buf : get-current-buf
+
+ : set-buf-name : get-buf-name
+ : set-buf-option : get-buf-option
+ : set-buf-var : get-buf-var}

@@ -196,27 +196,24 @@
 
 (do
   (let [fennel (require :deps.fennel)
-        pr #(->> (vim.fn.expand "%")
-                 (fennel.dofile)
-                 ($1))]
+        pr (fn [f] #(->> (vim.fn.expand "%")
+                         (fennel.dofile)
+                         (f)))]
     (aug "fennelfiles"
          {:event "FileType"
           :pattern "fennel"
-          :cmd (fn []
-                 (-> {:lf #(pr pp*)
-                      :lF #(pr pp)}
-                     (nmap! :local? true
-                            :buffer? true
-                            :silent? true)))}))
+          :cmd #(-> {:lf (pr pp*)
+                     :lF (pr pp)}
+                    (nmap! :local? true
+                           :buffer? true
+                           :silent? true))}))
 
   (aug "vimfiles"
        {:event "FileType"
         :pattern "vim"
-        :cmd (fn []
-               (-> {:lf ":source %<CR>"}
-                   (nmap! :local? true :buffer? true)))})
+        :cmd #(-> {:lf ":source %<CR>"}
+                  (nmap! :local? true :buffer? true))})
 
-  (-> {:dl (fn []
-             (let [p (require :mysetup.core.lua-proxy)]
-               (pp (. p :register))))}
+  (-> {:dl #(-> (require :mysetup.core.lua-proxy-cache)
+                (pp))}
       (nmap! :leader? true)))

@@ -112,60 +112,6 @@
    (->> (partition 2 s)
         (tuples->table)))
 
-(comment
-  (do
-    (pp (extends {:a :a} {:a 10 :b :b :c :c}))
-    (pp (defaults {:a :a} {:a 10 :b :b :c :c})))
-
-  (do
-    (let [t {:a :a :b 2 :c 3}]
-     (pp (tpop t :a "abc"))
-     (pp (tpop t :no "xyz"))
-     (pp t)))
-
-  (do
-    (pp (reduce #(+ $1 $2) 0 [1 2 3 4]))
-    (pp (map #(* $1 $1) [1 2 3 4]))
-    (pp (filter #(= 0 (% $ 2)) [1 2 3 4])))
-
-  (do
-    (pp (range 10))
-    (pp (range 0 10 2))
-    (pp (range 10 15))
-    (pp (range 15 10))
-    (pp (range 15 10)))
-
-  (do
-    (-> ["ok" "wtf" "wow"]
-        (tuples)
-        (pp))
-    (-> {:a "ok" :b "wtf" :c "wow"}
-        (tuples)
-        (pp))
-    (-> ["ok" "wtf" "wow"]
-        (map-indexed)
-        (pp))
-    (-> {:a "ok" :b "wtf" :c "wow"}
-        (map-indexed)
-        (pp))
-    (-> ["ok" "wtf" "wow"]
-        (tuples)
-        (map-indexed)
-        (pp))
-    (-> {:a "ok" :b "wtf" :c "wow"}
-        (tuples)
-        (map-indexed)
-        (pp)))
-
-  (do
-    (->> [:a "ok" :b "wtf" :c "wow"]
-         (partition 2)
-         (tuples->table)
-         (pp))
-    (pp (partition 3 (range 12)))
-
-    nil))
-
 {: inc : dec
  : nil?
  : tappend : tdefault : tpop
