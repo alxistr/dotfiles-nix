@@ -1,5 +1,5 @@
-(->> (require :mysetup.core.fun)
-     (local {: map : tuples->table}))
+(import :mysetup.core.fun
+        {: map : tuples->table})
 
 (->> [:cword
       :cWORD

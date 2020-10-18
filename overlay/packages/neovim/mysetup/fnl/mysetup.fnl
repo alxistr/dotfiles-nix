@@ -1,8 +1,8 @@
 (ns :mysetup
   (:import :mysetup.core)
   (:import :mysetup.core.vim
-           {: au : aug
-            : fmt! : vim!
+           {: fmt! : vim!
+            : au : aug
             : g! : o! : wo! : bo!
             : nmap! : icmap!}))
 

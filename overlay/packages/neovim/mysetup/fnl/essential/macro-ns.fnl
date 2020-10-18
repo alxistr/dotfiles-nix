@@ -5,7 +5,9 @@
 (fn import [path binds]
   (if-not binds
     `(require ,path)
-    `(->> (require ,path)
+    `(->> ,(if (sym? path)
+             path
+             `(require ,path))
           (local ,binds))))
 
 (fn in-ns [name]
@@ -14,9 +16,10 @@
 (fn unpack-ns-rest [r]
   (let [t []]
     (each [_ [k & v] (pairs r)]
-      (tpush t `(,(sym (tostring k))
-                  ,(unpack v))))
-    t))
+      (tpush t (list (sym (tostring k))
+                     (unpack v))))
+    (when t
+      t)))
 
 (fn ns [name ...]
   `[(var ,module
@@ -32,45 +35,42 @@
         module#))
     ,(unpack-ns-rest [...])])
 
-
 (fn unpack-rest [m ...]
   (let [r [...]]
     (when (< 0 (length r))
       (m (unpack r)))))
 
 (fn def- [name value ...]
-  `[(local ,name
-      (let [name# ,(tostring name)
-            value# ,value
-            locals# (. ,module :ns/locals)]
-        (tset locals# name# value#)
-        value#))
-    ,(unpack-rest def- ...)])
+  (-> `[(local ,name
+          (let [name# ,(tostring name)
+                value# ,value
+                locals# (. ,module :ns/locals)]
+            (tset locals# name# value#)
+            value#))
+        ,(unpack-rest def- ...)]
+      (unpack)))
 
 (fn def [name value ...]
-  `[(local ,name
-      (let [name# ,(tostring name)
-            value# ,value]
-        (tset ,module name# value#)
-        value#))
-    ,(unpack-rest def ...)])
+  (-> `[(local ,name
+          (let [name# ,(tostring name)
+                value# ,value]
+            (tset ,module name# value#)
+            value#))
+        ,(unpack-rest def ...)]
+      (unpack)))
 
 (fn defonce- [name value ...]
-  `[(def- ,name (or (. (. ,module :ns/locals)
-                       ,(tostring name))
-                    ,value))
-    ,(unpack-rest defonce- ...)])
+  (-> `[(def- ,name (or (. (. ,module :ns/locals)
+                           ,(tostring name))
+                        ,value))
+        ,(unpack-rest defonce- ...)]
+      (unpack)))
 
 (fn defonce [name value ...]
-  `[(def ,name (or (. ,module ,(tostring name))
-                   ,value))
-    ,(unpack-rest defonce ...)])
-
-(fn to-symbols [t]
-  (let [t* []]
-    (each [name (pairs t)]
-      (tpush t* (sym name)))
-    t*))
+  (-> `[(def ,name (or (. ,module ,(tostring name))
+                       ,value))
+        ,(unpack-rest defonce ...)]
+      (unpack)))
 
 (fn with-do [t]
   (let [t* (list)]

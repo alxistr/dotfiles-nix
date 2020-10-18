@@ -12,11 +12,18 @@
 (fn m.tpush [t val]
   `(tset ,t (+ 1 (length ,t)) ,val))
 
+(fn m.tforeach [f col]
+  `(let [col# ,col
+         f# ,f]
+     (each [k# v# (pairs col#)]
+       (f# v# k#))
+     col#))
+
 (fn m.tmap [f col]
   `(let [col# ,col
          f# ,f]
      (each [k# v# (pairs col#)]
-       (tset col# k# (f# v#)))
+       (tset col# k# (f# v# k#)))
      col#))
 
 (fn m.treduce [f initial col]

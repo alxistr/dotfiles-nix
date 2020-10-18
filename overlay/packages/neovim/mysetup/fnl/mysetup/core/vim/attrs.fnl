@@ -1,10 +1,11 @@
-(->> (require :mysetup.core.fun)
-     (local {: partition
-             : seq->table}))
-(->> (require :mysetup.core.vim.runtime)
-     (local {: join-if-table}))
+(ns :mysetup.core.vim.attrs
+    (:import :mysetup.core.fun
+             {: partition
+              : seq->table})
+    (:import :mysetup.core.vim.runtime
+             {: join-if-table}))
 
-(fn set-attrs [m ...]
+(defn set-attrs [m ...]
   (if (= 1 (length [...]))
    (each [name value (pairs ...)]
      (let [value (join-if-table value)]
@@ -12,9 +13,7 @@
    (->> (seq->table [...])
         (set-attrs m))))
 
-(fn g! [...] (set-attrs vim.g ...))
-(fn o! [...] (set-attrs vim.o ...))
-(fn bo! [...] (set-attrs vim.bo ...))
-(fn wo! [...] (set-attrs vim.wo ...))
-
-{: g! : o! : bo! : wo!}
+(defn g! [...] (set-attrs vim.g ...))
+(defn o! [...] (set-attrs vim.o ...))
+(defn bo! [...] (set-attrs vim.bo ...))
+(defn wo! [...] (set-attrs vim.wo ...))

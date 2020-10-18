@@ -1,17 +1,11 @@
-(comment
-  (ns :mysetup.core.pretty-print
-      (:import :mysetup.core)
-      (:import :mysetup.core.vim
-               {: au : aug
-                : fmt! : vim!
-                : g! : o! : wo! : bo!
-                : nmap! : icmap!})))
-
-(local fennelview (require :deps.fennelview))
-(local get-or-create (require :mysetup.tools.scratch))
-(->> (require :mysetup.core.neovim.buffer)
-     (local {: append-to-buffer
-             : set-current-buf}))
+(ns :mysetup.core.pretty-print
+    (:import :deps.fennelview
+             fennelview)
+    (:import :mysetup.tools.scratch
+             get-or-create)
+    (:import :mysetup.core.neovim.buffer
+             {: append-to-buffer
+              : set-current-buf}))
 
 (fn pop-option [opts option default]
   (let [value (. opts option)]

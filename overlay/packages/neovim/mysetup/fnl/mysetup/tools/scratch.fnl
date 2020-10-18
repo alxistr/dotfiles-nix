@@ -1,9 +1,9 @@
-(->> (require :mysetup.core.vim)
-     (local {: fmt! : vim!}))
-(->> (require :mysetup.core.neovim.buffer)
-     (local {: create-buffer
-             : is-valid-buf?
-             : is-loaded-buf?}))
+(import :mysetup.core.vim
+        {: fmt! : vim!})
+(import :mysetup.core.neovim.buffer
+        {: create-buffer
+         : is-valid-buf?
+         : is-loaded-buf?})
 
 (fn get-cache []
   (require :mysetup.tools.scratch-cache))
