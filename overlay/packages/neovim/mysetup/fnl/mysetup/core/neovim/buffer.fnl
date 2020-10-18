@@ -14,7 +14,7 @@
         :nvim_buf_get_var get-buf-var
         :nvim_get_current_buf get-current-buf
         :nvim_set_current_buf set-current-buf}
-       vim.api)
+  vim.api)
 
 (fn set-buffer-text [buffer lines]
   (set-buf-lines buffer 0 -1 false lines))

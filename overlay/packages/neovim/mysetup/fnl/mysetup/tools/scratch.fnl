@@ -33,22 +33,4 @@
                         :buflisted true
                         ...)])))
 
-(comment
-  (let [name "*event*"
-        [created id] (get-or-create name)
-        loaded? (is-loaded-buf? id)]
-    (when (not loaded?)
-      (new-cached name
-                  :buftype "nofile"
-                  :swapfile false
-                  :buflisted true
-                  ...))
-    (pp* {: id
-          : created
-          : loaded?})))
-
-(comment
-  (if (not (is-loaded-buf? buffer))
-   [false nil]))
-
 get-or-create

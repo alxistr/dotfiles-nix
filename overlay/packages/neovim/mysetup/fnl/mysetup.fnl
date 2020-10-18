@@ -1,9 +1,10 @@
-(require :mysetup.core.fennel)
-(->> (require :mysetup.core.vim)
-     (local {: au : aug
-             : fmt! : vim!
-             : g! : o! : wo! : bo!
-             : nmap! : icmap!}))
+(ns :mysetup
+  (:import :mysetup.core)
+  (:import :mysetup.core.vim
+           {: au : aug
+            : fmt! : vim!
+            : g! : o! : wo! : bo!
+            : nmap! : icmap!}))
 
 ; options
 
@@ -181,8 +182,8 @@
                (vim! "colorscheme gruvbox8_hard"))
         toggle (fn []
                  (if (= vim.o.background "dark")
-                    (light)
-                    (dark)))]
+                   (light)
+                   (dark)))]
     (-> {:ttt toggle
          :ttd dark
          :ttl light}
@@ -191,6 +192,15 @@
     (-> (au {:event "VimEnter"
              :cmd dark})
         (vim!))))
+
+; scratch
+
+(-> (au {:event "VimEnter"
+         :cmd #(let [get-or-create (require :mysetup.tools.scratch)
+                     {: set-current-buf} (require :mysetup.core.neovim.buffer)
+                     [_ buffer] (get-or-create "*scratch*" :filetype "fennel")]
+                 (set-current-buf buffer))})
+    (vim!))
 
 ; repl
 
@@ -212,8 +222,10 @@
        {:event "FileType"
         :pattern "vim"
         :cmd #(-> {:lf ":source %<CR>"}
-                  (nmap! :local? true :buffer? true))})
+                  (nmap! :local? true
+                         :buffer? true))})
 
   (-> {:dl #(-> (require :mysetup.core.lua-proxy-cache)
-                (pp))}
-      (nmap! :leader? true)))
+                (pp {:switch-to true}))}
+      (nmap! :leader? true
+             :silent? true)))
