@@ -12,13 +12,15 @@
         output=''${output/\/fnl\//\/lua\/}
         echo "Compile $filename to $output"
         mkdir -p $(dirname $output)
-        ${fennel}/bin/fennel --compile $filename > $output
+        ${fennel}/bin/fennel \
+            --load essential/patch.fnl \
+            --compile $filename > $output
       }
 
       echo "Compile fennel files..."
       (
         cd fnl/
-        find . -type f -name "*.fnl" -not -name "*macro.fnl" | \
+        find . -type f -name "*.fnl" -not -name "*macro*.fnl" | \
         while read filename; do
           filename=$(realpath --relative-to="$(pwd)" "$filename")
           compile "$filename";
@@ -28,7 +30,7 @@
       echo "Cleanup fennel sources..."
       (
         cd fnl/
-        find . -type f -name "*.fnl" -not -name "*macro.fnl" -delete
+        find . -type f -name "*.fnl" -not -name "*macro*.fnl" -delete
       )
       # rm -r fnl
 
@@ -41,6 +43,7 @@
       find ${fennel} \
          -type f -name "*.lua" \
          -exec cp {} $target/lua/deps/ \;
+      find $target -name "*.lua"
       # ${pkgs.tree}/bin/tree $target
     '';
 
