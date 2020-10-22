@@ -1,41 +1,11 @@
-{ pkgs, fennel }:
+{ pkgs, fennel, fennelns }:
 {
   mysetup = pkgs.vimUtils.buildVimPlugin {
     name = "mysetup";
     src = ./mysetup;
 
     buildPhase = ''
-      compile () {
-        filename=$1
-        output=$(pwd)/$filename
-        output=''${output/\.fnl/\.lua}
-        output=''${output/\/fnl\//\/lua\/}
-        echo "Compile $filename to $output"
-        mkdir -p $(dirname $output)
-        ${fennel}/bin/fennel \
-            --load essential/patch.fnl \
-            --compile $filename > $output
-      }
-
-      echo "Compile fennel files..."
-      (
-        cd fnl/
-        find . -type f -name "*.fnl" -not -name "*macro*.fnl" | \
-        while read filename; do
-          filename=$(realpath --relative-to="$(pwd)" "$filename")
-          compile "$filename";
-        done
-      )
-
-      echo "Cleanup fennel sources..."
-      (
-        cd fnl/
-        find . -type f -name "*.fnl" -not -name "*macro*.fnl" -delete
-      )
-      # rm -r fnl
-
-      # ${pkgs.tree}/bin/tree .
-
+      ${fennelns}/bin/fnlnsd $out fnl/
     '';
 
     postInstall = ''
@@ -44,7 +14,7 @@
          -type f -name "*.lua" \
          -exec cp {} $target/lua/deps/ \;
       find $target -name "*.lua"
-      # ${pkgs.tree}/bin/tree $target
+      ${pkgs.tree}/bin/tree $target
     '';
 
   };

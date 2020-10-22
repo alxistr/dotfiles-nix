@@ -37,4 +37,14 @@
 (fn m.tjoin [sep col]
   `(table.concat ,col ,sep))
 
+(comment
+  (fn m.tta [binds]
+    (let [memo []]
+      (each [k v (pairs binds)]
+        (tset memo (+ 1 (length memo)) [k v]))
+      `(let [t# ,memo]
+         (->> t#
+              (vim.inspect)
+              (print))))))
+
 m

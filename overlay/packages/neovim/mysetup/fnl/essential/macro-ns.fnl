@@ -10,19 +10,34 @@
              `(require ,path))
           (local ,binds))))
 
+(comment
+  ,(when (and (table? binds)
+              (sym? path))
+     `(print (vim.inspect [,(sym? path)
+                           ,(table? binds)]))))
+
+(comment
+  (let [t []]
+    (each [k v (pairs binds)]
+      (when (sym? v)
+        (->> `(tset ,module ,(tostring v) ,v)
+             (table.insert t))))
+    `(when ,module
+       ,t)))
+
 (fn in-ns [name]
   `(set ,module (require ,name)))
 
 (fn unpack-ns-rest [r]
   (let [t []]
     (each [_ [k & v] (pairs r)]
-      (tpush t (list (sym (tostring k))
-                     (unpack v))))
-    (when t
-      t)))
+      (->> (list (sym (tostring k))
+                 (unpack v))
+           (table.insert t)))
+    t))
 
 (fn ns [name ...]
-  `[(var ,module
+  [`(var ,module
       (let [name# ,(tostring name)
             loaded# (. package.loaded name#)
             module# (if (= :table (type loaded#))
@@ -33,7 +48,7 @@
              (tset module# :ns/locals))
         (tset package.loaded name# module#)
         module#))
-    ,(unpack-ns-rest [...])])
+   (unpack-ns-rest [...])])
 
 (fn unpack-rest [m ...]
   (let [r [...]]
@@ -41,36 +56,32 @@
       (m (unpack r)))))
 
 (fn def- [name value ...]
-  (-> `[(local ,name
-          (let [name# ,(tostring name)
-                value# ,value
-                locals# (. ,module :ns/locals)]
-            (tset locals# name# value#)
-            value#))
-        ,(unpack-rest def- ...)]
-      (unpack)))
+  `[(local ,name
+      (let [name# ,(tostring name)
+            value# ,value
+            locals# (. ,module :ns/locals)]
+        (tset locals# name# value#)
+        value#))
+    ,(unpack-rest def- ...)])
 
 (fn def [name value ...]
-  (-> `[(local ,name
-          (let [name# ,(tostring name)
-                value# ,value]
-            (tset ,module name# value#)
-            value#))
-        ,(unpack-rest def ...)]
-      (unpack)))
+  `[(local ,name
+      (let [name# ,(tostring name)
+            value# ,value]
+        (tset ,module name# value#)
+        value#))
+    ,(unpack-rest def ...)])
 
 (fn defonce- [name value ...]
-  (-> `[(def- ,name (or (. (. ,module :ns/locals)
-                           ,(tostring name))
-                        ,value))
-        ,(unpack-rest defonce- ...)]
-      (unpack)))
+  `[(def- ,name (or (. (. ,module :ns/locals)
+                       ,(tostring name))
+                    ,value))
+    ,(unpack-rest defonce- ...)])
 
 (fn defonce [name value ...]
-  (-> `[(def ,name (or (. ,module ,(tostring name))
-                       ,value))
-        ,(unpack-rest defonce ...)]
-      (unpack)))
+  `[(def ,name (or (. ,module ,(tostring name))
+                   ,value))
+    ,(unpack-rest defonce ...)])
 
 (fn with-do [t]
   (let [t* (list)]

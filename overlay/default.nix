@@ -42,6 +42,7 @@ let inherit (super) callPackage; in
   awesomerc-debug = callPackage ./packages/awesomerc/debug.nix { };
 
   fennel = callPackage ./packages/fennel { };
+  fennelns = callPackage ./packages/fennelns { };
 
   bandcamp-downloader = callPackage ./packages/bandcamp-downloader { pythonPackages = self.python36Packages; };
   scdl = callPackage ./packages/scdl { pythonPackages = self.python37Packages; };

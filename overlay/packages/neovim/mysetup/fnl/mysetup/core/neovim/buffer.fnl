@@ -42,17 +42,3 @@
   (collect-buffers get-buf-name))
 
 ; todo
-{: set-buffer-text
- : append-to-buffer
- : create-buffer
- : collect-buffers
- : get-buffers-names
-
- : is-valid-buf?
- : is-loaded-buf?
-
- : set-current-buf : get-current-buf
-
- : set-buf-name : get-buf-name
- : set-buf-option : get-buf-option
- : set-buf-var : get-buf-var}
