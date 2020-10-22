@@ -205,7 +205,7 @@
 ; repl
 
 (do
-  (let [fennel (require :deps.fennel)
+  (let [fennel (require :fennel)
         pr (fn [f] #(->> (vim.fn.expand "%")
                          (fennel.dofile)
                          (f)))]

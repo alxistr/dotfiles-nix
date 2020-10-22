@@ -5,16 +5,17 @@
     src = ./mysetup;
 
     buildPhase = ''
-      ${fennelns}/bin/fnlnsd $out fnl/
+      ${fennelns}/bin/fnlnsd $(pwd) $src/fnl/
+      echo "* Cleanup fennel sources..."
+      (
+        cd fnl/
+        find . -type f -name "*.fnl" -not -name "*macro*.fnl" -delete
+      )
+      # ${pkgs.tree}/bin/tree $out
     '';
 
     postInstall = ''
-      mkdir -p $target/lua/deps/
-      find ${fennel} \
-         -type f -name "*.lua" \
-         -exec cp {} $target/lua/deps/ \;
-      find $target -name "*.lua"
-      ${pkgs.tree}/bin/tree $target
+      # ${pkgs.tree}/bin/tree $target
     '';
 
   };

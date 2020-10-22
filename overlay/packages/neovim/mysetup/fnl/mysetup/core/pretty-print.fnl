@@ -1,5 +1,5 @@
 (ns :mysetup.core.pretty-print
-    (:import :deps.fennelview
+    (:import :fennelview
              fennelview)
     (:import :mysetup.tools.scratch
              get-or-create)

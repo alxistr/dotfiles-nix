@@ -65,6 +65,11 @@ let
     copy-macroses "${./fnl}"
     copy-macroses "$src"
 
+    echo "* Coping fennel..."
+    find ${fennel} \
+       -type f -name "*.lua" \
+       -exec cp -f {} $dst/lua/ \;
+
     echo "* Done"
 
     # ${pkgs.tree}/bin/tree $dst

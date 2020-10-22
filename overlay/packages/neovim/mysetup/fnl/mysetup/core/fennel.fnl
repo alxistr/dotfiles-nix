@@ -1,4 +1,4 @@
-(let [fennel (require :deps.fennel)]
+(let [fennel (require :fennel)]
   (table.insert (or package.loaders
                     package.searchers)
                 fennel.searcher)
