@@ -32,7 +32,7 @@
            (each [_ [k n b] (pairs [...])]
              (->> `(,(sym (tostring k)) ,n ,b)
                   (table.insert t))
-             (if (and (sym? n)
+             (if (and (or (sym? n) (= "string" (type n)))
                       b (table? b))
                (each [_ v (pairs b)]
                  (->> `(tset ,module ,(tostring v) ,v)
