@@ -1,8 +1,6 @@
 { pkgs, symlinkJoin, writeScriptBin, fennel }:
 
 let
-  # src = ./fnl;
-
   fnlns = writeScriptBin "fnlns" ''
     ${fennel}/bin/fennel \
        --add-fennel-path "${./fnl}/?.fnl" \
