@@ -29,4 +29,6 @@
 
   # qemu-user.aarch64 = true;
 
+  system.stateVersion = "19.03";
+
 }
