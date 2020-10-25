@@ -22,7 +22,7 @@ with lib; with types;
     ];
 
     home.activation.initial-termite-theme = ''
-      [[ -f "~/.config/termite/config" ]] || switch-termite-theme
+      [[ -f "~/.config/termite/config" ]] || switch-termite-theme || true
     '';
 
   };
