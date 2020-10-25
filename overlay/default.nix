@@ -62,8 +62,6 @@ let inherit (super) callPackage; in
     create-docker-template = callPackage ./packages/shell-tools/create-docker-template.nix { };
   };
 
-  # bzip2 = callPackage ./packages/xnview/bzip2.nix { };
-
   xi-editor = callPackage ({ rustPlatform, fetchFromGitHub }:
     rustPlatform.buildRustPackage rec {
       name = "xi-editor";
