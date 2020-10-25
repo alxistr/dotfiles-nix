@@ -28,6 +28,7 @@ with lib; with types;
       passwordAuthentication = false;
       permitRootLogin = mkForce "no";
       extraConfig = ''
+        AllowUsers *@127.0.0.0/8
         AllowUsers *@192.168.0.0/16
       '';
     };
