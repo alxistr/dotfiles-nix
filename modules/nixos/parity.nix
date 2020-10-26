@@ -48,7 +48,7 @@ in
 
 {
   options.own.parity = mkOption {
-    default = [ ];
+    default = { };
     type = types.attrsOf (submodule {
       options = {
         rpc-port = mkOption {

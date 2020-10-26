@@ -3,6 +3,13 @@
 with lib; with types;
 let own = config.own; in
 
+let
+  f2b-ignored-ips = (concatStringsSep " " (unique ([
+    "127.0.0.1"
+    "127.0.0.1/8"
+  ] ++ own.f2b-whitelist)));
+in
+
 {
   imports = [
     <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
@@ -18,9 +25,7 @@ let own = config.own; in
       type = bool;
     };
     own.f2b-whitelist = mkOption {
-      default = [
-        "127.0.0.1"
-      ];
+      default = [ ];
       type = listOf str;
     };
   };
@@ -47,6 +52,10 @@ let own = config.own; in
       };
     };
 
+    services.journald.extraConfig = ''
+      SystemMaxUse=100M
+    '';
+
     networking = {
       firewall = {
         allowPing = false;
@@ -68,14 +77,12 @@ let own = config.own; in
       fail2ban = {
         enable = true;
         jails.DEFAULT = mkForce (''
-          ignoreip = 127.0.0.1/8
+          ignoreip = ${f2b-ignored-ips}
           bantime = 2592000
           findtime = 600
           maxretry = 3
           backend = systemd
           enabled = true
-        '' + optionalString (own.f2b-whitelist != []) ''
-          ignoreip = ${concatStringsSep " " own.f2b-whitelist}
         '');
       };
 
