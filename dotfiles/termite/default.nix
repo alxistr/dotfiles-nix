@@ -3,13 +3,16 @@
 let cfg = config.nixos-config.own.gui; in
 with lib; with types;
 
+# let default-theme = "gruvbox-dark-custom"; in
+let default-theme = "gruvbox-light"; in
+
 {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       termite
       (pkgs.writeScriptBin "switch-termite-theme"
         ''
-          theme=''${1:-gruvbox-dark-custom}
+          theme=''${1:-${default-theme}}
           filename=${./themes}/$theme
           if [[ ! -f "$filename" ]]; then
             echo "theme $filename doesn't exist"

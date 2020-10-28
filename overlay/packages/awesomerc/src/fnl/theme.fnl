@@ -110,8 +110,8 @@
    ;;; Titlebar
    :titlebar_close_button_focus (path "titlebar/close_focus.png")
    :titlebar_close_button_normal (path "titlebar/close_normal.png")
-   :titlebar_minimize_button_normal (path "usr/share/awesome/:/default/titlebar/minimize_normal.png")
-   :titlebar_minimize_button_focus (path "usr/share/awesome/:/default/titlebar/minimize_focus.png")
+   ;:titlebar_minimize_button_normal (path "usr/share/awesome/:/default/titlebar/minimize_normal.png")
+   ;:titlebar_minimize_button_focus (path "usr/share/awesome/:/default/titlebar/minimize_focus.png")
    :titlebar_ontop_button_focus_active (path "titlebar/ontop_focus_active.png")
    :titlebar_ontop_button_normal_active (path "titlebar/ontop_normal_active.png")
    :titlebar_ontop_button_focus_inactive (path "titlebar/ontop_focus_inactive.png")

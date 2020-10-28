@@ -10,7 +10,7 @@
   (require :awful.autofocus)
   (require :signals)
 
-  (beautiful.init (require :theme))
+  (beautiful.init (require :theme-xresources))
 
   (set menubar.utils.terminal terminal)
 
