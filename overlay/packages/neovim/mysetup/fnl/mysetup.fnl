@@ -190,17 +190,18 @@
         (nmap! :leader? true :silent? true))
 
     (-> (au {:event "VimEnter"
-             :cmd dark})
+             :cmd light})
         (vim!))))
 
 ; scratch
 
-(-> (au {:event "VimEnter"
-         :cmd #(let [get-or-create (require :mysetup.tools.scratch)
-                     {: set-current-buf} (require :mysetup.core.neovim.buffer)
-                     [_ buffer] (get-or-create "*scratch*" :filetype "fennel")]
-                 (set-current-buf buffer))})
-    (vim!))
+(comment
+  (-> (au {:event "VimEnter"
+           :cmd #(let [get-or-create (require :mysetup.tools.scratch)
+                       {: set-current-buf} (require :mysetup.core.neovim.buffer)
+                       [_ buffer] (get-or-create "*scratch*" :filetype "fennel")]
+                   (set-current-buf buffer))})
+      (vim!)))
 
 ; repl
 

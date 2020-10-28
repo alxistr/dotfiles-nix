@@ -18,7 +18,7 @@ let default-theme = "dark"; in
             echo "theme $filename doesn't exist"
             return 1
           fi
-          ln -sf $filename ~/.xresources
+          ln -sf $filename ~/.Xresources
           xrdb $filename
         '')
     ];
@@ -57,7 +57,7 @@ let default-theme = "dark"; in
     };
 
     home.activation.initial-xresources = ''
-      [[ -f "~/.xresources" ]] || switch-xresources || true
+      [[ -f "~/.Xresources" ]] || switch-xresources || true
     '';
 
   };

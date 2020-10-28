@@ -28,7 +28,7 @@
        :bg_focus xrdb.color12
        :bg_urgent xrdb.color9
        :bg_minimize xrdb.color8
-       :bg_systray default.bg_normal
+       :bg_systray xrdb.background
 
        :fg_normal xrdb.foreground
        :fg_focus default.bg_normal
@@ -49,7 +49,7 @@
 
       (override default)))
 
-      ;(theme_assets.recolor_layout default.fg_normal)))
+      ; (theme_assets.recolor_layout default.fg_normal)))
       ; (theme-assets.recolor_titlebar default.fg_normal "normal")
       ; (theme-assets.recolor_titlebar (darker default.fg_normal -60) "normal" "hover")
       ; (theme-assets.recolor_titlebar xrdb.color1 "normal" "press")
