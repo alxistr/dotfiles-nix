@@ -1,9 +1,12 @@
 self: super:
 let inherit (super) callPackage; in
 {
-  flat-remix = callPackage ./packages/flat-remix { };
   i3lockpp = callPackage ./packages/i3lockpp { };
   adhosts = callPackage ./packages/adhosts { };
+
+  flat-remix = callPackage ./packages/flat-remix { };
+  gruvbox-light = callPackage ./packages/gruvbox/light { };
+  gruvbox-dark = callPackage ./packages/gruvbox/dark { };
 
   kind = callPackage ./packages/kind { };
   ferret = callPackage ./packages/ferret { };
@@ -40,6 +43,8 @@ let inherit (super) callPackage; in
 
   awesomerc = callPackage ./packages/awesomerc { };
   awesomerc-debug = callPackage ./packages/awesomerc/debug.nix { };
+
+  oomox = callPackage ./packages/oomox/debug.nix { };
 
   fennel = callPackage ./packages/fennel { };
   fennelns = callPackage ./packages/fennelns { };

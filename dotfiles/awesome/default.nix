@@ -32,12 +32,12 @@ with lib; with types;
     };
 
     home.file.".config/awesome/".source = "${pkgs.awesomerc.override {
-      wallpaper = "${pkgs.wallpapers}/pattern0.png";
+      wallpaper = "${pkgs.wallpapers}/pattern0-light-.png";
     }}/lua";
 
     programs.rofi = {
       enable = true;
-      theme = "gruvbox-dark";
+      theme = "gruvbox-light";
     };
 
     systemd.user.services.pasystray = {

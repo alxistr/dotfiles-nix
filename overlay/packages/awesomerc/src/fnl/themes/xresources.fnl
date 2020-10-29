@@ -2,7 +2,7 @@
       theme-assets (require :beautiful.theme_assets)
       xresources (require :beautiful.xresources)
       dpi xresources.apply_dpi
-      default (require :theme)
+      default (require :themes.default-dark)
       xrdb (xresources.get_current_theme)
       override (fn [a b]
                  (each [k v (pairs a)]

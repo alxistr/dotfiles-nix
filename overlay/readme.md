@@ -2,4 +2,6 @@
 - `nix-build -A i3lockpp shell.nix`
 - `nix-build -A my-emacs shell.nix`
 - `nix-build -A fennelns shell.nix`
+- `nix-build -A oomox shell.nix`
 - `nix-shell -A awesomerc-debug`
+- `nix-shell -A oomox`

@@ -9,7 +9,6 @@ let default-theme = "dark"; in
 {
   config = mkIf enabled {
     home.packages = with pkgs; [
-      lxappearance
       (pkgs.writeScriptBin "switch-xresources"
         ''
           theme=''${1:-${default-theme}}
@@ -39,14 +38,20 @@ let default-theme = "dark"; in
         '';
       };
 
+      # theme = {
+      #   name = "Arc-Dark"; package = pkgs.arc-theme;
+      # };
+
       theme = {
-        name = "Arc-Dark";
-        package = pkgs.arc-theme;
+        name = "gruvbox-light"; package = pkgs.gruvbox-light;
       };
 
+      # theme = {
+      #   name = "gruvbox-dark"; package = pkgs.gruvbox-dark;
+      # };
+
       iconTheme = {
-        name = "Flat-Remix-Blue-Dark";
-        package = pkgs.flat-remix;
+        name = "Numix"; package = pkgs.numix-icon-theme;
       };
 
     };
