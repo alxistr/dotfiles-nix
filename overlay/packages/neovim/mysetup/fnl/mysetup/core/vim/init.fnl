@@ -1,4 +1,4 @@
-(ns :mysetup.core.neovim
+(ns :mysetup.core.vim
     (:import :mysetup.core.vim.runtime
              {: join-if-table
               : proxy-if-function

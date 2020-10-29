@@ -1,19 +1,22 @@
-(local module-name :mysetup.core.lua-proxy-cache)
+(ns :mysetup.core.lua-proxy)
 
-(fn get-id []
-  (let [cache (require module-name)
-        id cache.counter]
+(defonce cache {:counter 0
+                :funcs {}})
+
+(defn get-id []
+  (let [id cache.counter]
     (tset cache :counter (+ id 1))
     id))
 
-(fn get-mapped [f]
-  (let [cache (require module-name)
-        id (get-id)]
+(defn get-mapped [f]
+  (let [id (get-id)]
     (tset cache.funcs id f)
     id))
 
-(fn create-proxy [f]
+(defn create-proxy [f]
   (let [id (get-mapped f)]
-    (.. "require(\"" module-name "\").funcs[" id "]")))
-
-{: create-proxy}
+    (.. "require(\""
+        :mysetup.core.lua-proxy
+        "\").cache.funcs["
+        id
+        "]")))

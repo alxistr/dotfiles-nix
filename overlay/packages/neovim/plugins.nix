@@ -16,6 +16,7 @@
 
     postInstall = ''
       # ${pkgs.tree}/bin/tree $target
+      find $target/lua/ -type f
     '';
 
   };

@@ -2,9 +2,11 @@
          "(require-macros :fennelns.macro-ns)")
      (local head))
 
+(local tail "(tail-ns)")
+
 (fn with-prelude* [f]
   (fn [str opts ...]
-    (-> (.. head str)
+    (-> (.. head str tail)
         (f opts ...))))
 
 (fn patch-fennel [fennel]
