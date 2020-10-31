@@ -5,18 +5,29 @@
     src = ./mysetup;
 
     buildPhase = ''
-      ${fennelns}/bin/fnlnsd $(pwd) $src/fnl/
-      echo "* Cleanup fennel sources..."
-      (
-        cd fnl/
-        find . -type f -name "*.fnl" -not -name "*macro*.fnl" -delete
-      )
-      # ${pkgs.tree}/bin/tree $out
+      dst=$(pwd)
+      rm -r $dst/fnl
+
+      echo "* Compile sources"
+      ${fennelns}/bin/fnlns-dir \
+          $src/fnl/ $dst/lua/
+
+      echo "* Copy macros"
+      ${fennelns}/bin/fnlns-cp-macro \
+          $src/fnl/ $dst/fnl/
+
+      echo "* Install fennel & fennelns"
+      ${fennelns}/bin/fnlns-install $dst/
+
+      echo "* Done"
+      # ${pkgs.tree}/bin/tree $dst
+
     '';
 
     postInstall = ''
       # ${pkgs.tree}/bin/tree $target
-      find $target/lua/ -type f
+      # find $target/fnl/ -type f
+      # find $target/lua/ -type f
     '';
 
   };

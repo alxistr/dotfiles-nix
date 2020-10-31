@@ -1,24 +1,38 @@
-(->> (.. "(require-macros :fennelns.macro-core)"
-         "(require-macros :fennelns.macro-ns)")
-     (local head))
+(local fennel (require :fennel))
 
-(local tail "(tail-ns)")
+(var macros-list [:fennelns.macro-core
+                  :fennelns.macro-ns])
 
-(fn with-prelude* [f]
-  (fn [str opts ...]
-    (-> (.. head str tail)
-        (f opts ...))))
+(fn get-head []
+  (var result "")
+  (each [_ l (pairs macros-list)]
+    (->> (.. "(require-macros \"" l "\")")
+         (.. result)
+         (set result)))
+  result)
+
+(fn wrapper [f]
+  (fn [str opts]
+    (-> (.. (get-head)
+            str
+            "(tail-ns)")
+        (f opts))))
+
+(fn patch [f k]
+  (->> (-> (. fennel k)
+           (f))
+       (tset fennel k)))
 
 (fn patch-fennel [fennel]
   (when (not (. fennel :patched))
-    (let [patch (fn [f k r]
-                  (->> (-> (. fennel (or r k))
-                           (f))
-                       (tset fennel k)))]
-      (patch with-prelude* :eval)
-      (patch with-prelude* :compile-string)
-      (tset fennel :patched true)
-      fennel)))
+    (patch wrapper :eval)
+    (patch wrapper :compile-string)
+    (tset fennel :patched true)
+    fennel))
 
-(let [fennel (require :fennel)]
-  (patch-fennel fennel))
+(fn add-macros [name]
+  (table.insert macros-list name))
+
+(patch-fennel fennel)
+
+{: add-macros}

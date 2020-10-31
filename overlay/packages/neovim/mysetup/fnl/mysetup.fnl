@@ -172,14 +172,16 @@
   (let [light (fn []
                 (o! :background "light")
                 (vim! "colorscheme gruvbox8"
+                      "hi Normal guibg=NONE ctermbg=NONE"
+                      "hi VertSplit guibg=NONE ctermbg=NONE"
                       "hi CursorColumn ctermbg=229 guibg=Grey90"
                       "hi CursorLine ctermbg=none cterm=none"
-                      ;"hi CursorLine ctermbg=none cterm=underline"
-                      ;"hi CursorLine ctermbg=229 guibg=Grey90"
                       "hi CursorLineNr cterm=bold ctermfg=black ctermbg=230 gui=bold guifg=Brown"))
         dark (fn []
                (o! :background "dark")
-               (vim! "colorscheme gruvbox8_hard"))
+               (vim! "colorscheme gruvbox8_hard"
+                     "hi Normal guibg=NONE ctermbg=NONE"
+                     "hi VertSplit guibg=NONE ctermbg=NONE"))
         toggle (fn []
                  (if (= vim.o.background "dark")
                    (light)
