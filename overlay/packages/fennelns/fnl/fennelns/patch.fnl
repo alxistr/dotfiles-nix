@@ -11,28 +11,28 @@
          (set result)))
   result)
 
+(fn patch-source [str]
+  (.. (get-head)
+      str
+      "(tail-ns)"))
+
 (fn wrapper [f]
-  (fn [str opts]
-    (-> (.. (get-head)
-            str
-            "(tail-ns)")
-        (f opts))))
+  (fn [str opts ...]
+    (-> (patch-source str)
+        (f opts ...))))
 
 (fn patch [f k]
   (->> (-> (. fennel k)
            (f))
        (tset fennel k)))
 
-(fn patch-fennel [fennel]
-  (when (not (. fennel :patched))
-    (patch wrapper :eval)
-    (patch wrapper :compile-string)
-    (tset fennel :patched true)
-    fennel))
+(fn static-patch []
+  (patch wrapper :compile-string))
 
 (fn add-macros [name]
   (table.insert macros-list name))
 
-(patch-fennel fennel)
-
-{: add-macros}
+{: get-head
+ : patch-source
+ : add-macros
+ : static-patch}

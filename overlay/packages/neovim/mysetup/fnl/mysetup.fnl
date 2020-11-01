@@ -191,9 +191,12 @@
          :ttl light}
         (nmap! :leader? true :silent? true))
 
-    (-> (au {:event "VimEnter"
-             :cmd light})
-        (vim!))))
+    (light)
+
+    (comment
+      (-> (au {:event "VimEnter"
+               :cmd (fn [] (light))})
+          (vim!)))))
 
 ; scratch
 
@@ -208,7 +211,7 @@
 ; repl
 
 (do
-  (let [fennel (require :fennel)
+  (let [fennel (require :fennelns.fennel)
         pr (fn [f] #(->> (vim.fn.expand "%")
                          (fennel.dofile)
                          (f)))]

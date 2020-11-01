@@ -6,6 +6,10 @@ function! airline#themes#custom#refresh()
   if &background == "dark"
     let IA = [ '#666666', '#3A3A3A', 242, 235 ]
   else
+    let s:SL[1] = 'NONE'
+    let s:SL[3] = 'NONE'
+    let s:SLNC[1] = 'NONE'
+    let s:SLNC[3] = 'NONE'
     let IA = s:SLNC
   endif
   let g:airline#themes#custom#palette.normal = airline#themes#generate_color_map(s:SL, s:SL, s:SL)

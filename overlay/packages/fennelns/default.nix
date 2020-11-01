@@ -1,10 +1,18 @@
-{ pkgs, symlinkJoin, writeScriptBin, fennel }:
+{ pkgs, symlinkJoin, writeText, writeScriptBin, fennel }:
 
 let
   fnlns = writeScriptBin "fnlns" ''
     ${fennel}/bin/fennel \
-       --add-fennel-path "${./fnl}/?.fnl" \
-       --load ${./fnl}/fennelns/patch.fnl \
+       --load ${writeText "static-patch.fnl" ''
+          (local fennel (require "fennel"))
+          (-> (or package.loaders package.searchers)
+              (table.insert fennel.searcher))
+          (->> fennel.path
+               (.. "${./fnl}/?.fnl;")
+               (set fennel.path))
+          ((-> (require :fennelns.patch)
+               (. :static-patch)))
+       ''} \
        $@
   '';
 
@@ -49,7 +57,7 @@ let
       dst=$2
       output="$dst$filename"
       output=''${output/\.fnl/\.lua}
-      echo "Compile $filename to $output"
+      # echo "Compile $filename to $output"
       mkdir -p "$(dirname $output)"
       ${fnlns-file}/bin/fnlns-file \
          $src/$filename > $output

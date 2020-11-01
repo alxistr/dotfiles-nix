@@ -3,8 +3,8 @@
 let enabled = config.nixos-config.own.gui.enable; in
 with lib; with types;
 
-let default-theme = "dark"; in
-# let default-theme = "light"; in
+# let default-theme = "dark"; in
+let default-theme = "light"; in
 
 {
   config = mkIf enabled {
@@ -38,21 +38,12 @@ let default-theme = "dark"; in
         '';
       };
 
-      # theme = {
-      #   name = "Arc-Dark"; package = pkgs.arc-theme;
-      # };
+      # theme = { name = "Arc-Dark"; package = pkgs.arc-theme; };
+      theme = { name = "gruvbox-light"; package = pkgs.gruvbox-light; };
+      # theme = { name = "gruvbox-dark"; package = pkgs.gruvbox-dark; };
 
-      theme = {
-        name = "gruvbox-light"; package = pkgs.gruvbox-light;
-      };
-
-      # theme = {
-      #   name = "gruvbox-dark"; package = pkgs.gruvbox-dark;
-      # };
-
-      iconTheme = {
-        name = "Numix"; package = pkgs.numix-icon-theme;
-      };
+      # iconTheme = { name = "Numix"; package = pkgs.numix-icon-theme; };
+      iconTheme = { name = "Flat-Remix-Red-Light"; package = pkgs.flat-remix; };
 
     };
 
