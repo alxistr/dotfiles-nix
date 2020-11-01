@@ -11,6 +11,9 @@
              `(require ,path))
           (local ,binds))))
 
+(fn use-macros [path]
+  `(require-macros ,path))
+
 (fn tail-ns []
   (assert ns-defined "namespace isn't defined")
   module)
@@ -73,6 +76,7 @@
 
 {: tail-ns
  : import
+ : use-macros
  : ns : in-ns
  : def : def-
  : defonce : defonce-

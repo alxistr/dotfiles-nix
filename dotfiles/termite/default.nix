@@ -4,7 +4,7 @@ let cfg = config.nixos-config.own.gui; in
 with lib; with types;
 
 # let default-theme = "gruvbox-dark-custom"; in
-let default-theme = "gruvbox-light"; in
+let default-theme = "gruvbox-light-custom"; in
 
 {
   config = mkIf cfg.enable {

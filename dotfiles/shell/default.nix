@@ -32,6 +32,8 @@
     bash-completion
     shell-tools.create-docker-template
     shell-tools.oom-pls
+    shell-tools.dump-colors
+    shell-tools.draw-in-palette
 
   ];
 

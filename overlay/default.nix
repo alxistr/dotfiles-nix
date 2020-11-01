@@ -63,6 +63,8 @@ let inherit (super) callPackage; in
     };
     bash-functions = callPackage ./packages/shell-tools/bash-functions.nix { };
     oom-pls = callPackage ./packages/shell-tools/oom-pls.nix { };
+    dump-colors = callPackage ./packages/shell-tools/dump-colors.nix { };
+    draw-in-palette = callPackage ./packages/shell-tools/draw-in-palette.nix { };
     create-docker-template = callPackage ./packages/shell-tools/create-docker-template.nix { };
   };
 

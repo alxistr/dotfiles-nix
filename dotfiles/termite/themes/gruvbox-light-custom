@@ -1,0 +1,46 @@
+[options]
+font = Roboto Mono for Powerline 12
+geometry = 1050x950
+icon_name = terminal
+scrollback_lines = 10000
+
+[colors]
+# hard contrast: background = #f9f5d7
+background = #fbf1c7
+# soft contrast: background = #f2e5bc
+foreground = #3c3836
+foreground_bold = #3c3836
+
+# light0 + gray
+color0 = #fbf1c7
+color8 = #796a5b
+
+# neutral_red + faded_red
+color1 = #9d0006
+color9 = #6a0000
+
+# neutral_green + faded_green
+color2 = #79740e
+color10 = #464100
+
+# neutral_yellow + faded_yellow
+color3 = #b57614
+color11 = #9c5d00
+
+# neutral_blue + faded_blue
+color4 = #458588
+color12 = #076678
+
+# neutral_purple + faded_purple
+color5 = #7e2f53
+color13 = #5c0c3e
+
+# neutral_aqua + faded_aqua
+color6 = #29623f
+color14 = #002f0c
+
+# dark4 + dark1
+color7 = #63564b
+color15 = #3c3836
+
+# vim: ft=dosini cms=#%s
