@@ -37,7 +37,7 @@
            bar (awful.wibar {:position "top"
                              :opacity .9
                              :screen screen
-                             :height 20})
+                             :height 22})
            clock (wibox.widget.textclock "%Y-%m-%d %a %H:%M " 1)]
        (layoutbox:buttons (layoutbox-buttons))
 

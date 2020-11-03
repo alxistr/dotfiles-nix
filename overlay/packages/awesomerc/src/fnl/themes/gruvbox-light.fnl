@@ -2,7 +2,7 @@
       nix (require :nix)
       path (fn [path] (.. nix.static path))
       ; font "DejaVu Sans Mono Book 8"
-      font "Roboto Mono for Powerline 8"
+      font "Roboto Mono for Powerline 9"
       bg_normal "#fbf1c7"
       fg_normal "#3c3836"
       bg_focus "#ebdbb2"]
