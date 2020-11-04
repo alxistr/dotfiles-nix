@@ -1,6 +1,6 @@
 (ns :mysetup.core)
 
-(defonce essential-loaded
+(defonce done?
   (do
     (require :mysetup.core.fennel)
     (require :mysetup.core.pretty-print)

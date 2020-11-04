@@ -200,13 +200,10 @@
 
 ; scratch
 
-(comment
-  (-> (au {:event "VimEnter"
-           :cmd #(let [get-or-create (require :mysetup.tools.scratch)
-                       {: set-current-buf} (require :mysetup.core.neovim.buffer)
-                       [_ buffer] (get-or-create "*scratch*" :filetype "fennel")]
-                   (set-current-buf buffer))})
-      (vim!)))
+(-> (au {:event "VimEnter"
+         :cmd #(let [{: initial-scratch!} (require :mysetup.tools.scratch)]
+                 (initial-scratch!))})
+    (vim!))
 
 ; repl
 

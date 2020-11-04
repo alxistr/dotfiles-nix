@@ -4,7 +4,9 @@
     (:import :mysetup.core.neovim.buffer
              {: create-buffer
               : is-valid-buf?
-              : is-loaded-buf?}))
+              : is-loaded-buf?
+              : empty-start?
+              : set-current-buf}))
 
 (defonce cache {:by-name {}})
 
@@ -28,7 +30,16 @@
     (if (and buffer (is-loaded-buf? buffer))
       [false buffer]
       [true (new-cached name
-                        :buftype "nofile"
+                        :buftype :nofile
                         :swapfile false
                         :buflisted true
                         ...)])))
+
+(defn initial-scratch! [if-empty?]
+  (let [if-empty? (if (= nil if-empty?)
+                    true
+                    if-empty?)]
+    (when (or (not if-empty?)
+              (and if-empty? empty-start?))
+      (let [[_ buffer] (get-or-create "*scratch*" :filetype "fennel")]
+        (set-current-buf buffer)))))

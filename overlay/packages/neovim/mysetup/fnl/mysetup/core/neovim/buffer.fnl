@@ -41,4 +41,7 @@
 (defn get-buffers-names []
   (collect-buffers get-buf-name))
 
-; todo
+(defonce empty-start?
+  (let [[first] (list-bufs)
+        name (get-buf-name first)]
+    (= "" name)))
