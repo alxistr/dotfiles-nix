@@ -41,5 +41,10 @@
                     if-empty?)]
     (when (or (not if-empty?)
               (and if-empty? empty-start?))
-      (let [[_ buffer] (get-or-create "*scratch*" :filetype "fennel")]
+      (let [[_ buffer] (get-or-create "*scratch*"
+                                      :filetype :fennel
+                                      :syntax :fennel)]
         (set-current-buf buffer)))))
+
+(defn open-scratch! []
+  (initial-scratch! false))

@@ -1,7 +1,8 @@
 (ns :mysetup.core.vim.au
+    (:import :mysetup.core.vim.vimify
+             {: proxy-if-function})
     (:import :mysetup.core.vim.runtime
              {: join-if-table
-              : proxy-if-function
               : vim!
               : fmt!}))
 
@@ -10,7 +11,7 @@
                       "*")
                   (join-if-table))
         pattern (-> (or (. opts :pattern)
-                       "*")
+                        "*")
                     (join-if-table))
         cmd (-> (. opts :cmd)
                 (proxy-if-function))]

@@ -1,10 +1,10 @@
 (ns :mysetup
-  (:import :mysetup.core)
-  (:import :mysetup.core.vim
-           {: fmt! : vim!
-            : au : aug
-            : g! : o! : wo! : bo!
-            : nmap! : icmap!}))
+    (:import :mysetup.core)
+    (:import :mysetup.core.vim
+             {: fmt! : vim!
+              : au : aug
+              : g! : o! : wo! : bo!
+              : nmap! : icmap!}))
 
 ; options
 
@@ -191,44 +191,29 @@
          :ttl light}
         (nmap! :leader? true :silent? true))
 
-    (light)
-
-    (comment
-      (-> (au {:event "VimEnter"
-               :cmd (fn [] (light))})
-          (vim!)))))
+    (light)))
 
 ; scratch
 
 (-> (au {:event "VimEnter"
-         :cmd #(let [{: initial-scratch!} (require :mysetup.tools.scratch)]
-                 (initial-scratch!))})
+         :cmd [:mysetup.tools.scratch :initial-scratch!]})
     (vim!))
 
 ; repl
 
 (do
-  (let [fennel (require :fennelns.fennel)
-        pr (fn [f] #(->> (vim.fn.expand "%")
-                         (fennel.dofile)
-                         (f)))]
-    (aug "fennelfiles"
-         {:event "FileType"
-          :pattern "fennel"
-          :cmd #(-> {:lf (pr pp*)
-                     :lF (pr pp)}
-                    (nmap! :local? true
-                           :buffer? true
-                           :silent? true))}))
+  (aug "fennelfiles"
+       {:event "FileType"
+        :pattern "fennel"
+        :cmd #(-> {:lf [:mysetup.tools.fennel-repl :eval-buffer*]
+                   :lF [:mysetup.tools.fennel-repl :eval-buffer]}
+                  (nmap! :local? true
+                         :buffer? true
+                         :silent? true))})
 
   (aug "vimfiles"
        {:event "FileType"
         :pattern "vim"
         :cmd #(-> {:lf ":source %<CR>"}
                   (nmap! :local? true
-                         :buffer? true))})
-
-  (-> {:dl #(-> (require :mysetup.core.lua-proxy-cache)
-                (pp {:switch-to true}))}
-      (nmap! :leader? true
-             :silent? true)))
+                         :buffer? true))}))

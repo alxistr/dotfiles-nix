@@ -1,15 +1,16 @@
 (ns :mysetup.core.vim.mappers
-  (:import :mysetup.core.fun
-           {: seq->table
-            : map-kv
-            : extends})
-  (:import :mysetup.core.vim.runtime
-           {: proxy-if-function
-            : vim!
-            : fmt!})
-  (:import vim.api
-           {:nvim_set_keymap set-keymap
-            :nvim_buf_set_keymap set-buf-keymap}))
+    (:import :mysetup.core.fun
+             {: seq->table
+              : map-kv
+              : extends})
+    (:import :mysetup.core.vim.vimify
+             {: proxy-if-function})
+    (:import :mysetup.core.vim.runtime
+             {: vim!
+              : fmt!})
+    (:import vim.api
+             {:nvim_set_keymap set-keymap
+              :nvim_buf_set_keymap set-buf-keymap}))
 
 (defn extend-bindings [bindings leader? local?]
   (let [prefix (if

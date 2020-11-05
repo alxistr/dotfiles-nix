@@ -1,8 +1,8 @@
 (ns :mysetup.core.vim
+    (:import :mysetup.core.vim.vimify
+             {: proxy-if-function})
     (:import :mysetup.core.vim.runtime
-             {: join-if-table
-              : proxy-if-function
-              : vim! : fmt!})
+             {: join-if-table : vim! : fmt!})
     (:import :mysetup.core.vim.au
              {: au : aug})
     (:import :mysetup.core.vim.attrs

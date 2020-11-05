@@ -4,6 +4,7 @@
               : map-kv})
     (:import vim.api
              {:nvim_buf_set_lines set-buf-lines
+              :nvim_buf_get_lines get-buf-lines
               :nvim_create_buf create-buf
               :nvim_list_bufs list-bufs
               :nvim_buf_is_valid is-valid-buf?
@@ -16,6 +17,11 @@
               :nvim_buf_get_var get-buf-var
               :nvim_get_current_buf get-current-buf
               :nvim_set_current_buf set-current-buf}))
+
+(defn get-buffer-text [buffer]
+  (-> buffer
+      (get-buf-lines 0 -1 false)
+      (table.concat "\n")))
 
 (defn set-buffer-text [buffer lines]
   (set-buf-lines buffer 0 -1 false lines))

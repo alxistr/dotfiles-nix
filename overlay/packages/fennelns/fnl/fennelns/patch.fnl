@@ -9,7 +9,8 @@
     (->> (.. "(require-macros \"" l "\")")
          (.. result)
          (set result)))
-  result)
+  (.. result
+      "(head-ns)"))
 
 (fn patch-source [str]
   (.. (get-head)

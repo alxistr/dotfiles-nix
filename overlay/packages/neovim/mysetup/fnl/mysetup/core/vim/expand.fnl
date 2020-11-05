@@ -2,16 +2,16 @@
     (:import :mysetup.core.fun
              {: map : tuples->table}))
 
-(each [name [:cword
-             :cWORD
-             :cexpr
-             :cfile
-             :afile
-             :abuf
-             :amatch
-             :sfile
-             :slnum
-             :sflnum]]
+(each [_ name (pairs [:cword
+                      :cWORD
+                      :cexpr
+                      :cfile
+                      :afile
+                      :abuf
+                      :amatch
+                      :sfile
+                      :slnum
+                      :sflnum])]
   (let [ename (.. "<" name ">")]
     (->> #(vim.fn.expand ename)
          (tset *ns* name))))

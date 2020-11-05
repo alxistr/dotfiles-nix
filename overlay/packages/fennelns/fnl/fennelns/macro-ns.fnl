@@ -14,8 +14,10 @@
 (fn use-macros [path]
   `(require-macros ,path))
 
+(fn head-ns []
+  `(ns nil))
+
 (fn tail-ns []
-  (assert ns-defined "namespace isn't defined")
   module)
 
 (fn in-ns [name]
@@ -24,16 +26,18 @@
 (fn ns [name ...]
   (set ns-defined true)
   `[(var ,module
-      (let [name# ,(tostring name)
-            loaded# (. package.loaded name#)
-            module# (if (= :table (type loaded#))
-                      loaded#
-                      {})]
-        (->> (or (. module# :ns/locals)
-                 {})
-             (tset module# :ns/locals))
-        (tset package.loaded name# module#)
-        module#))
+      (if-not ,name
+        {:ns/locals {}}
+        (let [name# ,(tostring name)
+              loaded# (. package.loaded name#)
+              module# (if (= :table (type loaded#))
+                        loaded#
+                        {})]
+          (->> (or (. module# :ns/locals)
+                   {})
+               (tset module# :ns/locals))
+          (tset package.loaded name# module#)
+          module#)))
 
     ,(let [t []]
         (each [_ [k n b] (pairs [...])]
@@ -74,7 +78,7 @@
 (fn defn [name ...]
   `(def ,name (fn ,name ,...)))
 
-{: tail-ns
+{: head-ns : tail-ns
  : import
  : use-macros
  : ns : in-ns
