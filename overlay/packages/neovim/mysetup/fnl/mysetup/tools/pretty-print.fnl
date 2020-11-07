@@ -1,4 +1,4 @@
-(ns :mysetup.core.pretty-print
+(ns :mysetup.tools.pretty-print
     (:import :fennelview
              fennelview)
     (:import :mysetup.tools.scratch

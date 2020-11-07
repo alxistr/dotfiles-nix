@@ -1,7 +1,7 @@
 (ns :mysetup.tools.fennel-repl
     (:import :fennelns.fennel
              fennel)
-    (:import :mysetup.core.pretty-print
+    (:import :mysetup.tools.pretty-print
              {: pp : pp*})
     (:import :mysetup.core.neovim.buffer
              {: get-current-buf

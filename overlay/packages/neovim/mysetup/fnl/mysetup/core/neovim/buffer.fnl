@@ -2,6 +2,8 @@
     (:import :mysetup.core.fun
              {: seq->table
               : map-kv})
+    (:import :mysetup.core.vim.runtime
+             {: vim!})
     (:import vim.api
              {:nvim_buf_set_lines set-buf-lines
               :nvim_buf_get_lines get-buf-lines

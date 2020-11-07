@@ -45,7 +45,7 @@
         source ${pkgs.shell-tools.liquidprompt}/liquidprompt
       }
       if [[ -z $IN_NIX_SHELL ]]; then lqp; fi
-      # export FZF_DEFAULT_OPTS='--color=light'
+      export FZF_DEFAULT_OPTS='--color=light'
       export BAT_THEME=ansi-dark
       if command -v fzf-share >/dev/null; then
         source "$(fzf-share)/key-bindings.bash"
