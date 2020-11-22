@@ -4,7 +4,10 @@ with lib; with types;
 {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      google-chrome
+      (callPackage ./google-chrome.nix {
+        gconf = gnome2.GConf;
+      })
+      # google-chrome
       vivaldi
     ];
 

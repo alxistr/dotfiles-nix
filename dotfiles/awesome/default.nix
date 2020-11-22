@@ -13,6 +13,7 @@ with lib; with types;
       acpi
       arandr
       awmtt
+      xorg.xwininfo
     ];
 
     xsession = {
