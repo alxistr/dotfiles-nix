@@ -21,7 +21,7 @@ with lib; with types;
       }
     ];
 
-    docker-containers = {
+    virtualisation.oci-containers.containers = {
       tor = {
         image = "dperson/torproxy:latest";
         log-driver = "journald";

@@ -30,7 +30,7 @@ stdenv.mkDerivation rec {
     openal
     alsaLib
     glib
-    sqlite_3_31_1
+    sqlite
     krb5
     gst_all_1.gst-plugins-base
     qt5.qtmultimedia

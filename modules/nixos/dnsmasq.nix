@@ -67,11 +67,13 @@ in
     }
 
     (mkIf docker.enable {
-      docker-containers.dns-gen = {
-        image = "jderusse/dns-gen:latest";
-        ports = [ "54:53/udp" ];
-        volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
-        log-driver = "journald";
+      virtualisation.oci-containers.containers = {
+        dns-gen = {
+          image = "jderusse/dns-gen:latest";
+          ports = [ "54:53/udp" ];
+          volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
+          log-driver = "journald";
+        };
       };
       systemd.services.docker-dns-gen.serviceConfig.TimeoutStopSec = lib.mkForce 1;
     })

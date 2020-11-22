@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let cfg = config.own; in
-with lib; with types; 
+with lib; with types;
 {
   options.own.disable-docs = mkEnableOption "docs";
 
@@ -11,7 +11,7 @@ with lib; with types;
       man.enable = mkForce false;
       nixos.enable = mkOverride 10 false;
     };
-    services.nixosManual.showManual = mkOverride 10 false; 
+    # services.nixosManual.showManual = mkOverride 10 false;
   };
 
 }

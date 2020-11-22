@@ -6,7 +6,6 @@ let nixos-configs = builtins.fetchGit {
   imports = [
     "${nixos-configs}/qemu.nix"
     ./dnsmasq.nix
-    # ./docker-containers.nix
     ./docker.nix
     ./documentation.nix
     ./emacs.nix

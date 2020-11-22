@@ -12,7 +12,7 @@ let inherit (super) callPackage; in
   ferret = callPackage ./packages/ferret { };
   babashka = callPackage ./packages/bb { };
 
-  fzf = callPackage ./packages/fzf { };
+  # fzf = callPackage ./packages/fzf { };
 
   my-emacs = callPackage ./packages/emacs { };
   my-neovim = callPackage ./packages/neovim { };

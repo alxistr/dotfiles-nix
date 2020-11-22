@@ -1,21 +1,20 @@
-# https://github.com/eraserhd/parinfer-rust/blob/master/derivation.nix
-
 { stdenv, rustPlatform, fetchFromGitHub, llvmPackages }:
 
 rustPlatform.buildRustPackage rec {
-  name = "parinfer-rust-${version}";
+  pname = "parinfer-rust";
   version = "0.4.3";
 
   src = fetchFromGitHub {
     owner = "eraserhd";
     repo = "parinfer-rust";
-    rev = "7b67f166e8ad12899903a0ea451333c41ed80544";
+    rev = "v${version}";
     sha256 = "0hj5in5h7pj72m4ag80ing513fh65q8xlsf341qzm3vmxm3y3jgd";
   };
 
-  cargoSha256 = "0i5wy15w985nxwl4b6rzb06hchzjwph6ygzjkkmigm9diw9jcycn";
+  cargoSha256 = "16ylk125p368mcz8nandmfqlygrqjlf8mqaxlbpixqga378saidl";
 
-  buildInputs = [ llvmPackages.libclang llvmPackages.clang ];
+  nativeBuildInputs = [ llvmPackages.clang ];
+  buildInputs = [ llvmPackages.libclang ];
   LIBCLANG_PATH = "${llvmPackages.libclang}/lib";
 
   postInstall = ''
@@ -32,6 +31,5 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/eraserhd/parinfer-rust";
     license = licenses.isc;
     maintainers = with maintainers; [ eraserhd ];
-    platforms = platforms.all;
   };
 }

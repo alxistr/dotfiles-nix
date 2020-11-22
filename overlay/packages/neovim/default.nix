@@ -13,7 +13,7 @@ let
   lang-servers = [
     rnix-lsp
     clojure-lsp
-    ccls
+    # ccls
   ];
 
   wrapped-neovim = (wrap neovim {

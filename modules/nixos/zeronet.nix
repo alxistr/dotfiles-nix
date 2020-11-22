@@ -17,7 +17,7 @@ with lib; with types;
       }
     ];
 
-    docker-containers = {
+    virtualisation.oci-containers.containers = {
       zeronet = {
         image = "nofish/zeronet";
         log-driver = "journald";

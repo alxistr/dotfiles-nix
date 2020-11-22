@@ -77,7 +77,7 @@ in
   };
 
   config = mkIf (cfg != { }) {
-    docker-containers = mapAttrs' (chain: cfg: nameValuePair
+    virtualisation.oci-containers.containers = mapAttrs' (chain: cfg: nameValuePair
       "parity-${chain}"
       (mk-container-config chain cfg)
     ) cfg;
