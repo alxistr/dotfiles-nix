@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let cfg = config.own.tor; in
-let container-name = "docker-tor.service"; in
+let container-name = "tor"; in
 with lib; with types;
 
 {

@@ -38,8 +38,8 @@ in
     makeEfiBootable = true;
     makeUsbBootable = true;
 
-    efiSplashImage = "${pkgs.wallpapers}/skull.jpg";
-    splashImage = "${pkgs.wallpapers}/skull.jpg";
+    efiSplashImage = "${pkgs.wallpapers}/IMG_209880gs.jpg";
+    splashImage = "${pkgs.wallpapers}/IMG_209880gs.jpg";
 
     appendToMenuLabel = "";
     grubTheme = null;

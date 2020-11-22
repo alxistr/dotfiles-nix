@@ -1,6 +1,6 @@
 { stdenv, callPackage, symlinkJoin,
   fennel, vimPlugins, wrapNeovim,
-  rnix-lsp, clojure-lsp,
+  rnix-lsp, clojure-lsp, ccls,
   nightly ? true }:
 
 let
@@ -13,6 +13,7 @@ let
   lang-servers = [
     rnix-lsp
     clojure-lsp
+    ccls
   ];
 
   wrapped-neovim = (wrap neovim {

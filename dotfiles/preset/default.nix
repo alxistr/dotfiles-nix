@@ -64,7 +64,7 @@ with lib; with types;
       visualvm
 
       fennel
-      ferret
+      # ferret
       babashka
       chez
 
@@ -72,7 +72,7 @@ with lib; with types;
       gprolog
 
       love_11
-      # exercism
+      exercism
 
       ## signal analysis
       # mpg123

@@ -3,9 +3,13 @@
       path (fn [path] (.. nix.static path))
       ; font "DejaVu Sans Mono Book 8"
       font "Roboto Mono for Powerline 9"
+      ; bg_normal "#fbf1c7"
+      ; fg_normal "#3c3836"
+      ; bg_focus "#f9f5d7"
       bg_normal "#fbf1c7"
       fg_normal "#3c3836"
-      bg_focus "#ebdbb2"]
+      ; bg_focus "#ebdbb2"
+      bg_focus "#e5d8af"]
 
   {:wallpaper nil
 

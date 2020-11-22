@@ -64,7 +64,7 @@ with lib; with types;
       displayManager = {
         lightdm = {
           enable = true;
-          background = "${pkgs.wallpapers}/skull.jpg";
+          background = "${pkgs.wallpapers}/IMG_209880gs.jpg";
           greeters.mini = {
             enable = true;
             user = "user";
