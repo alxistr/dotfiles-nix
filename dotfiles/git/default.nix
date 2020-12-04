@@ -18,6 +18,9 @@ with lib; with types;
           autocrlf = "input";
           editor = "vim";
         };
+        pull = {
+          rebase = false;
+        };
       };
 
       ignores = [

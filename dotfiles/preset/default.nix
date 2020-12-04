@@ -84,6 +84,12 @@ with lib; with types;
     home.file.".ideavimrc".source = ./ideavimrc;
     home.file.".config/mpv/input.conf".source = ./mpv-input.conf;
 
+    # https://github.com/practicalli/clojure-deps-edn
+    home.activation.setup-clojure-edn = ''
+      mkdir -p ~/.clojure
+      [[ -f "~/.clojure/deps.edn" ]] || cp -f ${./deps.edn} ~/.clojure/deps.edn
+    '';
+
   };
 
 }
