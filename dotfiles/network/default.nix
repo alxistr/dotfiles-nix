@@ -16,6 +16,7 @@
     bridge-utils
     ncat
     nmap
+    socat
   ];
 
   home.file.".curlrc".source = ./curlrc;
