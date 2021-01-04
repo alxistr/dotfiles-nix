@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 let cfg = config.nixos-config.own.gui; in
 with lib; with types;
+
 {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -37,8 +38,23 @@ with lib; with types;
       scanmem
 
       sublime3
-      jetbrains.pycharm-professional
-      jetbrains.idea-ultimate
+
+      (jetbrains.pycharm-professional.overrideAttrs (oldAttrs: rec {
+        name = "pycharm-professional-${version}";
+        version = "2020.3.2";
+        src = fetchurl {
+          url = "https://download.jetbrains.com/python/${name}.tar.gz";
+          sha256 = "1fbb8v40q7vgn5v5dyxb211abr8swnxa3gw18kh3vlk6yc2crzfw";
+        };
+      }))
+      (jetbrains.idea-ultimate.overrideAttrs (oldAttrs: rec {
+        name = "idea-ultimate-professional-${version}";
+        version = "2020.3.1";
+        src = fetchurl {
+          url = "https://download.jetbrains.com/idea/ideaIU-${version}-no-jbr.tar.gz";
+          sha256 = "1kwz0aq4b664awppakj4syppk218nynwxv4ngc7pa3k9v4g2sdah";
+        };
+      }))
 
       youtube-dl
       # bandcamp-downloader
@@ -73,6 +89,8 @@ with lib; with types;
 
       love_11
       exercism
+
+      joplin-desktop
 
       ## signal analysis
       # mpg123

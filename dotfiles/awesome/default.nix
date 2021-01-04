@@ -34,6 +34,7 @@ with lib; with types;
 
     home.file.".config/awesome/".source = "${pkgs.awesomerc.override {
       wallpaper = "${pkgs.wallpapers}/pattern0-light-.png";
+      # wallpaper = "${pkgs.wallpapers}/pattern0.png";
     }}/lua";
 
     programs.rofi = {
