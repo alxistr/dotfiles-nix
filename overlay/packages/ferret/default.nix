@@ -2,7 +2,7 @@
 
 let jar = fetchurl {
   url = "https://ferret-lang.org/builds/ferret.jar";
-  sha256 = "1q9q9hpcinylgvky26f713s0y73kv4lycnbkwdcwa3c3ziidfqcg"; 
+  sha256 = "1xs7k1w9j5l23k7hn0zz109wxb71x9qis407cayg0jr7c30ypp48"; 
 }; in 
 
 writeScriptBin "ferret" 
