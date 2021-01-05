@@ -28,6 +28,7 @@ with lib; with types;
       krita
       # aseprite-unfree
       xournalpp
+      xmind
 
       transmission-gtk
 
