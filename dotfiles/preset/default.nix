@@ -29,6 +29,9 @@ with lib; with types;
       # aseprite-unfree
       xournalpp
       xmind
+      zim
+      graphviz
+      seqdiag
 
       transmission-gtk
 
