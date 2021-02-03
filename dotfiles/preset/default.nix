@@ -77,6 +77,8 @@ with lib; with types;
       scaleway-cli
       dysnomia
       disnix
+      kubernix
+      podman
 
       openjdk11
       leiningen
