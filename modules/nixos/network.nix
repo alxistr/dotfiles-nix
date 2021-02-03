@@ -4,6 +4,8 @@ let cfg = config.own; in
 let wg = cfg.wireguard; in
 with lib; with types;
 
+let table = "2468"; in
+
 {
   options.own = {
     wifi = mkOption {
@@ -45,7 +47,11 @@ with lib; with types;
       networking.firewall.checkReversePath = false;
 
       networking.localCommands = ''
-        ${pkgs.iproute}/bin/ip ro add default dev lo table 2468 metric 200
+        set +e
+        ${pkgs.iproute}/bin/ip ro list table ${table} | grep -q "default dev lo"
+        if [ $? -eq 1 ]; then
+          ${pkgs.iproute}/bin/ip ro add default dev lo metric 200 table ${table}
+        fi || true
       '';
 
       networking.wireguard.interfaces = {
@@ -63,13 +69,13 @@ with lib; with types;
           ];
           postSetup = ''
             wg set wg0 fwmark 1234
-            ip route add default dev wg0 table 2468 metric 100
-            ip rule add not fwmark 1234 table 2468
+            ip route add default dev wg0 table ${table} metric 100
+            ip rule add not fwmark 1234 table ${table}
             ip rule add table main suppress_prefixlength 0
           '';
           postShutdown = ''
-            ip route del default dev wg0 table 2468
-            ip rule del not fwmark 1234 table 2468
+            ip route del default dev wg0 table ${table}
+            ip rule del not fwmark 1234 table ${table}
             ip rule del table main suppress_prefixlength 0
           '';
         };
