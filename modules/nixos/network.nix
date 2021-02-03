@@ -45,7 +45,7 @@ with lib; with types;
       networking.firewall.checkReversePath = false;
 
       networking.localCommands = ''
-          ${pkgs.iproute}/bin/ip ro add default via 127.0.0.1 dev lo table 2468 metric 200
+        ${pkgs.iproute}/bin/ip ro add default dev lo table 2468 metric 200
       '';
 
       networking.wireguard.interfaces = {
