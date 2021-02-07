@@ -80,6 +80,7 @@ with lib; with types;
       kubernix
       podman
 
+      # postman
       openjdk11
       leiningen
       clojure
@@ -107,6 +108,7 @@ with lib; with types;
 
     home.file.".ideavimrc".source = ./ideavimrc;
     home.file.".config/mpv/input.conf".source = ./mpv-input.conf;
+    home.file.".cmus/gruvbox-light.theme".source = ./cmus.theme;
 
     # https://github.com/practicalli/clojure-deps-edn
     home.activation.setup-clojure-edn = ''
