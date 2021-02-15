@@ -31,7 +31,10 @@ in
   };
 
   config = mkIf own.scaleway {
-    boot.loader.systemd-boot.enable = true;
+    boot.loader.systemd-boot = {
+      enable = true;
+      configurationLimit = 1;
+    };
     boot.loader.efi.canTouchEfiVariables = true;
 
     boot.cleanTmpDir = true;
@@ -72,7 +75,7 @@ in
         passwordAuthentication = false;
       };
 
-      disnix.enable = true;
+      disnix.enable = false;
 
       fail2ban = {
         enable = true;
@@ -97,6 +100,13 @@ in
       tcpdump
       inetutils
     ];
+
+    environment.etc."fail2ban/filter.d".source = mkForce (pkgs.runCommand "bld-f2b-filter" {} ''
+      mkdir $out
+      ln -s ${pkgs.fail2ban}/etc/fail2ban/filter.d/common.conf $out
+      ln -s ${pkgs.fail2ban}/etc/fail2ban/filter.d/selinux-ssh.conf $out
+      ln -s ${pkgs.fail2ban}/etc/fail2ban/filter.d/sshd.conf $out
+    '');
 
     system.activationScripts = {
       removeOldRoot = ''

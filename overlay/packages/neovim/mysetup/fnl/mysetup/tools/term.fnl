@@ -24,8 +24,8 @@
          (vim.fn.termopen cmd))
     (vim! "startinsert")))
 
-(defn fzf [items opts]
-  (let [a (->> opts
-              (defaults {:multiple false}))]))
-
+; (defn fzf [items opts]
+;   (let [a (->> opts
+;               (defaults {:multiple false}))]))
+;
 ; (run "ranger")
