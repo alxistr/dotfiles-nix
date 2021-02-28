@@ -77,8 +77,11 @@ with lib; with types;
       scaleway-cli
       dysnomia
       disnix
-      kubernix
+
       podman
+      kubectl
+      kubernix
+      kubectx
 
       # postman
       openjdk11

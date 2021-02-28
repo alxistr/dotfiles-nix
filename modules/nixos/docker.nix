@@ -14,7 +14,6 @@ with lib; with types;
       docker-compose
       # arion
       # kind
-      kubectl
     ]);
 
     virtualisation.docker.enable = true;

@@ -3,7 +3,7 @@ function generate-password () {
 }
 
 function gpg-encrypt () {
-    gpg -o - --cipher-algo AES -a -c $1
+    gpg -o - --cipher-algo AES256 -a -c $1
 }
 
 function gpg-decrypt () {
