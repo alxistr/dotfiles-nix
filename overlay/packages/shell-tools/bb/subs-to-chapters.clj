@@ -15,16 +15,29 @@
                       (#(str/join "." %)))]
     (fs/path directory filename*)))
 
-(defn time->msecs [time]
-  (let [parts (->> time
-                   (re-matches #"(\d+):(\d+):(\d+)\.(\d+)")
-                   (rest)
-                   (map #(Integer. %)))
-        [h m s ms] parts]
-    (+ (* h 1000 60 60)
-       (* m 1000 60)
-       (* s 1000))))
-       ; ms)))
+(defn time->msecs
+  ([time]
+   (time->msecs time false))
+  ([time ms?]
+   (let [parts (->> time
+                    (re-matches #"(\d+):(\d+):(\d+)\.(\d+)")
+                    (rest)
+                    (map #(Integer. %)))
+         [h m s ms] parts]
+     (+ (* h 1000 60 60)
+        (* m 1000 60)
+        (* s 1000)
+        (if ms? ms 0)))))
+
+(defn time->chapter [start end]
+  (let [start* (time->msecs start)
+        end* (time->msecs end true)]
+    (if-not (< start* end*)
+      ""
+      (str "[CHAPTER]\n"
+           "TIMEBASE=1/1000\n"
+           "START=" start* "\n"
+           "END=" end*))))
 
 (defn ass->chapters [filename]
   (->> filename
@@ -33,9 +46,7 @@
        (map #(re-matches #"Dialogue:[^,]+,([^,]+),([^,]+),.*" %))
        (remove nil?)
        (map #(let [[_ start end] %]
-               (str "[CHAPTER]\nTIMEBASE=1/1000\n"
-                    "START=" (time->msecs start) "\n"
-                    "END=" (time->msecs end))))
+               (time->chapter start end)))
        (str/join "\n")))
 
 (doseq [filename *command-line-args*]
