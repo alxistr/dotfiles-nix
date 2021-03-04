@@ -16,6 +16,9 @@ with lib; with types;
       mpv
       ffmpeg
 
+      shell-tools.subs-to-chapters
+      shell-tools.extract-subs
+
       qpdfview
       djview
       masterpdfeditor
@@ -42,6 +45,9 @@ with lib; with types;
       scanmem
 
       sublime3
+
+      # jetbrains.pycharm-professional
+      # jetbrains.idea-ultimate
 
       (jetbrains.pycharm-professional.overrideAttrs (oldAttrs: rec {
         name = "pycharm-professional-${version}";
@@ -91,8 +97,8 @@ with lib; with types;
 
       fennel
       # ferret
-      babashka
       chez
+      babashka
 
       erlang
       gprolog
