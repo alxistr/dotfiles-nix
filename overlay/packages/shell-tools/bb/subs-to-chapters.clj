@@ -4,23 +4,27 @@
          '[babashka.fs :as fs]
          '[babashka.process :as p])
 
-(defn clean-filename [filename]
+(defn split-filename [filename]
   (let [directory (-> filename
                       (fs/absolutize)
                       (fs/parent))
-        filename* (-> filename
-                      (fs/file-name)
-                      (str/split #"\.")
-                      (drop-last)
-                      (#(str/join "." %)))]
-    (fs/path directory filename*)))
+        parts (-> filename
+                  (fs/file-name)
+                  (str/split #"\."))]
+    [(->> parts
+          (drop-last)
+          (str/join ".")
+          (fs/path directory))
+     (-> parts
+         (last)
+         (str/lower-case))]))
 
 (defn time->msecs
-  ([time]
-   (time->msecs time false))
-  ([time ms?]
+  ([pattern time]
+   (time->msecs pattern time false))
+  ([pattern time ms?]
    (let [parts (->> time
-                    (re-matches #"(\d+):(\d+):(\d+)\.(\d+)")
+                    (re-matches pattern)
                     (rest)
                     (map #(Integer. %)))
          [h m s ms] parts]
@@ -29,9 +33,9 @@
         (* s 1000)
         (if ms? ms 0)))))
 
-(defn time->chapter [start end]
-  (let [start* (time->msecs start)
-        end* (time->msecs end true)]
+(defn time->chapter [pattern start end]
+  (let [start* (time->msecs pattern start)
+        end* (time->msecs pattern end true)]
     (if-not (< start* end*)
       ""
       (str "[CHAPTER]\n"
@@ -39,18 +43,28 @@
            "START=" start* "\n"
            "END=" end*))))
 
-(defn ass->chapters [filename]
-  (->> filename
-       (slurp)
-       (str/split-lines)
-       (map #(re-matches #"Dialogue:[^,]+,([^,]+),([^,]+),.*" %))
-       (remove nil?)
+(defmulti subs->chapters (fn [ext _] ext))
+
+(defmethod subs->chapters "ass" [_ content]
+  (->> content
+       (re-seq #"(?m)^Dialogue:[^,]+,([^,]+),([^,]+),")
        (map #(let [[_ start end] %]
-               (time->chapter start end)))
-       (str/join "\n")))
+               (time->chapter #"(\d+):(\d+):(\d+)\.(\d+)"
+                              start end)))))
+
+(defmethod subs->chapters "srt" [_ content]
+  (->> content
+       (re-seq #"(?m)^\d+\n([\d:,]+) --> ([\d:,]+)\n")
+       (map #(let [[_ start end] %]
+               (time->chapter #"(\d+):(\d+):(\d+),(\d+)"
+                              start end)))))
 
 (doseq [filename *command-line-args*]
-  (let [basename (clean-filename filename)]
-    (spit (str basename ".ffmetadata")
+  (let [[path ext] (split-filename filename)]
+    (spit (str path ".ffmetadata")
           (str ";FFMETADATA1\n"
-               (ass->chapters filename)))))
+               (->> filename
+                    (slurp)
+                    (subs->chapters ext)
+                    (str/join "\n"))))))
+
