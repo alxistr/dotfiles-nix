@@ -54,7 +54,7 @@
 
 (defmethod subs->chapters "srt" [_ content]
   (->> content
-       (re-seq #"(?m)^\d+\n([\d:,]+) --> ([\d:,]+)\n")
+       (re-seq #"(?m)^\d+\r?\n([\d:,]+) --> ([\d:,]+)\r?\n")
        (map #(let [[_ start end] %]
                (time->chapter #"(\d+):(\d+):(\d+),(\d+)"
                               start end)))))

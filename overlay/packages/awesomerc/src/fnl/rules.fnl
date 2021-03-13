@@ -37,7 +37,8 @@
      :rule_any {:type ["normal" "dialog"]}
      :properties {:titlebars_enabled true}}
 
-    {:rule_any {:class ["keepassx" "Keepassx"
+    {:rule_any {:class ["code" "Code"
+                        "keepassx" "Keepassx"
                         "sublime_text" "Sublime_text"
                         "jetbrains-idea"
                         "jetbrains-pycharm"
@@ -45,8 +46,7 @@
                         "x-terminal-emulator" "X-terminal-emulator"]}
      :properties {:opacity .95}}
 
-    {:rule_any {:class ["code" "Code"
-                        "termite" "Termite"
+    {:rule_any {:class ["termite" "Termite"
                         "nautilus" "Nautilus"
                         "thunar" "Thunar"
                         "Emacs"]}

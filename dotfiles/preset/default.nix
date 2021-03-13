@@ -45,6 +45,9 @@ with lib; with types;
       scanmem
 
       sublime3
+      vscode
+
+      anki
 
       # jetbrains.pycharm-professional
       # jetbrains.idea-ultimate
