@@ -61,10 +61,10 @@
 
 (doseq [filename *command-line-args*]
   (let [[path ext] (split-filename filename)]
-    (spit (str path ".ffmetadata")
-          (str ";FFMETADATA1\n"
-               (->> filename
-                    (slurp)
-                    (subs->chapters ext)
-                    (str/join "\n"))))))
+    (->> filename
+         (slurp)
+         (subs->chapters ext)
+         (str/join "\n")
+         (str ";FFMETADATA1\n")
+         (spit (str path ".ffmetadata")))))
 

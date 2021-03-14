@@ -18,6 +18,7 @@ with lib; with types;
 
       shell-tools.subs-to-chapters
       shell-tools.extract-subs
+      shell-tools.ipynb-to-py
 
       qpdfview
       djview
@@ -45,7 +46,6 @@ with lib; with types;
       scanmem
 
       sublime3
-      vscode
 
       anki
 

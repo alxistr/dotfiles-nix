@@ -66,6 +66,7 @@ let inherit (super) callPackage; in
     dump-colors = callPackage ./packages/shell-tools/dump-colors.nix { };
     draw-in-palette = callPackage ./packages/shell-tools/draw-in-palette.nix { };
     create-docker-template = callPackage ./packages/shell-tools/create-docker-template.nix { };
+    ipynb-to-py = callPackage ./packages/shell-tools/bb/ipynb-to-py.nix { };
     subs-to-chapters = callPackage ./packages/shell-tools/bb/subs-to-chapters.nix { };
     extract-subs = callPackage ./packages/shell-tools/extract-subs.nix { };
   };
