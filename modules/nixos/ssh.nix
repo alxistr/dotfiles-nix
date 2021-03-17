@@ -1,6 +1,12 @@
 { pkgs, config, lib, ... }:
+
 let cfg = config.own.ssh; in
 with lib; with types;
+
+let buildKey = pkgs.runCommand "build-key" { } ''
+  ${pkgs.openssh}/bin/ssh-keygen -t rsa -N "" -f $out
+''; in
+
 {
   options.own.ssh = {
     enable = mkOption {
@@ -19,6 +25,10 @@ with lib; with types;
       default = { };
       type = attrs;
     };
+    initrd = mkOption {
+      default = false;
+      type = bool;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -34,6 +44,25 @@ with lib; with types;
     };
     programs.mosh.enable = true;
     programs.ssh.startAgent = cfg.agent;
+
+    boot.initrd = mkIf cfg.initrd {
+      availableKernelModules = [ "r8169" ];
+      network = {
+        enable = true;
+        ssh = {
+          enable = true;
+          port = 2222;
+          authorizedKeys = cfg.authorized-keys;
+          hostKeys = [
+            ( buildKey )
+          ];
+          extraConfig = ''
+            AllowUsers *@192.168.0.0/16
+          '';
+        };
+        udhcpc.extraArgs = [ "-t 30" "-A 1" ];
+      };
+    };
 
     home-manager.users."user".programs.ssh = (mkIf (cfg.matchs != { }) {
       enable = true;
