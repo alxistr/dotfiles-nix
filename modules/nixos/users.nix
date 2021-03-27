@@ -16,7 +16,10 @@ with lib; with types;
       sudo
     ];
 
-    nix.trustedUsers = [ "root" "user" ];
+    nix = {
+      distributedBuilds = true;
+      trustedUsers = [ "root" "user" ];
+    };
 
     users.users = with pkgs; {
       root = {
