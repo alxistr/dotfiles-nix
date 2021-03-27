@@ -3,6 +3,10 @@ set clipboard=autoselect
 "
 let mapleader = " "
 
+"
+" generic
+"
+
 map <leader>fs :action SaveDocument<CR>
 map <leader>s/ :action Find<CR>
 map <leader>sf :action SearchEverywhere<CR>
@@ -12,8 +16,16 @@ map <leader>r :action RenameElement<CR>
 map <leader>t :action ReformatCode<CR>
 vmap <leader>y "+y
 
+"
+" git
+"
+
 map <leader>gs :action Git.Stash<CR>
 map <leader>gu :action Git.Unstash<CR>
+
+"
+" cursive
+"
 
 map <leader>ll :action :cursive.repl.actions/run-top-sexp<CR>
 map <leader>lf :action :cursive.repl.actions/load-file<CR>
@@ -23,3 +35,10 @@ map <leader>lc :actionlist :cursive<CR>
 map <leader>nn :action :cursive.testing.actions/run-ns-tests<CR>
 map <leader>mm :action :cursive.testing.actions/run-single-test<CR>
 map <leader>ml :action :cursive.testing.actions/rerun-last-test<CR>
+
+"
+" notebook
+"
+
+" map <leader><CR> :action NotebookRunCellAction<CR>
+" map <leader>aa :action NotebookRunAllAboveAction<CR>

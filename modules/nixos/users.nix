@@ -16,6 +16,8 @@ with lib; with types;
       sudo
     ];
 
+    nix.trustedUsers = [ "root" "user" ];
+
     users.users = with pkgs; {
       root = {
         initialPassword = "root";

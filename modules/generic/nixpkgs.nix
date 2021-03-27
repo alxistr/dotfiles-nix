@@ -7,8 +7,10 @@ let emacs-overlay = builtins.fetchGit {
 
 {
   config = {
-    nixpkgs.config.allowUnfree = true;
-    nixpkgs.config.allowBroken = false;
+    nixpkgs.config = {
+      allowUnfree = true;
+      allowBroken = false;
+    };
     nixpkgs.overlays = [
       ( import "${emacs-overlay}" )
       ( import ../../overlay )
