@@ -1,9 +1,20 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+
+let createMount = (uuid: {
+  what = "/dev/disk/by-uuid/${uuid}";
+  where = "/mnt/${uuid}";
+  wantedBy = [ "multi-user.target" ];
+}); in
+
+with lib;
+
 {
   networking.hostName = "desktop";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # boot.kernelParams = [ "pci=noaer" ];
+  boot.cleanTmpDir = true;
 
   own = {
     ssh = {
@@ -25,10 +36,29 @@
       enable = true;
       # country = "US";
     };
+    # mail.enable = true;
+    # emacs.enable = true;
   };
 
   # qemu-user.aarch64 = true;
 
-  system.stateVersion = "19.03";
+  # systemd.mounts = map (createMount) [
+  #   "22551a16-fdaa-438b-bb31-264d848bccae"
+  # ];
+
+  services.xserver.displayManager.sessionCommands = ''
+    xrandr \
+      --output DVI-I-0 --off \
+      --output DVI-I-1 --off \
+      --output DP-0 --off \
+      --output DP-1 --off \
+      --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal \
+      --output DVI-D-0 --off \
+      --output HDMI-1-1 --off \
+      --output DP-1-1 --mode 1920x1080 --pos 1920x0 --rotate normal \
+      --output HDMI-1-2 --off
+    xrandr --dpi 96
+
+  '';
 
 }
