@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 let
-  # squashfs-compression = "xz -Xdict-size 100%";
-  squashfs-compression = "gzip -noD -noF -noX -noI";
+  squashfs-compression = "xz -Xdict-size 100%";
+  # squashfs-compression = "gzip -noD -noF -noX -noI";
 in
 
 {
@@ -16,7 +16,24 @@ in
 
   networking.hostName = "iso";
 
-  boot.loader.grub.memtest86.enable = true;
+  boot = {
+    loader.grub.memtest86.enable = true;
+    initrd.availableKernelModules = [
+      "ehci_pci"
+      "ahci"
+      "usbhid"
+      "usb_storage"
+      "sd_mod"
+      "r8125"
+    ];
+    kernelModules = [
+      "kvm-intel"
+      "r8125"
+    ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      r8125
+    ];
+  };
 
   own = {
     ssh = {
@@ -30,6 +47,12 @@ in
   system.build.squashfsStore = pkgs.callPackage <nixpkgs/nixos/lib/make-squashfs.nix> {
     storeContents = config.isoImage.storeContents;
     comp = squashfs-compression;
+  };
+
+  services.xserver = {
+    greeters.mini = {
+      enable = false;
+    };
   };
 
   isoImage = {
