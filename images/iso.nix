@@ -49,10 +49,8 @@ in
     comp = squashfs-compression;
   };
 
-  services.xserver = {
-    greeters.mini = {
-      enable = false;
-    };
+  services.xserver.displayManager.lightdm.greeters.mini = {
+    enable = lib.mkForce false;
   };
 
   isoImage = {
