@@ -34,7 +34,7 @@ with lib; with types;
     own = {
       ssh.enable = true;
       git.server = true;
-      docker.enable = true;
+      docker.enable = false;
       disable-docs = true;
       neovim = false;
     };

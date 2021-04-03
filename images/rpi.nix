@@ -1,6 +1,8 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
+    <nixpkgs/nixos/modules/profiles/clone-config.nix>
+    # <nixpkgs/nixos/modules/installer/sd-card/sd-image-aarch64.nix>
     <nixpkgs/nixos/modules/installer/cd-dvd/sd-image-aarch64.nix>
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ../modules/generic
@@ -21,5 +23,6 @@
   # };
 
   own.rpi3bp.enable = true;
+  services.squid.enable = true;
 
 }

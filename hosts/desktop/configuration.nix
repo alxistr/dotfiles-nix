@@ -16,6 +16,8 @@ with lib;
   # boot.kernelParams = [ "pci=noaer" ];
   boot.cleanTmpDir = true;
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   own = {
     ssh = {
       enable = true;
@@ -40,7 +42,7 @@ with lib;
     # emacs.enable = true;
   };
 
-  # qemu-user.aarch64 = true;
+  services.xserver.wacom.enable = true;
 
   # systemd.mounts = map (createMount) [
   #   "22551a16-fdaa-438b-bb31-264d848bccae"

@@ -11,7 +11,10 @@ with lib; with types;
       qemu
       virtualbox
     ];
-    virtualisation.libvirtd.enable = true;
+    virtualisation = {
+      libvirtd.enable = true;
+      docker.enableNvidia = true;
+    };
   };
 
 }
