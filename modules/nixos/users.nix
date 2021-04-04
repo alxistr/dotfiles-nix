@@ -34,6 +34,7 @@ with lib; with types;
           "vboxusers"
           "docker"
           "libvirtd"
+          "netdev"
         ];
         openssh.authorizedKeys.keys = config.own.ssh.authorized-keys;
       };

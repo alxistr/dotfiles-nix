@@ -24,6 +24,7 @@
     devices = {
       "nixos-encrypted".device = "/dev/disk/by-uuid/508f5923-d0a4-48c7-bd82-1f2b730d9188";
       "data".device = "/dev/disk/by-uuid/a0dc4c66-e374-43e3-8279-ba4622f63455";
+      "dataf".device = "/dev/disk/by-uuid/5d0d55c1-2c70-41dd-abcb-cd15640d9547";
     };
   };
 
