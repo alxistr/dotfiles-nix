@@ -56,6 +56,13 @@
     shellAliases = import ./aliases.nix;
   };
 
+  # programs.starship = {
+  #   enable = true;
+  #   settings = {
+  #     character = { };
+  #   };
+  # };
+
   home.file.".inputrc".source = ./inputrc;
   home.file.".config/htop/htoprc".source = ./htoprc;
   home.file.".liquidpromptrc".source = ./liquidpromptrc;

@@ -23,8 +23,8 @@
     reusePassphrases = true;
     devices = {
       "nixos-encrypted".device = "/dev/disk/by-uuid/508f5923-d0a4-48c7-bd82-1f2b730d9188";
-      "data".device = "/dev/disk/by-uuid/a0dc4c66-e374-43e3-8279-ba4622f63455";
       "dataf".device = "/dev/disk/by-uuid/5d0d55c1-2c70-41dd-abcb-cd15640d9547";
+      "datal".device = "/dev/disk/by-uuid/a0dc4c66-e374-43e3-8279-ba4622f63455";
     };
   };
 
@@ -41,7 +41,11 @@
       device = "/dev/disk/by-uuid/a4a9d2fe-bf1a-435b-8e6a-f152735d863c";
       fsType = "btrfs";
     };
-    "/mnt/data/" = {
+    "/mnt/datas/" = {
+      device = "/dev/disk/by-uuid/a20a34d0-35da-469b-a745-2e45d4040cc3";
+      fsType = "ext4";
+    };
+    "/mnt/datal/" = {
       device = "/dev/disk/by-uuid/0260de44-87ec-4ec0-a5fc-328f9e00d782";
       fsType = "btrfs";
     };
