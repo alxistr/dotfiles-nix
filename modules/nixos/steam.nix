@@ -10,9 +10,16 @@ with lib; with types;
     environment.systemPackages = with pkgs; [
       steam
       steam-run-native
+      protontricks
     ];
 
-    hardware.opengl.driSupport32Bit = true;
+    hardware.opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      setLdLibraryPath = true;
+      extraPackages32 = [ ];
+    };
     hardware.pulseaudio.support32Bit = true;
     hardware.steam-hardware.enable = true;
 

@@ -14,7 +14,7 @@ with lib; with types;
     ];
     virtualisation = {
       libvirtd.enable = true;
-      docker.enableNvidia = true;
+      # docker.enableNvidia = true;
     };
   };
 
