@@ -8,6 +8,8 @@ let inherit (super) callPackage; in
   gruvbox-light = callPackage ./packages/gruvbox/light { };
   gruvbox-dark = callPackage ./packages/gruvbox/dark { };
 
+  dcpt310 = callPackage ./packages/dcpt310 { };
+
   kind = callPackage ./packages/kind { };
   ferret = callPackage ./packages/ferret { };
   babashka = callPackage ./packages/bb { };

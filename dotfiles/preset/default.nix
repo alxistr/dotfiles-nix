@@ -10,6 +10,9 @@ with lib; with types;
       paprefs
 
       gparted
+      exfat
+      dosfstools
+      mtools
       gvfs
 
       cmus
