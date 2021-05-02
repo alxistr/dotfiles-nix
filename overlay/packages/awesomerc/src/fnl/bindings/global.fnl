@@ -36,11 +36,11 @@
     (fn [] (awful.client.swap.byidx -1))
     {:description "swap with previous client by index" :group "client"}]
    [[modkey "Control"] "j"
-    (fn [] (awful.screen.focus_relative 1))
-    {:description "focus the next screen" :group "screen"}]
-   [[modkey "Control"] "k"
     (fn [] (awful.screen.focus_relative -1))
     {:description "focus the previous screen" :group "screen"}]
+   [[modkey "Control"] "k"
+    (fn [] (awful.screen.focus_relative 1))
+    {:description "focus the next screen" :group "screen"}]
    [[modkey] "u"
     awful.client.urgent.jumpto
     {:description "jump to urgent client" :group "client"}]

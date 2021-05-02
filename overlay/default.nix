@@ -40,6 +40,8 @@ let inherit (super) callPackage; in
 
   # parinfer-rust = callPackage ./packages/parinfer-rust { };
 
+  clojure = callPackage ./packages/clojure { };
+
   awesome-freedesktop = callPackage ./packages/lua-packages/awesome-freedesktop.nix { };
   lua-moses = callPackage ./packages/lua-packages/moses.nix { };
 
