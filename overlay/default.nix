@@ -8,7 +8,10 @@ let inherit (super) callPackage; in
   gruvbox-light = callPackage ./packages/gruvbox/light { };
   gruvbox-dark = callPackage ./packages/gruvbox/dark { };
 
-  dcpt310 = callPackage ./packages/dcpt310 { };
+  drivers = {
+    dcpt310 = callPackage ./packages/dcpt310 { };
+    x52pro = callPackage ./packages/x52 { };
+  };
 
   kind = callPackage ./packages/kind { };
   ferret = callPackage ./packages/ferret { };

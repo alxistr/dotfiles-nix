@@ -11,6 +11,10 @@ with lib; with types;
       steam
       steam-run-native
       protontricks
+      drivers.x52pro
+    ];
+    services.udev.packages = with pkgs; [
+      drivers.x52pro
     ];
 
     hardware.opengl = {
@@ -30,7 +34,7 @@ with lib; with types;
       # This rule is necessary for gamepad emulation; make sure you
       # replace 'pgriffais' with a group that the user that runs Steam
       # belongs to
-      KERNEL=="uinput", MODE="0660", GROUP="pgriffais", OPTIONS+="static_node=uinput"
+      KERNEL=="uinput", MODE="0660", GROUP="users", OPTIONS+="static_node=uinput"
       # Valve HID devices over USB hidraw
       KERNEL=="hidraw*", ATTRS{idVendor}=="28de", MODE="0666"
       # Valve HID devices over bluetooth hidraw
