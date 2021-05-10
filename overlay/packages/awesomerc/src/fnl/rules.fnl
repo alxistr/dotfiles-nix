@@ -47,6 +47,7 @@
      :properties {:opacity .95}}
 
     {:rule_any {:class ["termite" "Termite"
+                        "Alacritty"
                         "nautilus" "Nautilus"
                         "thunar" "Thunar"
                         "Emacs"]}

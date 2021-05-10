@@ -176,7 +176,7 @@
                       "hi VertSplit guibg=NONE ctermbg=NONE"
                       "hi CursorColumn ctermbg=229 guibg=Grey90"
                       "hi CursorLine ctermbg=none cterm=none"
-                      "hi CursorLineNr cterm=bold ctermfg=black ctermbg=230 gui=bold guifg=Brown"))
+                      "hi CursorLineNr cterm=bold ctermfg=white ctermbg=230 gui=bold guifg=Brown"))
         dark (fn []
                (o! :background "dark")
                (vim! "colorscheme gruvbox8_hard"
@@ -192,6 +192,22 @@
         (nmap! :leader? true :silent? true))
 
     (light)))
+
+; lsp
+
+; (do
+;   (-> {"<c-]>" "<cmd>lua vim.lsp.buf.definition()<CR>"
+;        :K      "<cmd>lua vim.lsp.buf.hover()<CR>"
+;        :gD     "<cmd>lua vim.lsp.buf.implementation()<CR>"
+;        :<c-k>  "<cmd>lua vim.lsp.buf.signature_help()<CR>"
+;        :1gD    "<cmd>lua vim.lsp.buf.type_definition()<CR>"
+;        :gr     "<cmd>lua vim.lsp.buf.references()<CR>"
+;        :g0     "<cmd>lua vim.lsp.buf.document_symbol()<CR>"
+;        :gW     "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>"
+;        :gd     "<cmd>lua vim.lsp.buf.declaration()<CR>"}
+;       (nmap! :silent? true))
+;   (let [nvim-lsp (require :nvim_lsp)]
+;     (nvim-lsp.ccls.setup {})))
 
 ; scratch
 

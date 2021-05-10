@@ -18,6 +18,7 @@ let inherit (super) callPackage; in
   babashka = callPackage ./packages/bb { };
 
   # fzf = callPackage ./packages/fzf { };
+  alacritty = callPackage ./packages/alacritty { };
 
   my-emacs = callPackage ./packages/emacs { };
   my-neovim = callPackage ./packages/neovim { };

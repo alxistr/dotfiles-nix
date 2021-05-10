@@ -104,7 +104,7 @@
    [[modkey] "r"
     (fn []
       (let [focused (awful.screen.focused)]
-        (focuses.promptbox:run)))
+        (focused.promptbox:run)))
     {:description "run prompt" :group "launcher"}]
    [[modkey] "d"
     (fn [] (awful.spawn "rofi -show run"))
