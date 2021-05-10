@@ -15,7 +15,7 @@ with lib; with types;
       mtools
       gvfs
 
-      cmus
+      # cmus
       mpv
       ffmpeg
 
