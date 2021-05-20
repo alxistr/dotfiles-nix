@@ -8,7 +8,7 @@ let
   # theme = ./themes/gruvbox-dark.yml;
   font = {
     family = "Roboto Mono for Powerline";
-    size = 12;
+    size = 10;
   };
   toYAML = lib.generators.toYAML { };
 in
