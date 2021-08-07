@@ -25,7 +25,7 @@ with lib; with types;
 
       qpdfview
       djview
-      masterpdfeditor
+      # masterpdfeditor
       #(fbreader.override { uiType = "gtk"; })
       fbreader
 
@@ -39,6 +39,8 @@ with lib; with types;
       zim
       graphviz
       seqdiag
+      aseprite
+      godot
 
       transmission-gtk
 

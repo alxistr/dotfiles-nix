@@ -38,15 +38,15 @@
       device = "/dev/disk/by-uuid/acb8824c-4050-40f6-83d4-34a46f8164ac";
       fsType = "btrfs";
     };
-    "/mnt/dataf/" = {
+    "/mnt/dataf" = {
       device = "/dev/disk/by-uuid/a4a9d2fe-bf1a-435b-8e6a-f152735d863c";
       fsType = "btrfs";
     };
-    "/mnt/datal/" = {
+    "/mnt/datal" = {
       device = "/dev/disk/by-uuid/0260de44-87ec-4ec0-a5fc-328f9e00d782";
       fsType = "btrfs";
     };
-    "/mnt/datat/" = {
+    "/mnt/datat" = {
       device = "/dev/disk/by-uuid/089afb8f-3020-4262-84b5-3c2b0c365b71";
       fsType = "btrfs";
     };

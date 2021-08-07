@@ -14,7 +14,6 @@ with lib; with types;
     programs = {
       firefox = {
         enable = true;
-        enableAdobeFlash = false;
         extensions = [ ];
       };
 
