@@ -22,6 +22,7 @@ with lib; with types;
       shell-tools.subs-to-chapters
       shell-tools.extract-subs
       shell-tools.ipynb-to-py
+      shell-tools.create-androidenv-shell
 
       qpdfview
       djview
@@ -29,18 +30,21 @@ with lib; with types;
       #(fbreader.override { uiType = "gtk"; })
       fbreader
 
+      xournalpp
+      xmind
+      zim
+      graphviz
+      # seqdiag
+
       xnview
       feh
       # gthumb
       krita
       # aseprite-unfree
-      xournalpp
-      xmind
-      zim
-      graphviz
-      seqdiag
       aseprite
+
       godot
+      gdx-liftoff
 
       transmission-gtk
 
@@ -73,6 +77,7 @@ with lib; with types;
           sha256 = "1kwz0aq4b664awppakj4syppk218nynwxv4ngc7pa3k9v4g2sdah";
         };
       }))
+      jetbrains.clion
 
       youtube-dl
       # bandcamp-downloader
