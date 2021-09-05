@@ -113,6 +113,13 @@ let
   platformTools = androidComposition.platform-tools;
   jdk = pkgs.jdk11;
 
+  clojure-dalvik = pkgs.callPackage (pkgs.fetchFromGitHub {
+    owner = "xoreaxebx";
+    repo = "clojure";
+    rev = "dba59f834dfc56cdc17176d1a329b0b06f79d21b";
+    sha256 = "1dwa0nwgk7avgmqmdxn4nfrxp9svaww2fa1mbw1ijmc7k7vw0a3h";
+  }) { };
+
 in
 
 pkgs.mkShell rec {
@@ -135,6 +142,8 @@ pkgs.mkShell rec {
 
   # Ensures that we don't have to use a FHS env by using the nix store's aapt2.
   GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${ANDROID_SDK_ROOT}/build-tools/${android.versions.buildTools}/aapt2";
+
+  CLOJURE_DALVIK="${clojure-dalvik}/clojure.jar";
 
   shellHook = ''
     # Add cmake to the path.
