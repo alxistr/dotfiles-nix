@@ -24,7 +24,8 @@ with lib; with types;
       fontconfig
     ];
 
-    fonts.enableFontDir = true;
+    fonts.fontDir.enable = true;
+    # fonts.enableFontDir = true;
     fonts.enableGhostscriptFonts = true;
     fonts.fonts = with pkgs; [
       anonymousPro

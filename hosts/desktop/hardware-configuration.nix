@@ -13,10 +13,10 @@
   ];
   boot.kernelModules = [
     "kvm-intel"
-    "r8125"
+    # "r8125"
   ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
-    r8125
+    # r8125
   ];
 
   boot.initrd.luks = {

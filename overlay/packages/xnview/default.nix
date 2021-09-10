@@ -43,7 +43,6 @@ stdenv.mkDerivation rec {
   ];
 
   sourceRoot = ".";
-
   buildPhase = ":";
 
   preFixup = ''
@@ -57,5 +56,7 @@ stdenv.mkDerivation rec {
     cp -a $src/. $out/
     ln -s $out/xnview.sh $out/bin/xnview
   '';
+
+  dontWrapQtApps = true;
 
 }

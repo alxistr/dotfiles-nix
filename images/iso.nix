@@ -24,14 +24,14 @@ in
       "usbhid"
       "usb_storage"
       "sd_mod"
-      "r8125"
+      # "r8125"
     ];
     kernelModules = [
       "kvm-intel"
-      "r8125"
+      # "r8125"
     ];
     extraModulePackages = with config.boot.kernelPackages; [
-      r8125
+      # r8125
     ];
   };
 

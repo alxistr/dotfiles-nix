@@ -5,14 +5,14 @@
 
 stdenv.mkDerivation rec {
   pname = "x52pro-linux";
-  version = "0.2.1";
+  version = "0.2.2";
   name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "nirenjan";
     repo = "x52pro-linux";
     rev = "v${version}";
-    sha256 = "1g0d60cnhgyjpzypg2g9ibq3k5615sj0gcs3iyx3mv1wwy1j3r5g";
+    sha256 = "0267ic43vj14pndscwalhbnnfb5bxxvnyafk6i1qms1i41zfr18m";
   };
 
   # hardeningDisable = [ "pic" ];
@@ -37,6 +37,7 @@ stdenv.mkDerivation rec {
 
   preConfigure = "./autogen.sh";
   configureFlags = [
+    "--disable-systemd"
     "--with-input-group=users"
     "--with-udevrulesdir=${placeholder "out"}/lib/udev/rules.d"
   ];

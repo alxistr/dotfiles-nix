@@ -23,7 +23,7 @@
     usbutils
     pciutils
     psmisc
-    lm-sensors
+    shell-tools.lm-sensors
     pv
     unixtools.xxd
     bat
