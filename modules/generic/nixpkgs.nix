@@ -11,6 +11,8 @@ let
     rev = "7d1ccc9e3115f11c1b65e6793b56678bb3caab19";
   };
 
+  unstable = import <nixos-unstable> {};
+
 in
 
 {
@@ -23,6 +25,7 @@ in
       ( import "${emacs-overlay}" )
       ( import "${neovim-overlay}" )
       ( import ../../overlay )
+      ( self: super: { clojure = unstable.clojure; } )
     ];
   };
 }

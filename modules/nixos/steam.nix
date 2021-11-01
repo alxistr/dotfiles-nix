@@ -9,6 +9,9 @@ with lib; with types;
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       steam
+      # (steam.override {
+      #   extraPkgs = pkgs: with pkgs; [ pango harfbuzz libthai ];
+      # })
       steam-run-native
       protontricks
       drivers.x52pro

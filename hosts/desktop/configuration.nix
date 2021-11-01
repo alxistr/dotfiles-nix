@@ -42,6 +42,10 @@ with lib;
     # emacs.enable = true;
   };
 
+#  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+#  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
   services.xserver.wacom.enable = true;
 
   # systemd.mounts = map (createMount) [

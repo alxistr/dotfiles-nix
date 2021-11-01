@@ -13,7 +13,10 @@ with lib; with types;
       virtualbox
     ];
     virtualisation = {
-      libvirtd.enable = true;
+      libvirtd = {
+        enable = true;
+        qemuPackage = pkgs.qemu_kvm;
+      };
       # docker.enableNvidia = true;
     };
   };

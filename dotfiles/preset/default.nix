@@ -115,6 +115,7 @@ with lib; with types;
 
       erlang
       gprolog
+      swiProlog
 
       love_11
       exercism
