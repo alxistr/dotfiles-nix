@@ -32,6 +32,7 @@ let
            deol-nvim
            vimagit
            fennel-vim
+           prolog-vim
 
            # nvim-lspconfig
            # completion-nvim

@@ -73,4 +73,14 @@
     };
   };
 
+  prolog-vim = pkgs.vimUtils.buildVimPlugin {
+    name = "prolog-vim";
+    src = pkgs.fetchFromGitHub {
+      owner = "adimit";
+      repo = "prolog.vim";
+      rev = "280a5ec5d219900042585a862e5fab0c44dcd733";
+      sha256 = "0s42x8w032ln4i38mb2g4cldam09lwsj74zrvabxd4graisl3bk6";
+    };
+  };
+
 }

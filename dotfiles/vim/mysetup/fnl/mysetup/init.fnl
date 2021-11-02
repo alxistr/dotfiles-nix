@@ -193,6 +193,14 @@
 
     (light)))
 
+; prolog
+
+(do
+  (aug "prolog-imp"
+       {:event "BufNewFile,BufRead"
+        :pattern "*.plt"
+        :cmd #(bo! {:filetype "prolog"})}))
+
 ; lsp
 
 ; (do
