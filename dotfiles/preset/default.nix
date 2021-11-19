@@ -15,7 +15,7 @@ with lib; with types;
       mtools
       gvfs
 
-      # cmus
+      cmus
       mpv
       ffmpeg
 
@@ -120,7 +120,7 @@ with lib; with types;
       love_11
       exercism
 
-      joplin-desktop
+      # joplin-desktop
 
       ## signal analysis
       # mpg123

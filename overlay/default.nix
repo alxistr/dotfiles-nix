@@ -28,6 +28,8 @@ let inherit (super) callPackage; in
   scdl = callPackage ./packages/scdl { pythonPackages = self.python37Packages; };
   fabric1 = callPackage ./packages/fabric1 { pythonPackages = self.python27Packages; };
 
+  xact = callPackage ./packages/xact { pythonPackages = self.python37Packages; };
+
   drivers = {
     dcpt310 = callPackage ./packages/dcpt310 { };
     x52pro = callPackage ./packages/x52 { };
