@@ -32,7 +32,7 @@ with lib; with types;
         Group = "users";
         ExecStart = ''${pkgs.xact}/bin/xact.py'';
         Restart = "always";
-        StandardOutput = "file:/var/log/xactivity/activity.log";
+        StandardOutput = "append:/var/log/xactivity/activity.log";
         StandardError = "journal";
       };
     };
