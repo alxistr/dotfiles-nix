@@ -7,17 +7,16 @@ with lib; with types;
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      xact
-    ];
-
     systemd.services.xact-logs = {
       requiredBy = [ "xact.service" ];
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = ''
-          mkdir -p /var/log/xactivity
-          chown users:user /var/log/xactivity
+        ExecStart = pkgs.writeShellScript "create-paths" ''
+          ${pkgs.coreutils}/bin/mkdir -p /var/log/xactivity
+          ${pkgs.coreutils}/bin/touch /var/log/xactivity/activity.log
+          ${pkgs.coreutils}/bin/chown user:users \
+            /var/log/xactivity \
+            /var/log/xactivity/activity.log
         '';
       };
     };
@@ -30,9 +29,11 @@ with lib; with types;
       serviceConfig = {
         Type = "simple";
         User = "user";
+        Group = "users";
         ExecStart = ''${pkgs.xact}/bin/xact.py'';
         Restart = "always";
         StandardOutput = "file:/var/log/xactivity/activity.log";
+        StandardError = "journal";
       };
     };
 

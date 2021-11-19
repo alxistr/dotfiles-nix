@@ -7,7 +7,7 @@ buildPythonApplication rec {
 
   src = fetchGit {
     url = "https://github.com/xoreaxebx/xact.git";
-    rev = "72d97297441be7c86b2123cc4d79166ef839e3ea";
+    rev = "e18656c0fcc98175431a46b4e353173031fd79fd";
   };
 
   propagatedBuildInputs = [
