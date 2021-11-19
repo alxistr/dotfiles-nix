@@ -16,7 +16,7 @@ with lib; with types;
       serviceConfig = {
         Type = "oneshot";
         ExecStart = ''
-          ${pkgs.coreutils}/bin/mkdir -p /var/log/xactivity
+          mkdir -p /var/log/xactivity
           chown users:user /var/log/xactivity
         '';
       };
