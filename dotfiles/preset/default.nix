@@ -32,7 +32,7 @@ with lib; with types;
       fbreader
 
       xournalpp
-      xmind
+      (xmind.override { jre = jre8; })
       zim
       graphviz
       # seqdiag
