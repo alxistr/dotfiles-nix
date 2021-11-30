@@ -49,7 +49,7 @@ in
         device = "/dev/vda1";
         fsType = "ext4";
       };
-      "/boot/" = {
+      "/boot" = {
         device = "/dev/vda15";
         fsType = "vfat";
       };

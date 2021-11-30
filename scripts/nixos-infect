@@ -135,7 +135,7 @@ cat > /etc/nixos/hardware-configuration.nix << EOF
     device = "/dev/vda1";
     fsType = "ext4";
   };
-  fileSystems."/boot/" = {
+  fileSystems."/boot" = {
     device = "/dev/vda15";
     fsType = "vfat";
   };

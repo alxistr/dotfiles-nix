@@ -35,6 +35,10 @@ with lib; with types;
         StandardOutput = "append:/var/log/xactivity/activity.log";
         StandardError = "journal";
       };
+      unitConfig = {
+        StartLimitInterval = "0";
+        RestartSec = "10";
+      };
     };
 
     services.logrotate.enable = true;
