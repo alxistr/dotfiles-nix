@@ -33,6 +33,7 @@ with lib; with types;
 
       xournalpp
       (xmind.override { jre = jre8; })
+      freemind
       zim
       graphviz
       # seqdiag
