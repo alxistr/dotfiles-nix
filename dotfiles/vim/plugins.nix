@@ -25,8 +25,6 @@
     '';
 
     postInstall = ''
-      # ${pkgs.tree}/bin/tree $target
-      # find $target/fnl/ -type f
       find $target/lua/ -type f
     '';
 

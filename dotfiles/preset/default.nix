@@ -60,8 +60,9 @@ with lib; with types;
 
       anki
 
-      jetbrains.pycharm-professional
-      jetbrains.idea-ultimate
+      # jetbrains.pycharm-professional
+      # jetbrains.idea-ultimate
+      jetbrains.idea-community
 
       # (jetbrains.pycharm-professional.overrideAttrs (oldAttrs: rec {
       #   name = "pycharm-professional-${version}";
@@ -79,11 +80,11 @@ with lib; with types;
       #     sha256 = "1kwz0aq4b664awppakj4syppk218nynwxv4ngc7pa3k9v4g2sdah";
       #   };
       # }))
-      jetbrains.clion
+      # jetbrains.clion
 
       youtube-dl
       # bandcamp-downloader
-      scdl
+      # scdl
 
       appimage-run
       apacheHttpd
@@ -94,7 +95,7 @@ with lib; with types;
       # tor-browser-bundle-bin
 
       nixops
-      fabric1
+      # fabric1
       scaleway-cli
       dysnomia
       disnix

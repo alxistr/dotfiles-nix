@@ -8,7 +8,7 @@ let
 
   neovim-overlay = builtins.fetchGit {
     url = "https://github.com/nix-community/neovim-nightly-overlay/";
-    rev = "7d1ccc9e3115f11c1b65e6793b56678bb3caab19";
+    rev = "08b5db099c74e2f266464f9f2b6f821a0183590b";
   };
 
   unstable = import <nixos-unstable> {};

@@ -1,6 +1,7 @@
 { lua, luaPackages, fetchFromGitHub }:
 luaPackages.buildLuaPackage {
-  name = "awesome-freedesktop";
+  pname = "awesome-freedesktop";
+  version = "0.0.1";
   src = fetchFromGitHub {
     owner = "lcpz";
     repo = "awesome-freedesktop";

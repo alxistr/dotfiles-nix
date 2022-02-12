@@ -1,6 +1,7 @@
 { pkgs, lua, luaPackages, fetchFromGitHub }:
 luaPackages.buildLuaPackage {
-  name = "lua-moses";
+  pname = "lua-moses";
+  version = "0.0.1";
   src = fetchFromGitHub {
     owner = "Yonaba";
     repo = "Moses";
