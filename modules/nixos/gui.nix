@@ -39,6 +39,7 @@ with lib; with types;
     ];
 
     services.dbus.packages = with pkgs; [ gnome3.dconf ];
+    programs.dconf.enable = true;
 
     hardware.nvidia = mkIf cfg.nvidia {
       modesetting.enable = true;
