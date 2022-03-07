@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+set -x -e -o pipefail
+
+parted /dev/vda -- mklabel msdos
+parted /dev/vda -- mkpart primary 1MiB 100%
+
+mkfs.ext4 -L nixos /dev/vda1
+mount /dev/disk/by-label/nixos /mnt
+
+nixos-generate-config --root /mnt
+
+cat > /mnt/etc/nixos/configuration.nix << EOF
+{ config, pkgs, ... }:
+
+let keys = [
+  ""
+]; in
+
+{
+  imports =
+    [
+      ./hardware-configuration.nix
+    ];
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/vda";
+
+  boot.kernelParams = [
+    # (mkIf own.allowTTY "console=ttyS0,115200")
+    "console=ttyS0,115200" "panic=30" "boot.panic_on_fail"
+  ];
+
+  # networking.hostName = "nixos"; # Define your hostname.
+  networking.useDHCP = false;
+  networking.interfaces.ens3.useDHCP = true;
+
+  time.timeZone = "Europe/Stockholm";
+
+  environment.systemPackages = with pkgs; [
+    wget vim htop
+  ];
+
+  programs.mtr.enable = true;
+  programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    passwordAuthentication = false;
+  };
+
+  networking.firewall.allowedTCPPorts = [ 22 ];
+
+  users.users.root.openssh.authorizedKeys.keys = keys;
+
+  users.users.user = {
+   isNormalUser = true;
+   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+   openssh.authorizedKeys.keys = keys;
+  };
+
+  system.stateVersion = "19.09";
+
+}
+
+EOF
+
+nix-channel --add https://nixos.org/channels/nixos-21.11 nixos
+nixos-install --no-root-passwd

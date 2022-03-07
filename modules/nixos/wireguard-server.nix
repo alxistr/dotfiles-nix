@@ -24,6 +24,10 @@ let wg-config = config.own.wireguard; in
       private-key = mkOption {
         type = str;
       };
+      ext = mkOption {
+        type = str;
+        default = "ens2";
+      };
       clients = mkOption {
         default = [ ];
         type = listOf (submodule {
@@ -44,7 +48,7 @@ let wg-config = config.own.wireguard; in
 
     networking.nat = {
       enable = true;
-      externalInterface = "ens2";  # todo: iface
+      externalInterface = wg-config.ext;  # todo: iface
       internalInterfaces = [ "wg0" ];
       internalIPs = [ wg-config.cidr ];
     };
