@@ -50,8 +50,20 @@ in
         enable = true;
       };
 
+      # https://github.com/tazjin/nixos-config/blob/master/configuration.nix#L43-L50
+      # Generate an immutable /etc/resolv.conf from the nameserver settings
+      # above (otherwise DHCP overwrites it):
+      environment.etc."resolv.conf" = with lib; with pkgs; {
+        source = writeText "resolv.conf" ''
+          ${concatStringsSep "\n" (map (ns: "nameserver ${ns}") config.networking.nameservers)}
+          options edns0
+        '';
+      };
+
       services.dnsmasq = {
         enable = true;
+        resolveLocalQueries = false;
+        servers = config.networking.nameservers;
         extraConfig = optionalString (cfg.listen != []) ''
           # https://wiki.libvirt.org/page/Libvirtd_and_dnsmasq
           listen-address=${concatStringsSep "," cfg.listen}

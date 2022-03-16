@@ -96,7 +96,7 @@ with lib; with types;
 
       nixops
       # fabric1
-      scaleway-cli
+      # scaleway-cli
       dysnomia
       disnix
 
