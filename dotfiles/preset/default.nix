@@ -32,7 +32,7 @@ with lib; with types;
       fbreader
 
       xournalpp
-      (xmind.override { jre = jre8; })
+      # (xmind.override { jre = jre8; })
       freemind
       zim
       graphviz
@@ -94,7 +94,7 @@ with lib; with types;
 
       # tor-browser-bundle-bin
 
-      nixops
+      # nixops
       # fabric1
       # scaleway-cli
       dysnomia
@@ -120,6 +120,11 @@ with lib; with types;
       gprolog
       swiProlog
 
+      # ocaml
+      # opam
+      # dune_2
+      # bs-platform
+
       love_11
       exercism
 
@@ -131,6 +136,11 @@ with lib; with types;
       audacity
 
     ];
+
+    # programs.opam = {
+    #   enable = true;
+    #   enableBashIntegration = true;
+    # };
 
     home.file.".ideavimrc".source = ./ideavimrc;
     home.file.".config/mpv/input.conf".source = ./mpv-input.conf;

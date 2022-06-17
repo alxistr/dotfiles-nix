@@ -63,7 +63,7 @@ in
     };
 
     home.packages = with pkgs; [
-      ag
+      silver-searcher
       fzf
       my-neovim
     ];

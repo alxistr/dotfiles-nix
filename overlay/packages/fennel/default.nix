@@ -1,8 +1,9 @@
 { stdenv, pkgs, fetchurl, fetchFromGitHub }:
 
 let
-  lua = pkgs.luajit;
+  # lua = pkgs.luajit;
   # lua = pkgs.lua5_3;
+  lua = pkgs.lua;
 
   env-lua = lua.withPackages (ps: with ps; [
     inspect

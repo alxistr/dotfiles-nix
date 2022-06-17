@@ -17,14 +17,14 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
     xorg.libX11
     xorg.libxcb
+    xorg.libXi
+    xorg.libXv
+    xorg.libXfixes
+    xorg.libXrender
+    xorg.libXcomposite
+    xorg.libXext
     libglvnd
     zlib
-    xlibs.libXi
-    xlibs.libXv
-    xlibs.libXfixes
-    xlibs.libXrender
-    xlibs.libXcomposite
-    xlibs.libXext
     libdrm
     libpulseaudio
     openal

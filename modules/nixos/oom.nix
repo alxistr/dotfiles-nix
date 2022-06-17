@@ -31,7 +31,7 @@ with lib; with types;
     services.earlyoom = mkIf cfg.earlyoom {
       enable = true;
       freeMemThreshold = 5;
-      useKernelOOMKiller = true;
+      # useKernelOOMKiller = true;
     };
 
   };

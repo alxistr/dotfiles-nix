@@ -14,7 +14,6 @@
     lsof
     proxychains
     bridge-utils
-    ncat
     nmap
     socat
   ];

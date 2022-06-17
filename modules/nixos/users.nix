@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 let home-manager = builtins.fetchTarball {
-  url = "https://github.com/nix-community/home-manager/archive/2860d7e3bb350f18f7477858f3513f9798896831.tar.gz";
-  sha256 = "0zkhdf3d2pqr6lr2mibrngp0fjcpdjk9abc55kqp43mq05caq6f9";
+  url = "https://github.com/nix-community/home-manager/archive/ac2287df5a2d6f0a44bbcbd11701dbbf6ec43675.tar.gz";
+  sha256 = "1bn5m4qlzxc5c264hwyy9n8f7m1pzc79fd0xh18n46wn0v8vx4jn";
 }; in
 with lib; with types;
 

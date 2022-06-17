@@ -67,7 +67,6 @@ in
     networking = {
       useDHCP = false;
       interfaces.ens3.useDHCP = true;
-
       firewall = {
         allowedTCPPorts = [ 22 ];
         allowPing = false;
@@ -75,6 +74,7 @@ in
             ( iptables-save | grep TCPMSS >/dev/null ) || ( iptables -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu )
         '';
       };
+      nameservers = [ "8.8.8.8" "8.8.4.4" ];
     };
 
     services = {

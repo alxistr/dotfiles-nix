@@ -17,7 +17,7 @@
     rlwrap
     jq
     fzf
-    ag
+    silver-searcher
     gnupg
     pass
     usbutils

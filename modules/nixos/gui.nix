@@ -38,7 +38,7 @@ with lib; with types;
       powerline-fonts
     ];
 
-    services.dbus.packages = with pkgs; [ gnome3.dconf ];
+    services.dbus.packages = with pkgs; [ dconf ];
     programs.dconf.enable = true;
 
     hardware.nvidia = mkIf cfg.nvidia {
