@@ -4,6 +4,10 @@ with lib; with types;
 
 {
   config = mkIf cfg.enable {
+    nixpkgs.config.permittedInsecurePackages = [
+      "python2.7-pyjwt-1.7.1"
+    ];
+
     home.packages = with pkgs; [
       pasystray
       pavucontrol
@@ -94,7 +98,7 @@ with lib; with types;
 
       # tor-browser-bundle-bin
 
-      # nixops
+      nixops
       # fabric1
       # scaleway-cli
       dysnomia
