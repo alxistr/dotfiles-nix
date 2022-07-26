@@ -63,6 +63,7 @@ let inherit (super) callPackage; in
     #   openssl = super.openssl_1_1;
     # };
     bash-functions = callPackage ./packages/shell-tools/bash-functions.nix { };
+    inotify-watch = callPackage ./packages/shell-tools/inotify-watch.nix { };
     oom-pls = callPackage ./packages/shell-tools/oom-pls.nix { };
     dump-colors = callPackage ./packages/shell-tools/dump-colors.nix { };
     draw-in-palette = callPackage ./packages/shell-tools/draw-in-palette.nix { };

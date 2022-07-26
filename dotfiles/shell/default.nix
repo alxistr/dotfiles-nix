@@ -35,6 +35,7 @@
     shell-tools.oom-pls
     shell-tools.dump-colors
     shell-tools.draw-in-palette
+    shell-tools.inotify-watch
 
   ];
 
