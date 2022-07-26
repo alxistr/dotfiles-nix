@@ -80,20 +80,20 @@
 
 ; parinfer
 
-(do
-  (-> {:parinfer_mode "smart"
-       :parinfer_force_balance 1}
-      (g!))
-
-  (aug "parinfer"
-       {:event "FileType"
-        :pattern ["clojure"
-                  "racket"
-                  "lisp"
-                  "scheme"
-                  "hy"
-                  "fennel"]
-        :cmd "ParinferOn"}))
+; (do
+;   (-> {:parinfer_mode "smart"
+;        :parinfer_force_balance 1}
+;       (g!))
+;
+;  (aug "parinfer"
+;       {:event "FileType"
+;        :pattern ["clojure"
+;                  "racket"
+;                  "lisp"
+;                  "scheme"
+;                  "hy"
+;                  "fennel"]
+;        :cmd "ParinferOn"}))
 
 ; magit
 
@@ -198,7 +198,7 @@
 (do
   (aug "prolog-imp"
        {:event "BufNewFile,BufRead"
-        :pattern "*.plt?"
+        :pattern "*.pl*"
         :cmd #(bo! {:filetype "prolog"})}))
 
 ; lsp

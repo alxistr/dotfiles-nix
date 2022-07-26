@@ -21,7 +21,7 @@ let
            mysetup
            vim-nix
            vim-gruvbox8
-           parinfer-rust
+           # parinfer-rust
            vim-airline
            vim-airline-themes
            vim-surround

@@ -27,6 +27,7 @@
     pv
     unixtools.xxd
     bat
+    inotify-tools
 
     bashInteractive
     bash-completion
