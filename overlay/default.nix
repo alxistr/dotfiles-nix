@@ -16,6 +16,7 @@ let inherit (super) callPackage; in
   gruvbox-dark = callPackage ./packages/gruvbox/dark { };
   wallpapers = ./packages/wallpapers;
 
+  shen = callPackage ./packages/shen { };
   babashka = callPackage ./packages/bb { };
   clojure = callPackage ./packages/clojure { };
   gdx-liftoff = callPackage ./packages/gdx-liftoff { };

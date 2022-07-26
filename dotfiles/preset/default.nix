@@ -115,6 +115,7 @@ with lib; with types;
       clojure
       visualvm
 
+      shen
       fennel
       # ferret
       chez
