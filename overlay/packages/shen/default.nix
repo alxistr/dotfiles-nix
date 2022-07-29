@@ -3,7 +3,7 @@
 let clname = clpkg.pname; in
 
 stdenv.mkDerivation rec {
-  name = "shen-ecl";
+  name = "shen-${clname}";
   version = "3.0.3";
   src = builtins.fetchurl "https://github.com/Shen-Language/shen-cl/releases/download/v${version}/shen-cl-v${version}-sources.tar.gz";
 
