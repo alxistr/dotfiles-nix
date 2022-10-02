@@ -48,6 +48,10 @@ function micoff () {
   pactl unload-module module-loopback
 }
 
+function camoff () {
+  sudo modprobe -r uvcvideo
+}
+
 function youtube-dl-best-audio () {
   youtube-dl -f bestaudio \
           --extract-audio \

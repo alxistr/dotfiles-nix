@@ -19,3 +19,7 @@ function nx-update () {
   nixos-rebuild switch && \
   nx-cleanup
 }
+
+function nx-gc-roots () {
+  find -H /nix/var/nix/gcroots/auto -type l | xargs -I {} sh -c 'readlink {}; realpath {}; echo'
+}

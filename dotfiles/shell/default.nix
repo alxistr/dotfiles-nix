@@ -7,6 +7,7 @@
     htop
     atop
     iotop
+    iftop
     ncdu
     tree
     less
