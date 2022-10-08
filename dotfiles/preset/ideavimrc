@@ -14,6 +14,7 @@ map <leader><leader> :action SearchEverywhere<CR>
 map <leader>o :action OverrideMethods<CR>
 map <leader>r :action RenameElement<CR>
 map <leader>t :action ReformatCode<CR>
+map <leader>e :action RecentFiles<CR>
 vmap <leader>y "+y
 
 "

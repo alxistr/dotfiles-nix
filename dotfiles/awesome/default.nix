@@ -16,11 +16,13 @@ with lib; with types;
       xorg.xwininfo
     ];
 
+    home.keyboard = null;
+
     xsession = {
       enable = true;
-      initExtra = ''
-        setxkbmap -layout us,ru -option 'grp:alt_shift_toggle,grp_led:scroll'
-      '';
+      # initExtra = ''
+      #   setxkbmap -layout us,ru -option 'grp:alt_shift_toggle,grp_led:scroll'
+      # '';
     };
 
     xsession.windowManager.awesome = {

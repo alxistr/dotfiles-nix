@@ -6,6 +6,7 @@
     ./emacs.nix
     ./git.nix
     ./gui.nix
+    ./keyd.nix
     ./log-activity.nix
     ./mail.nix
     ./modem.nix
