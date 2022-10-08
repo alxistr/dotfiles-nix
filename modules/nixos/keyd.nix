@@ -29,21 +29,12 @@ with lib; with types;
     };
 
     systemd.services.keyd = {
-      wantedBy = [ "graphical-session-pre.target" ];
-      # environment = {
-      #   DISPLAY = ":0.0";
-      # };
+      wantedBy = [ "graphical.target" ];
       serviceConfig = {
         Type = "simple";
         ExecStart = ''${pkgs.keyd}/bin/keyd'';
         Restart = "always";
-        # StandardOutput = "append:/var/log/xactivity/activity.log";
-        # StandardError = "journal";
       };
-      # unitConfig = {
-      #   StartLimitInterval = "0";
-      #   RestartSec = "10";
-      # };
     };
   };
 
