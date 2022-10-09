@@ -19,7 +19,8 @@ with lib; with types;
       mtools
       gvfs
 
-      cmus
+      deadbeef
+      # cmus
       mpv
       ffmpeg
       mkvtoolnix

@@ -43,7 +43,8 @@ let default-theme = "light"; in
       # theme = { name = "gruvbox-dark"; package = pkgs.gruvbox-dark; };
 
       # iconTheme = { name = "Numix"; package = pkgs.numix-icon-theme; };
-      iconTheme = { name = "Flat-Remix-Red-Light"; package = pkgs.flat-remix; };
+      # iconTheme = { name = "Flat-Remix-Red-Light"; package = pkgs.flat-remix; };
+      iconTheme = { name = "Flat-Remix-Grey-Light"; package = pkgs.flat-remix; };
 
     };
 
