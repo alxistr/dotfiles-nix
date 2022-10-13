@@ -87,7 +87,15 @@ with lib; with types;
       # }))
       # jetbrains.clion
 
-      youtube-dl
+      # youtube-dl
+      (youtube-dl.overrideAttrs (oldAttrs: {
+        src = builtins.fetchGit{
+          url = "https://github.com/ytdl-org/youtube-dl";
+          rev = "7bbd5b13d4c6cfc3e24f56413ff1a1eace8472b8";
+        };
+        patches = [];
+        postInstall = "";
+      }))
       # bandcamp-downloader
       # scdl
 

@@ -21,6 +21,10 @@ with lib; with types;
         j = down
         k = up
         l = right
+        y = home
+        u = pageup
+        i = pagedown
+        o = end
 
         [control:C]
         h = backspace

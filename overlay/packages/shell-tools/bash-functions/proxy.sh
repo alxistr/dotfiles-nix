@@ -55,7 +55,7 @@ function run-with-socks5 () {
     echo "Usage: run-with-socks5 <host:port> <command> [<args...>]"
     return
   fi
-  PROXYCHAINS_SOCKS5=$1 proxychains ${@:2}
+  PROXYCHAINS_SOCKS5=$1 proxychains4 ${@:2}
 }
 
 function run-with-tor () {
