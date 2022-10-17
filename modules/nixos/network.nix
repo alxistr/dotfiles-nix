@@ -31,17 +31,22 @@ let table = "2468"; in
   config = mkMerge [
     {
       time.timeZone = mkDefault "Europe/Moscow";
-
       networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
+      services.openvpn.servers = cfg.ovpn;
+    }
 
-      networking.wireless = mkIf (cfg.wifi != { }) {
+    (mkIf (cfg.wifi != { }) {
+      networking.wireless = {
         enable = true;
         networks = cfg.wifi;
       };
+    })
 
-      services.openvpn.servers = cfg.ovpn;
-
-    }
+    (mkIf ((cfg.wifi == null) || (cfg.wifi == { })) {
+      networking.networkmanager.enable = true;
+      users.users.user.extraGroups = [ "networkmanager" ];
+      programs.nm-applet.enable = true;
+    })
 
     {
       boot.kernel.sysctl = {
