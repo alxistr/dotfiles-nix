@@ -10,7 +10,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = with pkgs; [ gtk3 ];
   installPhase = ''
     mkdir -p $out/share/icons
-    mv Flat-Remix* $out/share/icons/
+    # mv Flat-Remix* $out/share/icons/
+    mv Flat-Remix-Grey* $out/share/icons/
   '';
   postFixup = ''
     for theme in $out/share/icons/*; do

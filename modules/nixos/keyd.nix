@@ -28,6 +28,7 @@ with lib; with types;
 
         [control:C]
         h = backspace
+        [ = esc
 
       '';
     };
