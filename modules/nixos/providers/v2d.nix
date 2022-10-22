@@ -4,10 +4,10 @@ with lib; with types;
 let own = config.own; in
 
 let
-  f2b-ignored-ips = (concatStringsSep " " (unique ([
+  f2b-ignored-ips = (concatStringsSep " " ([
     "127.0.0.1"
     "127.0.0.1/8"
-  ] ++ own.f2b-whitelist)));
+  ] ++ own.f2b-whitelist));
 in
 
 {
@@ -119,6 +119,13 @@ in
       ln -s ${pkgs.fail2ban}/etc/fail2ban/filter.d/selinux-ssh.conf $out
       ln -s ${pkgs.fail2ban}/etc/fail2ban/filter.d/sshd.conf $out
     '');
+
+    documentation = {
+      dev.enable = mkForce false;
+      info.enable = mkForce false;
+      man.enable = mkForce false;
+      nixos.enable = mkOverride 10 false;
+    };
 
   };
 
