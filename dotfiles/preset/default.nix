@@ -63,7 +63,7 @@ with lib; with types;
 
       sublime3
 
-      anki
+      anki-bin
 
       # jetbrains.pycharm-professional
       # jetbrains.idea-ultimate
