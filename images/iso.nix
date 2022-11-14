@@ -39,15 +39,20 @@ in
     ssh = {
       enable = true;
     };
-    gui.enable = true;
-    docker.enable = true;
-    virtualisation.enable = true;
+    gui = {
+      enable = true;
+      heavy = false;
+    };
+    # docker.enable = true;
+    # virtualisation.enable = true;
   };
 
-  system.build.squashfsStore = pkgs.callPackage <nixpkgs/nixos/lib/make-squashfs.nix> {
-    storeContents = config.isoImage.storeContents;
-    comp = squashfs-compression;
-  };
+  services.spice-vdagentd.enable = true;
+
+  # system.build.squashfsStore = pkgs.callPackage <nixpkgs/nixos/lib/make-squashfs.nix> {
+  #   storeContents = config.isoImage.storeContents;
+  #   comp = lib.mkForce squashfs-compression;
+  # };
 
   services.xserver.displayManager.lightdm.greeters.mini = {
     enable = lib.mkForce false;
@@ -59,11 +64,13 @@ in
     makeEfiBootable = true;
     makeUsbBootable = true;
 
+    squashfsCompression = "gzip -noD -noF -noX -noI";
+
     efiSplashImage = "${pkgs.wallpapers}/IMG_209880gs.jpg";
     splashImage = "${pkgs.wallpapers}/IMG_209880gs.jpg";
 
     appendToMenuLabel = "";
-    grubTheme = null;
+    # grubTheme = null;
 
   };
 

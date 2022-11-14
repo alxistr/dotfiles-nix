@@ -4,11 +4,7 @@ with lib; with types;
 
 {
   config = mkIf cfg.enable {
-    nixpkgs.config.permittedInsecurePackages = [
-      "python2.7-pyjwt-1.7.1"
-    ];
-
-    home.packages = with pkgs; [
+    home.packages = with pkgs; ([
       pasystray
       pavucontrol
       paprefs
@@ -22,13 +18,6 @@ with lib; with types;
       deadbeef
       # cmus
       mpv
-      ffmpeg
-      mkvtoolnix
-
-      shell-tools.subs-to-chapters
-      shell-tools.extract-subs
-      shell-tools.ipynb-to-py
-      shell-tools.create-androidenv-shell
 
       qpdfview
       djview
@@ -36,32 +25,14 @@ with lib; with types;
       #(fbreader.override { uiType = "gtk"; })
       fbreader
 
-      xournalpp
-      # (xmind.override { jre = jre8; })
-      freemind
-      zim
-      graphviz
-      # seqdiag
-
-      xnview
-      feh
-      # gthumb
-      krita
-      # aseprite-unfree
-      aseprite
-
-      godot
-      gdx-liftoff
-
-      transmission-gtk
-
-      # android-file-transfer
-      go-mtpfs
-
       wxhexeditor
       scanmem
 
       sublime3
+
+    ] ++ optionals cfg.heavy [
+      ffmpeg
+      mkvtoolnix
 
       anki-bin
 
@@ -149,7 +120,34 @@ with lib; with types;
       # baudline
       audacity
 
-    ];
+      xournalpp
+      # (xmind.override { jre = jre8; })
+      freemind
+      zim
+      graphviz
+      # seqdiag
+
+      xnview
+      feh
+      # gthumb
+      krita
+      # aseprite-unfree
+      aseprite
+
+      godot
+      gdx-liftoff
+
+      transmission-gtk
+
+      # android-file-transfer
+      go-mtpfs
+
+      shell-tools.subs-to-chapters
+      shell-tools.extract-subs
+      shell-tools.ipynb-to-py
+      shell-tools.create-androidenv-shell
+
+    ]);
 
     # programs.opam = {
     #   enable = true;

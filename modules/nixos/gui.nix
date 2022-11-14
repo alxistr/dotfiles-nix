@@ -4,6 +4,10 @@ with lib; with types;
 {
   options.own.gui = {
     enable = mkEnableOption "";
+    heavy = mkOption {
+      default = true;
+      type = bool;
+    };
     nvidia = mkEnableOption "";
   };
 

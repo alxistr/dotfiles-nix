@@ -1,19 +1,25 @@
 { callPackage, stdenv, pkgs, parinfer-rust }:
 
-(pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages (epkgs: ((with epkgs.melpaPackages; [
+# let emacs = pkgs.emacsPgtkNativeComp; in
+let emacs = pkgs.emacsPgtk; in
+
+# (pkgs.emacsPackagesFor emacs).emacsWithPackages (epkgs: [
+# ])
+
+(pkgs.emacsPackagesFor emacs).emacsWithPackages (epkgs: ((with epkgs.melpaPackages; [
   use-package
   dash # https://github.com/magnars/dash.el
   f # https://github.com/rejeep/f.el
   s # https://github.com/magnars/s.el
   ht # https://github.com/Wilfred/ht.el
   gruvbox-theme
-  evil evil-magit evil-collection
+  evil evil-collection
   which-key smex
   ido-vertical-mode ido-yes-or-no
   vterm
   magit
   origami
-  lsp-mode company-lsp
+  # lsp-mode company-lsp
   clojure-mode inf-clojure # cider
   erlang
   nix-mode

@@ -117,7 +117,7 @@
     (when (and (not is-initial-fundamental) (not is-ignored-major))
       (setq truncate-lines t
             truncate-partial-width-windows nil)
-      (linum-mode)
+      ; (linum-mode)
       (whitespace-mode))))
 
 (defun recentf-ido-find-file ()

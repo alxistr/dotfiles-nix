@@ -58,7 +58,7 @@
   :config
   (evil-collection-init))
 
-(use-package evil-magit)
+; (use-package evil-magit)
 
 (defun start-search-for (string forward)
   (let* ((search-symbol (if evil-regexp-search 'regexp-search-ring 'search-ring))

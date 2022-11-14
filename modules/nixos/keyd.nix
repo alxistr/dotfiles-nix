@@ -22,8 +22,8 @@ with lib; with types;
         k = up
         l = right
         y = home
-        u = pageup
-        i = pagedown
+        u = pagedown
+        i = pageup
         o = end
 
         [control:C]
