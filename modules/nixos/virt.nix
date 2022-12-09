@@ -10,7 +10,7 @@ with lib; with types;
     environment.systemPackages = with pkgs; [
       qemu
       virt-manager
-      virtualbox
+      # virtualbox
     ];
     virtualisation = {
       libvirtd = {
@@ -19,6 +19,7 @@ with lib; with types;
       };
       # docker.enableNvidia = true;
     };
+    services.spice-vdagentd.enable = true;
   };
 
 }

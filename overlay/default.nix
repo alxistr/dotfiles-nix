@@ -19,7 +19,7 @@ let inherit (super) callPackage; in
   keyd = callPackage ./packages/keyd { };
 
   shen = callPackage ./packages/shen { };
-  babashka = callPackage ./packages/bb { };
+  # babashka = callPackage ./packages/bb { };
   clojure = callPackage ./packages/clojure { };
   gdx-liftoff = callPackage ./packages/gdx-liftoff { };
   ferret = callPackage ./packages/ferret { };

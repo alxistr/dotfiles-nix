@@ -15,6 +15,9 @@ map <leader>o :action OverrideMethods<CR>
 map <leader>r :action RenameElement<CR>
 map <leader>t :action ReformatCode<CR>
 map <leader>e :action RecentFiles<CR>
+map <leader><enter> :action GotoDeclaration<CR>
+map <leader>bd :action CloseContent<CR>
+map <leader>su :action FindUsages<CR>
 vmap <leader>y "+y
 
 "
@@ -36,6 +39,11 @@ map <leader>lc :actionlist :cursive<CR>
 map <leader>nn :action :cursive.testing.actions/run-ns-tests<CR>
 map <leader>mm :action :cursive.testing.actions/run-single-test<CR>
 map <leader>ml :action :cursive.testing.actions/rerun-last-test<CR>
+
+map <leader>gr :action :cursive.repl.actions/jump-to-repl<CR>
+map <leader>go :action :cursive.repl.actions/jump-to-output<CR>
+
+map <leader>nf :action Clojure.ClojureFile<CR>
 
 "
 " notebook

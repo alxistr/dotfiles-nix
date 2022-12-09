@@ -73,7 +73,7 @@ with lib; with types;
       appimage-run
       apacheHttpd
 
-      zoom-us
+      # zoom-us
       discord
 
       # tor-browser-bundle-bin
@@ -89,6 +89,7 @@ with lib; with types;
       kubernix
       kubectx
 
+      gnumake
       # postman
       openjdk11
       leiningen
