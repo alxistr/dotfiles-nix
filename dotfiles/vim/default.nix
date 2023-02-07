@@ -10,10 +10,10 @@ let
     viAlias = true;
     vimAlias = true;
 
-    withNodeJs = false;
-    withRuby = false;
-    withPython = false;
-    withPython3 = false;
+    # withNodeJs = false;
+    # withRuby = false;
+    # withPython = false;
+    # withPython3 = false;
 
      configure = {
        packages.myVimPackage = with vimPlugins; with plugins; {

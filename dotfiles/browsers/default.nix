@@ -8,13 +8,12 @@ with lib; with types;
       #   gconf = gnome2.GConf;
       # })
       google-chrome
-      vivaldi
+      # vivaldi
     ];
 
     programs = {
       firefox = {
         enable = true;
-        extensions = [ ];
       };
 
       chromium = {

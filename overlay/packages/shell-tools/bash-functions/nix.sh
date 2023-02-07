@@ -11,7 +11,11 @@ function nx-show-rdependencies() {
 }
 
 function nx-cleanup () {
-  nix-collect-garbage -d && nix-store --optimise
+  nix-collect-garbage -d
+}
+
+function nx-store-optimize () {
+  nix-store --optimise
 }
 
 function nx-update () {

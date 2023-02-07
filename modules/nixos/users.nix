@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 let home-manager = builtins.fetchTarball {
-  url = "https://github.com/nix-community/home-manager/archive/4a3d01fb53f52ac83194081272795aa4612c2381.tar.gz";
-  sha256 = "0sdirpwqk61hnq8lvz4r2j60fxpcpwc8ffmicail2n4h6zifcn9n";
+  url = "https://github.com/nix-community/home-manager/archive/c43d4a3d6d9ef8ddbe2438362f5c775b4186000b.tar.gz";
+  sha256 = "1spyrapijvcw674cxddwm6wjjfz3b707wkpm1pd76jy2ri5ljadn";
 }; in
 with lib; with types;
 
@@ -18,7 +18,7 @@ with lib; with types;
 
     nix = {
       distributedBuilds = true;
-      trustedUsers = [ "root" "user" ];
+      settings.trusted-users = [ "root" "user" ];
     };
 
     users.users = with pkgs; {

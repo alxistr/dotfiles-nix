@@ -8,6 +8,7 @@ with lib; with types;
 
   config = mkIf cfg.enable {
     environment.etc = {
+      # https://github.com/rvaiya/keyd/blob/master/docs/keyd.scdoc
       "keyd/default.conf".source = pkgs.writeText "keyd.conf" ''
         [ids]
         *
@@ -25,6 +26,9 @@ with lib; with types;
         u = pagedown
         i = pageup
         o = end
+
+        # [capslock:C]
+        # [capslock:A]
 
         [control:C]
         h = backspace

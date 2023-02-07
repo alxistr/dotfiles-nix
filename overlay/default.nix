@@ -3,8 +3,6 @@ let inherit (super) callPackage; in
 {
   adhosts = callPackage ./packages/adhosts { };
 
-  alacritty = callPackage ./packages/alacritty { };
-
   awesomerc = callPackage ./packages/awesomerc { };
   awesomerc-debug = callPackage ./packages/awesomerc/debug.nix { };
   awesome-freedesktop = callPackage ./packages/lua-packages/awesome-freedesktop.nix { };
@@ -16,11 +14,7 @@ let inherit (super) callPackage; in
   gruvbox-dark = callPackage ./packages/gruvbox/dark { };
   wallpapers = ./packages/wallpapers;
 
-  keyd = callPackage ./packages/keyd { };
-
   shen = callPackage ./packages/shen { };
-  # babashka = callPackage ./packages/bb { };
-  clojure = callPackage ./packages/clojure { };
   gdx-liftoff = callPackage ./packages/gdx-liftoff { };
   ferret = callPackage ./packages/ferret { };
   fennel = callPackage ./packages/fennel { };
@@ -53,17 +47,6 @@ let inherit (super) callPackage; in
 
   shell-tools = {
     lm-sensors = callPackage ./packages/lm-sensors { };
-    liquidprompt = builtins.fetchGit {
-      url = "https://github.com/nojhan/liquidprompt/";
-      rev = "488bb5975db9fa8be0b795019f0b6d99ec792f50";  # v_1.11
-    };
-    powerline-rs = callPackage (import ./packages/powerline-rs).override {
-      pkgs = super;
-    };
-    # powerline-rs = callPackage (import ./packages/powerline-rs).build {
-    #   inherit (super.darwin.apple_sdk.frameworks) Security;
-    #   openssl = super.openssl_1_1;
-    # };
     bash-functions = callPackage ./packages/shell-tools/bash-functions.nix { };
     inotify-watch = callPackage ./packages/shell-tools/inotify-watch.nix { };
     oom-pls = callPackage ./packages/shell-tools/oom-pls.nix { };

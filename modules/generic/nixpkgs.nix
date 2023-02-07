@@ -8,7 +8,7 @@ let
 
   neovim-overlay = builtins.fetchGit {
     url = "https://github.com/nix-community/neovim-nightly-overlay/";
-    rev = "08b5db099c74e2f266464f9f2b6f821a0183590b";
+    rev = "72ff8b1ca0331a8735c1eeaefb95c12dfe21d30a";
   };
 
   unstable = import <nixos-unstable> {};
@@ -20,7 +20,10 @@ in
     nixpkgs.config = {
       allowUnfree = true;
       allowBroken = false;
-      permittedInsecurePackages = [ "python2.7-pyjwt-1.7.1" ];
+      # permittedInsecurePackages = [
+      #   "python2.7-pyjwt-1.7.1"
+      #   "python2.7-certifi-2021.10.8"
+      # ];
     };
     nixpkgs.overlays = [
       ( import "${emacs-overlay}" )

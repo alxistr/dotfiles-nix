@@ -18,6 +18,7 @@
     ./vim
   ];
 
+  home.stateVersion = "19.03";
   programs.home-manager.enable = true;
 
 }

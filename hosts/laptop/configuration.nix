@@ -7,10 +7,10 @@
   boot.cleanTmpDir = true;
 
   own = {
-    ssh = {
-      enable = true;
-      agent = true;
-    };
+    # ssh = {
+    #   enable = true;
+    #   agent = true;
+    # };
     gui.enable = true;
     docker.enable = true;
     virtualisation.enable = true;

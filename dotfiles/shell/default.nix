@@ -30,6 +30,7 @@
     bat
     inotify-tools
 
+    liquidprompt
     bashInteractive
     bash-completion
     shell-tools.create-docker-template
@@ -44,10 +45,7 @@
     enable = true;
     historyControl = ["ignorespace" "ignoredups"];
     initExtra = ''
-      function lqp () {
-        source ${pkgs.shell-tools.liquidprompt}/liquidprompt
-      }
-      if [[ -z $IN_NIX_SHELL ]]; then lqp; fi
+      source liquidprompt
       export FZF_DEFAULT_OPTS='--color=light'
       export BAT_THEME=ansi-dark
       if command -v fzf-share >/dev/null; then
