@@ -6,6 +6,8 @@
     unixtools.xxd
     odt2txt
     poppler_utils
+    mediainfo
+    mu
   ];
 
   home.file.".config/ranger/rc.conf".text = builtins.readFile ./ranger/rc.conf;

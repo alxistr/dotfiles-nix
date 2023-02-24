@@ -30,7 +30,7 @@ in
       ( import "${neovim-overlay}" )
       ( import ../../overlay )
       ( self: super: {
-          clojure = unstable.clojure;
+          # clojure = unstable.clojure;
       } )
     ];
   };
