@@ -37,6 +37,7 @@ with lib; with types;
           "netdev"
           "plugdev"
           "pgriffais"
+          "kvm"
         ];
         openssh.authorizedKeys.keys = config.own.ssh.authorized-keys;
       };

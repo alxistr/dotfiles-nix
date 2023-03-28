@@ -31,44 +31,48 @@ let buildKey = pkgs.runCommand "build-key" { } ''
     };
   };
 
-  config = mkIf cfg.enable {
-    services.openssh = {
-      enable = true;
-      ports = [ 22 ];
-      passwordAuthentication = false;
-      permitRootLogin = mkForce "no";
-      extraConfig = ''
-        AllowUsers *@127.0.0.0/8
-        AllowUsers *@192.168.0.0/16
-      '';
-    };
-    programs.mosh.enable = true;
-    programs.ssh.startAgent = cfg.agent;
-
-    boot.initrd = mkIf cfg.initrd {
-      availableKernelModules = [ "r8169" ];
-      network = {
+  config = mkMerge [
+    (mkIf cfg.enable {
+      services.openssh = {
         enable = true;
-        ssh = {
-          enable = true;
-          port = 2222;
-          authorizedKeys = cfg.authorized-keys;
-          hostKeys = [
-            ( buildKey )
-          ];
-          extraConfig = ''
-            AllowUsers *@192.168.0.0/16
-          '';
-        };
-        udhcpc.extraArgs = [ "-t 30" "-A 1" ];
+        ports = [ 22 ];
+        passwordAuthentication = false;
+        permitRootLogin = mkForce "no";
+        extraConfig = ''
+          AllowUsers *@127.0.0.0/8
+          AllowUsers *@192.168.0.0/16
+        '';
       };
-    };
+      programs.mosh.enable = true;
+      programs.ssh.startAgent = cfg.agent;
 
-    home-manager.users."user".programs.ssh = (mkIf (cfg.matchs != { }) {
-      enable = true;
-      matchBlocks = cfg.matchs;
-    });
+      boot.initrd = mkIf cfg.initrd {
+        availableKernelModules = [ "r8169" ];
+        network = {
+          enable = true;
+          ssh = {
+            enable = true;
+            port = 2222;
+            authorizedKeys = cfg.authorized-keys;
+            hostKeys = [
+              ( buildKey )
+            ];
+            extraConfig = ''
+              AllowUsers *@192.168.0.0/16
+            '';
+          };
+          udhcpc.extraArgs = [ "-t 30" "-A 1" ];
+        };
+      };
+    })
 
-  };
+    (mkIf (cfg.matchs != { }) {
+      home-manager.users."user".programs.ssh = ({
+        enable = true;
+        matchBlocks = cfg.matchs;
+      });
+    })
+
+  ];
 
 }
