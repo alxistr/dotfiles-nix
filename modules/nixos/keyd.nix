@@ -3,7 +3,7 @@ let cfg = config.own.keyd; in
 with lib; with types;
 {
   options.own.keyd = {
-    enable = mkEnableOption "";
+    enable = (mkEnableOption "") // { default = true; };
   };
 
   config = mkIf cfg.enable {
