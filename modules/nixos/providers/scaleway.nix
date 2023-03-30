@@ -4,10 +4,10 @@ with lib; with types;
 let own = config.own; in
 
 let
-  f2b-ignored-ips = (concatStringsSep " " (unique ([
+  f2b-ignored-ips = (concatStringsSep " " ([
     "127.0.0.1"
     "127.0.0.1/8"
-  ] ++ own.f2b-whitelist)));
+  ] ++ own.f2b-whitelist));
 in
 
 {
@@ -31,26 +31,32 @@ in
   };
 
   config = mkIf own.scaleway {
-    boot.loader.systemd-boot = {
-      enable = true;
-      configurationLimit = 1;
+    boot.loader.grub = {
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      device = "nodev";
     };
-    boot.loader.efi.canTouchEfiVariables = true;
-
-    boot.cleanTmpDir = true;
+    boot.initrd = {
+      availableKernelModules = [ "ata_piix" "uhci_hcd" "xen_blkfront" "vmw_pvscsi" ];
+      kernelModules = [ "nvme" ];
+    };
 
     boot.kernelParams = [
       (mkIf own.allowTTY "console=ttyS0,115200")
       "panic=30" "boot.panic_on_fail"
     ];
 
+    boot.cleanTmpDir = true;
+
+    zramSwap.enable = true;
+
     fileSystems = {
       "/" = {
-        device = "/dev/vda1";
+        device = "/dev/sda1";
         fsType = "ext4";
       };
       "/boot" = {
-        device = "/dev/vda15";
+        device = "/dev/sda15";
         fsType = "vfat";
       };
     };
@@ -74,9 +80,6 @@ in
         ports = [ 22 ];
         passwordAuthentication = false;
       };
-
-      disnix.enable = false;
-
       fail2ban = {
         enable = true;
         jails.DEFAULT = mkForce (''
@@ -88,7 +91,6 @@ in
           enabled = true
         '');
       };
-
     };
 
     environment.systemPackages = with pkgs; [
