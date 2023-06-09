@@ -63,7 +63,7 @@ in
       services.dnsmasq = {
         enable = true;
         resolveLocalQueries = false;
-        servers = config.networking.nameservers;
+        settings.server = config.networking.nameservers;
         extraConfig = optionalString (cfg.listen != []) ''
           # https://wiki.libvirt.org/page/Libvirtd_and_dnsmasq
           listen-address=${concatStringsSep "," cfg.listen}

@@ -98,7 +98,7 @@ cat > /etc/nixos/configuration.nix << EOF
     ./hardware-configuration.nix
   ];
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
   boot.kernelParams = [
     # "console=ttyS0,115200"
     "panic=30" "boot.panic_on_fail"

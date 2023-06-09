@@ -4,8 +4,8 @@ with lib; with types;
 {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      xfce4-14.thunar
-      xfce4-14.thunar-volman
+      xfce.thunar
+      xfce.thunar-volman
       scrot
       imagemagick
       i3lockpp

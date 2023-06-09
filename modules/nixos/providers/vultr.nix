@@ -37,7 +37,7 @@ in
       device = "/dev/vda";
     };
 
-    boot.cleanTmpDir = true;
+    boot.tmp.cleanOnBoot = true;
 
     boot.kernelParams = [
       (mkIf own.allowTTY "console=ttyS0,115200")

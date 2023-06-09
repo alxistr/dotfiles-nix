@@ -36,8 +36,10 @@ let buildKey = pkgs.runCommand "build-key" { } ''
       services.openssh = {
         enable = true;
         ports = [ 22 ];
-        passwordAuthentication = false;
-        permitRootLogin = mkForce "no";
+        settings = {
+          PermitRootLogin = mkForce "no";
+          PasswordAuthentication = false;
+        };
         extraConfig = ''
           AllowUsers *@127.0.0.0/8
           AllowUsers *@192.168.0.0/16

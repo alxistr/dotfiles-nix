@@ -46,7 +46,7 @@ in
       "panic=30" "boot.panic_on_fail"
     ];
 
-    boot.cleanTmpDir = true;
+    boot.tmp.cleanOnBoot = true;
 
     zramSwap.enable = true;
 

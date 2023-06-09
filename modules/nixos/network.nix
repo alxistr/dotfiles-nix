@@ -16,6 +16,7 @@ let table = "2468"; in
       default = { };
       type = attrs;
     };
+    nm = mkOption { default = true; type = bool; };
     wireguard = {
       enable = mkOption { default = false; type = bool; };
       ip = mkOption { type = str; };
@@ -42,7 +43,7 @@ let table = "2468"; in
       };
     })
 
-    (mkIf ((cfg.wifi == null) || (cfg.wifi == { })) {
+    (mkIf cfg.nm {
       networking.networkmanager.enable = true;
       users.users.user.extraGroups = [ "networkmanager" ];
       programs.nm-applet.enable = true;

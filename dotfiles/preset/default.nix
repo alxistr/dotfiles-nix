@@ -42,7 +42,7 @@ with lib; with types;
       (youtube-dl.overrideAttrs (oldAttrs: {
         src = builtins.fetchGit{
           url = "https://github.com/ytdl-org/youtube-dl";
-          rev = "2dd6c6edd8e0fc5e45865b8e6d865e35147de772";
+          rev = "b8a86dcf1aa837577178ae25357d8241ab4ba6c1";
         };
         patches = [];
         postInstall = "";
@@ -82,9 +82,11 @@ with lib; with types;
       chez
       babashka
 
+      cbqn
+
       erlang
       gprolog
-      swiProlog
+      # swiProlog
 
       # ocaml
       # opam

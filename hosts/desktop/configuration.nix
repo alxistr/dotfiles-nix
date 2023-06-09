@@ -14,7 +14,7 @@ with lib;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # boot.kernelParams = [ "pci=noaer" ];
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
@@ -45,7 +45,7 @@ with lib;
 #  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
 #  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 #  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+#  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
 
   services.xserver.wacom.enable = true;
 
