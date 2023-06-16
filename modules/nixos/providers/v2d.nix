@@ -81,7 +81,9 @@ in
       openssh = {
         enable = true;
         ports = [ 22 ];
-        passwordAuthentication = false;
+        settings = {
+          PasswordAuthentication = false;
+        };
       };
 
       disnix.enable = false;
