@@ -131,7 +131,7 @@ with lib; with types;
       krita
       aseprite
 
-      godot
+      godot3
       gdx-liftoff
 
       transmission-gtk

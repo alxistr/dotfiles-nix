@@ -31,7 +31,7 @@ with lib; with types;
     fonts.fontDir.enable = true;
     # fonts.enableFontDir = true;
     fonts.enableGhostscriptFonts = true;
-    fonts.fonts = with pkgs; [
+    fonts.packages = with pkgs; [
       anonymousPro
       dejavu_fonts
       freefont_ttf
