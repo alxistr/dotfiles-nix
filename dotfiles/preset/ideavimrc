@@ -46,6 +46,12 @@ map <leader>go :action :cursive.repl.actions/jump-to-output<CR>
 map <leader>nf :action Clojure.ClojureFile<CR>
 
 "
+"
+"
+map <leader>hg :action Haskell.SendToGhci<CR>
+map <leader>hl :action Haskell.Ghci.LoadModule<CR>
+
+"
 " notebook
 "
 

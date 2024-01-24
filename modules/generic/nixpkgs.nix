@@ -31,6 +31,7 @@ in
       ( import ../../overlay )
       ( self: super: {
           # clojure = unstable.clojure;
+          cbqn = unstable.cbqn;
       } )
     ];
   };

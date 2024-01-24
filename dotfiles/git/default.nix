@@ -12,6 +12,7 @@ with lib; with types;
         key = cfg.key;
         signByDefault = true;
       };
+      lfs.enable = true;
 
       extraConfig = {
         core = {

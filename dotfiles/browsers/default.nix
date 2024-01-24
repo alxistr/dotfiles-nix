@@ -14,6 +14,7 @@ with lib; with types;
     programs = {
       firefox = {
         enable = true;
+        profiles.default = {};
       };
 
       chromium = {

@@ -39,14 +39,15 @@ with lib; with types;
       jetbrains.idea-community
 
       # youtube-dl
-      (youtube-dl.overrideAttrs (oldAttrs: {
-        src = builtins.fetchGit{
-          url = "https://github.com/ytdl-org/youtube-dl";
-          rev = "b8a86dcf1aa837577178ae25357d8241ab4ba6c1";
-        };
-        patches = [];
-        postInstall = "";
-      }))
+      yt-dlp
+      # (youtube-dl.overrideAttrs (oldAttrs: {
+      #   src = builtins.fetchGit{
+      #     url = "https://github.com/ytdl-org/youtube-dl";
+      #     rev = "fa7f0effbe4e14fcf70e1dc4496371c9862b64b9";
+      #   };
+      #   patches = [];
+      #   postInstall = "";
+      # }))
       # bandcamp-downloader
       # scdl
 
@@ -87,6 +88,19 @@ with lib; with types;
       erlang
       gprolog
       # swiProlog
+
+      ghc
+      ghcid
+      stack
+      hlint
+      ormolu
+      stylish-haskell
+      haskellPackages.hoogle
+
+      purescript
+      elmPackages.elm
+      elmPackages.elm-format
+      elmPackages.elm-test-rs
 
       # ocaml
       # opam
