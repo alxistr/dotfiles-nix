@@ -58,8 +58,11 @@ with lib; with types;
       enable = true;
       videoDrivers = mkIf cfg.nvidia [ "nvidia" ];
       libinput.enable = true;
+      # layout = "us,ru,apl";
+      # xkbOptions = "grp:alt_shift_toggle,grp_led:scroll,compose:menu";
+      # xkbVariant = ",,dyalog";
       layout = "us,ru";
-      xkbOptions = "grp:alt_shift_toggle,grp_led:scroll";
+      xkbOptions = "grp:alt_shift_toggle,grp_led:scroll,compose:menu";
       xkbVariant = "qwerty";
       gdk-pixbuf.modulePackages = with pkgs; [ librsvg ];
 

@@ -9,32 +9,7 @@ with lib; with types;
   config = mkIf cfg.enable {
     environment.etc = {
       # https://github.com/rvaiya/keyd/blob/master/docs/keyd.scdoc
-      "keyd/default.conf".source = pkgs.writeText "keyd.conf" ''
-        [ids]
-        *
-
-        [main]
-        capslock = overload(capslock, capslock)
-        leftcontrol = layer(control)
-
-        [capslock]
-        h = left
-        j = down
-        k = up
-        l = right
-        y = home
-        u = pagedown
-        i = pageup
-        o = end
-
-        # [capslock:C]
-        # [capslock:A]
-
-        [control:C]
-        h = backspace
-        [ = esc
-
-      '';
+      "keyd".source = ./keyd;
     };
 
     systemd.services.keyd = {

@@ -83,24 +83,25 @@ with lib; with types;
       chez
       babashka
 
+      gnuapl
       cbqn
 
       erlang
       gprolog
       # swiProlog
 
-      ghc
-      ghcid
-      stack
-      hlint
-      ormolu
-      stylish-haskell
-      haskellPackages.hoogle
+      # ghc
+      # ghcid
+      # stack
+      # hlint
+      # ormolu
+      # stylish-haskell
+      # haskellPackages.hoogle
 
-      purescript
-      elmPackages.elm
-      elmPackages.elm-format
-      elmPackages.elm-test-rs
+      # purescript
+      # elmPackages.elm
+      # elmPackages.elm-format
+      # elmPackages.elm-test-rs
 
       # ocaml
       # opam
@@ -154,6 +155,7 @@ with lib; with types;
     home.file.".ideavimrc".source = ./ideavimrc;
     home.file.".config/mpv/input.conf".source = ./mpv-input.conf;
     home.file.".cmus/gruvbox-light.theme".source = ./cmus.theme;
+    home.file.".XCompose".source = "${pkgs.keyd}/share/keyd/keyd.compose";
 
     # https://github.com/practicalli/clojure-deps-edn
     home.activation.setup-clojure-edn = ''
