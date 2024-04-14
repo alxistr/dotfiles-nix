@@ -1,0 +1,250 @@
+[
+  {
+    "settings": {
+      "openEditInWindow": false,
+      "openEditInWindow.popup": false,
+      "windowPosition": {},
+      "show-badge": true,
+      "disableAll": false,
+      "exposeIframes": false,
+      "exposeStyleName": false,
+      "newStyleAsUsercss": false,
+      "styleViaASS": false,
+      "styleViaXhr": false,
+      "patchCsp": false,
+      "urlInstaller": true,
+      "config.autosave": true,
+      "schemeSwitcher.enabled": "system",
+      "schemeSwitcher.nightStart": "18:00",
+      "schemeSwitcher.nightEnd": "06:00",
+      "popup.enabledFirst": true,
+      "popup.stylesFirst": true,
+      "popup.autoResort": false,
+      "popup.borders": false,
+      "popup.findSort": "u",
+      "manage.onlyEnabled": false,
+      "manage.onlyLocal": false,
+      "manage.onlyUsercss": false,
+      "manage.onlyEnabled.invert": false,
+      "manage.onlyLocal.invert": false,
+      "manage.onlyUsercss.invert": false,
+      "manage.actions.expanded": true,
+      "manage.backup.expanded": true,
+      "manage.filters.expanded": true,
+      "manage.minColumnWidth": 750,
+      "manage.newUI": true,
+      "manage.newUI.favicons": false,
+      "manage.newUI.faviconsGray": true,
+      "manage.newUI.targets": 3,
+      "manage.newUI.sort": "title,asc",
+      "manage.searchMode": "meta",
+      "editor.options": {},
+      "editor.toc.expanded": true,
+      "editor.options.expanded": true,
+      "editor.lint.expanded": true,
+      "editor.publish.expanded": true,
+      "editor.lineWrapping": true,
+      "editor.smartIndent": true,
+      "editor.indentWithTabs": false,
+      "editor.tabSize": 4,
+      "editor.keyMap": "basic",
+      "editor.theme": "default",
+      "editor.beautify": {
+        "end_with_newline": false,
+        "indent_conditional": true,
+        "indent_mozdoc": true,
+        "newline_after_open_brace": true,
+        "newline_before_close_brace": true,
+        "newline_before_open_brace": false,
+        "newline_between_properties": true,
+        "newline_between_rules": false,
+        "preserve_newlines": true,
+        "selector_separator_newline": true
+      },
+      "editor.beautify.hotkey": "",
+      "editor.lintDelay": 300,
+      "editor.linter": "csslint",
+      "editor.lintReportDelay": 500,
+      "editor.matchHighlight": "token",
+      "editor.autoCloseBrackets": true,
+      "editor.autocompleteOnTyping": false,
+      "editor.contextDelete": false,
+      "editor.selectByTokens": true,
+      "editor.arrowKeysTraverse": true,
+      "editor.appliesToLineWidget": false,
+      "editor.autosaveDraft": 10,
+      "editor.livePreview": true,
+      "editor.targetsFirst": true,
+      "editor.colorpicker": true,
+      "editor.colorpicker.hexUppercase": false,
+      "editor.colorpicker.hotkey": "",
+      "editor.colorpicker.color": "",
+      "editor.colorpicker.maxHeight": 300,
+      "hotkey._execute_browser_action": "",
+      "hotkey.openManage": "",
+      "hotkey.styleDisableAll": "",
+      "sync.enabled": "none",
+      "iconset": -1,
+      "badgeDisabled": "#8B0000",
+      "badgeNormal": "#006666",
+      "headerWidth.edit": 280,
+      "headerWidth.install": 280,
+      "headerWidth.manage": 280,
+      "popupWidth": 246,
+      "popupWidthMax": 280,
+      "updateInterval": 24,
+      "updateOnlyEnabled": false,
+      "popup.breadcrumbs": true,
+      "popup.breadcrumbs.usePath": false
+    },
+    "order": {
+      "main": [],
+      "prio": []
+    }
+  },
+  {
+    "enabled": true,
+    "installDate": 1680118767136,
+    "sections": [
+      {
+        "code": ""
+      }
+    ],
+    "sourceCode": "/* ==UserStyle==\n@name yt gruvbox light\n@namespace    gist.github.com/hell10w/836f5ee0f08cd2821ec999541ec6a6ce\n@version      0.0.1\n@preprocessor stylus\n==/UserStyle== */\n\n@-moz-document domain(\"youtube.com\") {\n  html {\n    --gruvbox-light-fg0: #282828;\n    --gruvbox-light-fg1: #3c3836;\n    --gruvbox-light-fg2: #504945;\n    --gruvbox-light-bg: #fbf1c7;\n    --gruvbox-light-bg0-h: #f9f5d7;\n    --gruvbox-light-bg1: #ebdbb2;\n    --gruvbox-light-bg2: #d5c4a1;\n    --gruvbox-light-aqua-6: #689d6a;\n    --gruvbox-light-blue-4: #458588;\n    --gruvbox-light-blue-12: #076678;\n    --gruvbox-light-red-1: #cc241d;\n    --gruvbox-light-red-9: #9d0006;\n    --gruvbox-light-gray-7: #7c6f64;\n    --gruvbox-light-gray-8: #928374;\n    --yt-spec-base-background: var(--gruvbox-light-bg);\n    --yt-spec-raised-background: var(--gruvbox-light-bg);\n    --yt-spec-menu-background: var(--gruvbox-light-bg);\n    --yt-spec-brand-background-solid: var(--gruvbox-light-bg);\n    --yt-spec-brand-background-primary: var(--gruvbox-light-bg);\n    --yt-spec-brand-background-secondary: var(--gruvbox-light-bg);\n    --yt-spec-general-background-a: var(--gruvbox-light-bg);\n    --yt-spec-general-background-b: var(--gruvbox-light-bg);\n    --yt-spec-general-background-c: var(--gruvbox-light-bg);\n    --ytd-searchbox-background: var(--gruvbox-light-bg);\n    --yt-spec-static-brand-white: var(--gruvbox-light-bg);\n    --yt-spec-themed-overlay-background: var(--gruvbox-light-bg);\n    --yt-spec-filled-button-text: var(--gruvbox-light-bg);\n    --ytd-searchbox-legacy-button-color: var(--gruvbox-light-bg);\n    --yt-spec-white-1: var(--gruvbox-light-bg);\n    --yt-spec-white-2: var(--gruvbox-light-bg);\n    --yt-spec-white-3: var(--gruvbox-light-bg);\n    --yt-live-chat-banner-gradient-scrim: var(--gruvbox-light-bg);\n    --yt-live-chat-vem-background-color: var(--gruvbox-light-bg0-h);\n    --yt-spec-suggested-action: var(--gruvbox-light-bg0-h);\n    --yt-spec-themed-blue: var(--gruvbox-light-blue-4);\n    --yt-spec-call-to-action: var(--gruvbox-light-blue-12);\n    --yt-spec-brand-button-background: var(--gruvbox-light-red-1);\n    --yt-spec-static-overlay-background-brand: var(--gruvbox-light-red-1);\n    --ytd-searchbox-legacy-border-color: var(--gruvbox-light-gray-8);\n    --ytd-searchbox-legacy-button-border-color: var(--gruvbox-light-gray-8);\n    --light-theme-divider-color: var(--gruvbox-light-gray-8);\n  }\n  ytd-playlist-panel-video-renderer[selected][use-color-palette], ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {\n    --yt-active-playlist-panel-background-color: var(--gruvbox-light-bg1) !important;\n  }\n  .sbsb_a, .sbfl_b {\n  \tbackground-color: var(--gruvbox-light-bg);\n  }\n  body::-webkit-scrollbar-track,\n  body::-webkit-scrollbar,\n  body::-webkit-scrollbar-thumb,\n  body::-webkit-scrollbar-thumb:hover {\n  \tbackground-color: var(--gruvbox-light-bg);\n  }\n  body::-webkit-scrollbar {\n    width: 15px;\n  }\n  #item-scroller.yt-live-chat-item-list-renderer::-webkit-scrollbar-thumb {\n  \tbackground-color: var(--gruvbox-light-bg1);\n  }\n  #item-scroller.yt-live-chat-item-list-renderer::-webkit-scrollbar {\n    width: 10px;\n  }\n  ytd-player, ytd-thumbnail, ytd-thumbnail img, .ytd-thumbnail, yt-chip-cloud-chip-renderer, .yt-spec-button-shape-next--size-m, #description.ytd-watch-metadata, .yt-image-banner-view-model-wiz--inset {\n      border-radius: 0 !important;\n  }\n \n}\n",
+    "usercssData": {
+      "name": "yt gruvbox light",
+      "namespace": "gist.github.com/hell10w/836f5ee0f08cd2821ec999541ec6a6ce",
+      "version": "0.0.1",
+      "preprocessor": "stylus"
+    },
+    "name": "yt gruvbox light",
+    "updateDate": 1713051496417,
+    "_id": "2691a0fd-20c1-4a38-bf80-643cf086827c",
+    "_rev": 1713051496418,
+    "id": 1
+  },
+  {
+    "enabled": true,
+    "updateUrl": "https://raw.githubusercontent.com/Xedecimal/userstyles/master/gruvbox-gmail.user.styl",
+    "url": "https://github.com/Xedecimal/userstyles",
+    "installDate": 1680118798874,
+    "sections": [
+      {
+        "code": ""
+      }
+    ],
+    "sourceCode": "/* ==UserStyle==\n@name           GruvBox - Gmail\n@namespace      github.com/Xedecimal/userstyles\n@version        1.1.7\n@description    Gmail... Gruvbox style.\n@preprocessor   stylus\n@author         Xedecimal\n@license        WTFPL\n@updateURL      https://raw.githubusercontent.com/Xedecimal/userstyles/master/gruvbox-gmail.user.styl\n@homepageURL    https://github.com/Xedecimal/userstyles\n@var color color-text           \"Text\"                  #282828\n@var color color-back           \"Background\"            #fbf1c7\n\n==/UserStyle== */\n\n@-moz-document domain(\"mail.google.com\")\n    body()\n        background: color-back\n        color: color-text\n\n    body, input, .aAT, .aAU, .w-asV.aiw, .nH .if, .nH .bkL, .aeJ, .yO, .bhZ.bym, .bhZ.bjB, .IG, .GQ, .Ap, .aoP .Ar, .Am, .aDg>.aDj, .iY .Bu, .aaZ, .vO\n        body()\n\n    .bAw .brC-aT5-aOt-Jw, .aoT, .aeH, .G-atb\n        body()\n",
+    "usercssData": {
+      "name": "GruvBox - Gmail",
+      "namespace": "github.com/Xedecimal/userstyles",
+      "version": "1.1.7",
+      "description": "Gmail... Gruvbox style.",
+      "preprocessor": "stylus",
+      "author": "Xedecimal",
+      "license": "WTFPL",
+      "updateURL": "https://raw.githubusercontent.com/Xedecimal/userstyles/master/gruvbox-gmail.user.styl",
+      "homepageURL": "https://github.com/Xedecimal/userstyles",
+      "vars": {
+        "color-text": {
+          "type": "color",
+          "label": "Text",
+          "name": "color-text",
+          "value": null,
+          "default": "#282828",
+          "options": null
+        },
+        "color-back": {
+          "type": "color",
+          "label": "Background",
+          "name": "color-back",
+          "value": null,
+          "default": "#fbf1c7",
+          "options": null
+        }
+      }
+    },
+    "author": "Xedecimal",
+    "description": "Gmail... Gruvbox style.",
+    "name": "GruvBox - Gmail",
+    "updateDate": 1680118798874,
+    "_id": "a47fe600-b5e8-47d7-a934-496e93b24c91",
+    "_rev": 1680118798874,
+    "id": 2,
+    "etag": "W/\"2c8519630d91a13c3bfcf7494fb1c0a5dc02da8a525d9ea5c6aba2f191170541\""
+  },
+  {
+    "enabled": true,
+    "installDate": 1680118831130,
+    "sections": [
+      {
+        "code": ""
+      }
+    ],
+    "sourceCode": "/* ==UserStyle==\n@name tg gruvbox light\n@namespace      github.com/Xedecimal/userstyles\n@version      0.0.1\n@preprocessor stylus\n==/UserStyle== */\n\n@-moz-document domain(\"web.telegram.org\") {\n  :root {\n    --gruvbox-light-fg0: #282828;\n    --gruvbox-light-fg1: #3c3836;\n    --gruvbox-light-fg2: #504945;\n    --gruvbox-light-bg: #fbf1c7;\n    --gruvbox-light-bg0-h: #f9f5d7;\n    --gruvbox-light-bg0-s: #f2e5bc;\n    --gruvbox-light-bg1: #ebdbb2;\n    --gruvbox-light-bg2: #d5c4a1;\n    --gruvbox-light-aqua-6: #689d6a;\n    --gruvbox-light-blue-4: #458588;\n    --gruvbox-light-blue-12: #076678;\n    --gruvbox-light-red-1: #cc241d;\n    --gruvbox-light-red-9: #9d0006;\n    --gruvbox-light-gray-7: #7c6f64;\n    --gruvbox-light-gray-8: #928374;\n             \n    --color-background: var(--gruvbox-light-bg) !important;\n    --color-chat-hover: var(--gruvbox-light-bg0-h) !important;\n    --color-primary: var(--gruvbox-light-blue-4) !important;\n    --color-chat-active: var(--gruvbox-light-blue-4) !important;\n    --color-text: var(--gruvbox-light-fg0) !important;\n    --color-reaction: var(--gruvbox-light-bg) !important;      \n    --color-gray: var(--gruvbox-light-bg2) !important;\n    \n    --border-radius-default: 0;\n    --border-radius-modal: 0;\n    --border-radius-default-small: 0;\n    --border-radius-default-tiny: 0;\n    --border-radius-messages: 0;\n    --border-radius-messages-small: 0;\n    --border-radius-forum-avatar: 0;\n\n  }  \n      \n  html body, body::before, #MiddleColumn, .messages-layout {\n      background-image: unset !important;      \n      background-color: var(--gruvbox-light-bg0-s) !important;     \n  }\n  \n  .Reactions button {\n      --reaction-background: var(--gruvbox-light-bg0-s) !important;      \n      --reaction-text-color: var(--gruvbox-light-blue-12) !important;      \n      --reaction-background-hover: var(--gruvbox-light-blue-12) !important;      \n  }\n  .Reactions button:hover {\n      color: var(--gruvbox-light-bg) !important;      \n  }\n  .Reactions button.chosen {\n      --reaction-background: var(--gruvbox-light-blue-4) !important;   \n      color: var(--gruvbox-light-bg) !important;         \n  }\n\n  .SearchInput, .SearchInput input {\n      border-radius: 0;\n  }\n  \n  .Button, .Avatar {      \n      border-radius: 0 !important;\n      --radius: 0 !important;\n  }\n  \n}\n",
+    "usercssData": {
+      "name": "tg gruvbox light",
+      "namespace": "github.com/Xedecimal/userstyles",
+      "version": "0.0.1",
+      "preprocessor": "stylus"
+    },
+    "name": "tg gruvbox light",
+    "updateDate": 1713004895883,
+    "_id": "829413bf-03ce-4b97-b56e-094707bec5cb",
+    "_rev": 1713004895883,
+    "id": 3
+  },
+  {
+    "enabled": true,
+    "installDate": 1685365199809,
+    "name": "tw",
+    "sections": [
+      {
+        "code": "/* ==UserStyle==\n@name twitter gruvbox light\n@version      0.0.1\n@preprocessor stylus\n==/UserStyle== */"
+      },
+      {
+        "code": "html {\n    --gruvbox-light-fg0: #282828;\n    --gruvbox-light-fg1: #3c3836;\n    --gruvbox-light-fg2: #504945;\n    --gruvbox-light-bg: #fbf1c7;\n    --gruvbox-light-bg0-h: #f9f5d7;\n    --gruvbox-light-bg1: #ebdbb2;\n    --gruvbox-light-bg2: #d5c4a1;\n    --gruvbox-light-aqua-6: #689d6a;\n    --gruvbox-light-blue-4: #458588;\n    --gruvbox-light-blue-12: #076678;\n    --gruvbox-light-red-1: #cc241d;\n    --gruvbox-light-red-9: #9d0006;\n    --gruvbox-light-gray-7: #7c6f64;\n    --gruvbox-light-gray-8: #928374;\n  }\n  body {\n    background-color: var(--gruvbox-light-bg) !important;\n  }\n  *[aria-label=\"Home timeline\"],\n  *[aria-label=\"Timeline: Trending now\"],\n  *[aria-label=\"Who to follow\"] {\n    background-color: var(--gruvbox-light-bg);\n  }\n  *:has(*>*>*[aria-label=\"Home timeline\"]),\n  *:has(*>*>*[aria-label=\"Timeline: Trending now\"]),\n  *:has(*>*>*[aria-label=\"Who to follow\"]) {\n    background-color: var(--gruvbox-light-bg);\n    border-color: var(--gruvbox-light-bg0-h);\n  }\n  *[aria-label=\"Trending\"]>div:first-child>div:first-child {\n    background-color: var(--gruvbox-light-bg);\n  }\n  *[aria-label=\"Home timeline\"]>div:nth-child(3) {\n    background-color: var(--gruvbox-light-bg);\n  }",
+        "domains": [
+          "twitter.com"
+        ]
+      }
+    ],
+    "updateDate": 1685365199809,
+    "_id": "3e7f6ab2-8396-458e-8b80-df3865d655c3",
+    "_rev": 1685365199809,
+    "id": 5
+  },
+  {
+    "enabled": true,
+    "installDate": 1712875516804,
+    "name": "discord",
+    "sections": [
+      {
+        "code": ".theme-light {    \n   --gruvbox-bg: #fbf1c7;\n   --gruvbox-bg0_h: #f9f5d7;\n   --gruvbox-bg0_s: #f2e5bc;\n   --gruvbox-bg1: #ebdbb2;\n   --gruvbox-bg2: #d5c4a1;\n   --gruvbox-bg4: #a89984;\n   --gruvbox-fg: #3c3836;\n   --gruvbox-blue4: #458688;\n   --gruvbox-blue12: #076678;\n   --gruvbox-red1: #cc241d;\n   --gruvbox-green2: #98971a;\n   --gruvbox-aqua6: #689d6a;\n    \n   --background-primary: var(--gruvbox-bg) !important;\n   --background-secondary: var(--gruvbox-bg) !important;\n   --white-500: var(--gruvbox-bg) !important;\n   --primary-200: var(--gruvbox-bg0_s) !important;\n   --primary-160: var(--gruvbox-bg0_s) !important;   \n    \n   --scrollbar-auto-scrollbar-color-thumb: var(--gruvbox-bg2) !important;\n   --scrollbar-auto-scrollbar-color-track: var(--gruvbox-bg) !important;\n    \n   --brand-500: var(--gruvbox-blue4);\n   --brand-experiment-560: var(--gruvbox-blue12);\n   --button-danger-background: var(--gruvbox-red1);\n   --button-positive-background: var(--gruvbox-aqua6);\n}\n",
+        "domains": [
+          "discord.com"
+        ]
+      }
+    ],
+    "updateDate": 1713059365814,
+    "_id": "11c1242f-b61f-4e03-a1fb-4c40a1c5b1f2",
+    "_rev": 1713059365815,
+    "id": 6
+  },
+  {
+    "enabled": true,
+    "installDate": 1713059445789,
+    "name": "light gruvbox",
+    "sections": [
+      {
+        "code": ":root {    \n  --gruvbox-light-bg_h: #f9f5d7;\n  --gruvbox-light-bg:   #fbf1c7;\n  --gruvbox-light-bg_s: #f2e5bc;\n  --gruvbox-light-bg1:  #ebdbb2;\n  --gruvbox-light-bg2:  #d5c4a1;\n  --gruvbox-light-bg3:  #bdae93;\n  --gruvbox-light-bg4:  #a89984;\n\n  --gruvbox-light-fg:  #282828;\n  --gruvbox-light-fg1: #3c3836;\n  --gruvbox-light-fg2: #504945;\n  --gruvbox-light-fg3: #665c54;\n  --gruvbox-light-fg4: #7c6f64;\n\n  --gruvbox-light-red:    #9d0006;\n  --gruvbox-light-green:  #79740e;\n  --gruvbox-light-yellow: #b57614;\n  --gruvbox-light-blue:   #076678;\n  --gruvbox-light-purple: #8f3f71;\n  --gruvbox-light-aqua:   #427b58;\n  --gruvbox-light-orange: #af3a03;\n  --gruvbox-light-gray:   #928374;\n\n  --gruvbox-light-red-dim:    #cc2412;\n  --gruvbox-light-green-dim:  #98971a;\n  --gruvbox-light-yellow-dim: #d79921;\n  --gruvbox-light-blue-dim:   #458598;\n  --gruvbox-light-purple-dim: #b16286;\n  --gruvbox-light-aqua-dim:   #689d6a;\n  --gruvbox-light-orange-dim: #d65d0e;\n  --gruvbox-light-gray-dim:   #7c6f64;\n  \n  --gruvbox-dark-bg_h: #1d2021;\n  --gruvbox-dark-bg:   #282828;\n  --gruvbox-dark-bg_s: #32302f;\n  --gruvbox-dark-bg1:  #3c3836;\n  --gruvbox-dark-bg2:  #504945;\n  --gruvbox-dark-bg3:  #665c54;\n  --gruvbox-dark-bg4:  #7c6f64;\n\n  --gruvbox-dark-fg:  #fbf1c7;\n  --gruvbox-dark-fg1: #ebdbb2;\n  --gruvbox-dark-fg2: #d5c4a1;\n  --gruvbox-dark-fg3: #bdae93;\n  --gruvbox-dark-fg4: #a89984;\n\n  --gruvbox-dark-red:    #fb4934;\n  --gruvbox-dark-green:  #b8bb26;\n  --gruvbox-dark-yellow: #fabd2f;\n  --gruvbox-dark-blue:   #83a598;\n  --gruvbox-dark-purple: #d3869b;\n  --gruvbox-dark-aqua:   #8ec07c;\n  --gruvbox-dark-gray:   #928374;\n  --gruvbox-dark-orange: #fe8019;\n\n  --gruvbox-dark-red-dim:    #cc2412;\n  --gruvbox-dark-green-dim:  #98971a;\n  --gruvbox-dark-yellow-dim: #d79921;\n  --gruvbox-dark-blue-dim:   #458588;\n  --gruvbox-dark-purple-dim: #b16286;\n  --gruvbox-dark-aqua-dim:   #689d6a;\n  --gruvbox-dark-gray-dim:   #a89984;\n  --gruvbox-dark-orange-dim: #d65d0e;\n\n}\n",
+        "urls": [
+          "nowhwere"
+        ]
+      }
+    ],
+    "updateDate": 1713060294260,
+    "_id": "826e8647-4ce9-4806-a2a4-f88929fbefd5",
+    "_rev": 1713060294261,
+    "id": 7
+  }
+]
