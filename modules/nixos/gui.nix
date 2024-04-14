@@ -40,6 +40,7 @@ with lib; with types;
       terminus_font
       font-awesome_5
       powerline-fonts
+      apl386
     ];
 
     services.dbus.packages = with pkgs; [ dconf ];

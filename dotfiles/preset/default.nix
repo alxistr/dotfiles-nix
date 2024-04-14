@@ -72,7 +72,8 @@ with lib; with types;
 
       gnumake
       # postman
-      openjdk11
+      # openjdk11
+      # openjdk17
       # leiningen
       clojure
       visualvm
@@ -85,6 +86,7 @@ with lib; with types;
 
       gnuapl
       cbqn
+      j
 
       erlang
       gprolog

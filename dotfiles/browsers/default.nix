@@ -4,18 +4,17 @@ with lib; with types;
 {
   config = mkIf cfg.enable {
     home.packages = with pkgs; optionals cfg.heavy [
-      # (callPackage ./google-chrome.nix {
-      #   gconf = gnome2.GConf;
-      # })
       google-chrome
-      # vivaldi
+      # (vivaldi.override { proprietaryCodecs = true; })
+      # brave
+      # opera
     ];
 
     programs = {
-      firefox = {
-        enable = true;
-        profiles.default = {};
-      };
+      # firefox = {
+      #   enable = true;
+      #   profiles.default = {};
+      # };
 
       chromium = {
         enable = true;
@@ -23,10 +22,10 @@ with lib; with types;
           "dbepggeogbaibhgnhhndojpepiihcmeb"  # vimium
           "gcbommkclmclpchllfjekcdonpmejbdp"  # https everywhere
           "padekgcemlokbadohgkifijomclgjgif"  # proxy switchyomega
-          "gighmmpiobklfepjocnamgkkbiglidom"  # adblock
-          "cfhdojbkjhnklbpkdaibdccddilifddb"  # adblock plus
-          "cmedhionkhpnakcndndgjdbohmhepckk"  # adblock youtube
+          "cjpalhdlnbpafiamejdnhcphjbkeiagm"  # ublock
+          "nffaoalbilbmmfgbnbgppjihopabppdk"  # video speed controller
           "aapbdbdomjkkjkaonfhkkikfgjllcleb"  # google translate
+          "clngdbkpkpeebahjckkjfobafhncgmne"  # stylus
         ];
       };
 
