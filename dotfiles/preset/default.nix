@@ -23,7 +23,7 @@ with lib; with types;
       djview
       # masterpdfeditor
 
-      wxhexeditor
+      bless
       scanmem
 
       sublime3
@@ -71,12 +71,10 @@ with lib; with types;
       kubectx
 
       gnumake
-      # postman
-      # openjdk11
-      # openjdk17
-      # leiningen
+      openjdk
       clojure
       visualvm
+      async-profiler
 
       # shen
       # ferret
@@ -86,7 +84,7 @@ with lib; with types;
 
       gnuapl
       cbqn
-      j
+      # j
 
       erlang
       gprolog

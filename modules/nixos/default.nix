@@ -13,7 +13,8 @@
     ./neovim.nix
     ./network.nix
     ./oom.nix
-    ./parity.nix
+    # ./parity.nix
+    ./profiler.nix
     ./rpi3bp.nix
     ./shell.nix
     ./ssh.nix
