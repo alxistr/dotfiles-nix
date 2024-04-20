@@ -16,7 +16,10 @@ with lib; with types;
       # kind
     ]);
 
-    virtualisation.docker.enable = true;
+    virtualisation.docker = {
+      enable = true;
+      enableNvidia = true;
+    };
 
   };
 
