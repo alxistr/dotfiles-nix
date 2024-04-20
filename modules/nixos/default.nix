@@ -1,5 +1,6 @@
 {
   imports = [
+    ./nixpkgs.nix
     ./dnsmasq.nix
     ./docker.nix
     ./documentation.nix

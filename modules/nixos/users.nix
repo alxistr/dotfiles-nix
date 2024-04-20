@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 let home-manager = builtins.fetchTarball {
-  url = "https://github.com/nix-community/home-manager/archive/10cd9c53115061aa6a0a90aad0b0dde6a999cdb9.tar.gz";
-  sha256 = "sha256:0x7lvvzi0lv7yvp97s0lkdiapxxpwqz8a86w2lk0dm14y1az23aq";
+  url = "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
+  sha256 = "sha256:0r19x4n1wlsr9i3w4rlc4jc5azhv2yq1n3qb624p0dhhwfj3c3vl";
 }; in
 with lib; with types;
 
@@ -45,8 +45,10 @@ with lib; with types;
 
     security.sudo.wheelNeedsPassword = false;
 
-    home-manager.users."root" = import ../../dotfiles/home.nix;
-    home-manager.users."user" = import ../../dotfiles/home.nix;
+    home-manager.sharedModules = [
+      ( import ./nixpkgs.nix )
+      ( import ../../dotfiles/home.nix )
+    ];
 
   };
 

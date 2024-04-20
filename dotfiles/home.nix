@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ../modules/generic
-    ../modules/home
     ./alacritty
     ./awesome
     ./browsers

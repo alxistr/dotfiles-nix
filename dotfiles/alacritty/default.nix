@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, osConfig, ... }:
 
-let cfg = config.nixos-config.own.gui; in
+let cfg = osConfig.own.gui; in
 with lib; with types;
 
 let

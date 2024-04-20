@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, osConfig, ... }:
 
-let enabled = config.nixos-config.own.gui.enable; in
+let enabled = osConfig.own.gui.enable; in
 with lib; with types;
 
 # let default-theme = "dark"; in

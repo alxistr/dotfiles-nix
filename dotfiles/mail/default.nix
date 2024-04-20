@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, osConfig, ... }:
 
-let cfg = config.nixos-config.own.mail; in
+let cfg = osConfig.own.mail; in
 
 let mkAccount = (name: {
   flavor = "plain";

@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, osConfig, ... }:
 
-let opts = config.nixos-config.own.emacs; in
+let opts = osConfig.own.emacs; in
 with lib; with types;
 
 {

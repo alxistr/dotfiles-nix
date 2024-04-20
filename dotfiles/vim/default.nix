@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, osConfig, ... }:
 
-let enable = config.nixos-config.own.neovim; in
+let enable = osConfig.own.neovim; in
 with lib; with types;
 
 let

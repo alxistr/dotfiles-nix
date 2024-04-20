@@ -7,10 +7,6 @@
   boot.tmp.cleanOnBoot = true;
 
   own = {
-    # ssh = {
-    #   enable = true;
-    #   agent = true;
-    # };
     gui.enable = true;
     docker.enable = true;
     virtualisation.enable = true;
@@ -18,10 +14,6 @@
       enable = true;
       adhosts.enable = true;
     };
-    # tor = {
-    #   enable = true;
-    # };
-    # emacs.enable = true;
   };
 
   # qemu-user.aarch64 = true;
