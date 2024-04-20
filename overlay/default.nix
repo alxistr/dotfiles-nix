@@ -32,7 +32,13 @@ let inherit (super) callPackage; in
     x52pro = callPackage ./packages/x52 { };
   };
 
+  # java-jmc = callPackage ./packages/java-jmc { };
+
   my-emacs = callPackage ./packages/emacs { };
+  # j = callPackage ./packages/j { };
+  j = super.j.overrideAttrs (oldAttrs: {
+    NIX_CFLAGS_COMPILE = "-Wno-error=deprecated-non-prototype";
+  });
 
   # kind = callPackage ./packages/kind { };
   arion = callPackage "${super.fetchFromGitHub {
@@ -42,7 +48,6 @@ let inherit (super) callPackage; in
     sha256 = "0i02bwbyy0m382avvvkj49rhq1i2vqjgxcnvzrj345pbwqvh3xq3";
   }}/arion.nix" { };
 
-  vivaldi = super.vivaldi.override { proprietaryCodecs = true; };
   xnview = callPackage ./packages/xnview { };
 
   shell-tools = {

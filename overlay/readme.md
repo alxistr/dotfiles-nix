@@ -5,4 +5,5 @@
 - `nix-build -A oomox shell.nix`
 - `nix-shell -A awesomerc-debug`
 - `nix-shell -A oomox`
+- `nix-build -A j shell.nix`
 - `nix-build -A xnview shell.nix`
