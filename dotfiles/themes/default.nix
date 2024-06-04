@@ -50,7 +50,7 @@ let default-theme = "light"; in
 
     qt = {
       enable = true;
-      platformTheme = "gtk";
+      platformTheme.name = "gtk";
     };
 
     home.activation.initial-xresources = ''

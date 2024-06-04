@@ -6,7 +6,7 @@ function run-iso-with-qemu-and-ssh () {
     -display gtk \
     -smp 2 \
     -net nic -net user,hostfwd=tcp::2222-:22 \
-    -m 2048 ${@:2}
+    -m 8G ${@:2}
 }
 
 function run-iso-with-qemu () {
@@ -59,7 +59,18 @@ function run-disk-with-qemu () {
     -display gtk \
     -smp 2 \
     -net nic -net user \
-    -m 2048 ${@:2}
+    -m 8G ${@:2}
+}
+
+function run-qcow-with-qemu () {
+  sudo qemu-system-x86_64 \
+    -enable-kvm \
+    -drive "file=$1,media=disk,if=virtio" \
+    -device ac97 \
+    -display gtk \
+    -smp 2 \
+    -net nic -net user \
+    -m 8G ${@:2}
 }
 
 function run-initrd-with-qemu () {

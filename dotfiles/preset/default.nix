@@ -124,6 +124,7 @@ with lib; with types;
       freemind
       zim
       graphviz
+      plantuml
 
       # gthumb
       # aseprite-unfree

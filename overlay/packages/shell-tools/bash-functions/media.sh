@@ -52,10 +52,18 @@ function camoff () {
   sudo modprobe -r uvcvideo
 }
 
-function youtube-dl-best-audio () {
-  yt-dlp -f bestaudio \
-         --extract-audio \
-         --audio-format mp3 \
-         --audio-quality 0 \
-         "$1"
+# function youtube-dl-best-audio () {
+#   yt-dlp -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 "$1"
+# }
+
+function yt-dlp-audio () {
+  yt-dlp -f bestaudio --extract-audio --audio-quality 0 "${@:2}" "$1"
+}
+
+function yt-dlp-mp3 () {
+  yt-dlp-audio "$1" --audio-format mp3
+}
+
+function yt-dlp-opus () {
+  yt-dlp-audio "$1" --audio-format opus
 }

@@ -4,15 +4,14 @@ let cfg = osConfig.own.gui; in
 with lib; with types;
 
 let
-  theme = ./themes/gruvbox-light.yml;
-  # theme = ./themes/gruvbox-dark.yml;
+  theme = ./themes/gruvbox-light.toml;
+  # theme = ./themes/gruvbox-dark.toml;
   font = {
     # family = "Roboto Mono for Powerline";
     # family = "Source Code Pro for Powerline";
     family = "APL386 Unicode";
     size = 10;
   };
-  toYAML = lib.generators.toYAML { };
 in
 
 {
@@ -21,30 +20,33 @@ in
       alacritty
     ];
 
-    home.file.".config/alacritty/alacritty.yml".text = toYAML {
-      env = {
-        TERM = "xterm-256color";
-      };
-      window = {
-        padding = {
-          x = 5;
-          y = 5;
-        };
-      };
-      scrolling = {
-        history = 10000;
-      };
-      font = {
-        normal.family = font.family;
-        bold.family = font.family;
-        italic.family = font.family;
-        size = font.size;
-      };
-      dynamic_title = true;
+    home.file.".config/alacritty/alacritty.toml".text = ''
       import = [
-        theme
-      ];
-    };
+        "${theme}"
+      ]
+
+      [env]
+      TERM = "xterm-256color"
+
+      [font]
+      size = ${toString(font.size)}
+
+      [font.bold]
+      family = "${font.family}"
+
+      [font.italic]
+      family = "${font.family}"
+
+      [font.normal]
+      family = "${font.family}"
+
+      [scrolling]
+      history = 10000
+
+      [window.padding]
+      x = 5
+      y = 5
+    '';
 
   };
 

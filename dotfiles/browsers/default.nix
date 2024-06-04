@@ -4,10 +4,10 @@ with lib; with types;
 {
   config = mkIf cfg.enable {
     home.packages = with pkgs; optionals cfg.heavy [
-      google-chrome
+      (google-chrome.override { commandLineArgs = "--disable-features=CustomizeChromeSidePanel"; })
       # (vivaldi.override { proprietaryCodecs = true; })
       # brave
-      # opera
+      opera
     ];
 
     programs = {

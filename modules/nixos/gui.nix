@@ -55,16 +55,22 @@ with lib; with types;
       };
     };
 
+    services.libinput.enable = true;
+
     services.xserver = {
       enable = true;
       videoDrivers = mkIf cfg.nvidia [ "nvidia" ];
-      libinput.enable = true;
-      # layout = "us,ru,apl";
-      # xkbOptions = "grp:alt_shift_toggle,grp_led:scroll,compose:menu";
-      # xkbVariant = ",,dyalog";
-      layout = "us,ru";
-      xkbOptions = "grp:alt_shift_toggle,grp_led:scroll,compose:menu";
-      xkbVariant = "qwerty";
+
+      # xkb = {
+      #   layout = "us,ru,apl";
+      #   options = "grp:alt_shift_toggle,grp_led:scroll,compose:menu";
+      #   variant = ",,dyalog";
+      # };
+      xkb = {
+        layout = "us,ru";
+        options = "grp:alt_shift_toggle,grp_led:scroll,compose:menu";
+        variant = "qwerty";
+      };
       gdk-pixbuf.modulePackages = with pkgs; [ librsvg ];
 
       desktopManager = {
