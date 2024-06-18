@@ -12,12 +12,10 @@ with lib; with types;
       gvfs
 
       deadbeef
-      # cmus
       mpv
 
       qpdfview
       djview
-      # masterpdfeditor
 
       bless
       scanmem
@@ -30,30 +28,14 @@ with lib; with types;
 
       anki-bin
 
-      # jetbrains.pycharm-professional
-      # jetbrains.idea-ultimate
       jetbrains.idea-community
 
-      # youtube-dl
       yt-dlp
-      # (youtube-dl.overrideAttrs (oldAttrs: {
-      #   src = builtins.fetchGit{
-      #     url = "https://github.com/ytdl-org/youtube-dl";
-      #     rev = "fa7f0effbe4e14fcf70e1dc4496371c9862b64b9";
-      #   };
-      #   patches = [];
-      #   postInstall = "";
-      # }))
-      # bandcamp-downloader
-      # scdl
 
       appimage-run
       apacheHttpd
 
-      # zoom-us
       discord
-
-      # tor-browser-bundle-bin
 
       # nixops
       # fabric1
@@ -85,24 +67,6 @@ with lib; with types;
       erlang
       gprolog
       # swiProlog
-
-      # ghc
-      # ghcid
-      # stack
-      # hlint
-      # ormolu
-      # stylish-haskell
-      # haskellPackages.hoogle
-
-      # purescript
-      # elmPackages.elm
-      # elmPackages.elm-format
-      # elmPackages.elm-test-rs
-
-      # ocaml
-      # opam
-      # dune_2
-      # bs-platform
 
       love_11
       exercism
