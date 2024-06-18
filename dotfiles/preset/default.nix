@@ -5,10 +5,6 @@ with lib; with types;
 {
   config = mkIf cfg.enable {
     home.packages = with pkgs; ([
-      pasystray
-      pavucontrol
-      paprefs
-
       gparted
       exfat
       dosfstools
@@ -135,6 +131,9 @@ with lib; with types;
 
       godot3
       gdx-liftoff
+
+      puredata
+      supercollider
 
       transmission-gtk
 
