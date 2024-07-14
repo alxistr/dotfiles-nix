@@ -52,8 +52,6 @@
         source "$(fzf-share)/key-bindings.bash"
         source "$(fzf-share)/completion.bash"
       fi
-      # source ${./fzf-bash-completion}
-      # bind -x '"\t": fzf_bash_completion'
       source ${pkgs.shell-tools.bash-functions}
     '';
     shellAliases = import ./aliases.nix;

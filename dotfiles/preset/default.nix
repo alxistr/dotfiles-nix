@@ -86,7 +86,7 @@ with lib; with types;
       xnview
       feh
       krita
-      aseprite
+      # aseprite
 
       godot3
       gdx-liftoff
