@@ -73,11 +73,6 @@ with lib; with types;
 
       # joplin-desktop
 
-      ## signal analysis
-      # mpg123
-      # baudline
-      audacity
-
       xournalpp
       # (xmind.override { jre = jre8; })
       # seqdiag
@@ -96,7 +91,13 @@ with lib; with types;
       godot3
       gdx-liftoff
 
+      ## signal analysis
+      # mpg123
+      # baudline
+      audacity
+      friture
       puredata
+      plugdata
       supercollider
 
       transmission-gtk
